@@ -1,6 +1,6 @@
 etc/skel_nano/
 etc/sysctl.d/netspeed.conf
 etc/sysctl.d/shared-memory.conf
-etc/sysctl.d/swappiness
+etc/sysctl.d/swappiness.conf
 usr/bin/killws
 usr/bin/sufffix
