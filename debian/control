@@ -142,7 +142,7 @@ Description: Collection of themes
 
 Package: nanolx-security
 Architecture: all
-Depends: bastille,
+Depends: bastille | bash,
          chkrootkit,
          clamav,
          clamtk,
@@ -286,7 +286,7 @@ Depends: audacity,
          ksnapshot,
          gimp,
          qscanner,
-         avidemux-gtk2,
+         avidemux,
          k3b,
          libk3b6-extracodecs
 Description: Collection of graphical media applications
