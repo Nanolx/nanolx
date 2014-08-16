@@ -1,0 +1,42 @@
+nanolx-security meta-package
+
+NOTE: You won't get a secure system by just installing this package.
+You'll need some clue on how to use the software installed by it.
+
+Installed packages:
+
+* bastille:
+        tool aiding in hardening your system
+* chkrootkit:
+	tool for checking your system for rootkits
+* clamav:
+	anti-virus scanner
+* clamtk:
+	user-interface for clamav
+* clamassassin:
+	E-Mail-Virus-Scanner based on ClamAV
+* ufw:
+	Firewall for Linux
+* gufw:
+	user-interface for ufw
+* tor, torsocks, tor-geoipdb:
+	TOR - The Onion Router. A more secure network.
+* psad:
+	Port Scan Attack Daemon: check your system for intrusion
+* harden-doc, harden-development, harden-environment, harden-tools,
+  hardening-includes, hardening-wrapper:
+	Utilities aiding in hardening your system
+* i2p, i2p-router:
+	Load-balanced unspoofable packet switching network
+* seahorse:
+	graphical tool to manage your SSH, GPG and other keys
+* gpgv, pinentry-gtk2:
+	GNU Privacy Guard and graphical ask-password dialog
+* gksu:
+	grapical su/sudo frontend
+
+Installed Files:
+
+* /etc/sysctl.d/tcpip-hardening.conf
+* /etc/sysctl.d/toctou.conf:
+	some security related kernel settings tweaks

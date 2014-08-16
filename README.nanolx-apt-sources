@@ -1,0 +1,25 @@
+nanolx-apt-sources meta-package.
+
+this package installs the following additional apt-sources on your system,
+all this repositories have been checked for debian compliance, but there's
+no garantuee for not introducing new (security) bugs:
+
+* debian-multmedia:
+	Christian Marillat's multimedia repository
+* emdebian:
+	Official Debian Embedded repository
+* i2p:
+	Official repository of the i2p network
+* liquorix:
+	Zen-Kernel packaged for Debian
+* nanolx:
+	Christopher Roy Bratusek's apt repository
+* samsung:
+	Repository with Samsung linux printer drivers
+* virtualbox:
+	Official Virtualbox repository
+
+this package will install the following files on your system:
+
+* /usr/sbin/apt-getkeys:
+	Script to obtain the secret keys of the repositories above

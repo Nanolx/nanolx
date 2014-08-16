@@ -1,0 +1,121 @@
+#!/bin/bash
+#
+# Christopher Roy Bratusek <nano@tuxfamily.org>
+#
+# Steam installer for Debian (post-wheezy)
+#
+
+set -e
+
+STEAMVER="12_32"
+
+HOST=$(uname -m)
+
+dependencies () {
+
+    # install dependencies
+    if [[ ${HOST} == "x86_64" ]]; then
+	dpkg --add-architecture i386
+	DEPS=(zenity libc6:i386 libstdc++6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 wget curl python-pycurl xterm)
+	for libgl in /var/lib/dpkg/info/libgl1-fglrx*list /var/lib/dpkg/info/libgl1-nvidia*.list; do
+		if [[ -f ${libgl} ]]; then
+			xlibgl=${libgl/*\/}
+			xlibgl=${xlibgl/:*/:i386}
+			DEPS=(${DEPS[@]} ${xlibgl})
+		fi
+	done
+    else
+        DEPS=(zenity libstdc++6 libgl1-mesa-dri libgl1-mesa-glx wget curl python-pycurl xterm)
+    fi
+    
+    apt-get update
+    apt-get install ${DEPS[@]}
+    
+    wget http://ftp-stud.hs-esslingen.de/pub/Mirrors/ubuntu/pool/main/j/jockey/jockey-common_0.9.7-0ubuntu11_all.deb
+    wget http://ftp-stud.hs-esslingen.de/pub/Mirrors/ubuntu/pool/main/x/x-kit/python-xkit_0.5.0_all.deb
+    dpkg -i jockey-common_0.9.7-0ubuntu11_all.deb python-xkit_0.5.0_all.deb
+    rm jockey-common_0.9.7-0ubuntu11_all.deb python-xkit_0.5.0_all.deb
+    
+}
+
+install () {
+  
+    wget http://media.steampowered.com/client/installer/steam.deb
+    dpkg -i steam.deb
+    rm steam.deb
+
+}
+
+
+case $1 in
+
+	--install | -i )
+	
+		if [[ ${EUID} != 0 ]]; then
+			echo "you're not root, exiting"
+			exit 1
+		fi
+		
+		dependencies
+		install
+		
+		echo "steam installed."
+	
+	;;
+	
+	--remove | -r )
+	
+		if [[ ${EUID} != 0 ]]; then
+			echo "you're not root, exiting"
+			exit 1
+		fi
+	
+		dpkg --purge remove steam
+		
+		echo "steam uninstalled.
+		
+your settings/steam storage was not touched."
+	
+	;;
+	
+	--update | -u )
+	
+		if [[ ${EUID} != 0 ]]; then
+			echo "you're not root, exiting"
+			exit 1
+		fi
+		
+		install
+		
+		echo "steam updated (or re-installed)"
+		
+	;;
+	
+	--dependencies | -d )
+	
+		if [[ ${EUID} != 0 ]]; then
+			echo "you're not root, exiting"
+			exit 1
+		fi
+		
+		dependencies
+		
+	;;
+
+	* )
+	
+		echo "Simple steam installer for Debian GNU/Linux (post-wheezy).
+		
+Version:			20130719
+
+created by: 			Christopher Roy Bratusek
+
+Usage:
+--install   	/ -i		install steam in /opt/steam
+--remove    	/ -r		remove steam from /opt/steam
+--update    	/ -u		update using new steam.deb
+--dependencies 	/ -d		install/update dependencies"
+
+	;;
+	
+esac

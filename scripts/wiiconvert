@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ $1 == "-h" || ( $1 != "-a" && !$2 ) ]]; then
+
+	if [[ $2 ]]; then
+		shift
+	fi
+
+	echo -n $1 | od -tx1 -An | tr -d ' '
+
+elif [[ $1 == "-a" ]]; then
+
+	shift
+
+	echo -e $(echo $1 | sed -e 's/../\\x&/g')
+
+fi

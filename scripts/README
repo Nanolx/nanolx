@@ -1,0 +1,8 @@
+==== xscripts ====
+
+** sufffix:		rename files according file-type
+** steam-install:	install steam on Debian  GNU/Linux (post-wheezy)
+** replwit.sh: 		update wit/wiimms szs tools inside a mkwiimm patchdir
+** wiiconvert: 		convert wii game/channel title ids from or to hex
+** killws: 		kill all whitespace from passed file
+** mksbuid:		create sbuild/schroot environment (pass <arch> <dist>, eg "i386 sid")

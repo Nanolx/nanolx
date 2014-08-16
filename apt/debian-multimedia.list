@@ -1,0 +1,9 @@
+# Debian Multimedia repository
+deb http://ftp.uni-kl.de/debian-multimedia/ unstable main 
+deb-src http://ftp.uni-kl.de/debian-multimedia/ unstable main 
+
+deb http://ftp.uni-kl.de/debian-multimedia/ testing main 
+deb-src http://ftp.uni-kl.de/debian-multimedia/ testing main 
+
+deb http://ftp.uni-kl.de/debian-multimedia/ experimental main 
+deb-src http://ftp.uni-kl.de/debian-multimedia/ experimental main 

@@ -1,0 +1,4 @@
+etc/default/*
+etc/privoxy/*
+usr/sbin/privoxy-blocklist
+usr/sbin/privoxy-switch

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+mv /etc/privoxy/config /etc/privoxy/config.default
+ln -s /etc/privoxy/config.default /etc/privoxy/config
+
+#DEBHELPER#
+
+exit 0

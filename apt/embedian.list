@@ -1,0 +1,3 @@
+deb http://emdebian.org/debian/ stable main
+deb http://emdebian.org/debian/ testing main
+deb http://emdebian.org/debian/ unstable main

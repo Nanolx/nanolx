@@ -1,0 +1,23 @@
+Package: *
+Pin: origin apt.nanolx.org
+Pin-Priority: 900
+
+Package: *
+Pin: origin ftp.uni-kl.de
+Pin-Priority: 850
+
+Package: *
+Pin: origin ftp.debian.org
+Pin-Priority: 800
+
+Package: *
+Pin: release a=unstable
+Pin-Priority: 900
+ 
+Package: *
+Pin: release a=testing
+Pin-Priority: 800
+
+Package: *
+Pin: release a=experimental
+Pin-Priority: 700

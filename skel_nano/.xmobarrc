@@ -1,0 +1,16 @@
+Config { font = "xft:Bitstream Vera Sans Mono:size=8:antialias=true"
+       , fgColor = "green"
+       , bgColor = "black"
+       , position = Static { xpos = 0, ypos = 884, width = 270, height = 16 }
+       , lowerOnStart = False
+       , border = TopB
+       , borderColor = "yellow"
+       , commands = [ 
+       		      Run Network "wlan0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% }{ %wlan0%"
+       }

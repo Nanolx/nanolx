@@ -1,0 +1,30 @@
+Nanolx
+=======================================
+
+Release Information
+=======================================
+
+Version:	1.0
+Release:	20140816
+Code-Name:	Arcadia
+Architectures:	i386  [complete]
+		amd64 [complete]
+		armhf [work in progress]
+
+About
+=======================================
+
+Nanolx is not a complete distribution nor a fork of Debian GNU/Linux.
+
+It's more what I think Debian should be, this meta-packages are beeing
+used to aid me in syncing the package selection between my machine and
+machines that are maintained by me. They can be safely used by anyone on
+official Debian as they won't remove or change existing packages.
+
+Some meta-packages also provide additional scripts, tools and configs.
+
+Installation on Debian GNU/Linux
+=======================================
+
+First install nanolx-apt-sources on it's own, then issue apt-getkeys.
+Afterwards contine with the other nanolx-* packages as usual.

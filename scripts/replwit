@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+# updates wit/wiimms szs tools inside an mkwiimm patchdir
+#
+# Christopher Roy Bratusek <nano@jpberlin.de>
+#
+# License: GPL v3
+
+if [[ ! -e "${PWD}/create-image.sh" ]]; then
+	echo -e "Not called inside a patchdir, exiting!"
+	exit 1
+fi
+
+AMD64=$(uname -m)
+if [[ ${AMD64} == "x86_64" ]]; then
+	REPL_PATH="${PWD}/bin/linux64"
+else
+	REPL_PATH="${PWD}/bin/linux32"
+fi
+
+REPL_TOOLS=(wbmgt wimgt wit wstrt wszst)
+TOOL_PATH="/usr/bin"
+
+xcount=0
+pcount=$#
+
+while [[ $xcount -lt $pcount ]]; do
+	case $1 in
+		--path* )
+			TOOL_PATH=${1/*=}
+		;;
+
+		--iso* )
+			ISO_PATH=${1/*=}
+			ISO_EXT=${ISO_PATH//*./}
+		;;
+
+		"" | --help )
+			echo -e "update wit/wiimms szs tools inside an mkwiimm patchdir.\n
+--path=/usr/local/bin/		| specify path to wit/wiims szs tools to use
+--iso=/home/test/RMCP01.wbfs	| specify which ISO to use for building"
+		;;
+	esac
+	shift
+	xcount=$(($xcount+1))
+done
+
+if [[ -e ${TOOL_PATH} ]]; then
+	if [[ -e "${ISO_PATH}" ]]; then
+		ln -sf "${ISO_PATH}" ${PWD}/RMCP01.${ISO_EXT}
+	fi
+
+	for tool in ${REPL_TOOLS[@]}; do
+		if [[ -e ${TOOL_PATH}/${tool} ]]; then
+			cp ${TOOL_PATH}/${tool} ${REPL_PATH}/
+		else
+			echo -e "${tool} could not be found!"
+		fi
+	done
+else
+	echo -e "defined path for wit (${TOOL_PATH} not found"
+	exit 1
+fi

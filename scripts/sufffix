@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for image in "${@}"; do
+	baseimg=${image%.*}
+
+	suffix="$(grep "^$(file --mime-type "${image}" | \
+		awk '{print $2}')" /etc/mime.types | \
+		awk '{print $2}')"
+
+	if [[ "${image}" != "${baseimg}".${suffix} && ${suffix} ]]; then
+		mv -v "${image}" "${baseimg}".${suffix}
+	fi
+done
