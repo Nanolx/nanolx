@@ -1,12 +1,12 @@
-nanoxl (20140914-1nano) unstable; urgency=low
+nanolx (20140914-1nano) unstable; urgency=low
 
   * new upstream release
-  * dropped dependency:
+  * dropped dependencies:
     - trayer
     - pancake
     - hsetroot
     - ksnapshot
-  * new dependency:
+  * new dependencies:
     - lumina-desktop
     - gfeedline
     - conky
@@ -17,11 +17,11 @@ nanoxl (20140914-1nano) unstable; urgency=low
     - zip
     - p7zip-full
     - xz-utils
-  * changed dependency:
+  * changed dependencies:
     - coreutils (no longer enforcing a specific version)
   * new package:
     - nanolx-admin
-    * dependency:
+    * dependencies:
       - synaptic
       - system-config-lvm
       - hdparm
@@ -37,6 +37,7 @@ nanoxl (20140914-1nano) unstable; urgency=low
       - dosfstools
       - btrfs-tools
       - lsof
+  * change source-format from quilt to git
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 14 Sep 2014 20:15:37 +0200
 
