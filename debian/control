@@ -7,7 +7,8 @@ Standards-Version: 3.9.4
 
 Package: nanolx-base
 Architecture: all
-Depends: nanolx-apt-tools,
+Depends: nanolx-admin,
+         nanolx-apt-tools,
          nanolx-apt-sources,
          nanolx-cli,
          nanolx-x11,
@@ -29,7 +30,41 @@ Description: Nano base package
    c) proceed with this package (or any other nanolx-* meta-package)
  .
  This package depends on all other nanolx-* meta-packages.
- 
+
+Package: nanolx-admin
+Architecture: all
+Depends: synaptic,
+         system-config-lvm,
+         hdparm,
+         gparted,
+         gsmartcontrol,
+         aptitude,
+         gadmin-samba,
+         gadmin-rsync,
+         kuser,
+         gksu | kdesudo,
+         lm-sensors,
+         ntfs-3g,
+         dosfstools,
+         btrfs-tools,
+         lsof
+Description: Nano admin package
+ This meta-package installs useful tools for system administration:
+ - synaptic
+ - system-config-lvm
+ - hdparm
+ - gparted
+ - gsmartcontrol
+ - aptitude
+ - gadmin-samba
+ - gadmin-rsync
+ - kuser
+ - gksu | kdesudo
+ - lm-sensors
+ - ntfs-3g
+ - dosfstools
+ - btrfs-tools
+ - lsof
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -59,7 +94,7 @@ Description: Collection of extra sources for apt
 
 Package: nanolx-cli
 Architecture: all
-Depends: coreutils (= 8.21-2nano),
+Depends: coreutils,
          vim,
          gpm,
          less,
@@ -67,6 +102,11 @@ Depends: coreutils (= 8.21-2nano),
          bash,
          bash-completion,
          shc,
+         mc,
+         p7zip-full,
+         zip,
+         xz-utils,
+         unrar,
          dcfldd,
          bashstyle-ng (>= 8.2),
          fortunes-flashrider
@@ -80,50 +120,56 @@ Description: Collection of basic command line tools
  - gpm
  - less
  - rsync
+ - mc
  - bash
  - bash-completion
  - shc
  - dcfldd
  - fortunes-flashrider
+ - mc
+ - zip, rar, p7zip, xz
 
 Package: nanolx-x11
 Architecture: all
 Depends: compton,
+         conky,
          fehlstart,
-         hsetroot,
          lightdm,
          lightdm-gtk-greeter,
-         pancake,
          rep (>= 0.92),
          rep-gtk (>= 0.90),
          sawfish (>= 1.9.1),
          sawfish-pager (>= 0.90),
          ssd (>= 0.40),
-         trayer,
          x11-xserver-utils,
          xmobar,
          xsettingsd,
          dolphin,
          easystroke,
-         konsole
+         konsole,
+         gucharmap,
+         lumina-desktop,
+         xarchiver,
+         yad
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
  These are:
  - compton
+ - conky
+ - gucharmap
  - fehlstart
- - hsetroot
  - lightdm (with gtk-greeter)
- - pancake
  - librep (with gtk-binding)
  - sawfish (with sawfish-pager and session-dialog)
- - trayer
  - x11-xserver-utils
  - xmobar
  - xsettingsd
  - dolphin
  - easystroke
  - konsole
+ - xarchiver
+ - Lumina Desktop Environment
 
 Package: nanolx-x11-theme
 Architecture: all
@@ -199,7 +245,8 @@ Depends: openssh-client,
          icedove,
          smbnetfs,
          ftpsync,
-         kvirc
+         kvirc,
+         gfeedline
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -214,6 +261,7 @@ Description: Collection of network applications
  - smbnetfs
  - ftpsync
  - kvirc
+ - gfeedline
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -283,7 +331,6 @@ Depends: audacity,
          mpv,
          phototonic,
          okular,
-         ksnapshot,
          gimp,
          qscanner,
          avidemux,
@@ -303,7 +350,6 @@ Description: Collection of graphical media applications
  - mpv
  - phototonic
  - okular
- - ksnapshot
  - GIMP
  - qscanner
  - k3b

@@ -4,6 +4,13 @@ Nanolx
 Release Information
 =======================================
 
+Version:	1.1
+Release:	20140914
+Code-Name:	Drums of Fire
+Architectures:	i386  [complete]
+		amd64 [complete]
+		armhf [work in progress]
+
 Version:	1.0
 Release:	20140816
 Code-Name:	Arcadia

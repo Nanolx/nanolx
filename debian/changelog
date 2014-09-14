@@ -1,3 +1,45 @@
+nanoxl (20140914-1nano) unstable; urgency=low
+
+  * new upstream release
+  * dropped dependency:
+    - trayer
+    - pancake
+    - hsetroot
+    - ksnapshot
+  * new dependency:
+    - lumina-desktop
+    - gfeedline
+    - conky
+    - galculator
+    - gucharmap
+    - mc
+    - unrar
+    - zip
+    - p7zip-full
+    - xz-utils
+  * changed dependency:
+    - coreutils (no longer enforcing a specific version)
+  * new package:
+    - nanolx-admin
+    * dependency:
+      - synaptic
+      - system-config-lvm
+      - hdparm
+      - gparted
+      - gsmartcontrol
+      - aptitude
+      - gadmin-samba
+      - gadmin-rsync
+      - kuser
+      - gksu | kdesudo
+      - lm-sensors
+      - ntfs-3g
+      - dosfstools
+      - btrfs-tools
+      - lsof
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 14 Sep 2014 20:15:37 +0200
+
 nanolx (20140816-1nano) unstable; urgency=low
 
   * Initial release
