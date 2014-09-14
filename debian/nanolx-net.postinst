@@ -2,8 +2,10 @@
 
 set -e
 
-mv /etc/privoxy/config /etc/privoxy/config.default
-ln -s /etc/privoxy/config.default /etc/privoxy/config
+if [[ ! -f /etc/privoxy/config.default ]]; then
+	mv /etc/privoxy/config /etc/privoxy/config.default
+	ln -fs /etc/privoxy/config.default /etc/privoxy/config
+fi
 
 #DEBHELPER#
 

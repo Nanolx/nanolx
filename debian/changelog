@@ -38,6 +38,11 @@ nanolx (20140914-1nano) unstable; urgency=low
       - btrfs-tools
       - lsof
   * change source-format from quilt to git
+  * fixup nanolx-net.postinst (when doing an update)
+  * add nanolx-net.prerm (restore original privoxy state)
+  * add nanolx-base.prerm (restore default user-skeleton directory in
+    useradd configuration)
+  * remove skel_nano/.pancakerc
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 14 Sep 2014 20:15:37 +0200
 
