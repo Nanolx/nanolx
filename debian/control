@@ -47,7 +47,9 @@ Depends: synaptic,
          ntfs-3g,
          dosfstools,
          btrfs-tools,
-         lsof
+         lsof,
+         localepurge,
+         bleachbit
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -65,6 +67,8 @@ Description: Nano admin package
  - dosfstools
  - btrfs-tools
  - lsof
+ - localepurge
+ - bleachbit
 
 Package: nanolx-apt-tools
 Architecture: all

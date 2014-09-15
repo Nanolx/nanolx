@@ -1,3 +1,11 @@
+nanolx (20140915-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependencies:
+    - localepurge
+    - bleachbit
+  * added .conkyrc in skel_nano
+
 nanolx (20140914-1nano) unstable; urgency=low
 
   * new upstream release
@@ -37,12 +45,15 @@ nanolx (20140914-1nano) unstable; urgency=low
       - dosfstools
       - btrfs-tools
       - lsof
+      - localepurge
+      - bleachbit
   * change source-format from quilt to git
   * fixup nanolx-net.postinst (when doing an update)
   * add nanolx-net.prerm (restore original privoxy state)
   * add nanolx-base.prerm (restore default user-skeleton directory in
     useradd configuration)
   * remove skel_nano/.pancakerc
+  * add skel_nano/.conkyrc
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 14 Sep 2014 20:15:37 +0200
 
