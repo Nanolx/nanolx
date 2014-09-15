@@ -6,6 +6,13 @@ Release Information
 
 see debian/changelog for changes
 
+Version:	1.1.1
+Release:	20140915
+Code-Name:	2000 People
+Architectures:	i386 [complete]
+		amd64 [complete]
+		armhf [work in progress]
+
 Version:	1.1
 Release:	20140914
 Code-Name:	Drums of Fire

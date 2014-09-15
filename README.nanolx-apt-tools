@@ -1,0 +1,32 @@
+nanolx-apt-sources meta-package.
+
+this package installs the following additional apt tools on your system:
+
+apt-file:
+	command-line too for searching files in packages
+apt-listchanges:
+	show what has changed between package versions
+apt-rdepends:
+	utility to recursively list dependencies of a package
+apt-show-versions:
+	show available versions of a package
+apt-transport-https:
+	https transport for apt
+debdelta:
+	program suite to compute changes from packages and only
+	install deltas
+reprepro:
+	utility for managing apt repositories
+cupt, libcupt3-0-downloadmethod-wget:
+	apt-get alternative with debdelta support
+
+this package will install the following files on your system:
+
+/etc/apt/apt.conf:
+	apt configuration, don't install suggested/recommend packages,
+	clean up everything after installation
+
+/etc/apt/preferences.d/pinning:
+	apt pinning configuration, prefer unstable > testing > stable >
+	experimental. Also prefer nanolx repository > debian multimedia >
+	official debian archive

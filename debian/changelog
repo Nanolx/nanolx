@@ -6,6 +6,8 @@ nanolx (20140915-1nano) unstable; urgency=low
     - bleachbit
   * added .conkyrc in skel_nano
 
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 15 Sep 2014 18:00:00 +0200
+
 nanolx (20140914-1nano) unstable; urgency=low
 
   * new upstream release
