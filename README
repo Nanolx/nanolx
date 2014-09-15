@@ -6,8 +6,8 @@ Release Information
 
 see debian/changelog for changes
 
-Version:	1.1.1
-Release:	20140915
+Version:	1.2
+Release:	201409XX
 Code-Name:	2000 People
 Architectures:	i386 [complete]
 		amd64 [complete]
