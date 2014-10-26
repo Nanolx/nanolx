@@ -22,7 +22,9 @@ Depends: nanolx-admin,
          nanolx-media-x11,
          nanolx-games,
          nanolx-games-emu,
-         nanolx-games-hacking
+         nanolx-games-hacking,
+         linux-headers-liquorix-amd64,
+         linux-image-liquorix-amd64
 Description: Nano base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
@@ -49,7 +51,11 @@ Depends: synaptic,
          btrfs-tools,
          lsof,
          localepurge,
-         bleachbit
+         bleachbit,
+         gtkorphan,
+         galternatives,
+         gkdebconf,
+         aptsh
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -202,6 +208,9 @@ Depends: bastille | bash,
          torsocks,
          tor-geoipdb,
          psad,
+         harden-clients,
+         harden-nids,
+         harden-servers,
          harden-doc,
          harden-development,
          harden-environment,
@@ -415,7 +424,8 @@ Depends: glade,
          geany,
          d-feet,
          okteta,
-         nemiver
+         nemiver,
+         gpaco
 Description: Collection of x11 development tools
  This meta-package installs x11 development tools.
  .

@@ -7,8 +7,8 @@ Release Information
 see debian/changelog for changes
 
 Version:	1.2
-Release:	201409XX
-Code-Name:	2000 People
+Release:	20141026
+Code-Name:	Freefall
 Architectures:	i386 [complete]
 		amd64 [complete]
 		armhf [work in progress]

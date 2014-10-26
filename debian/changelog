@@ -1,3 +1,19 @@
+nanolx (20141026-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependencies:
+    - linux-image-liquorix-amd64
+    - linux-headers-liquorix-amd64
+    - gkdebconf
+    - gtkorphan
+    - galternatives
+    - harden-clients
+    - harden-nids
+    - harden-servers
+    - gpaco
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 26 Oct 2014 19:08:21 +0100
+
 nanolx (20140915-1nano) unstable; urgency=low
 
   * new upstream release

@@ -1,4 +1,4 @@
-nanolx-apt-sources meta-package.
+nanolx-apt-tools meta-package.
 
 this package installs the following additional apt tools on your system:
 
