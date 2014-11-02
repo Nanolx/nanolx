@@ -224,7 +224,8 @@ Depends: bastille | bash,
          network-manager-openvpn-gnome,
          gksu,
          gpgv,
-         pinentry-gtk2
+         pinentry-gtk2,
+         enigmail
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
