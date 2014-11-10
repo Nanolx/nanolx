@@ -20,11 +20,10 @@ draw_outline no
 draw_shades no
 gap_x 15
 gap_y 0
-maximum_width 210
 max_port_monitor_connections 64
 max_specials 512
 max_user_text 16384
-minimum_size 330 10
+maximum_width 210
 net_avg_samples 2
 no_buffers yes
 out_to_console no
@@ -46,22 +45,24 @@ ${color6}${alignc}Debian GNU/Linux ${machine}
 ${color0}${alignc}${kernel}
 ${color7}${time %k:%M:%S}${alignr}${uptime}
 
-${color}${execpi 300 TDY=`date +%d` ; ncal -M -w -h | sed 's/^/     /' | sed /" $TDY "/s/" $TDY "/" "'${color2}'"$TDY"'${color}'" "/}
+${color}${execpi 300 TDY=`date +%d | sed -e 's/^0//'` ; ncal -M -w -h | sed 's/^/     /' | sed /" $TDY "/s/" $TDY "/" "'${color2}'"$TDY"'${color}'" "/}
 
-${color3}Core1: ${cpu cpu1}%${alignr}Core2: ${cpu cpu2}%
-${color3}Core3: ${cpu cpu3}%${alignr}Core4: ${cpu cpu4}%
-${color2}CPU: ${execi 30 sensors | grep 'CPU Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'CPU Fan Speed' | awk '{print $4}'} RPM
-${color2}MB: ${execi 30 sensors | grep 'MB Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'Chassis Fan Speed' | awk '{print $4}'} RPM
+${color3}Core1: ${cpu cpu1}%${alignr}${cpu cpu2}% :Core2
+${color2}Core3: ${cpu cpu3}%${alignr}${cpu cpu4}% :Core4
+${color3}Core5: ${cpu cpu5}%${alignr}${cpu cpu6}% :Core6
+${color2}Core7: ${cpu cpu7}%${alignr}${cpu cpu8}% :Core8
+#${color2}CPU: ${execi 30 sensors | grep 'CPU Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'CPU Fan Speed' | awk '{print $4}'} RPM
+#${color2}MB: ${execi 30 sensors | grep 'MB Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'Chassis Fan Speed' | awk '{print $4}'} RPM
 
-${color4}RAM Usage:  ${memperc}%${alignr}${mem}/${memmax}
+${color4}RAM  ${memperc}%${alignr}${mem}/${memmax}
 ${color4}${membar}
-${color4}SWAP Usage: ${swapperc}%${alignr}${swap}/${swapmax}
+${color4}SWAP ${swapperc}%${alignr}${swap}/${swapmax}
 ${color4}${swapbar}
 
-${color7}Local IP:  ${addr wlan0}
+${color7}Local IP:  ${addr eth1}
 ${color7}Public IP: ${execi 300 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
-${color7}WiFi Down: ${downspeed wlan0}${alignr}${totaldown wlan0}
-${color7}WiFi Up:   ${upspeed wlan0}${alignr}${totalup wlan0}
+${color7}Net Down: ${downspeed eth1}${alignr}/ ${totaldown eth1}
+${color7}Net Up:   ${upspeed eth1}${alignr}/ ${totalup eth1}
 
 ${color5}Disk R ${diskio_read}/ W ${diskio_write}
 ${color5}/${alignr}${fs_used /}/${fs_size /}
@@ -81,8 +82,3 @@ ${color}${top name 2}${alignr}${top pid 2} ${top cpu 2}
 ${color}${top name 3}${alignr}${top pid 3} ${top cpu 3}
 ${color}${top name 4}${alignr}${top pid 4} ${top cpu 4}
 ${color}${top name 5}${alignr}${top pid 5} ${top cpu 5}
-${color}${top name 6}${alignr}${top pid 6} ${top cpu 6}
-${color}${top name 7}${alignr}${top pid 7} ${top cpu 7}
-${color}${top name 8}${alignr}${top pid 8} ${top cpu 8}
-${color}${top name 9}${alignr}${top pid 9} ${top cpu 9}
-${color}${top name 10}${alignr}${top pid 10} ${top cpu 10}
