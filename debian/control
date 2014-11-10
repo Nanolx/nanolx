@@ -304,7 +304,7 @@ Depends: xul-ext-configuration-mania,
          xul-ext-stylish,
          xul-ext-tabmixplus,
          xul-ext-uppity,
-         xul-ext-useragentswitchter,
+         xul-ext-useragentswitcher,
          xul-ext-viewmarks,
          icedove,
          iceweasel
