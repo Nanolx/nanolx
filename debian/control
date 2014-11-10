@@ -15,6 +15,7 @@ Depends: nanolx-admin,
          nanolx-x11-theme,
          nanolx-security,
          nanolx-net,
+         nanolx-xul-addons,
          nanolx-devel-cli,
          nanolx-devel-x11,
          nanolx-media-codecs,
@@ -22,9 +23,7 @@ Depends: nanolx-admin,
          nanolx-media-x11,
          nanolx-games,
          nanolx-games-emu,
-         nanolx-games-hacking,
-         linux-headers-liquorix-amd64,
-         linux-image-liquorix-amd64
+         nanolx-games-hacking
 Description: Nano base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
@@ -210,7 +209,6 @@ Depends: bastille | bash,
          psad,
          harden-clients,
          harden-nids,
-         harden-servers,
          harden-doc,
          harden-development,
          harden-environment,
@@ -276,6 +274,72 @@ Description: Collection of network applications
  - ftpsync
  - kvirc
  - gfeedline
+
+Package: nanolx-xul-addons
+Architecture: all
+Depends: xul-ext-configuration-mania,
+         xul-ext-disconnect,
+         xul-ext-download-status-bar,
+         xul-ext-duckduckgoplus,
+         xul-ext-febe,
+         xul-ext-icedove-conversations,
+         xul-ext-image-toolbar,
+         xul-ext-multi-links,
+         xul-ext-outlookalike,
+         xul-ext-pretty-install,
+         xul-ext-print-edit,
+         xul-ext-save-images,
+         xul-ext-send-later,
+         xul-ext-textlink,
+         xul-ext-the-fox-only-better,
+         xul-ext-toggle-referer,
+         xul-ext-ui-eraser,
+         xul-ext-viewmarks,
+         xul-ext-adblock-edge,
+         xul-ext-classic-theme-restorer,
+         xul-ext-flashgot,
+         xul-ext-greasemonkey,
+         xul-ext-https-everywhere,
+         xul-ext-noscript,
+         xul-ext-stylish,
+         xul-ext-tabmixplus,
+         xul-ext-uppity,
+         xul-ext-useragentswitchter,
+         xul-ext-viewmarks,
+         icedove,
+         iceweasel
+Description: Collection of XUL addons
+ This meta-package installs several addons for Iceweasel and Icedove.
+ .
+ - configuration-mania
+ - disconnect
+ - download-status-bar
+ - duckduckgoplus
+ - febe
+ - icedove-conversations
+ - image-toolbar
+ - multi-links
+ - outlookalike
+ - pretty-install
+ - print-edit
+ - save-images
+ - send-later
+ - textlink
+ - the-fox-only-better
+ - toggle-referer
+ - ui-eraser
+ - viewmarks
+ - adblock-edge
+ - classic-theme-restorer
+ - flashgot
+ - greasemonkey
+ - https-everywhere
+ - noscript
+ - stylish
+ - tabmixplus
+ - uppity
+ - useragentswitchter
+ - viewmarks
 
 Package: nanolx-media-codecs
 Architecture: all

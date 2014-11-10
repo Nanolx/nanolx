@@ -6,26 +6,21 @@ Release Information
 
 see debian/changelog for changes
 
+Version:	1.3
+Release:	20141110
+Code-Name:	Fire
+
 Version:	1.2
 Release:	20141026
 Code-Name:	Freefall
-Architectures:	i386 [complete]
-		amd64 [complete]
-		armhf [work in progress]
 
 Version:	1.1
 Release:	20140914
 Code-Name:	Drums of Fire
-Architectures:	i386  [complete]
-		amd64 [complete]
-		armhf [work in progress]
 
 Version:	1.0
 Release:	20140816
 Code-Name:	Arcadia
-Architectures:	i386  [complete]
-		amd64 [complete]
-		armhf [work in progress]
 
 About
 =======================================
