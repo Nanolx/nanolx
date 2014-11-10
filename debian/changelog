@@ -6,6 +6,8 @@ nanolx (20141110-1nano) unstable; urgency=low
   * removed dependencies:
     - liquorix-*
     - harden-servers
+  * updated files:
+    - conky configuration
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 10 Nov 2014 19:37:55 +0100
 
