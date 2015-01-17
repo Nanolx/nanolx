@@ -159,7 +159,8 @@ Depends: compton,
          gucharmap,
          lumina-desktop,
          xarchiver,
-         yad
+         yad,
+         qt5-configuration-tool
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
@@ -179,6 +180,8 @@ Description: Collection of X11 applications
  - konsole
  - xarchiver
  - Lumina Desktop Environment
+ - YAD (GTK+ Dialogs from shell scripts)
+ - Qt5 Configuration Tool
 
 Package: nanolx-x11-theme
 Architecture: all
@@ -527,7 +530,7 @@ Depends: glob2,
          zeldaroth,
          megaglest,
          tmw,
-         wesnoth-1.11
+         wesnoth-1.12
 Description: Collection of games
  This meta-package installs games.
  .
