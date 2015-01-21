@@ -1,3 +1,22 @@
+nanolx (20150121-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependency
+    - gstreamer1.0-crystalhd
+    - byobu
+  * removed dependency
+    - gstreamer0.10-plugins-really-bad
+  * changed dependency
+    - gstreamer0.10-plugins-base >> gstreamer1.0-plugins-base
+    - gstreamer0.10-plugins-bad >> gstreamer1.0-plugins-bad
+    - gstreamer0.10-plugins-good >> gstreamer1.0-plugins-good
+    - gstreamer0.10-plugins-ugly >> gstreamer1.0-plugins-ugly
+    - gstreamer0.10-pulseaudio >> gstreamer1.0-pulseaudio
+    - gstreamer0.10-alsa >> gstreamer1.0-alsa
+    - gstreamer0.10-ffmpeg >> gstreamer1.0-libav
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Wed, 21 Jan 2015 18:11:49 +0100
+
 nanolx (20150117-1nano) unstable; urgency=low
 
   * new upstream release

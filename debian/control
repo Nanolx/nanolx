@@ -24,7 +24,7 @@ Depends: nanolx-admin,
          nanolx-games,
          nanolx-games-emu,
          nanolx-games-hacking
-Description: Nano base package
+Description: Nanolx base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
    b) /usr/sbin/apt-getkeys.sh
@@ -346,14 +346,14 @@ Description: Collection of XUL addons
 
 Package: nanolx-media-codecs
 Architecture: all
-Depends: gstreamer0.10-alsa,
-         gstreamer0.10-ffmpeg,
-         gstreamer0.10-plugins-bad,
-         gstreamer0.10-plugins-base,
-         gstreamer0.10-plugins-good,
-         gstreamer0.10-plugins-ugly,
-         gstreamer0.10-plugins-really-bad,
-         gstreamer0.10-pulseaudio,
+Depends: gstreamer1.0-alsa,
+         gstreamer1.0-plugins-bad,
+         gstreamer1.0-plugins-base,
+         gstreamer1.0-plugins-good,
+         gstreamer1.0-plugins-ugly,
+         gstreamer1.0-pulseaudio,
+         gstreamer1.0-crystalhd,
+         gstreamer1.0-libav,
          phonon-backend-gstreamer,
          libdvdcss2,
          libbluray1
@@ -363,8 +363,9 @@ Description: Collection of media codecs
  These are:
  - gstreamer:
    - alsa
-   - ffmpeg
-   - good, base, bad, really-bad, ugly
+   - good, base, bad, ugly
+   - pulseaudio
+   - libav, crystalhd
  - phonen-backend-gstreamer
  - libdvdcss
  - libbluray
