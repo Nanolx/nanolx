@@ -55,7 +55,7 @@ Depends: synaptic,
          galternatives,
          gkdebconf,
          aptsh,
-         needrestart
+         needrestart,
          cpufrequtils
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
