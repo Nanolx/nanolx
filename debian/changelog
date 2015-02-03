@@ -5,9 +5,6 @@ nanolx (20150203-1nano) unstable; urgency=low
     - needrestart
     - xul-ext-unote
     - xul-ext-html5-video-everywhere
-    - xul-ext-lightbeam
-    - xul-ext-imagus
-    - xul-ext-viewhance
     - cpufrequtils
   * new sources list:
     - debian-mozilla, iceweasel beta

@@ -318,9 +318,6 @@ Depends: xul-ext-configuration-mania,
          xul-ext-viewmarks,
          xul-ext-unote,
          xul-ext-html5-video-everywhere,
-         xul-ext-lightbeam,
-         xul-ext-imagus,
-         xul-ext-viewhance,
          icedove,
          iceweasel
 Description: Collection of XUL addons
@@ -357,9 +354,6 @@ Description: Collection of XUL addons
  - viewmarks
  - µNote
  - HTML5 Video Everywhere
- - Imagus
- - Lightbeam
- - Viewhance
 
 Package: nanolx-media-codecs
 Architecture: all
