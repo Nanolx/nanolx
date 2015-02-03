@@ -1,3 +1,25 @@
+nanolx (20150203-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependency
+    - needrestart
+    - xul-ext-unote
+    - xul-ext-html5-video-everywhere
+    - xul-ext-lightbeam
+    - xul-ext-imagus
+    - xul-ext-viewhance
+    - cpufrequtils
+  * new sources list:
+    - debian-mozilla, iceweasel beta
+  * updated apt-getkeys:
+    - install debian-mozilla keyring
+  * set default cpu governor to performance
+  * updated skel_nano/.conkyrc
+  * updated skel_nano/.xmobarrc
+  * load /etc/profile.d/Z96-qt5ct.sh in every bash session
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 03 Feb 2015 16:37:17 +0100
+
 nanolx (20150121-1nano) unstable; urgency=low
 
   * new upstream release

@@ -54,7 +54,9 @@ Depends: synaptic,
          gtkorphan,
          galternatives,
          gkdebconf,
-         aptsh
+         aptsh,
+         needrestart
+         cpufrequtils
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -74,6 +76,11 @@ Description: Nano admin package
  - lsof
  - localepurge
  - bleachbit
+ - gtkorphan
+ - galternatives
+ - gkdebconf
+ - needrestart
+ - cpufrequtils
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -309,6 +316,11 @@ Depends: xul-ext-configuration-mania,
          xul-ext-uppity,
          xul-ext-useragentswitcher,
          xul-ext-viewmarks,
+         xul-ext-unote,
+         xul-ext-html5-video-everywhere,
+         xul-ext-lightbeam,
+         xul-ext-imagus,
+         xul-ext-viewhance,
          icedove,
          iceweasel
 Description: Collection of XUL addons
@@ -343,6 +355,11 @@ Description: Collection of XUL addons
  - uppity
  - useragentswitchter
  - viewmarks
+ - µNote
+ - HTML5 Video Everywhere
+ - Imagus
+ - Lightbeam
+ - Viewhance
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -508,6 +525,7 @@ Description: Collection of x11 development tools
  - d-feet
  - okteta
  - nemiver
+ - gpaco
 
 Package: nanolx-games
 Architecture: all

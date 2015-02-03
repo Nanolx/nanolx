@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+if [ ! $(grep "Z96-qt5ct.sh" /etc/bash.bashrc) >/dev/null 2>&1 ]; then
+    echo "source /etc/profile.d/Z96-qt5ct.sh" >> /etc/bash.bashrc
+fi
+
+#DEBHELPER#
+
+exit 0

@@ -6,6 +6,8 @@ no garantuee for not introducing new (security) bugs:
 
 * debian-multmedia:
 	Christian Marillat's multimedia repository
+* debian-mozilla:
+	Debian Mozilla Team Iceweasel beta repository
 * emdebian:
 	Official Debian Embedded repository
 * i2p:

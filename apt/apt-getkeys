@@ -10,8 +10,6 @@
 if [[ ${EUID} != 0 ]]; then
 	echo "not root - exiting"
 else
-	apt-get update
-
 	if [[ $(which wget) == "" ]]; then
 		apt-get install wget
 	fi
@@ -24,6 +22,9 @@ else
 
 	# Debian Multimedia signing key
 	apt-get -y --force-yes install deb-multimedia-keyring
+
+	# Debian Mozilla Team signing key
+	apt-get -y --force-yes install pkg-mozilla-archive-keyring
 
 	# Liquorix signing key
 	apt-get -y --force-yes install '^liquorix-([^-]+-)?keyring.?'

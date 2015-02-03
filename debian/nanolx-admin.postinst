@@ -2,7 +2,6 @@
 
 set -e
 
-sed 's,SKEL=.*,SKEL=/etc/skel_nano/,' -i /etc/default/useradd
 echo 'GOVERNOR="performance"' > /etc/default/cpufrequtils
 
 #DEBHELPER#

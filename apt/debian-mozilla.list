@@ -1,0 +1,2 @@
+deb http://mozilla.debian.net/ experimental iceweasel-beta
+deb-src http://mozilla.debian.net/ experimental iceweasel-beta
