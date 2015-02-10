@@ -1,3 +1,18 @@
+nanolx (20150210-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependency:
+    - xul-ext-super-start
+    - fdupes
+    - unp
+  * dropped dependency:
+    - xul-ext-viewmarks
+    - xul-ext-pretty-install
+  * new script:
+    - gfxrename
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 10 Feb 2015 18:59:55 +0100
+
 nanolx (20150203-1nano) unstable; urgency=low
 
   * new upstream release

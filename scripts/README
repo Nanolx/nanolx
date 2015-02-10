@@ -6,3 +6,4 @@
 ** wiiconvert: 		convert wii game/channel title ids from or to hex
 ** killws: 		kill all whitespace from passed file
 ** mksbuid:		create sbuild/schroot environment (pass <arch> <dist>, eg "i386 sid")
+** gfxrename:		batch rename files (pass <prefix> <directory [optional]> <images>, eg "myimages ~/images *.png)

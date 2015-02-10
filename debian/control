@@ -125,7 +125,9 @@ Depends: coreutils,
          unrar,
          dcfldd,
          bashstyle-ng (>= 8.2),
-         fortunes-flashrider
+         fortunes-flashrider,
+         fdupes,
+         unp
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -144,6 +146,8 @@ Description: Collection of basic command line tools
  - fortunes-flashrider
  - mc
  - zip, rar, p7zip, xz
+ - fdupes
+ - unp
 
 Package: nanolx-x11
 Architecture: all
@@ -296,7 +300,6 @@ Depends: xul-ext-configuration-mania,
          xul-ext-image-toolbar,
          xul-ext-multi-links,
          xul-ext-outlookalike,
-         xul-ext-pretty-install,
          xul-ext-print-edit,
          xul-ext-save-images,
          xul-ext-send-later,
@@ -304,7 +307,6 @@ Depends: xul-ext-configuration-mania,
          xul-ext-the-fox-only-better,
          xul-ext-toggle-referer,
          xul-ext-ui-eraser,
-         xul-ext-viewmarks,
          xul-ext-adblock-edge,
          xul-ext-classic-theme-restorer,
          xul-ext-flashgot,
@@ -315,9 +317,9 @@ Depends: xul-ext-configuration-mania,
          xul-ext-tabmixplus,
          xul-ext-uppity,
          xul-ext-useragentswitcher,
-         xul-ext-viewmarks,
          xul-ext-unote,
          xul-ext-html5-video-everywhere,
+         xul-ext-super-start
          icedove,
          iceweasel
 Description: Collection of XUL addons
@@ -332,7 +334,6 @@ Description: Collection of XUL addons
  - image-toolbar
  - multi-links
  - outlookalike
- - pretty-install
  - print-edit
  - save-images
  - send-later
@@ -340,7 +341,6 @@ Description: Collection of XUL addons
  - the-fox-only-better
  - toggle-referer
  - ui-eraser
- - viewmarks
  - adblock-edge
  - classic-theme-restorer
  - flashgot
@@ -351,7 +351,7 @@ Description: Collection of XUL addons
  - tabmixplus
  - uppity
  - useragentswitchter
- - viewmarks
+ - super start
  - µNote
  - HTML5 Video Everywhere
 

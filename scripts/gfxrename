@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [[ ${1} ]]; then
+	prefix=${1}
+	shift
+fi
+
+if [[ -d ${1} ]]; then
+	cd ${1}
+	shift
+fi
+
+count_max=$(($(ls --color=no -1 -l . | grep -v ^d | wc -l)))
+count_len=${#count_max}
+count_now=1
+
+fill_zeros () {
+	current_len=${#1}
+	diff_string=""
+
+	if [[ ${current_len} -ne ${count_len} ]]; then
+		diff_len=$((${count_len}-${current_len}))
+		while test ${diff_len} -ne 0; do
+			diff_string="${diff_string}0"
+			diff_len=$((${diff_len}-1))
+		done
+		echo ${diff_string}
+	fi
+}
+
+rename_file () {
+
+	mv -v "${1}" "${prefix}"-$(fill_zeros ${2})${2}.${1##*.}
+
+}
+
+for image in "${@}"; do
+	rename_file "${image}" ${count_now}
+	count_now=$(($count_now+1))
+done
