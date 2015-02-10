@@ -319,7 +319,7 @@ Depends: xul-ext-configuration-mania,
          xul-ext-useragentswitcher,
          xul-ext-unote,
          xul-ext-html5-video-everywhere,
-         xul-ext-super-start
+         xul-ext-super-start,
          icedove,
          iceweasel
 Description: Collection of XUL addons
