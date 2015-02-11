@@ -1,3 +1,14 @@
+nanolx (2015____-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependency:
+    - sqlite3
+    - sqlitebrowser
+  * new script:
+    - dump_bookmarks_nextbrowser
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  ...
+
 nanolx (20150210-1nano) unstable; urgency=low
 
   * new upstream release

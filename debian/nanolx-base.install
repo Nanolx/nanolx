@@ -5,3 +5,4 @@ etc/sysctl.d/swappiness.conf
 usr/bin/gfxrename
 usr/bin/killws
 usr/bin/sufffix
+usr/bin/dump_bookmarks_nextbrowser

@@ -1,9 +1,10 @@
 ==== xscripts ====
 
-** sufffix:		rename files according file-type
-** steam-install:	install steam on Debian  GNU/Linux (post-wheezy)
-** replwit.sh: 		update wit/wiimms szs tools inside a mkwiimm patchdir
-** wiiconvert: 		convert wii game/channel title ids from or to hex
-** killws: 		kill all whitespace from passed file
-** mksbuid:		create sbuild/schroot environment (pass <arch> <dist>, eg "i386 sid")
-** gfxrename:		batch rename files (pass <prefix> <directory [optional]> <images>, eg "myimages ~/images *.png)
+** sufffix:			rename files according file-type
+** steam-install:		install steam on Debian  GNU/Linux (post-wheezy)
+** replwit.sh: 			update wit/wiimms szs tools inside a mkwiimm patchdir
+** wiiconvert: 			convert wii game/channel title ids from or to hex
+** killws: 			kill all whitespace from passed file
+** mksbuid:			create sbuild/schroot environment (pass <arch> <dist>, eg "i386 sid")
+** gfxrename:			batch rename files (pass <prefix> <directory [optional]> <images>, eg "myimages ~/images *.png)
+** dump_bookmarks_nextbrowser:	dump bookmarks from Next Browser's browser.db (Android browser) and output Iceweael compatible html

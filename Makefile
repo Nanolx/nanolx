@@ -23,6 +23,7 @@ install:
 	install -m755 scripts/sufffix $(DESTDIR)/usr/bin/
 	install -m755 scripts/wiiconvert $(DESTDIR)/usr/bin/
 	install -m755 scripts/gfxrename $(DESTDIR)/usr/bin/
+	install -m755 scripts/dump_bookmarks_nextbroweser $(DESTDIR)/usr/bin/
 	install -m644 sysctl/* $(DESTDIR)/etc/sysctl.d/
 	cp -r skel_nano $(DESTDIR)/etc/
 

@@ -127,7 +127,8 @@ Depends: coreutils,
          bashstyle-ng (>= 8.2),
          fortunes-flashrider,
          fdupes,
-         unp
+         unp,
+         sqlite3 | sqlite
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -148,6 +149,7 @@ Description: Collection of basic command line tools
  - zip, rar, p7zip, xz
  - fdupes
  - unp
+ - sqlite
 
 Package: nanolx-x11
 Architecture: all
@@ -505,7 +507,8 @@ Depends: glade,
          d-feet,
          okteta,
          nemiver,
-         gpaco
+         gpaco,
+         sqlitebrowser
 Description: Collection of x11 development tools
  This meta-package installs x11 development tools.
  .
@@ -520,6 +523,7 @@ Description: Collection of x11 development tools
  - okteta
  - nemiver
  - gpaco
+ - sqlitebrowser
 
 Package: nanolx-games
 Architecture: all
