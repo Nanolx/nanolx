@@ -1,0 +1,34 @@
+#!/bin/sh
+
+if [[ -f "${1}" ]]; then
+	sqlite3 -list -separator " <>> " \
+		"${1}" "SELECT title, url from bookmarks;" \
+		> nextbrowser_bookmarks.txt
+
+echo '<!DOCTYPE NETSCAPE-Bookmark-file-1>
+<!-- This is an automatically generated file.
+     It will be read and overwritten.
+     DO NOT EDIT! -->
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<TITLE>Bookmarks</TITLE>
+<H1>Nextbrowser Bookmarks</H1>
+
+<DL><p>
+    <DL><p>
+        <DT><H3 ADD_DATE="1375166461" LAST_MODIFIED="1399750673">Next Browser</H3>
+        <DL><p>' > nextbrowser_bookmarks.html
+
+	OLD_IFS="${IFS}"
+	IFS=$'\n'
+	for bookmark in $(cat nextbrowser_bookmarks.txt); do
+		echo '        <DT><A HREF="'${bookmark/*<>>/}'" ADD_DATE="1364464530">'${bookmark/<>>*/}'</A>' >> nextbrowser_bookmarks.html
+	done
+	IFS="${OLD_IFS}"
+
+echo '        </DL><p>
+    </DL><p>
+</DL>' >> nextbrowser_bookmarks.html
+
+rm nextbrowser_bookmarks.txt
+
+fi
