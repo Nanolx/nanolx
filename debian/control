@@ -273,7 +273,7 @@ Depends: openssh-client,
          kvirc,
          gfeedline,
          openvpn,
-         openresolve
+         openresolv
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -290,7 +290,7 @@ Description: Collection of network applications
  - kvirc
  - gfeedline
  - openvpn
- - openresolve
+ - openresolv
 
 Package: nanolx-xul-addons
 Architecture: all

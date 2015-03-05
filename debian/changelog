@@ -5,7 +5,7 @@ nanolx (20150305-1nano) unstable; urgency=low
     - sqlite3
     - sqlitebrowser
     - openvpn
-    - openresolve
+    - openresolv
   * dropped dependency:
     - tmw
     - networkmanager-openvpn
