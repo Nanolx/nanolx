@@ -1,13 +1,19 @@
-nanolx (2015____-1nano) unstable; urgency=low
+nanolx (20150305-1nano) unstable; urgency=low
 
   * new upstream release
   * new dependency:
     - sqlite3
     - sqlitebrowser
+    - openvpn
+    - openresolve
+  * dropped dependency:
+    - tmw
+    - networkmanager-openvpn
+    - networkmanager-openvpn-gnome
   * new script:
     - dump_bookmarks_nextbrowser
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>  ...
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 05 Mar 2015 20:04:35 +0100
 
 nanolx (20150210-1nano) unstable; urgency=low
 

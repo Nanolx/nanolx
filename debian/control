@@ -234,8 +234,6 @@ Depends: bastille | bash,
          i2p,
          i2p-router,
          seahorse,
-         network-manager-openvpn,
-         network-manager-openvpn-gnome,
          gksu,
          gpgv,
          pinentry-gtk2,
@@ -257,7 +255,6 @@ Description: Collection of security related tools
  - harden
  - i2p
  - seahorse
- - network-manager-openvpn
  - gksu
  - gpgv (with pinentry-gtk2)
 
@@ -274,7 +271,9 @@ Depends: openssh-client,
          smbnetfs,
          ftpsync,
          kvirc,
-         gfeedline
+         gfeedline,
+         openvpn,
+         openresolve
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -290,6 +289,8 @@ Description: Collection of network applications
  - ftpsync
  - kvirc
  - gfeedline
+ - openvpn
+ - openresolve
 
 Package: nanolx-xul-addons
 Architecture: all
@@ -546,7 +547,6 @@ Depends: glob2,
          zeldaolb,
          zeldaroth,
          megaglest,
-         tmw,
          wesnoth-1.12
 Description: Collection of games
  This meta-package installs games.
@@ -563,7 +563,6 @@ Description: Collection of games
  - Neverball
  - Pingus
  - Super Tux Kart
- - The Mana World
  - Battle For Wesnoth
  - Xcowsay
  - Xdesktopwaves
