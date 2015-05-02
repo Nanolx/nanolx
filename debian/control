@@ -56,7 +56,8 @@ Depends: synaptic,
          gkdebconf,
          aptsh,
          needrestart,
-         cpufrequtils
+         cpufrequtils,
+         gprename
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -81,6 +82,7 @@ Description: Nano admin package
  - gkdebconf
  - needrestart
  - cpufrequtils
+ - gprename
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -223,12 +225,6 @@ Depends: bastille | bash,
          torsocks,
          tor-geoipdb,
          psad,
-         harden-clients,
-         harden-nids,
-         harden-doc,
-         harden-development,
-         harden-environment,
-         harden-tools,
          hardening-includes,
          hardening-wrapper,
          i2p,

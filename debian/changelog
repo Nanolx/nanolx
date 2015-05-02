@@ -1,3 +1,13 @@
+nanolx (20150502-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependency:
+    - gprename
+  * dropped dependency:
+    - harden-* [not currently in Debian archive]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 02 May 2015 19:18:06 +0200
+
 nanolx (20150305-1nano) unstable; urgency=low
 
   * new upstream release
