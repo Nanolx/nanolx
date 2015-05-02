@@ -1,8 +1,18 @@
 #!/bin/bash
 
-user=$(whoami)
+case ${1} in
+	"" | "-h" | "--help" )
+		echo -e "Usage: mksbuild <arch> <tree>
 
-sudo apt-get install sbuild schroot ubuntu-dev-tools debootstrap
-sudo adduser ${user} sbuild
+Examples:
+	mksbuild i386 unstable
+	mksbuild armhf testing"
+	;;
 
-mk-sbuild --arch=${1} --debootstrap-mirror=ftp://ftp.debian.org/debian/ ${2}
+	* )
+		user=$(whoami)
+		sudo apt-get install sbuild schroot ubuntu-dev-tools debootstrap
+		sudo adduser ${user} sbuild
+		mk-sbuild --arch=${1} --debootstrap-mirror=ftp://ftp.debian.org/debian/ ${2}
+	;;
+esac
