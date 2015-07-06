@@ -57,7 +57,8 @@ Depends: synaptic,
          aptsh,
          needrestart,
          cpufrequtils,
-         gprename
+         gprename,
+         cruft-ng
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -83,6 +84,7 @@ Description: Nano admin package
  - needrestart
  - cpufrequtils
  - gprename
+ - cruft-ng
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -543,7 +545,7 @@ Depends: glob2,
          zeldaolb,
          zeldaroth,
          megaglest,
-         wesnoth-1.12
+         wesnoth-1.13
 Description: Collection of games
  This meta-package installs games.
  .
