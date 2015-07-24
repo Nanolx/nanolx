@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -e
-
-echo 'GOVERNOR="performance"' > /etc/default/cpufrequtils
-
-#DEBHELPER#
-
-exit 0

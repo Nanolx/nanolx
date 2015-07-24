@@ -1,3 +1,18 @@
+nanolx (20150724-1nano) unstable; urgency=low
+
+  * new upstream release
+  * apt.conf: enable progress bar
+  * new dependency:
+    - xsensors
+    - lm-sensors
+    - fancontrol
+  * remove debian/nanolx-admin.postinst
+  * remove debian/nanolx-cli.postinst
+  * remove debian/nanolx-cli.prerm
+  * change default cpu-governor to ondemand
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 24 Jul 2015 22:03:42 +0200
+
 nanolx (20150706-1nano) unstable; urgency=low
 
   * new upstream release

@@ -58,7 +58,10 @@ Depends: synaptic,
          needrestart,
          cpufrequtils,
          gprename,
-         cruft-ng
+         cruft-ng,
+         lm-sensors,
+         fancontrol,
+         xsensors
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -85,6 +88,9 @@ Description: Nano admin package
  - cpufrequtils
  - gprename
  - cruft-ng
+ - lm-sesnors
+ - fancontrol
+ - xsensors
 
 Package: nanolx-apt-tools
 Architecture: all
