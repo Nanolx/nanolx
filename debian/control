@@ -61,7 +61,8 @@ Depends: synaptic,
          cruft-ng,
          lm-sensors,
          fancontrol,
-         xsensors
+         xsensors,
+         cryptsetup
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -91,6 +92,7 @@ Description: Nano admin package
  - lm-sesnors
  - fancontrol
  - xsensors
+ - cryptsetup
 
 Package: nanolx-apt-tools
 Architecture: all
