@@ -318,7 +318,7 @@ Depends: xul-ext-configuration-mania,
          xul-ext-the-fox-only-better,
          xul-ext-toggle-referer,
          xul-ext-ui-eraser,
-         xul-ext-adblock-edge,
+         xul-ext-ublock-origin,
          xul-ext-classic-theme-restorer,
          xul-ext-flashgot,
          xul-ext-greasemonkey,
@@ -352,7 +352,7 @@ Description: Collection of XUL addons
  - the-fox-only-better
  - toggle-referer
  - ui-eraser
- - adblock-edge
+ - uBlock Origin
  - classic-theme-restorer
  - flashgot
  - greasemonkey

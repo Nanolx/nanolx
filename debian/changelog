@@ -1,11 +1,14 @@
-nanolx (20150XXX-1nano) unstable; urgency=low
+nanolx (20150808-1nano) unstable; urgency=low
 
   * new upstream release
   * new dependency:
     - cryptsetup
     - trayer
+    - xul-ext-ublock-origin
+  * dropped dependency:
+    - xul-ext-adblock-edge
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 08 Aug 2015 19:13:23 +0200
 
 nanolx (20150724-1nano) unstable; urgency=low
 
