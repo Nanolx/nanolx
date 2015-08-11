@@ -111,8 +111,7 @@ Description: Collection of tools for apt
 
 Package: nanolx-apt-sources
 Architecture: all
-Depends: emdebian-archive-keyring,
-         gui-apt-key,
+Depends: gui-apt-key,
          wget
 Description: Collection of extra sources for apt
  This meta-package installs extra apt-sources on the system.

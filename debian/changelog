@@ -1,3 +1,14 @@
+nanolx (201508XX-1nano) unstable; urgency=low
+
+  * new upstream release
+  * dropped dependency:
+    - emdebian-archive-keyring
+  * dropped apt sources:
+    - emdebian
+    - virtualbox
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>
+
 nanolx (20150808-1nano) unstable; urgency=low
 
   * new upstream release

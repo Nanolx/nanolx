@@ -8,8 +8,6 @@ no garantuee for not introducing new (security) bugs:
 	Christian Marillat's multimedia repository
 * debian-mozilla:
 	Debian Mozilla Team Iceweasel beta repository
-* emdebian:
-	Official Debian Embedded repository
 * i2p:
 	Official repository of the i2p network
 * liquorix:
@@ -18,8 +16,6 @@ no garantuee for not introducing new (security) bugs:
 	Christopher Roy Bratusek's apt repository
 * samsung:
 	Repository with Samsung linux printer drivers
-* virtualbox:
-	Official Virtualbox repository
 
 this package will install the following files on your system:
 

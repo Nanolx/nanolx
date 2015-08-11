@@ -43,13 +43,6 @@ else
 	fi
 	apt-key add /etc/apt/keys/samsung.key
 
-	# Virtualbox signing key
-	if [[ ! -f /etc/apt/keys/virtualbox.key ]]; then
-		wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc \
-			-O /etc/apt/keys/virtualbox.key
-	fi
-	apt-key add /etc/apt/keys/virtualbox.key
-
 	# i2p signing key
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EB2CC88B
 
