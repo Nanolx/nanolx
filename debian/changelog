@@ -1,6 +1,8 @@
 nanolx (201508XX-1nano) unstable; urgency=low
 
   * new upstream release
+  * new dependency:
+    - zeldansq
   * dropped dependency:
     - emdebian-archive-keyring
   * dropped apt sources:

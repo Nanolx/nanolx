@@ -553,6 +553,7 @@ Depends: glob2,
          zelda3t,
          zeldaolb,
          zeldaroth,
+         zeldansq,
          megaglest,
          wesnoth-1.13
 Description: Collection of games
@@ -579,6 +580,7 @@ Description: Collection of games
  - Zelda Time to Triumph
  - Zelda Oni-Link Begins
  - Zelda Return of the Hylian
+ - Zelda Navi's Quest
 
 Package: nanolx-games-emu
 Architecture: all
