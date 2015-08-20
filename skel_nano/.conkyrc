@@ -59,10 +59,10 @@ ${color4}${membar}
 ${color4}SWAP ${swapperc}%${alignr}${swap}/${swapmax}
 ${color4}${swapbar}
 
-${color7}Local IP:  ${addr eth0}
+${color7}Local IP:  ${addr enp4s0}
 ${color7}Public IP: ${execi 300 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
-${color7}Net Down: ${downspeed eth0}${alignr}/ ${totaldown eth0}
-${color7}Net Up:   ${upspeed eth0}${alignr}/ ${totalup eth0}
+${color7}Net Down: ${downspeed enp4s0}${alignr}/ ${totaldown enp4s0}
+${color7}Net Up:   ${upspeed enp4s0}${alignr}/ ${totalup enp4s0}
 
 ${color5}Disk R ${diskio_read}/ W ${diskio_write}
 ${color5}/${alignr}${fs_used /}/${fs_size /}
