@@ -139,7 +139,8 @@ Depends: coreutils,
          fortunes-flashrider,
          fdupes,
          unp,
-         sqlite3 | sqlite
+         sqlite3 | sqlite,
+         sudo
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -161,6 +162,7 @@ Description: Collection of basic command line tools
  - fdupes
  - unp
  - sqlite
+ - sudo
 
 Package: nanolx-x11
 Architecture: all
