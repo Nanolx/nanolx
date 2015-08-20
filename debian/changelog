@@ -1,15 +1,28 @@
-nanolx (201508XX-1nano) unstable; urgency=low
+nanolx (20150820-1nano) unstable; urgency=low
 
   * new upstream release
   * new dependency:
     - zeldansq
+    - sudo
+  * bumped dependency:
+    - require bashstyle-ng atleast at 9.0~rc1
   * dropped dependency:
     - emdebian-archive-keyring
+    - xmobar
   * dropped apt sources:
     - emdebian
     - virtualbox
+  * dropped configuration files:
+    - xmobarrc
+  * updated configuration files:
+    - conkyrc: use enp4s0 instead of eth0
+    - bs-ng.ini: update bashstyle-ng configuration for new version, show
+      a fortune when user is logging in
+  * other changes:
+    - install mksbuild into /usr/bin intead of /usr/sbin (it uses sudo to
+      gain root rights and is not intended to be run as root)
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 20 Aug 2015 20:15:15 +0200
 
 nanolx (20150808-1nano) unstable; urgency=low
 
