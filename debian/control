@@ -175,7 +175,6 @@ Depends: compton,
          sawfish-pager (>= 0.90),
          ssd (>= 0.40),
          x11-xserver-utils,
-         xmobar,
          xsettingsd,
          dolphin,
          easystroke,
@@ -198,7 +197,6 @@ Description: Collection of X11 applications
  - librep (with gtk-binding)
  - sawfish (with sawfish-pager and session-dialog)
  - x11-xserver-utils
- - xmobar
  - xsettingsd
  - dolphin
  - easystroke
