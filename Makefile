@@ -17,7 +17,7 @@ install:
 	install -m755 privoxy/privoxy-blocklist $(DESTDIR)/usr/sbin/
 	install -m755 privoxy/privoxy-switch $(DESTDIR)/usr/sbin/
 	install -m755 scripts/killws $(DESTDIR)/usr/bin/
-	install -m755 scripts/mksbuild $(DESTDIR)/usr/sbin/
+	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
 	install -m755 scripts/replwit $(DESTDIR)/usr/bin/
 	install -m755 scripts/steam-install $(DESTDIR)/usr/sbin/
 	install -m755 scripts/sufffix $(DESTDIR)/usr/bin/
