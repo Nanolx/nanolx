@@ -37,7 +37,6 @@ Architecture: all
 Depends: synaptic,
          system-config-lvm,
          hdparm,
-         gparted,
          gsmartcontrol,
          aptitude,
          gadmin-samba,
@@ -62,7 +61,8 @@ Depends: synaptic,
          lm-sensors,
          fancontrol,
          xsensors,
-         cryptsetup
+         cryptsetup,
+         gparted
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -429,7 +429,6 @@ Depends: audacity,
          pavucontrol,
          soundkonverter,
          streamtuner2,
-         texel,
          yarock,
          mpv,
          phototonic,
@@ -448,7 +447,6 @@ Description: Collection of graphical media applications
  - gmtp
  - pavucontrol
  - streamtuner2
- - texel
  - yarock
  - mpv
  - phototonic
@@ -510,13 +508,13 @@ Depends: glade,
          manpageeditor,
          bluefish,
          cutemarked,
-         poedit,
          geany,
          d-feet,
          okteta,
          nemiver,
          gpaco,
-         sqlitebrowser
+         sqlitebrowser,
+         poedit
 Description: Collection of x11 development tools
  This meta-package installs x11 development tools.
  .
@@ -554,8 +552,8 @@ Depends: glob2,
          zeldaolb,
          zeldaroth,
          zeldansq,
-         megaglest,
-         wesnoth-1.13
+         wesnoth-1.13,
+         megaglest
 Description: Collection of games
  This meta-package installs games.
  .
@@ -585,19 +583,19 @@ Description: Collection of games
 Package: nanolx-games-emu
 Architecture: all
 Depends: dolphin-emu | bash,
-         desmume,
          dosbox,
-         fceux,
          lxdream,
          mupen64plus,
          mupen64plus-audio-all,
          mupen64plus-video-all,
          nestopia,
          snes9x-gtk,
-         visualboyadvance-gtk,
          yabause-gtk,
          gnuboy-sdl,
-         scummvm
+         scummvm,
+         visualboyadvance-gtk,
+         desmume,
+         fceux
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .

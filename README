@@ -24,6 +24,10 @@ Release Information
 
 see debian/changelog for changes
 
+Version:	1.9.1
+Release:	20150909
+Code-Name:	RIOT
+
 Version:	1.9.0
 Release:	20150820
 Code-Name:	The Kicker Strikes Again

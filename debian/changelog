@@ -1,3 +1,11 @@
+nanolx (20150909-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependency:
+    - texel
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Wed, 09 Sep 2015 19:15:35 +0200
+
 nanolx (20150820-1nano) unstable; urgency=low
 
   * new upstream release
