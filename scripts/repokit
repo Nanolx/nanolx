@@ -1,0 +1,171 @@
+#!/bin/bash
+
+if [[ -f ${HOME}/.repokit.conf ]]; then
+	source ${HOME}/.repokit.conf
+else	echo "no ${HOME}/.repokit.conf exists"
+	exit 1
+fi
+
+reprepro_add () {
+	reprepro -Vb ${REPOKIT_PATH} include ${REPOKIT_DIST} ${1}
+}
+
+reprepro_remove () {
+	reprepro -Vb ${REPOKIT_PATH} remove ${REPOKIT_DIST} ${1}
+}
+
+debhelper_build_orig () {
+	if [[ -d "${1}" ]]; then
+		tar cf "${1}".orig.tar "${1}"
+		${REPOKIT_COMPRESSOR} ${REPOKIT_LEVL_COMPRESSOR} "${1}".orig.tar
+	fi
+}
+
+debhelper_prepare () {
+	dh_make -s -e ${REPOKIT_MAIL} -r dh7 --copyright $@
+	rm -f debian/*.ex debian/README* debian/*.EX
+	sed -e "s/1) unst/${REPOKIT_REV}) unst/g" -i debian/changelog
+	sed -e 's/\#export/export/g' -i debian/rules
+	sed -e 's/<insert.*//g' -e '/\#Vcs/d' -e 's/Section.*/Section:/g' -i debian/control
+}
+
+debhelper_get_scripts () {
+	tmp=$(basename ${PWD})
+	package=${tmp/_*}
+	version=${tmp/*_}
+
+	if [[ -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
+		cp -r ${REPOKIT_BUILD_SCRIPTS}/${package} ${PWD}/debian
+		sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
+	else
+		echo "no packaging scripts for ${tmp} found"
+	fi
+}
+
+debhelper_put_scripts () {
+	tmp=$(basename ${PWD})
+	package=${tmp/_*}
+
+	mkdir -p ${REPOKIT_BUILD_SCRIPTS}/${package}
+	cp -r debian/* ${REPOKIT_BUILD_SCRIPTS}/${package}
+}
+
+schroot_list () {
+	echo ${REPOKIT_SCHROOT[@]} | sed -e 's/ /\n/g'
+}
+
+scroot_copy () {
+	sudo cp -r ${@}/var/lib/sbuild/build/
+}
+
+schroot_enter () {
+	[[ -d /var/lib/schroot/chroots/${1} ]] && \
+		sudo schroot -c source:${1} -u root --directory=${2:-/build}
+}
+
+source_dist () {
+	if [[ -d ${1} ]]; then
+		dir=$(readlink -m ${1})
+
+		for comp in ${REPOKIT_DIST_COMPRESSOR[@]}; do
+			comp-exe=${comp/*:}
+			comp-suf=${comp/:*}
+
+			tar cf ${dir}.tar ${dir}
+			${comp-exe} ${REPOKIT_LEVL_COMPRESSOR} ${dir}.tar
+
+			[[ ${REPOKIT_SHA256} == True ]] && \
+				sha256sum ${dir}.tar.${comp-suf} > ${dir}.tar.${comp-suf}.sha256
+
+			[[ ${REPOKIT_SHA256} == True && ${REPOKIT_SIGN} == True ]] && \
+				gpg --sign --detach-sign ${dir}.tar.${comp-suf}.sha256
+		done
+	fi
+}
+
+cross_build () {
+	dist=${1}
+	shift
+
+	arch=${1}
+	shift
+
+	sbuild --no-arch-all -d ${dist} -c ${dist}-${arch} \
+		--host=${arch} --build=${arch} ${REPOKIT_SBUILD_FLAGS} \
+		${@}
+}
+
+ftp_push () {
+	ftpsync --delete --notimestampcheck ${REPOKIT_PATH}/pool/ \
+		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PWD}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/pool/"
+	ftpsync --delete ${REPOKIT_PATH}/dists/ \
+		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PWD}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/dists/"
+	ftpsync --delete ${REPOKIT_PATH}/logs/ \
+		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PWD}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/logs/"
+}
+
+case ${1} in
+	-a | add )
+		for arg in ${@}; do
+			reprepro_add "${arg}"
+		done
+	;;
+
+	-r | remove )
+		for arg in ${@}; do
+			reprepro_remove "${arg}"
+		done
+	;;
+
+	-o | orig )
+		for arg in ${@}; do
+			debhelper_build_orig "$(readlink -m ${arg})"
+		done
+	;;
+
+	-p | prepare )
+		debhelper_prepare "${@}"
+	;;
+
+	-b | build )
+		dpkg-buildpackage ${REPOKIT_BUILD_FLAGS} -rfakeroot
+	;;
+
+	-c | clean )
+		fakeroot debian/rules clean
+	;;
+
+	-sl | slist )
+		scroot_list
+	;;
+
+	-sc | scopy )
+		schroot_copy "${@}"
+	;;
+
+	-se | senter )
+		schroot_enter ${@}
+	;;
+
+	-sb | sbuild )
+		schroot_build ${@}
+	;;
+
+	-d | dist )
+		for arg in ${@}; do
+			source_dist "${arg}"
+		done
+	;;
+
+	-x | crossbuild )
+		dist=${1/-*}
+		arch=${1/*-}
+		shift
+
+		cross_build ${dist} ${arch} "${@}"
+	;;
+
+	-p | push )
+		ftp_push
+	;;
+esac

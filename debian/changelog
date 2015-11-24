@@ -1,3 +1,26 @@
+nanolx (20151123-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependency:
+    - zsdx
+    - zsxd
+    - xul-ext-the-fox-only-better
+  * new dependency:
+    - zelda-solarus-dx
+    - zelda-solarus-xd
+    - zelda-roth-se
+    - zelda-book-of-mudora
+    - xul-ext-beyond-australis
+    - xul-ext-dovesec
+    - xul-ext-all-menus-button
+  * optional dependency:
+    - hardening-wrappers
+    - hardening-includes
+  * new scripts:
+    - repokit
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 23 Nov 2015 17:28:51  +0100
+
 nanolx (20150909-1nano) unstable; urgency=low
 
   * new upstream release

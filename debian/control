@@ -236,8 +236,8 @@ Depends: bastille | bash,
          torsocks,
          tor-geoipdb,
          psad,
-         hardening-includes,
-         hardening-wrapper,
+         hardening-includes | bash,
+         hardening-wrapper | bash,
          i2p,
          i2p-router,
          seahorse,
@@ -314,7 +314,7 @@ Depends: xul-ext-configuration-mania,
          xul-ext-save-images,
          xul-ext-send-later,
          xul-ext-textlink,
-         xul-ext-the-fox-only-better,
+         xul-ext-beyond-australis,
          xul-ext-toggle-referer,
          xul-ext-ui-eraser,
          xul-ext-ublock-origin,
@@ -330,6 +330,8 @@ Depends: xul-ext-configuration-mania,
          xul-ext-unote,
          xul-ext-html5-video-everywhere,
          xul-ext-super-start,
+         xul-ext-dovesec,
+         xul-ext-all-menus-button,
          icedove,
          iceweasel
 Description: Collection of XUL addons
@@ -348,7 +350,7 @@ Description: Collection of XUL addons
  - save-images
  - send-later
  - textlink
- - the-fox-only-better
+ - beyond-australis
  - toggle-referer
  - ui-eraser
  - uBlock Origin
@@ -364,6 +366,8 @@ Description: Collection of XUL addons
  - super start
  - µNote
  - HTML5 Video Everywhere
+ - Dove Sec
+ - All menus button
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -546,11 +550,12 @@ Depends: glob2,
          xcowsay,
          xdesktopwaves,
          xpenguins,
-         zsdx,
-         zsxd,
+         zelda-solarus-dx,
+         zelda-solarus-xd,
+         zelda-roth-se,
+         zelda-book-of-mudora,
          zelda3t,
          zeldaolb,
-         zeldaroth,
          zeldansq,
          wesnoth-1.13,
          megaglest
@@ -577,8 +582,9 @@ Description: Collection of games
  - Zelda Solarus XD
  - Zelda Time to Triumph
  - Zelda Oni-Link Begins
- - Zelda Return of the Hylian
+ - Zelda Return of the Hylian Solarus Edition
  - Zelda Navi's Quest
+ - Zelda Book of Mudora
 
 Package: nanolx-games-emu
 Architecture: all
