@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# © 2015 Christopher Roy Bratusek <nano@jpberlin.de>
+#
+# License: GNU GPL v3+
+#
+# Various functions to aid maintanance of an apt repo and building packages
+#
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source ${HOME}/.repokit.conf
@@ -147,10 +154,6 @@ case ${1} in
 		schroot_enter ${@}
 	;;
 
-	-sb | sbuild )
-		schroot_build ${@}
-	;;
-
 	-d | dist )
 		for arg in ${@}; do
 			source_dist "${arg}"
@@ -165,7 +168,40 @@ case ${1} in
 		cross_build ${dist} ${arch} "${@}"
 	;;
 
-	-p | push )
+	-f | ftp )
 		ftp_push
 	;;
+
+	-dg | get )
+		debhelper_get_scripts
+	;;
+
+	-dp | push )
+		debhelper_put_scripts
+	;;
+
+	* )
+		echo "repokit 20151125 -- © 2015 Christopher Roy Bratusek
+
+licensed under the GNU General Public License v3 (or newer)
+
+Options
+short	long		Parameters	Description
+
+-a	add		<.changes>	add package to repository
+-r	remove		<packagename>	remove package from repository
+-o	orig		<directory>	create orig tarball from source tree
+-p	prepare		<license>	prepare source directory for package build
+-b	build		---		build package using dpkg-buildpackage
+-c	clean		---		clean package build directory
+-sl	slist		---		list availabe schroots
+-sc	scopy		<files>		copy files to schroot build directory
+-se	senter		<schroot>	enter schroot environment as root
+-d	dist		<directory>	generate tarballs, checksums and signatures for release distribution
+-x	crossbuild	<.dsc>		cross build package using sbuild
+-f	ftp		---		push local apt repo to remote using ftpsync
+-dg	get		---		get packaging scripts for current package (if any)
+-dp	push		---		push packaging scripts for current package to script repo"
+	;;
+
 esac
