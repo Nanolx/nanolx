@@ -111,7 +111,10 @@ ftp_push () {
 		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PWD}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/logs/"
 }
 
-case ${1} in
+cmdarg=${1}
+shift
+
+case ${cmdarg} in
 	-a | add )
 		for arg in ${@}; do
 			reprepro_add "${arg}"
