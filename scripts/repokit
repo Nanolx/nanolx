@@ -23,8 +23,10 @@ reprepro_remove () {
 
 debhelper_build_orig () {
 	if [[ -d "${1}" ]]; then
-		tar cf "${1}".orig.tar "${1}"
-		${REPOKIT_COMPRESSOR} ${REPOKIT_LEVL_COMPRESSOR} "${1}".orig.tar
+		tarname="$(basename "${1}")"
+		tardir="$(dirname "${1}")"
+		tar cf "${tarname}".orig.tar -C "${tardir}" "${tarname}"
+		${REPOKIT_ORIG_COMPRESSOR} ${REPOKIT_LEVL_COMPRESSOR} "${tarname}".orig.tar
 	fi
 }
 
