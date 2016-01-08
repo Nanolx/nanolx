@@ -1,0 +1,91 @@
+#!/bin/bash
+###############################################
+# Tapastic Downloader 1.3 // (c) 2015         #
+#                                             #
+# Christopher Roy Bratusek <nano@jpberlin.de> #
+#                                             #
+# Licensend under the GNU GPL v3              #
+###############################################
+
+TAPASTIC_FOLDER=/storage/Pics
+
+tapastic_series () {
+	gawk -F \" '/series-thumb-collapse/{print $10}' < "${1}"
+}
+
+tapastic_author () {
+	gawk -F \" '/thumb tooltip-autoload/{print $10}' < "${1}"
+}
+
+tapastic_episodes () {
+	gawk -F \" '/li class="episode/{print $6}' < "${1}" | sed -e '/{{id}}/d'
+}
+
+tapastic_count () {
+	gawk '/class="txt".*EPISODES/{print}' < "${1}" | sed -e 's/.*<em>//' -e 's/<\/em>.*//'
+}
+
+tapastic_link () {
+	gawk -F \" '/art-image/{print $4}' < "${1}"
+}
+
+tapastic_title () {
+	gawk -F \" '/<h1.*-title">/{print $5}' < "${1}" | sed -e 's/>//;s/<\/h1>//' | sed -e 's/[^a-z|A-Z|0-9| ]//g'
+}
+
+tapastic_date () {
+	gawk -F \" 'f{print $4;f=0} /<h1.*-title">/{f=1}' < "${1}" | sed -e 's/[[:space:]].*//'
+}
+
+if [[ ${1} == -t ]]; then
+	TEST=true
+	shift
+fi
+
+for html in "${@}"; do
+	echo -e "\n<\tprocessing input file '${html}'\n"
+	if grep -q tapastic.com "${html}" ; then
+		SERIES=$(tapastic_series   "${1}")
+		AUTHOR=$(tapastic_author   "${1}")
+		EPISODES=$(tapastic_episodes "${1}")
+
+		echo -e "<\t'${SERIES}' by '${AUTHOR}'"
+		echo -e ">\tgrabbing episode list"
+
+		mkdir -p "${TAPASTIC_FOLDER}/${AUTHOR}/${SERIES}"
+		rm -f tmp.html
+
+		TNUM=$(echo "${EPISODES}" | wc -l)
+		CNUM=0
+
+		if [[ ${TEST} == true ]]; then
+			echo -e "\n++\ttest mode, nothing is downloaded"
+			echo -e "++\twould download ${TNUM} episodes"
+			echo -e "++\tfrom a total of $(tapastic_count "${1}") episodes\n"
+		else
+			echo -e "\n>\tdownloading files to ${TAPASTIC_FOLDER}/${AUTHOR}/${SERIES}\n"
+		fi
+
+		for ep in ${EPISODES}; do
+			CNUM=$((CNUM+1))
+
+			wget -q -U "Mozilla/5.0 (X11; Linux x86_64; rv:44.0) Gecko/20100101 Firefox/44.0 Iceweasel/44.0" \
+				"http://tapastic.com/episode/${ep}" -O tmp.html
+			dos2unix -q tmp.html
+
+			LINK=$(tapastic_link tmp.html)
+			EXT=${LINK/*./}
+			TITLE=$(tapastic_title tmp.html)
+			DATE=$(tapastic_date tmp.html)
+
+			echo -e ">>\t[${CNUM}/${TNUM}] downloading '${SERIES}' episode ${ep} (${TITLE} / ${DATE})"
+			[[ ${TEST} != true ]] && \
+				wget -q -U "Mozilla/5.0 (X11; Linux x86_64; rv:44.0) Gecko/20100101 Firefox/44.0 Iceweasel/44.0" \
+					"${LINK}" -O "${TAPASTIC_FOLDER}/${AUTHOR}/${SERIES}/${DATE}_${TITLE}.${EXT}"
+
+			rm tmp.html
+		done
+	else
+		echo -e "<\tinputfile '${html}' does not look like tapastic input, full stop"
+	fi
+done
