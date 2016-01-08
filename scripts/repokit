@@ -60,11 +60,11 @@ debhelper_put_scripts () {
 }
 
 schroot_list () {
-	echo ${REPOKIT_SCHROOT[@]} | sed -e 's/ /\n/g'
+	echo ${REPOKIT_SCHROOTS[@]} | sed -e 's/ /\n/g'
 }
 
-scroot_copy () {
-	sudo cp -r ${@}/var/lib/sbuild/build/
+schroot_copy () {
+	sudo cp -r ${@} /var/lib/sbuild/build/
 }
 
 schroot_enter () {
@@ -77,17 +77,19 @@ source_dist () {
 		dir=$(readlink -m ${1})
 
 		for comp in ${REPOKIT_DIST_COMPRESSOR[@]}; do
-			comp-exe=${comp/*:}
-			comp-suf=${comp/:*}
+			compexe=${comp/*:}
+			compsuf=${comp/:*}
 
-			tar cf ${dir}.tar ${dir}
-			${comp-exe} ${REPOKIT_LEVL_COMPRESSOR} ${dir}.tar
+			tarname="$(basename "${1}")"
+			tardir="$(dirname "${1}")"
+			tar cf "${dir}".tar -C "${tardir}" "${tarname}"
+			${compexe} ${REPOKIT_LEVL_COMPRESSOR} ${dir}.tar
 
 			[[ ${REPOKIT_SHA256} == True ]] && \
-				sha256sum ${dir}.tar.${comp-suf} > ${dir}.tar.${comp-suf}.sha256
+				sha256sum ${dir}.tar.${compsuf} > ${dir}.tar.${compsuf}.sha256
 
 			[[ ${REPOKIT_SHA256} == True && ${REPOKIT_SIGN} == True ]] && \
-				gpg --sign --detach-sign ${dir}.tar.${comp-suf}.sha256
+				gpg --sign --detach-sign ${dir}.tar.${compsuf}.sha256
 		done
 	fi
 }
@@ -148,7 +150,7 @@ case ${cmdarg} in
 	;;
 
 	-sl | slist )
-		scroot_list
+		schroot_list
 	;;
 
 	-sc | scopy )
