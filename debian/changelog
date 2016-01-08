@@ -1,3 +1,11 @@
+nanolx (20160108-1nano) unstable; urgency=low
+
+  * new upstream release
+  * updated scripts:
+    - repokit (20160102)
+  * new scripts:
+    - tapastic-dl
+
 nanolx (20151125-1nano) unstable; urgency=low
 
   * new upstream release
