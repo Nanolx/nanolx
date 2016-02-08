@@ -448,7 +448,7 @@ Depends: audacity,
          avidemux,
          k3b,
          libk3b6-extracodecs,
-         mediatheview
+         mediathekview
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
