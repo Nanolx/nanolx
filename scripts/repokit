@@ -1,11 +1,14 @@
 #!/bin/bash
 #
-# © 2015 Christopher Roy Bratusek <nano@jpberlin.de>
+# © 2015 - 2016 Christopher Roy Bratusek <nano@jpberlin.de>
 #
 # License: GNU GPL v3+
 #
 # Various functions to aid maintanance of an apt repo and building packages
 #
+
+version="1.3"
+reldate="2016/02/08"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source ${HOME}/.repokit.conf
@@ -47,16 +50,24 @@ debhelper_get_scripts () {
 		cp -r ${REPOKIT_BUILD_SCRIPTS}/${package} ${PWD}/debian
 		sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
 	else
-		echo "no packaging scripts for ${tmp} found"
+		echo "no packaging scripts for ${package} found"
 	fi
 }
 
 debhelper_put_scripts () {
 	tmp=$(basename ${PWD})
 	package=${tmp/_*}
+	version=${tmp/*_}
 
-	mkdir -p ${REPOKIT_BUILD_SCRIPTS}/${package}
+	if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
+		mkdir -p ${REPOKIT_BUILD_SCRIPTS}/${package}
+		status="[new]"
+	else	status="[update]"
+	fi
+
 	cp -r debian/* ${REPOKIT_BUILD_SCRIPTS}/${package}
+	cd ${REPOKIT_BUILD_SCRIPTS}
+	git commit ${package} -m "${package} ${status} ${version}"
 }
 
 schroot_list () {
@@ -183,12 +194,13 @@ case ${cmdarg} in
 		debhelper_get_scripts
 	;;
 
-	-dp | push )
+	-dp | put )
 		debhelper_put_scripts
 	;;
 
 	* )
-		echo "repokit 20151125 -- © 2015 Christopher Roy Bratusek
+		echo "repokit ${version} (${reldate})
+© 2015 - 2016 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
@@ -208,7 +220,7 @@ short	long		Parameters	Description
 -x	crossbuild	<.dsc>		cross build package using sbuild
 -f	ftp		---		push local apt repo to remote using ftpsync
 -dg	get		---		get packaging scripts for current package (if any)
--dp	push		---		push packaging scripts for current package to script repo"
+-dp	put		---		push packaging scripts for current package to script repo"
 	;;
 
 esac
