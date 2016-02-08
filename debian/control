@@ -244,7 +244,8 @@ Depends: bastille | bash,
          gksu,
          gpgv,
          pinentry-gtk2,
-         enigmail
+         enigmail,
+         keepassx
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
@@ -264,6 +265,7 @@ Description: Collection of security related tools
  - seahorse
  - gksu
  - gpgv (with pinentry-gtk2)
+ - keepassx
 
 Package: nanolx-net
 Architecture: all
@@ -280,7 +282,8 @@ Depends: openssh-client,
          kvirc,
          gfeedline,
          openvpn,
-         openresolv
+         openresolv,
+         palemoon-installer
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -298,6 +301,7 @@ Description: Collection of network applications
  - gfeedline
  - openvpn
  - openresolv
+ - palemoon-installer
 
 Package: nanolx-xul-addons
 Architecture: all
@@ -408,7 +412,8 @@ Depends: lame,
          cdparanoia,
          pulseaudio (>= 5.0),
          pulseaudio-module-x11 (>= 5.0),
-         imagemagick
+         imagemagick,
+         youtube-dl
 Description: Collection of cli media tools
  This meta-package installs cli media tools.
  .
@@ -424,6 +429,7 @@ Description: Collection of cli media tools
  - streamripper
  - pulseaudio
  - imagemagick
+ - youtube-dl
 
 Package: nanolx-media-x11
 Architecture: all
@@ -441,7 +447,8 @@ Depends: audacity,
          qscanner,
          avidemux,
          k3b,
-         libk3b6-extracodecs
+         libk3b6-extracodecs,
+         mediatheview
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
@@ -459,6 +466,7 @@ Description: Collection of graphical media applications
  - qscanner
  - k3b
  - avidemux
+ - mediathekview
 
 Package: nanolx-devel-cli
 Architecture: all
@@ -488,9 +496,11 @@ Depends: ccache,
          libtool,
          lintian,
          transifex-client,
-         rats,
          flawfinder,
-         gdb
+         gdb,
+         android-tools-adb,
+         android-tools-fastboot,
+         bsdiff
 Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
@@ -498,13 +508,15 @@ Description: Collection of cli development tools
  - ccache, gcc-4.9, g++-4.9
  - colormake, colorgcc, colordiff
  - dpkg-dev, dh-make, dh-autoreconf, devscripts, lintian
- - gdb, rats, flawfinder
+ - gdb, flawfinder
  - make, cmake, pkg-config
  - autotools-dev, libtool, autoconf, automake
  - git, subversion, bzr
  - ubuntu-dev-tools, schroot, sbuild
  - fakeroot
  - transifex-client
+ - android-tools adb, fastboot
+ - bsdiff
 
 Package: nanolx-devel-x11
 Architecture: all
@@ -558,7 +570,9 @@ Depends: glob2,
          zeldaolb,
          zeldansq,
          wesnoth-1.13,
-         megaglest
+         megaglest,
+         edgar,
+         manaplus
 Description: Collection of games
  This meta-package installs games.
  .
@@ -566,10 +580,12 @@ Description: Collection of games
  - Globulation 2
  - FreeDroid RPG
  - 2048 (in qml)
- - enigma
+ - Enigma
+ - Edgar
  - GNOME Sudoku
  - GNOME Mahjongg
  - LinCity-NG
+ - Mana Plus
  - MegaGlest
  - Neverball
  - Pingus
