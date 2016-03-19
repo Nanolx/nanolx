@@ -272,7 +272,7 @@ Architecture: all
 Depends: openssh-client,
          wireshark,
          luakit,
-         iceweasel,
+         firefox | iceweasel,
          privoxy,
          qbittorrent,
          filezilla,
@@ -290,7 +290,7 @@ Description: Collection of network applications
  These are:
  - openssh-client
  - wireshark
- - iceweasel
+ - firefox (or iceweasel before the switch back to firefox)
  - privoxy (with different configurations and adblock blocklist converter)
  - qbittorrent
  - filezilla
@@ -306,24 +306,18 @@ Description: Collection of network applications
 Package: nanolx-xul-addons
 Architecture: all
 Depends: xul-ext-configuration-mania,
-         xul-ext-disconnect,
          xul-ext-download-status-bar,
-         xul-ext-duckduckgoplus,
          xul-ext-febe,
-         xul-ext-icedove-conversations,
          xul-ext-image-toolbar,
          xul-ext-multi-links,
-         xul-ext-outlookalike,
          xul-ext-print-edit,
          xul-ext-save-images,
          xul-ext-send-later,
          xul-ext-textlink,
          xul-ext-beyond-australis,
          xul-ext-toggle-referer,
-         xul-ext-ui-eraser,
          xul-ext-ublock-origin,
          xul-ext-classic-theme-restorer,
-         xul-ext-flashgot,
          xul-ext-greasemonkey,
          xul-ext-https-everywhere,
          xul-ext-noscript,
@@ -337,29 +331,23 @@ Depends: xul-ext-configuration-mania,
          xul-ext-dovesec,
          xul-ext-all-menus-button,
          icedove,
-         iceweasel
+         firefox | iceweasel
 Description: Collection of XUL addons
- This meta-package installs several addons for Iceweasel and Icedove.
+ This meta-package installs several addons for Firefox and Icedove.
  .
  - configuration-mania
- - disconnect
  - download-status-bar
- - duckduckgoplus
  - febe
- - icedove-conversations
  - image-toolbar
  - multi-links
- - outlookalike
  - print-edit
  - save-images
  - send-later
  - textlink
  - beyond-australis
  - toggle-referer
- - ui-eraser
  - uBlock Origin
  - classic-theme-restorer
- - flashgot
  - greasemonkey
  - https-everywhere
  - noscript
@@ -448,7 +436,8 @@ Depends: audacity,
          avidemux,
          k3b,
          libk3b6-extracodecs,
-         mediathekview
+         mediathekview,
+         easytag
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
@@ -467,6 +456,7 @@ Description: Collection of graphical media applications
  - k3b
  - avidemux
  - mediathekview
+ - easyTAG
 
 Package: nanolx-devel-cli
 Architecture: all
@@ -528,7 +518,6 @@ Depends: glade,
          d-feet,
          okteta,
          nemiver,
-         gpaco,
          sqlitebrowser,
          poedit
 Description: Collection of x11 development tools
@@ -544,7 +533,6 @@ Description: Collection of x11 development tools
  - d-feet
  - okteta
  - nemiver
- - gpaco
  - sqlitebrowser
 
 Package: nanolx-games

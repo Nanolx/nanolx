@@ -6,10 +6,10 @@ About
 
 Nanolx is not a complete distribution nor a fork of Debian GNU/Linux.
 
-It's more what I think Debian should be, this meta-packages are beeing
-used to aid me in syncing the package selection between my machine and
-machines that are maintained by me. They can be safely used by anyone on
-official Debian as they won't remove or change existing packages.
+It's more what I think Debian should be, this meta-packages are used to
+aid me in syncing the package selection between my machine and machines
+that are maintained by me. They can be safely used by anyone on official
+Debian as they won't remove or change existing packages.
 
 Some meta-packages also provide additional scripts, tools and configs.
 
@@ -24,6 +24,6 @@ Release Information
 
 see debian/changelog for changes
 
-Version:	1.11
-Release:	20160208
-Code-Name:	Ace
+Version:	1.12
+Release:	20160319
+Code-Name:	Flute

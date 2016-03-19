@@ -1,3 +1,20 @@
+nanolx (20160319-1nano) unstable; urgency=low
+
+  * new upstream release
+  * dropped dependencies:
+    - iceweasel
+    - xul-ext-disconnect
+    - xul-ext-duckduckgoplus
+    - xul-ext-flashgot
+    - xul-ext-outlookalike
+    - xul-ext-ui-eraser
+    - gpaco
+  * new dependencies:
+    - firefox | iceweasel
+    - easytag
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 19 Mar 2016 17:46:30 +0100
+
 nanolx (20160208-1nano) unstable; urgency=low
 
   * new upstream release
