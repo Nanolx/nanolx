@@ -1,3 +1,11 @@
+nanolx (20160319-2nano) unstable; urgency=low
+
+  * new upstream hotfix release
+  * removed apt repositories:
+    - debian mozilla
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 19 Mar 2016 18:02:36 +0100
+
 nanolx (20160319-1nano) unstable; urgency=low
 
   * new upstream release
