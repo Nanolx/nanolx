@@ -7,7 +7,7 @@ install:
 	mkdir -p $(DESTDIR)/etc/sysctl.d/
 	mkdir -p $(DESTDIR)/etc/privoxy/
 	mkdir -p $(DESTDIR)/etc/initramfs-tools/hooks/
-	mkdir -p $(DETSDIR)/etc/decryptkeydevice/
+	mkdir -p $(DESTDIR)/etc/decryptkeydevice/
 	mkdir -p $(DESTDIR)/usr/bin/
 	mkdir -p $(DESTDIR)/usr/sbin/
 	install -m644 apt/*.list $(DESTDIR)/etc/apt/sources.list.d/
@@ -21,7 +21,6 @@ install:
 	install -m755 scripts/killws $(DESTDIR)/usr/bin/
 	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
 	install -m755 scripts/replwit $(DESTDIR)/usr/bin/
-	install -m755 scripts/steam-install $(DESTDIR)/usr/sbin/
 	install -m755 scripts/sufffix $(DESTDIR)/usr/bin/
 	install -m755 scripts/wiiconvert $(DESTDIR)/usr/bin/
 	install -m755 scripts/gfxrename $(DESTDIR)/usr/bin/
@@ -32,7 +31,7 @@ install:
 		$(DESTDIR)/etc/initramfs-tools/hooks/
 	install -m755 decryptkeydevice/decryptkeydevice_keyscript.sh \
 		$(DESTDIR)/etc/decryptkeydevice/
-	intall -m644 decryptkeydevice/decryptkeydevice.conf \
+	install -m644 decryptkeydevice/decryptkeydevice.conf \
 		$(DESTDIR)/etc/decryptkeydevice/
 	cp -r skel_nano $(DESTDIR)/etc/
 

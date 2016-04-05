@@ -62,7 +62,9 @@ Depends: synaptic,
          fancontrol,
          xsensors,
          cryptsetup,
-         gparted
+         gparted,
+         grub2-theme-aurora-penguinis,
+         plymouth-theme-aurora-penguinis-2
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
