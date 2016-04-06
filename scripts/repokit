@@ -10,8 +10,8 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.4"
-reldate="2016/04/05"
+version="1.4.1"
+reldate="2016/04/06"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source ${HOME}/.repokit.conf
@@ -39,7 +39,7 @@ debhelper_build_orig () {
 debhelper_prepare () {
 	dh_make -s -e ${REPOKIT_MAIL} --copyright $@ -p $(basename ${PWD}) || exit 1
 	rm -f debian/*.ex debian/README* debian/*.EX
-	sed -e "s/1) unst/${REPOKIT_REV}) unst/g" -i debian/changelog
+	sed -e "s/1) unstable;urgency=.*/${REPOKIT_REV}) unstable; urgency=low/g" -i debian/changelog
 	sed -e 's/\#export/export/g' -i debian/rules
 	sed -e 's/<insert.*//g' \
 		-e '/\#Vcs/d' \
