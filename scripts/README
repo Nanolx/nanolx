@@ -8,3 +8,4 @@
 ** gfxrename:			batch rename files (pass <prefix> <directory [optional]> <images>, eg "myimages ~/images *.png)
 ** dump_bookmarks_nextbrowser:	dump bookmarks from Next Browser's browser.db (Android browser) and output Iceweasel compatible html
 ** repokit:			various functions for apt repository handled by reprepro and deb helper based packages
+**** repokit.conf:		example configuration for repokit

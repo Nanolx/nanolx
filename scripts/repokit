@@ -6,6 +6,9 @@
 #
 # Various functions to aid maintanance of an apt repo and building packages
 #
+# See repokit.conf for example configuration. Save that file as
+#	${HOME}/.repokit.conf
+#
 
 version="1.4"
 reldate="2016/04/05"
