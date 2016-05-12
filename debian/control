@@ -17,6 +17,7 @@ Depends: nanolx-admin,
          nanolx-net,
          nanolx-xul-addons,
          nanolx-devel-cli,
+         nanolx-devel-android,
          nanolx-devel-x11,
          nanolx-media-codecs,
          nanolx-media-cli,
@@ -187,7 +188,7 @@ Depends: compton,
          lumina-desktop,
          xarchiver,
          yad,
-         qt5-configuration-tool,
+         qt5-configuration-tool | bash,
          trayer
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
@@ -490,8 +491,6 @@ Depends: ccache,
          transifex-client,
          flawfinder,
          gdb,
-         android-tools-adb,
-         android-tools-fastboot,
          bsdiff
 Description: Collection of cli development tools
  This meta-package installs cli development tools
@@ -507,8 +506,25 @@ Description: Collection of cli development tools
  - ubuntu-dev-tools, schroot, sbuild
  - fakeroot
  - transifex-client
- - android-tools adb, fastboot
  - bsdiff
+
+Package: nanolx-devel-android
+Architecture: all
+Depends: adb | android-tools-adb,
+         fastboot | android-tools-fastboot,
+         gradle,
+         apktool,
+         gmtp,
+         zipalign
+Description: Collection of android development tools
+ This meta-package installs android development tools
+ .
+ These are:
+ - Android Debugging Bridge (adb)
+ - Fastboot
+ - Gradle
+ - Apk Tool
+ - Zip Align
 
 Package: nanolx-devel-x11
 Architecture: all
@@ -559,7 +575,7 @@ Depends: glob2,
          zelda3t,
          zeldaolb,
          zeldansq,
-         wesnoth-1.13,
+         wesnoth-1.13 | wesnoth-1.12,
          megaglest,
          edgar,
          manaplus
