@@ -1,3 +1,18 @@
+nanolx (20160525-1nano) unstable; urgency=low
+
+  * new upstream release
+  * updated scripts:
+    - gfxrename 1.1.0: complete rewrite
+    - sufffix 1.3.0: add help message
+    - repokit 1.4.2: add -dr parameter
+    - mksbuild 1.2.0: code improvements
+    - wiiconvert 1.1.0: minor code improvements, add help message
+  * removed scripts:
+    - killws
+    - replwit
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Wed, 25 May 2016 20:24:08 +0200
+
 nanolx (20160511-1nano) unstable; urgency=low
 
   * new upstream release
