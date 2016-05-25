@@ -5,7 +5,6 @@ etc/sysctl.d/netspeed.conf
 etc/sysctl.d/shared-memory.conf
 etc/sysctl.d/swappiness.conf
 usr/bin/gfxrename
-usr/bin/killws
 usr/bin/sufffix
 usr/bin/repokit
 usr/bin/dump_bookmarks_nextbrowser
