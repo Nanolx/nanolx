@@ -18,9 +18,7 @@ install:
 	install -m644 privoxy/config* $(DESTDIR)/etc/privoxy/
 	install -m755 privoxy/privoxy-blocklist $(DESTDIR)/usr/sbin/
 	install -m755 privoxy/privoxy-switch $(DESTDIR)/usr/sbin/
-	install -m755 scripts/killws $(DESTDIR)/usr/bin/
 	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
-	install -m755 scripts/replwit $(DESTDIR)/usr/bin/
 	install -m755 scripts/sufffix $(DESTDIR)/usr/bin/
 	install -m755 scripts/wiiconvert $(DESTDIR)/usr/bin/
 	install -m755 scripts/gfxrename $(DESTDIR)/usr/bin/
