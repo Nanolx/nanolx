@@ -1,13 +1,31 @@
 #!/bin/bash
 
-for image in "${@}"; do
-	baseimg=${image%.*}
+version="1.3.0"
+reldate="2016/05/25"
 
-	suffix="$(grep "^$(file --mime-type "${image}" | \
-		awk '{print $2}')" /etc/mime.types | \
-		awk '{print $2}')"
+case ${1} in
+	* )
+		for image in "${@}"; do
+			baseimg=${image%.*}
 
-	if [[ "${image}" != "${baseimg}".${suffix} && ${suffix} ]]; then
-		mv -v "${image}" "${baseimg}".${suffix}
-	fi
-done
+			suffix="$(grep "^$(file --mime-type "${image}" | \
+				awk '{print $2}')" /etc/mime.types | \
+				awk '{print $2}')"
+
+			if [[ "${image}" != "${baseimg}".${suffix} && ${suffix} ]]; then
+				mv -v "${image}" "${baseimg}".${suffix}
+			fi
+		done
+	;;
+
+	"" )
+		echo "sufffix v${version} (${reldate})
+© 2015 - 2016 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+usage:
+	sufffix <files>
+"
+	;;
+esac
