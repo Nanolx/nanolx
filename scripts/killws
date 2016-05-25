@@ -1,9 +1,0 @@
-#!/bin/bash
-
-for i in "$@"; do
-
-	if [[ -f "$i" ]]; then
-		sed -e 's/[ \t]*$//' -i "$i";
-	fi
-
-done
