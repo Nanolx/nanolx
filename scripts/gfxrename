@@ -5,7 +5,10 @@ reldate="2016/05/25"
 
 _help () {
 
-	echo "gfxrename version ${version} (${reldate})
+	echo "gfxrename v${version} (${reldate})
+© 2015 - 2016 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
 
 usage:
 	gfxrename <directory> <prefix>
