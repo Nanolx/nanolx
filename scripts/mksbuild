@@ -1,18 +1,28 @@
 #!/bin/bash
 
+version="1.2.0"
+reldate="2016/05/25"
+
 case ${1} in
 	"" | "-h" | "--help" )
-		echo -e "Usage: mksbuild <arch> <tree>
+		echo -e "mksbuild v${version} (${reldate})
+© 2015 - 2016 Christopher Roy Bratusek <nano@jpberlin.de>
 
-Examples:
+licensed under the GNU General Public License v3 (or newer)
+
+usage:
+	mksbuild <arch> <tree>
+
+examples:
 	mksbuild i386 unstable
-	mksbuild armhf testing"
+	mksbuild armhf testing
+"
 	;;
 
 	* )
-		user=$(whoami)
+		groups $(whoami) | grep sbuild >/dev/null || sudo adduser $(whoami) sbuild
+
 		sudo apt-get install sbuild schroot ubuntu-dev-tools debootstrap
-		sudo adduser ${user} sbuild
 		mk-sbuild --arch=${1} --debootstrap-mirror=ftp://ftp.debian.org/debian/ ${2}
 	;;
 esac
