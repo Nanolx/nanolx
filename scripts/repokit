@@ -10,8 +10,8 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.4.1"
-reldate="2016/04/06"
+version="1.4.2"
+reldate="2016/05/05"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source ${HOME}/.repokit.conf
@@ -54,10 +54,20 @@ debhelper_get_scripts () {
 
 	if [[ -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
 		cp -r ${REPOKIT_BUILD_SCRIPTS}/${package} ${PWD}/debian
-		sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
+		debhelper_add_release
 	else
 		echo "no packaging scripts for ${package} found"
 	fi
+}
+
+debhelper_add_release () {
+
+	tmp=$(basename ${PWD})
+	package=${tmp/_*}
+	version=${tmp/*_}
+
+	sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
+
 }
 
 debhelper_put_scripts () {
@@ -227,6 +237,7 @@ short	long		Parameters	Description
 -x	crossbuild	<.dsc>		cross build package using sbuild
 -f	ftp		---		push local apt repo to remote using ftpsync
 -dg	get		---		get packaging scripts for current package (if any)
+-dr	release		---		add new release to debian/changelog
 -dp	put		---		push packaging scripts for current package to script repo"
 	;;
 
