@@ -1,18 +1,20 @@
 #!/bin/bash
 
-if [[ ${1} ]]; then
-	prefix=${1}
-	shift
-fi
+version="1.1.0"
+reldate="2016/05/25"
 
-if [[ -d ${1} ]]; then
-	cd ${1}
-	shift
-fi
+_help () {
 
-count_max=$(($(ls --color=no -1 -l . | grep -v ^d | wc -l)))
-count_len=${#count_max}
-count_now=1
+	echo "gfxrename version ${version} (${reldate})
+
+usage:
+	gfxrename <directory> <prefix>
+
+example:
+	gfxrename /home/test/Pictures/Holiday Holiday-Winter-2016
+"
+
+}
 
 fill_zeros () {
 	current_len=${#1}
@@ -28,13 +30,40 @@ fill_zeros () {
 	fi
 }
 
-rename_file () {
+rename_files () {
+	mkdir "${directory}"/tmp
 
-	mv -v "${1}" "${prefix}"-$(fill_zeros ${2})${2}.${1##*.}
+	count_max=$(($(find "${directory}" -maxdepth 1 -type f | wc -l)))
+	count_len=${#count_max}
+	count_now=1
 
+	OLD_IFS="${IFS}"
+	export IFS=$'\n'
+
+	files=$(find "${directory}" -maxdepth 1 -type f)
+
+	for image in ${files[@]}; do
+		suffix=$(fill_zeros ${count_now})${count_now}.${image##*.}
+		mv "${image}" "${directory}"/tmp/"${prefix}"-"${suffix}"
+		count_now=$(($count_now+1))
+	done
+
+	mv "${directory}"/tmp/* "${directory}"/
+	rmdir "${directory}"/tmp
+
+	export IFS="${OLD_IFS}"
 }
 
-for image in "${@}"; do
-	rename_file "${image}" ${count_now}
-	count_now=$(($count_now+1))
-done
+
+if [[ $# -ne 2 ]]; then
+	_help
+else
+	directory="${1}"
+	if [[ ! -d "${directory}" ]]; then
+		echo "directory ${directory} does not exist!"
+		exit 1
+	fi
+
+	prefix="${2}"
+	rename_files
+fi
