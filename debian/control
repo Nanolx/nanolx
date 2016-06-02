@@ -570,11 +570,12 @@ Depends: glob2,
          xpenguins,
          zelda-solarus-dx,
          zelda-solarus-xd,
-         zelda-roth-se,
+         zelda-solarus-return-of-the-hylian,
          zelda-book-of-mudora,
-         zelda3t,
-         zeldaolb,
-         zeldansq,
+         zelda-time-to-triumph,
+         zelda-onilink-begins,
+         zelda-navis-quest,
+         zelda-tunics,
          wesnoth-1.13 | wesnoth-1.12,
          megaglest,
          edgar,
@@ -607,6 +608,7 @@ Description: Collection of games
  - Zelda Return of the Hylian Solarus Edition
  - Zelda Navi's Quest
  - Zelda Book of Mudora
+ - Zelda Tunics
 
 Package: nanolx-games-emu
 Architecture: all

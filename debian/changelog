@@ -1,3 +1,18 @@
+nanolx (20160602-1nano) unstable; urgency=low
+
+  * new upstream release
+  * updated scripts:
+    - repokit 1.4.3: pass ${@} to dpkg-buildpackage
+  * changed dependencies:
+    - zelda-roth-se > zelda-solarus-return-of-the-hylian
+    - zeldansq > zelda-navis-quest
+    - zelda3t > zelda-time-to-triumph
+    - zeldaolb > zelda-onilink-begins
+  * new dependencies:
+    - zelda-tunics
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 02 Jun 2016 18:48:12 +0200
+
 nanolx (20160525-1nano) unstable; urgency=low
 
   * new upstream release
