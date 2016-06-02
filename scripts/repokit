@@ -10,8 +10,8 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.4.2"
-reldate="2016/05/05"
+version="1.4.3"
+reldate="2016/06/02"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source ${HOME}/.repokit.conf
@@ -170,7 +170,7 @@ case ${cmdarg} in
 	;;
 
 	-b | build )
-		dpkg-buildpackage ${REPOKIT_BUILD_FLAGS} -rfakeroot
+		dpkg-buildpackage ${REPOKIT_BUILD_FLAGS} -rfakeroot "${@}"
 	;;
 
 	-c | clean )
