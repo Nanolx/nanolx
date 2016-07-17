@@ -1,3 +1,11 @@
+nanolx (1:1.17.20160717-1nano) unstable; urgency=low
+
+  * new upstream release
+  * fix version number
+  * hotfix for apt-getkeys
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 17 Jul 2016 14:33:00 +0200
+
 nanolx (1:1.17.20160716-1nano) unstable; urgency=low
 
   * new upstream release
