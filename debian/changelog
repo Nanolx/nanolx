@@ -8,6 +8,11 @@ nanolx (1:1.17.20160716-1nano) unstable; urgency=low
   * updated scripts:
     - repokit 1.4.4
       - minor improvements for 'put'
+    - apt-getkeys 20160716
+      - update location for i2p key
+      - minor coding style improvements
+  * updated repositories:
+    - update i2p repository
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 17 Jul 2016 10:40:09 +0200
 
