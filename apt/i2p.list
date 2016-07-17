@@ -1,2 +1,2 @@
-deb http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main
-deb-src http://ppa.launchpad.net/i2p-maintainers/i2p/ubuntu precise main 
+deb http://deb.i2p2.no/ unstable main
+deb-src http://deb.i2p2.no/ unstable main
