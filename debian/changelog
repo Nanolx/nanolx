@@ -3,6 +3,9 @@ nanolx (201607XX-1nano) unstable; urgency=low
   * new upstream release
   * changed dependencies:
     - audex > soundkonverter
+  * updated scripts:
+    - repokit 1.4.4
+      - minor improvements for 'put'
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 17 Jul 2016 10:40:09 +0200
 
