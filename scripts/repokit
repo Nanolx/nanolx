@@ -10,8 +10,8 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.4.3"
-reldate="2016/06/02"
+version="1.4.4"
+reldate="2016/07/16"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source ${HOME}/.repokit.conf
@@ -74,6 +74,16 @@ debhelper_put_scripts () {
 	tmp=$(basename ${PWD})
 	package=${tmp/_*}
 	version=${tmp/*_}
+
+	if [[ ! ${package} ]]; then
+		echo -e "could not determine package name, stop."
+		exit 1
+	fi
+
+	if [[ ! ${version} ]] ; then
+		echo -e "could not determine package version, stop."
+		exit 1
+	fi
 
 	if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
 		mkdir -p ${REPOKIT_BUILD_SCRIPTS}/${package}
