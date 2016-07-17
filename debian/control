@@ -425,7 +425,7 @@ Description: Collection of cli media tools
 Package: nanolx-media-x11
 Architecture: all
 Depends: audacity,
-         audex,
+         soundkonverter,
          gmtp,
          pavucontrol,
          soundkonverter,
@@ -446,7 +446,7 @@ Description: Collection of graphical media applications
  .
  These are:
  - audacity
- - audex
+ - soundkonverter
  - gmtp
  - pavucontrol
  - streamtuner2
