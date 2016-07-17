@@ -181,7 +181,7 @@ Depends: compton,
          ssd (>= 0.40),
          x11-xserver-utils,
          xsettingsd,
-         dolphin,
+         spacefm,
          easystroke,
          konsole,
          gucharmap,
@@ -203,7 +203,7 @@ Description: Collection of X11 applications
  - sawfish (with sawfish-pager and session-dialog)
  - x11-xserver-utils
  - xsettingsd
- - dolphin
+ - spacefm
  - easystroke
  - konsole
  - xarchiver

@@ -3,6 +3,7 @@ nanolx (201607XX-1nano) unstable; urgency=low
   * new upstream release
   * changed dependencies:
     - audex > soundkonverter
+    - dolphin > spacefm
   * updated scripts:
     - repokit 1.4.4
       - minor improvements for 'put'
