@@ -23,7 +23,7 @@ else
 	apt-get -y --force-yes install '^liquorix-([^-]+-)?keyring.?'
 
 	# Nanolx signing key
-	[[ ! -f /etc/apt/keys/nanolx.key ]]; && \
+	[[ ! -f /etc/apt/keys/nanolx.key ]] && \
 		wget -q http://www.nanolx.org/apt/photonic.asc \
 			-O /etc/apt/keys/nanolx.key
 	apt-key add /etc/apt/keys/nanolx.key
