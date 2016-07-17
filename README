@@ -4,12 +4,11 @@ Nanolx
 About
 =======================================
 
-Nanolx is not a complete distribution nor a fork of Debian GNU/Linux.
+Nanolx is a set of meta-packages, wich I use to aid in syncing the package
+selection between my machine and machines that are maintained by me.
 
-It's more what I think Debian should be, this meta-packages are used to
-aid me in syncing the package selection between my machine and machines
-that are maintained by me. They can be safely used by anyone on official
-Debian as they won't remove or change existing packages.
+They can be safely used by anyone on official Debian as they won't remove
+or change existing packages.
 
 Some meta-packages also provide additional scripts, tools and configs.
 
@@ -24,6 +23,6 @@ Release Information
 
 see debian/changelog for changes
 
-Version:	1.16
-Release:	20160602
-Code-Name:	Open Sourcia Warriors
+Version:	1.17
+Release:	20160716
+Code-Name:	Malo Mart
