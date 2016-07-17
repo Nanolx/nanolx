@@ -2,7 +2,7 @@ Source: nanolx
 Section: misc
 Priority: extra
 Maintainer: Christopher Roy Bratusek <nano@jpberlin.de>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), make
 Standards-Version: 3.9.4
 
 Package: nanolx-base
