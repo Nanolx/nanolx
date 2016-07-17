@@ -1,6 +1,7 @@
 nanolx (1:1.17.20160716-1nano) unstable; urgency=low
 
   * new upstream release
+  * new versioning scheme
   * changed dependencies:
     - audex > soundkonverter
     - dolphin > spacefm
