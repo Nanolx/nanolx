@@ -10,43 +10,37 @@
 if [[ ${EUID} != 0 ]]; then
 	echo "not root - exiting"
 else
-	if [[ $(which wget) == "" ]]; then
-		apt-get install wget
-	fi
+	[[ $(which wget) == "" ]] && apt-get install wget
+	[[ ! -d /etc/apt/keys/ ]] && mkdir /etc/apt/keys/
 
-	if [[ ! -d /etc/apt/keys/ ]]; then
-		mkdir /etc/apt/keys/
-	fi
-
+	# update apt index
 	apt-get update
 
 	# Debian Multimedia signing key
 	apt-get -y --force-yes install deb-multimedia-keyring
 
-	# Debian Mozilla Team signing key
-	apt-get -y --force-yes install pkg-mozilla-archive-keyring
-
 	# Liquorix signing key
 	apt-get -y --force-yes install '^liquorix-([^-]+-)?keyring.?'
 
 	# Nanolx signing key
-	if [[ ! -f /etc/apt/keys/nanolx.key ]]; then
+	[[ ! -f /etc/apt/keys/nanolx.key ]]; && \
 		wget -q http://www.nanolx.org/apt/photonic.asc \
 			-O /etc/apt/keys/nanolx.key
-	fi
 	apt-key add /etc/apt/keys/nanolx.key
 
 	# Samsung unified printer driver repo signing key
-	if [[ ! -f /etc/apt/keys/samsung.key ]]; then
+	[[ ! -f /etc/apt/keys/samsung.key ]] && \
 		wget -q http://www.bchemnet.com/suldr/suldr.gpg \
 			-O /etc/apt/keys/samsung.key
-	fi
 	apt-key add /etc/apt/keys/samsung.key
 
 	# i2p signing key
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EB2CC88B
+	[[ ! -f /etc/apt/keys/i2p.key ]] && \
+		wget -q https://geti2p.net/_static/i2p-debian-repo.key.asc \
+			-O /etc/apt/keys/i2p.key
+	apt-key add /etc/apt/keys/i2p.key
 
-	# update apt index
+	# update apt index (again)
 	apt-get update
 
 fi
