@@ -6,7 +6,7 @@ nanolx (1:1.17.20160716-1nano) unstable; urgency=low
     - xdelta3
   * changed dependencies:
     - audex > soundkonverter
-    - dolphin > spacefm
+    - dolphin > spacefm-gtk3 | spacefm
   * updated scripts:
     - repokit 1.4.4
       - minor improvements for 'put'
