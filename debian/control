@@ -687,7 +687,8 @@ Depends: applyppf3,
          nand-dump,
          nand-extract,
          savetoy,
-         ohne-schwarzenegger
+         ohne-schwarzenegger,
+         xdelta3
 Description: Collection of game hacking tools
  This meta-package installs game hacking tools
  .
@@ -710,3 +711,4 @@ Description: Collection of game hacking tools
    New Super Mario Bros. Wii and Mario Kart Wii))
  - segher-wii-tools, nand-bin-check, nand-dump, nand-extract, savetoy,
    ohne-schwarzenegger (misc. Wii homebrew utilities)
+ - xdelta3
