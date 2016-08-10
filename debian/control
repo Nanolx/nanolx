@@ -440,7 +440,8 @@ Depends: audacity,
          k3b,
          libk3b6-extracodecs,
          mediathekview,
-         easytag
+         easytag,
+         gnome-twitch
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
@@ -460,6 +461,7 @@ Description: Collection of graphical media applications
  - avidemux
  - mediathekview
  - easyTAG
+ - GNOME Twitch
 
 Package: nanolx-devel-cli
 Architecture: all
@@ -472,8 +474,10 @@ Depends: ccache,
          ubuntu-dev-tools,
          schroot,
          sbuild,
-         gcc-4.9,
-         g++-4.9,
+         gcc-5 | gcc-6,
+         g++-5 | g++-6,
+         gcc-5-multilib | gcc-6-multilib,
+         g++-5-multilib | g++-6-multilib,
          git,
          subversion,
          bzr,
@@ -491,12 +495,15 @@ Depends: ccache,
          transifex-client,
          flawfinder,
          gdb,
-         bsdiff
+         bsdiff,
+         codespell,
+         shellcheck,
+         licensecheck
 Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
  These are:
- - ccache, gcc-4.9, g++-4.9
+ - ccache, gcc 5 or 6, g++ 5 or 6, gcc and g++ multilib
  - colormake, colorgcc, colordiff
  - dpkg-dev, dh-make, dh-autoreconf, devscripts, lintian
  - gdb, flawfinder
@@ -507,6 +514,7 @@ Description: Collection of cli development tools
  - fakeroot
  - transifex-client
  - bsdiff
+ - codespell, shellcheck, licensecheck
 
 Package: nanolx-devel-android
 Architecture: all

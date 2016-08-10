@@ -1,3 +1,22 @@
+nanolx (1:1.18.20160810-1nano) unstable; urgency=low
+
+  * new upstream release
+  * apt sources changes:
+    - update debian-multimedia mirror		[nanolx-apt-sources]
+  * new dependencies:
+    - gnome-twitch				[nanolx-media-x11]
+    - gcc-5 [or] gcc-6				[nanolx-devel-cli]
+    - g++-5 [or] g++-6				[nanolx-devel-cli]
+    - gcc-5-multilib [or] g++-6-multilib	[nanolx-devel-cli]
+    - codespell					[nanolx-devel-cli]
+    - shellcheck				[nanolx-devel-cli]
+    - licensecheck				[nanolx-devel-cli]
+  * dropped dependencies:
+    - drop dependency on g++-4.9		[nanolx-devel-cli]
+    - drop dependency on gcc-4.9		[nanolx-devel-cli]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Wed, 10 Aug 2016 09:16:12 +0200
+
 nanolx (1:1.17.20160717-1nano) unstable; urgency=low
 
   * new upstream release
