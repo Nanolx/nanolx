@@ -1,3 +1,11 @@
+nanolx (1:1.19.2016++++-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependencies:
+    - pycodestyle				[nanolx-devel-cli]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  
+
 nanolx (1:1.18.20160810-1nano) unstable; urgency=low
 
   * new upstream release
