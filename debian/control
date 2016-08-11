@@ -498,7 +498,8 @@ Depends: ccache,
          bsdiff,
          codespell,
          shellcheck,
-         licensecheck
+         licensecheck,
+         pycodestyle
 Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
@@ -514,7 +515,7 @@ Description: Collection of cli development tools
  - fakeroot
  - transifex-client
  - bsdiff
- - codespell, shellcheck, licensecheck
+ - codespell, shellcheck, licensecheck, pycodestyle
 
 Package: nanolx-devel-android
 Architecture: all
