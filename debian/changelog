@@ -1,10 +1,12 @@
-nanolx (1:1.19.2016++++-1nano) unstable; urgency=low
+nanolx (1:1.19.20160813-1nano) unstable; urgency=low
 
   * new upstream release
   * new dependencies:
     - pycodestyle				[nanolx-devel-cli]
+  * removed dependencies:
+    - pulseaudio-module-x11			[nanolx-media-cli]
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>  
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 13 Aug 2016 20:14:12 +0200
 
 nanolx (1:1.18.20160810-1nano) unstable; urgency=low
 

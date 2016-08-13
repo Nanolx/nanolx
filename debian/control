@@ -402,7 +402,6 @@ Depends: lame,
          transcode,
          cdparanoia,
          pulseaudio (>= 5.0),
-         pulseaudio-module-x11 (>= 5.0),
          imagemagick,
          youtube-dl
 Description: Collection of cli media tools
