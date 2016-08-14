@@ -10,6 +10,7 @@ install:
 	mkdir -p $(DESTDIR)/etc/decryptkeydevice/
 	mkdir -p $(DESTDIR)/usr/bin/
 	mkdir -p $(DESTDIR)/usr/sbin/
+	install -m644 apt/sources $(DESTDIR)/etc/apt/sources.list
 	install -m644 apt/*.list $(DESTDIR)/etc/apt/sources.list.d/
 	install -m644 apt/apt.conf $(DESTDIR)/etc/apt/apt.conf
 	install -m644 apt/pinning $(DESTDIR)/etc/apt/preferences.d/

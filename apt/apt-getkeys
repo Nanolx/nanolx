@@ -34,6 +34,12 @@ else
 			-O /etc/apt/keys/samsung.key
 	apt-key add /etc/apt/keys/samsung.key
 
+	# WineHQ signing key
+	[[ ! -f /etc/apt/keys/winehq.key ]] && \
+		wget -q wget https://dl.winehq.org/wine-builds/Release.key \
+			-O /etc/apt/keys/winehq.key
+	apt-key add /etc/apt/keys/winehq.key
+
 	# i2p signing key
 	[[ ! -f /etc/apt/keys/i2p.key ]] && \
 		wget -q https://geti2p.net/_static/i2p-debian-repo.key.asc \

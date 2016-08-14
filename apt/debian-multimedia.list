@@ -1,8 +1,4 @@
 # Debian Multimedia repository
-
-deb http://debian.ids-services.de/debian-multimedia/ testing main
-deb-src http://debian.ids-services.de/debian-multimedia/ testing main
-
 deb http://debian.ids-services.de/debian-multimedia/ unstable main
 deb-src http://debian.ids-services.de/debian-multimedia/ unstable main
 
