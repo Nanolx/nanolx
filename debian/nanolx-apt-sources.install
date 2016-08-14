@@ -1,2 +1,3 @@
+etc/apt/sources.list
 etc/apt/sources.list.d/*
 usr/sbin/apt-getkeys
