@@ -107,7 +107,7 @@ Depends: apt-file,
          debdelta,
          reprepro,
          cupt,
-         libcupt3-0-downloadmethod-wget
+         libcupt4-1-downloadmethod-wget | libcupt4-1-downloadmethod-curl
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt,
  including apt-transport-https and debdelta.

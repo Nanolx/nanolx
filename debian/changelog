@@ -1,3 +1,14 @@
+nanolx (1:1.19.20160814-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependencies:
+    - libcupt4-1-downloadmethod-wget [or]	[nanolx-apt-tools]
+      libcupt4-1-downloadmethod-curl
+  * removed dependencies:
+    - libcupt3-0-downloadmethod-wget
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 14 Aug 2016 20:26:42 +0200
+
 nanolx (1:1.19.20160813-1nano) unstable; urgency=low
 
   * new upstream release
