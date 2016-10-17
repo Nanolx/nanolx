@@ -1,3 +1,19 @@
+nanolx (1:1.21.20161017-1nano) unstable; urgency=low
+
+  * new upstream release
+  * somewhat improved README
+  * updated scripts:
+    - apt-getkeys	[updated way to get i2p keyring]
+  * removed dependencies:
+    - mupen64plus-video-all			[nanolx-games-emu]
+  * new dependencies:
+    - mupen64plus-video-arachnoid		[nanolx-games-emu]
+    - mupen64plus-video-glide64			[nanolx-games-emu]
+    - mupen64plus-video-rice			[nanolx-games-emu]
+    - mupen64plus-video-z64			[nanolx-games-emu]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 17 Oct 2016 19:52:27 +0200
+
 nanolx (1:1.20.20160814-2nano) unstable; urgency=low
 
   * new upstream release

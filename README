@@ -15,14 +15,25 @@ Some meta-packages also provide additional scripts, tools and configs.
 Installation on Debian GNU/Linux
 =======================================
 
-First install nanolx-apt-sources on it's own, then issue apt-getkeys.
-Afterwards continue with the other nanolx-* packages as usual.
+First install the
+
+	nanolx-apt-sources
+
+package on it's own, then issue
+
+	apt-getkeys
+
+as root. Afterwards continue with the other nanolx-* packages, as desired.
+
+The apt singing key for my photonic apt repository is located at
+
+	http://www.nanolx.org/apt/photonic.asc
 
 Release Information
 =======================================
 
 see debian/changelog for changes
 
-Version:	1.20
-Release:	20160814
-Code-Name:	Faster than Michael Knight
+Version:	1.21
+Release:	20161017
+Code-Name:	Is this the NX?

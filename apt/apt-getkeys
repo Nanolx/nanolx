@@ -41,10 +41,9 @@ else
 	apt-key add /etc/apt/keys/winehq.key
 
 	# i2p signing key
-	[[ ! -f /etc/apt/keys/i2p.key ]] && \
-		wget -q https://geti2p.net/_static/i2p-debian-repo.key.asc \
-			-O /etc/apt/keys/i2p.key
-	apt-key add /etc/apt/keys/i2p.key
+	[[ -f /etc/apt/keys/i2p.key ]] && \
+		rm -f /etc/apt/keys/i2p.key
+	apt-get -y --force-yes install i2p-keyring
 
 	# update apt index (again)
 	apt-get update
