@@ -1,3 +1,12 @@
+nanolx (1:1.22.20161117-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies:
+    - i2p
+    - i2p-router
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>   Thu, 17 Nov 2016 18:21:21 +0100
+
 nanolx (1:1.21.20161017-1nano) unstable; urgency=low
 
   * new upstream release

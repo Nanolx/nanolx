@@ -241,8 +241,6 @@ Depends: bastille | bash,
          psad,
          hardening-includes | bash,
          hardening-wrapper | bash,
-         i2p,
-         i2p-router,
          seahorse,
          gksu,
          gpgv,
@@ -264,7 +262,6 @@ Description: Collection of security related tools
  - tor (with torsocks and tor-geoipdb)
  - psad
  - harden
- - i2p
  - seahorse
  - gksu
  - gpgv (with pinentry-gtk2)
