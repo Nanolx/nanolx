@@ -29,10 +29,9 @@ else
 	apt-key add /etc/apt/keys/nanolx.key
 
 	# Samsung unified printer driver repo signing key
-	[[ ! -f /etc/apt/keys/samsung.key ]] && \
-		wget -q http://www.bchemnet.com/suldr/suldr.gpg \
-			-O /etc/apt/keys/samsung.key
-	apt-key add /etc/apt/keys/samsung.key
+	[[ -f /etc/apt/keys/samsung.key ]] && \
+		rm -f /etc/apt/keys/samsung.key
+	apt-get -y --force-yes install suldr-keyring
 
 	# WineHQ signing key
 	[[ ! -f /etc/apt/keys/winehq.key ]] && \
