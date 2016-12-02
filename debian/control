@@ -115,7 +115,8 @@ Description: Collection of tools for apt
 Package: nanolx-apt-sources
 Architecture: all
 Depends: gui-apt-key,
-         wget
+         wget,
+         apt-transport-https
 Description: Collection of extra sources for apt
  This meta-package installs extra apt-sources on the system.
  .
@@ -495,7 +496,8 @@ Depends: ccache,
          codespell,
          shellcheck,
          licensecheck,
-         pycodestyle
+         pycodestyle,
+         mozilla-devscripts
 Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
@@ -512,6 +514,7 @@ Description: Collection of cli development tools
  - transifex-client
  - bsdiff
  - codespell, shellcheck, licensecheck, pycodestyle
+ - mozilla-devscripts
 
 Package: nanolx-devel-android
 Architecture: all
@@ -538,6 +541,7 @@ Depends: glade,
          bluefish,
          cutemarked,
          geany,
+         geany-plugins,
          d-feet,
          okteta,
          nemiver,
@@ -550,7 +554,7 @@ Description: Collection of x11 development tools
  - glade
  - manpageeditor
  - bluefish
- - geany
+ - geany (+ plugins)
  - cutemarked
  - poedit
  - d-feet

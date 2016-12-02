@@ -1,3 +1,15 @@
+nanolx (1:1.23.20161202-1nano) unstable; urgency=low
+
+  * new upstream release
+  * updated-scripts
+    - apt-getkeys	[updated way to get suldr keyring]
+  * new dependencies
+    - apt-transport-https			[nanolx-apt-sources]
+    - mozilla-devscripts			[nanolx-devel-cli]
+    - geany-plugins				[nanolx-devel-x11]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 02 Dec 2016 21:44:27 +0100
+
 nanolx (1:1.22.20161117-1nano) unstable; urgency=low
 
   * new upstream release
