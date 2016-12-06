@@ -331,6 +331,7 @@ Depends: xul-ext-configuration-mania,
          xul-ext-super-start,
          xul-ext-dovesec,
          xul-ext-all-menus-button,
+         xul-ext-downthemall,
          icedove,
          firefox | iceweasel
 Description: Collection of XUL addons
@@ -361,6 +362,7 @@ Description: Collection of XUL addons
  - HTML5 Video Everywhere
  - Dove Sec
  - All menus button
+ - Down Them All!
 
 Package: nanolx-media-codecs
 Architecture: all
