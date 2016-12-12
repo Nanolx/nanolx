@@ -11,27 +11,37 @@ if [[ ${EUID} != 0 ]]; then
 	echo "not root - exiting"
 else
 	[[ $(which wget) == "" ]] && apt-get install wget
-	[[ ! -d /etc/apt/keys/ ]] && mkdir /etc/apt/keys/
+	[[ ! -d /etc/apt/keys ]] && mkdir /etc/apt/keys
+
+	# add i386 to known architectures
+	[[ $(uname -m) == *x86_64* ]] && dpkg --add-architecture i386
 
 	# update apt index
-	apt-get update
+	apt-get update -q
 
 	# Debian Multimedia signing key
-	apt-get -y --force-yes install deb-multimedia-keyring
-
 	# Liquorix signing key
-	apt-get -y --force-yes install '^liquorix-([^-]+-)?keyring.?'
+	# Samsung Unified Printer Driver signing key
+	# i2p singing key
+	apt-get -q -y --force-yes install \
+			deb-multimedia-keyring \
+			'^liquorix-([^-]+-)?keyring.?' \
+			suldr-keyring \
+			i2p-keyring
 
-	# Nanolx signing key
-	[[ ! -f /etc/apt/keys/nanolx.key ]] && \
-		wget -q http://www.nanolx.org/apt/photonic.asc \
-			-O /etc/apt/keys/nanolx.key
-	apt-key add /etc/apt/keys/nanolx.key
-
-	# Samsung unified printer driver repo signing key
+	# Remove old keys
 	[[ -f /etc/apt/keys/samsung.key ]] && \
 		rm -f /etc/apt/keys/samsung.key
-	apt-get -y --force-yes install suldr-keyring
+	[[ -f /etc/apt/keys/nanolx.key ]] && \
+		rm -f /etc/apt/keys/nanolx.key
+	[[ -f /etc/apt/keys/i2p.key ]] && \
+		rm -f /etc/apt/keys/i2p.key
+
+	# Nanolx signing key
+	[[ ! -f /etc/apt/keys/nanolx2016.key ]] && \
+		wget -q http://www.nanolx.org/apt/photonic.asc \
+			-O /etc/apt/keys/nanolx2016.key
+	apt-key add /etc/apt/keys/nanolx2016.key
 
 	# WineHQ signing key
 	[[ ! -f /etc/apt/keys/winehq.key ]] && \
@@ -39,12 +49,7 @@ else
 			-O /etc/apt/keys/winehq.key
 	apt-key add /etc/apt/keys/winehq.key
 
-	# i2p signing key
-	[[ -f /etc/apt/keys/i2p.key ]] && \
-		rm -f /etc/apt/keys/i2p.key
-	apt-get -y --force-yes install i2p-keyring
-
 	# update apt index (again)
-	apt-get update
+	apt-get update -q
 
 fi
