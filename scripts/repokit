@@ -10,8 +10,8 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.4.4"
-reldate="2016/07/16"
+version="1.4.5"
+reldate="2016/12/12"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source ${HOME}/.repokit.conf
@@ -223,6 +223,10 @@ case ${cmdarg} in
 
 	-dp | put )
 		debhelper_put_scripts
+	;;
+	
+	-dr | release )
+		debhelper_add_release
 	;;
 
 	* )
