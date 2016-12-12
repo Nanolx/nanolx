@@ -332,6 +332,8 @@ Depends: xul-ext-configuration-mania,
          xul-ext-dovesec,
          xul-ext-all-menus-button,
          xul-ext-downthemall,
+         xul-ext-flashgot,
+         xul-ext-customize-my-dove,
          icedove,
          firefox | iceweasel
 Description: Collection of XUL addons
@@ -363,6 +365,8 @@ Description: Collection of XUL addons
  - Dove Sec
  - All menus button
  - Down Them All!
+ - Flash Got
+ - Customize My Bird
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -525,7 +529,9 @@ Depends: adb | android-tools-adb,
          gradle,
          apktool,
          gmtp,
-         zipalign
+         zipalign,
+         openjdk-8-jdk,
+         zlib1g:i386
 Description: Collection of android development tools
  This meta-package installs android development tools
  .
