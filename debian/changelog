@@ -1,3 +1,20 @@
+nanolx (1:1.24.20161212-1nano) unstable; urgency=low
+
+  * new upstream release
+  * updated scripts
+    - repokit					[add missing -dr | -release param]
+    - apt-getkeys				[add i386 to dpkg on amd64]
+						[less verbose output]
+						[less apt-get invocations]
+						[enforce update of nanolx key]
+  * new dependencies
+    - xul-ext-customize-my-dove			[nanolx-xul-addons]
+    - xul-ext-flashgot				[nanolx-xul-addons]
+    - zlib1g:i386				[nanolx-devel-android]
+    - openjdk-8-jdk				[nanolx-devel-android]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 12 Dec 2016 20:33:29 +0100
+
 nanolx (1:1.23.20161202-1nano) unstable; urgency=low
 
   * new upstream release
