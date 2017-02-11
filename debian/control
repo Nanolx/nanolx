@@ -277,7 +277,7 @@ Depends: openssh-client,
          privoxy,
          qbittorrent,
          filezilla,
-         icedove,
+         thunderbird | icedove,
          smbnetfs,
          ftpsync,
          kvirc,
@@ -295,7 +295,7 @@ Description: Collection of network applications
  - privoxy (with different configurations and adblock blocklist converter)
  - qbittorrent
  - filezilla
- - icedove
+ - thunderbird (or icedove before the switch back to thunderbird)
  - smbnetfs
  - ftpsync
  - kvirc

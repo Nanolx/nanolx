@@ -1,3 +1,13 @@
+nanolx (1:1.25.20170211-1nano) unstable; urgency=low
+
+  * new upstream release
+  * changed dependencies:
+    - icedove 	>>	thunderbird | icedove
+  * apt sources changes:
+    - update deb-multimedia sources
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 11 Feb 2017 09:08:40 +0100
+
 nanolx (1:1.24.20161212-1nano) unstable; urgency=low
 
   * new upstream release
