@@ -1,3 +1,11 @@
+nanolx (1:1.26.20170305-1nano) unstable; urgency=low
+
+  * new upstream release
+  * changed dependencies:
+    - ftpsync 	>>	gnu-ftpsync
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 05 Mar 2017 15:44:52 +0100
+
 nanolx (1:1.25.20170211-1nano) unstable; urgency=low
 
   * new upstream release

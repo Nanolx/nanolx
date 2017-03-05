@@ -279,7 +279,7 @@ Depends: openssh-client,
          filezilla,
          thunderbird | icedove,
          smbnetfs,
-         ftpsync,
+         gnu-ftpsync,
          kvirc,
          gfeedline,
          openvpn,
@@ -297,7 +297,7 @@ Description: Collection of network applications
  - filezilla
  - thunderbird (or icedove before the switch back to thunderbird)
  - smbnetfs
- - ftpsync
+ - GNU ftpsync
  - kvirc
  - gfeedline
  - openvpn
