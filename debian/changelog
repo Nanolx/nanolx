@@ -1,3 +1,18 @@
+nanolx (1:1.27.20170705-1nano) unstable; urgency=low
+
+  * new upstream release
+  * updated scripts:
+    - repokit (1.4.6)
+  * removed scripts:
+    - sufffix [now in BashStyle-NG]
+    - gfxrename [now in BashStyle-NG]
+  * dropped dependencies:
+    - system-config-lvm
+    - colorgcc
+    - libbluray1
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Wed, 05 Jul 2017 18:42:50 +0200
+
 nanolx (1:1.26.20170305-1nano) unstable; urgency=low
 
   * new upstream release

@@ -36,7 +36,6 @@ Description: Nanolx base package
 Package: nanolx-admin
 Architecture: all
 Depends: synaptic,
-         system-config-lvm,
          hdparm,
          gsmartcontrol,
          aptitude,
@@ -69,7 +68,6 @@ Depends: synaptic,
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
- - system-config-lvm
  - hdparm
  - gparted
  - gsmartcontrol
@@ -379,8 +377,7 @@ Depends: gstreamer1.0-alsa,
          gstreamer1.0-crystalhd,
          gstreamer1.0-libav,
          phonon-backend-gstreamer,
-         libdvdcss2,
-         libbluray1
+         libdvdcss2
 Description: Collection of media codecs
  This meta-package installs media codecs.
  .
@@ -390,9 +387,8 @@ Description: Collection of media codecs
    - good, base, bad, ugly
    - pulseaudio
    - libav, crystalhd
- - phonen-backend-gstreamer
+ - phonon-backend-gstreamer
  - libdvdcss
- - libbluray
 
 Package: nanolx-media-cli
 Architecture: all
@@ -470,7 +466,6 @@ Package: nanolx-devel-cli
 Architecture: all
 Depends: ccache,
          colormake,
-         colorgcc,
          colordiff,
          dpkg-dev,
          fakeroot,
