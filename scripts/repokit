@@ -11,7 +11,7 @@
 #
 
 version="1.4.6"
-reldate="2016/12/12"
+reldate="2017/03/25"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source "${HOME}/.repokit.conf"
