@@ -16,7 +16,7 @@ nanolx (1:1.27.20170705-1nano) unstable; urgency=low
     - gfeedline					[nanolx-net]
     - luakit					[nanolx-net]
   * new dependencies:
-    - torbrowser-installer			[nanolx-net]
+    - torbrowser-launcher			[nanolx-net]
   * changed dependencies:
     - icedove	>>	thunderbird | icedove	[nanolx-xul-addons]
 

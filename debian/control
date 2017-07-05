@@ -280,7 +280,7 @@ Depends: openssh-client,
          kvirc,
          openvpn,
          openresolv,
-         torbrowser-installer
+         torbrowser-launcher
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -297,7 +297,7 @@ Description: Collection of network applications
  - kvirc
  - openvpn
  - openresolv
- - torbrowser installer
+ - torbrowser launcher
 
 Package: nanolx-xul-addons
 Architecture: all
