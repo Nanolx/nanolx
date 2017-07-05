@@ -20,10 +20,6 @@ install:
 	install -m755 privoxy/privoxy-blocklist $(DESTDIR)/usr/sbin/
 	install -m755 privoxy/privoxy-switch $(DESTDIR)/usr/sbin/
 	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
-	install -m755 scripts/sufffix $(DESTDIR)/usr/bin/
-	install -m755 scripts/wiiconvert $(DESTDIR)/usr/bin/
-	install -m755 scripts/gfxrename $(DESTDIR)/usr/bin/
-	install -m755 scripts/dump_bookmarks_nextbrowser $(DESTDIR)/usr/bin/
 	install -m755 scripts/repokit $(DESTDIR)/usr/bin/
 	install -m644 sysctl/* $(DESTDIR)/etc/sysctl.d/
 	install -m755 decryptkeydevice/decryptkeydevice.hook \

@@ -6,6 +6,8 @@ nanolx (1:1.27.20170705-1nano) unstable; urgency=low
   * removed scripts:
     - sufffix [now in BashStyle-NG]
     - gfxrename [now in BashStyle-NG]
+    - wiiconvert [dropped]
+    - dump_bookmarks_nextbrowser [dropped]
   * dropped dependencies:
     - system-config-lvm
     - colorgcc
