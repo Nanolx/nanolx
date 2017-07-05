@@ -9,9 +9,16 @@ nanolx (1:1.27.20170705-1nano) unstable; urgency=low
     - wiiconvert [dropped]
     - dump_bookmarks_nextbrowser [dropped]
   * dropped dependencies:
-    - system-config-lvm
-    - colorgcc
-    - libbluray1
+    - system-config-lvm				[nanolx-admin]
+    - colorgcc					[nanolx-devel-cli]
+    - libbluray1				[nanolx-media-codecs]
+    - palemoon-installer			[nanolx-net]
+    - gfeedline					[nanolx-net]
+    - luakit					[nanolx-net]
+  * new dependencies:
+    - torbrowser-installer			[nanolx-net]
+  * changed dependencies:
+    - icedove	>>	thunderbird | icedove	[nanolx-xul-addons]
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Wed, 05 Jul 2017 18:42:50 +0200
 

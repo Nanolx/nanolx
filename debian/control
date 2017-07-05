@@ -28,7 +28,7 @@ Depends: nanolx-admin,
 Description: Nanolx base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
-   b) /usr/sbin/apt-getkeys.sh
+   b) /usr/sbin/apt-getkeys
    c) proceed with this package (or any other nanolx-* meta-package)
  .
  This package depends on all other nanolx-* meta-packages.
@@ -270,7 +270,6 @@ Package: nanolx-net
 Architecture: all
 Depends: openssh-client,
          wireshark,
-         luakit,
          firefox | iceweasel,
          privoxy,
          qbittorrent,
@@ -279,10 +278,9 @@ Depends: openssh-client,
          smbnetfs,
          gnu-ftpsync,
          kvirc,
-         gfeedline,
          openvpn,
          openresolv,
-         palemoon-installer
+         torbrowser-installer
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -297,10 +295,9 @@ Description: Collection of network applications
  - smbnetfs
  - GNU ftpsync
  - kvirc
- - gfeedline
  - openvpn
  - openresolv
- - palemoon-installer
+ - torbrowser installer
 
 Package: nanolx-xul-addons
 Architecture: all
@@ -332,7 +329,7 @@ Depends: xul-ext-configuration-mania,
          xul-ext-downthemall,
          xul-ext-flashgot,
          xul-ext-customize-my-dove,
-         icedove,
+         thunderbird | icedove,
          firefox | iceweasel
 Description: Collection of XUL addons
  This meta-package installs several addons for Firefox and Icedove.
