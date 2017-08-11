@@ -303,12 +303,7 @@ Package: nanolx-xul-addons
 Architecture: all
 Depends: xul-ext-configuration-mania,
          xul-ext-download-status-bar,
-         xul-ext-febe,
-         xul-ext-image-toolbar,
-         xul-ext-multi-links,
          xul-ext-print-edit,
-         xul-ext-save-images,
-         xul-ext-send-later,
          xul-ext-textlink,
          xul-ext-beyond-australis,
          xul-ext-toggle-referer,
@@ -319,15 +314,8 @@ Depends: xul-ext-configuration-mania,
          xul-ext-noscript,
          xul-ext-stylish,
          xul-ext-tabmixplus,
-         xul-ext-uppity,
-         xul-ext-useragentswitcher,
-         xul-ext-unote,
-         xul-ext-html5-video-everywhere,
          xul-ext-super-start,
          xul-ext-dovesec,
-         xul-ext-all-menus-button,
-         xul-ext-downthemall,
-         xul-ext-flashgot,
          xul-ext-customize-my-dove,
          thunderbird | icedove,
          firefox | iceweasel
@@ -336,12 +324,7 @@ Description: Collection of XUL addons
  .
  - configuration-mania
  - download-status-bar
- - febe
- - image-toolbar
- - multi-links
  - print-edit
- - save-images
- - send-later
  - textlink
  - beyond-australis
  - toggle-referer
@@ -352,15 +335,8 @@ Description: Collection of XUL addons
  - noscript
  - stylish
  - tabmixplus
- - uppity
- - useragentswitchter
  - super start
- - µNote
- - HTML5 Video Everywhere
  - Dove Sec
- - All menus button
- - Down Them All!
- - Flash Got
  - Customize My Bird
 
 Package: nanolx-media-codecs
