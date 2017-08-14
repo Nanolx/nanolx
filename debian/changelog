@@ -1,3 +1,63 @@
+nanolx (1:1.28.20170814-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies:
+    - chkrootkit				[nanolx-security]
+    - hardening-wrappers			[nanolx-security]
+    - hardening-includes			[nanolx-security]
+    - bastille					[nanolx-security]
+    - xul-ext-febe				[nanolx-xul-addons]
+    - xul-ext-image-toolbar			[nanolx-xul-addons]
+    - xul-ext-multi-links			[nanolx-xul-addons]
+    - xul-ext-save-images			[nanolx-xul-addons]
+    - xul-ext-send-later			[nanolx-xul-addons]
+    - xul-ext-uppity				[nanolx-xul-addons]
+    - xul-ext-useragentswitcher			[nanolx-xul-addons]
+    - xul-ext-unote				[nanolx-xul-addons]
+    - xul-ext-html5-video-everywhere		[nanolx-xul-addons]
+    - xul-ext-all-menus-button			[nanolx-xul-addons]
+    - xul-ext-downthemall			[nanolx-xul-addons]
+    - xul-ext-flashgot				[nanolx-xul-addons]
+    - privoxy					[nanolx-net]
+    - youtube-dl				[nanolx-media-cli]
+    - transcode					[nanolx-media-cli]
+    - gnome-twich				[nanolx-media-gui]
+    - streamtuner2				[nanolx-media-gui]
+    - phototonic				[nanolx-media-gui]
+    - qscanner					[nanolx-media-gui]
+    - subversion				[nanolx-devel-cli]
+    - bzr					[nanolx-devel-cli]
+    - gcc-5 | gcc-6				[nanolx-devel-cli]
+    - g++-5 | g++-6				[nanolx-devel-cli]
+    - gcc-5-multilib | gcc-6-multilib		[nanolx-devel-cli]
+    - g++-5-multilib | g++-6-multilib		[nanolx-devel-cli]
+    - manpageeditor				[nanolx-devel-x11]
+    - cutemarked				[nanolx-devel-x11]
+    - sqlitebrowser				[nanolx-devel-x11]
+    - xcowsay					[nanolx-games]
+    - xdesktopwaves				[nanolx-games]
+    - xpenguins					[nanolx-games]
+    - lxdream					[nanolx-games-emu]
+    - mupen64plus-video-arachnoid		[nanolx-games-emu]
+    - mupen64plus-video-glide64			[nanolx-games-emu]
+    - mupen64plus-video-rice			[nanolx-games-emu]
+    - mupen64plus-video-z64			[nanolx-games-emu]
+    - nestopia					[nanolx-games-emu]
+  * new dependencies:
+    - lynis					[nanolx-security]
+    - rkhunter					[nanolx-security]
+    - xsane					[nanolx-media-gui]
+    - geeqie					[nanolx-media-gui]
+    - gcc-7 | gcc-6				[nanolx-devel-cli]
+    - g++-7 | g++-6				[nanolx-devel-cli]
+    - gcc-7-multilib | gcc-6-multilib		[nanolx-devel-cli]
+    - g++-7-multilib | g++-6-multilib		[nanolx-devel-cli]
+    - zelda-solarus-xd2-mercuris-chess		[nanolx-games]
+    - mupen64plus-video-all			[nanolx-games-emu]
+    - mupen64plus-input-all			[nanolx-games-emu]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 14 Aug 2017 22:06:50 +0200
+
 nanolx (1:1.27.20170705-1nano) unstable; urgency=low
 
   * new upstream release

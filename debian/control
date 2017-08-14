@@ -228,9 +228,7 @@ Description: Collection of themes
 
 Package: nanolx-security
 Architecture: all
-Depends: bastille | bash,
-         chkrootkit,
-         clamav,
+Depends: clamav,
          clamtk,
          clamassassin,
          gufw,
@@ -238,14 +236,14 @@ Depends: bastille | bash,
          torsocks,
          tor-geoipdb,
          psad,
-         hardening-includes | bash,
-         hardening-wrapper | bash,
          seahorse,
          gksu,
          gpgv,
          pinentry-gtk2,
          enigmail,
-         keepassx
+         keepassx,
+         lynis,
+         rkhunter
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
@@ -254,24 +252,22 @@ Description: Collection of security related tools
  prior to installing this package is recommended
  .
  These are:
- - bastille
- - chkrootkit
  - clamav (with clamtk ui and clamassassin spam filter)
  - gufw
  - tor (with torsocks and tor-geoipdb)
  - psad
- - harden
  - seahorse
  - gksu
  - gpgv (with pinentry-gtk2)
  - keepassx
+ - Lynis
+ - rkhunter
 
 Package: nanolx-net
 Architecture: all
 Depends: openssh-client,
          wireshark,
          firefox | iceweasel,
-         privoxy,
          qbittorrent,
          filezilla,
          thunderbird | icedove,
@@ -288,7 +284,6 @@ Description: Collection of network applications
  - openssh-client
  - wireshark
  - firefox (or iceweasel before the switch back to firefox)
- - privoxy (with different configurations and adblock blocklist converter)
  - qbittorrent
  - filezilla
  - thunderbird (or icedove before the switch back to thunderbird)
@@ -372,11 +367,9 @@ Depends: lame,
          normalize-audio,
          streamripper,
          ffmpeg,
-         transcode,
          cdparanoia,
          pulseaudio (>= 5.0),
-         imagemagick,
-         youtube-dl
+         imagemagick
 Description: Collection of cli media tools
  This meta-package installs cli media tools.
  .
@@ -384,7 +377,6 @@ Description: Collection of cli media tools
  - lame
  - sox
  - flac
- - transcode
  - vorbis-tools
  - ffmpeg
  - cdparanoia
@@ -392,7 +384,6 @@ Description: Collection of cli media tools
  - streamripper
  - pulseaudio
  - imagemagick
- - youtube-dl
 
 Package: nanolx-media-x11
 Architecture: all
@@ -401,19 +392,17 @@ Depends: audacity,
          gmtp,
          pavucontrol,
          soundkonverter,
-         streamtuner2,
          yarock,
          mpv,
-         phototonic,
+         geeqie,
          okular,
          gimp,
-         qscanner,
+         xsane,
          avidemux,
          k3b,
          libk3b6-extracodecs,
          mediathekview,
-         easytag,
-         gnome-twitch
+         easytag
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
@@ -422,18 +411,16 @@ Description: Collection of graphical media applications
  - soundkonverter
  - gmtp
  - pavucontrol
- - streamtuner2
  - yarock
  - mpv
- - phototonic
+ - geeqie
  - okular
  - GIMP
- - qscanner
+ - xsane
  - k3b
  - avidemux
  - mediathekview
  - easyTAG
- - GNOME Twitch
 
 Package: nanolx-devel-cli
 Architecture: all
@@ -445,13 +432,11 @@ Depends: ccache,
          ubuntu-dev-tools,
          schroot,
          sbuild,
-         gcc-5 | gcc-6,
-         g++-5 | g++-6,
-         gcc-5-multilib | gcc-6-multilib,
-         g++-5-multilib | g++-6-multilib,
+         gcc-7 | gcc-6,
+         g++-7 | g++-6,
+         gcc-7-multilib | gcc-6-multilib,
+         g++-7-multilib | g++-6-multilib,
          git,
-         subversion,
-         bzr,
          dh-make,
          dh-autoreconf,
          pkg-config,
@@ -476,19 +461,16 @@ Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
  These are:
- - ccache, gcc 5 or 6, g++ 5 or 6, gcc and g++ multilib
- - colormake, colorgcc, colordiff
+ - ccache, gcc 7 or 6, g++ 7 or 6
+ - gcc-multilib 7 or 6, g++-multilib 7 or 6
+ - colormake, colordiff
  - dpkg-dev, dh-make, dh-autoreconf, devscripts, lintian
  - gdb, flawfinder
- - make, cmake, pkg-config
+ - make, cmake, pkg-config, git
  - autotools-dev, libtool, autoconf, automake
- - git, subversion, bzr
- - ubuntu-dev-tools, schroot, sbuild
- - fakeroot
- - transifex-client
- - bsdiff
+ - ubuntu-dev-tools, schroot, sbuild, fakeroot, mozilla-devscripts
+ - transifex-client, bsdiff
  - codespell, shellcheck, licensecheck, pycodestyle
- - mozilla-devscripts
 
 Package: nanolx-devel-android
 Architecture: all
@@ -513,30 +495,24 @@ Description: Collection of android development tools
 Package: nanolx-devel-x11
 Architecture: all
 Depends: glade,
-         manpageeditor,
          bluefish,
-         cutemarked,
          geany,
          geany-plugins,
          d-feet,
          okteta,
          nemiver,
-         sqlitebrowser,
          poedit
 Description: Collection of x11 development tools
  This meta-package installs x11 development tools.
  .
  These are:
  - glade
- - manpageeditor
  - bluefish
  - geany (+ plugins)
- - cutemarked
  - poedit
  - d-feet
  - okteta
  - nemiver
- - sqlitebrowser
 
 Package: nanolx-games
 Architecture: all
@@ -550,11 +526,9 @@ Depends: glob2,
          neverball,
          pingus,
          supertuxkart,
-         xcowsay,
-         xdesktopwaves,
-         xpenguins,
          zelda-solarus-dx,
          zelda-solarus-xd,
+         zelda-solarus-xd2-mercuris-chess,
          zelda-solarus-return-of-the-hylian,
          zelda-book-of-mudora,
          zelda-time-to-triumph,
@@ -583,11 +557,9 @@ Description: Collection of games
  - Pingus
  - Super Tux Kart
  - Battle For Wesnoth
- - Xcowsay
- - Xdesktopwaves
- - Xpenguins
  - Zelda Solarus DX
  - Zelda Solarus XD
+ - Zelda Solarus XD2: Mercuris Chess
  - Zelda Time to Triumph
  - Zelda Oni-Link Begins
  - Zelda Return of the Hylian Solarus Edition
@@ -599,14 +571,10 @@ Package: nanolx-games-emu
 Architecture: all
 Depends: dolphin-emu | bash,
          dosbox,
-         lxdream,
          mupen64plus,
          mupen64plus-audio-all,
-         mupen64plus-video-arachnoid,
-         mupen64plus-video-glide64,
-         mupen64plus-video-rice,
-         mupen64plus-video-z64,
-         nestopia,
+         mupen64plus-video-all,
+         mupen64plus-input-all,
          snes9x-gtk,
          yabause-gtk,
          gnuboy-sdl,
@@ -627,12 +595,11 @@ Description: Collection of emulators
  - gnuboy-sdl (Game Boy, Game Boy Color)
  - visualboyadvance-gtk (Game Boy Advance)
  - desmume (Nintendo DS)
- - nestopia (Famicom / NES)
+ - fceux (Famicom / NES)
  - snex9x-gtk (Super Famicom / SNES)
  - mupen64plus (Nintendo 64)
  - dolphin-emu (GameCube / Wii [only amd64])
  - yabause-gtk (SEGA Saturn)
- - lxdream (SEGA DreamCast)
  - dosbox (DOS)
  - scummvm (Lucas Arts Point'n'Click Adventures)
 
