@@ -3,7 +3,6 @@ all:
 install:
 	mkdir -p $(DESTDIR)/etc/apt/sources.list.d/
 	mkdir -p $(DESTDIR)/etc/apt/preferences.d/
-	mkdir -p $(DESTDIR)/etc/default/
 	mkdir -p $(DESTDIR)/etc/sysctl.d/
 	mkdir -p $(DESTDIR)/etc/initramfs-tools/hooks/
 	mkdir -p $(DESTDIR)/etc/decryptkeydevice/
