@@ -1,3 +1,11 @@
+nanolx (1:1.29.20170825-1nano) unstable; urgecny=low
+
+  * new upstream release
+  * removed dependencies:
+    - libk3b6-extracodecs			[nanolx-media-x11]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 25 Aug 2017 23:26:20 +0200
+
 nanolx (1:1.28.20170814-1nano) unstable; urgency=low
 
   * new upstream release

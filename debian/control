@@ -400,7 +400,6 @@ Depends: audacity,
          xsane,
          avidemux,
          k3b,
-         libk3b6-extracodecs,
          mediathekview,
          easytag
 Description: Collection of graphical media applications
