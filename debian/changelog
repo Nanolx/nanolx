@@ -1,4 +1,4 @@
-nanolx (1:1.29.20170825-1nano) unstable; urgecny=low
+nanolx (1:1.29.20170825-1nano) unstable; urgency=low
 
   * new upstream release
   * removed dependencies:
