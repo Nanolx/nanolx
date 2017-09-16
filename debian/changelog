@@ -1,3 +1,35 @@
+nanolx (1:1.30.20170916-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies:
+    - xul-ext-text-link				[nanolx-xul-addons]
+    - xul-ext-beyond-australis			[nanolx-xul-addons]
+    - xul-ext-greasemonkey			[nanolx-xul-addons]
+    - xul-ext-stylish				[nanolx-xul-addons]
+    - xul-ext-super-start			[nanolx-xul-addons]
+    - xsettingsd				[nanolx-x11]
+    - spacefm-gtk3 | spacefm			[nanolx-x11]
+    - easystroke				[nanolx-x11]
+    - lumina-desktop				[nanolx-x11]
+    - avidemux					[nanolx-media-x11]
+    - colormake					[nanolx-devel-cli]
+    - colordiff					[nanolx-devel-cli]
+    - transifex-client				[nanolx-devel-cli]
+    - flawfinder				[nanolx-devel-cli]
+    - bsdiff					[nanolx-devel-cli]
+    - 2048-qml					[nanolx-games]
+    - wesnoth-1.13 | wesnoth-1.12		[nanolx-games]
+    - megaglest					[nanolx-games]
+    - edgar					[nanolx-games]
+    - manaplus					[nanolx-games]
+  * new dependencies:
+    - libk3b7-extracodecs			[nanolx-media-x11]
+    - gksu | kdesudo				[nanolx-security]
+    - libbluray2				[nanolx-media-codecs]
+  * fixed arm64 / i386 specific dependeny definitions
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 16 Sep 2017 20:31:13 +0200
+
 nanolx (1:1.29.20170825-1nano) unstable; urgency=low
 
   * new upstream release

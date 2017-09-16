@@ -179,15 +179,11 @@ Depends: compton,
          sawfish-pager (>= 0.90),
          ssd (>= 0.40),
          x11-xserver-utils,
-         xsettingsd,
-         spacefm-gtk3 | spacefm,
-         easystroke,
          konsole,
          gucharmap,
-         lumina-desktop,
          xarchiver,
          yad,
-         qt5-configuration-tool | bash,
+         qt5-configuration-tool,
          trayer
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
@@ -201,12 +197,8 @@ Description: Collection of X11 applications
  - librep (with gtk-binding)
  - sawfish (with sawfish-pager and session-dialog)
  - x11-xserver-utils
- - xsettingsd
- - spacefm
- - easystroke
  - konsole
  - xarchiver
- - Lumina Desktop Environment
  - YAD (GTK+ Dialogs from shell scripts)
  - Qt5 Configuration Tool
  - Trayer
@@ -237,7 +229,7 @@ Depends: clamav,
          tor-geoipdb,
          psad,
          seahorse,
-         gksu,
+         gksu | kdesudo,
          gpgv,
          pinentry-gtk2,
          enigmail,
@@ -257,7 +249,7 @@ Description: Collection of security related tools
  - tor (with torsocks and tor-geoipdb)
  - psad
  - seahorse
- - gksu
+ - gksu or kdesudo
  - gpgv (with pinentry-gtk2)
  - keepassx
  - Lynis
@@ -299,17 +291,12 @@ Architecture: all
 Depends: xul-ext-configuration-mania,
          xul-ext-download-status-bar,
          xul-ext-print-edit,
-         xul-ext-textlink,
-         xul-ext-beyond-australis,
          xul-ext-toggle-referer,
          xul-ext-ublock-origin,
          xul-ext-classic-theme-restorer,
-         xul-ext-greasemonkey,
          xul-ext-https-everywhere,
          xul-ext-noscript,
-         xul-ext-stylish,
          xul-ext-tabmixplus,
-         xul-ext-super-start,
          xul-ext-dovesec,
          xul-ext-customize-my-dove,
          thunderbird | icedove,
@@ -320,17 +307,12 @@ Description: Collection of XUL addons
  - configuration-mania
  - download-status-bar
  - print-edit
- - textlink
- - beyond-australis
  - toggle-referer
  - uBlock Origin
  - classic-theme-restorer
- - greasemonkey
  - https-everywhere
  - noscript
- - stylish
  - tabmixplus
- - super start
  - Dove Sec
  - Customize My Bird
 
@@ -345,18 +327,20 @@ Depends: gstreamer1.0-alsa,
          gstreamer1.0-crystalhd,
          gstreamer1.0-libav,
          phonon-backend-gstreamer,
-         libdvdcss2
+         libdvdcss2,
+         libbluray2
 Description: Collection of media codecs
  This meta-package installs media codecs.
  .
  These are:
- - gstreamer:
+ - gstreamer plugins:
    - alsa
    - good, base, bad, ugly
    - pulseaudio
    - libav, crystalhd
  - phonon-backend-gstreamer
- - libdvdcss
+ - libdvdcss2
+ - libbluray2
 
 Package: nanolx-media-cli
 Architecture: all
@@ -391,15 +375,14 @@ Depends: audacity,
          soundkonverter,
          gmtp,
          pavucontrol,
-         soundkonverter,
          yarock,
          mpv,
          geeqie,
          okular,
          gimp,
          xsane,
-         avidemux,
          k3b,
+         libk3b7-extracodecs,
          mediathekview,
          easytag
 Description: Collection of graphical media applications
@@ -417,15 +400,12 @@ Description: Collection of graphical media applications
  - GIMP
  - xsane
  - k3b
- - avidemux
  - mediathekview
  - easyTAG
 
 Package: nanolx-devel-cli
 Architecture: all
 Depends: ccache,
-         colormake,
-         colordiff,
          dpkg-dev,
          fakeroot,
          ubuntu-dev-tools,
@@ -447,10 +427,7 @@ Depends: ccache,
          autotools-dev,
          libtool,
          lintian,
-         transifex-client,
-         flawfinder,
          gdb,
-         bsdiff,
          codespell,
          shellcheck,
          licensecheck,
@@ -462,13 +439,10 @@ Description: Collection of cli development tools
  These are:
  - ccache, gcc 7 or 6, g++ 7 or 6
  - gcc-multilib 7 or 6, g++-multilib 7 or 6
- - colormake, colordiff
  - dpkg-dev, dh-make, dh-autoreconf, devscripts, lintian
- - gdb, flawfinder
- - make, cmake, pkg-config, git
+ - gdb, make, cmake, pkg-config, git
  - autotools-dev, libtool, autoconf, automake
  - ubuntu-dev-tools, schroot, sbuild, fakeroot, mozilla-devscripts
- - transifex-client, bsdiff
  - codespell, shellcheck, licensecheck, pycodestyle
 
 Package: nanolx-devel-android
@@ -477,7 +451,6 @@ Depends: adb | android-tools-adb,
          fastboot | android-tools-fastboot,
          gradle,
          apktool,
-         gmtp,
          zipalign,
          openjdk-8-jdk,
          zlib1g:i386
@@ -517,7 +490,6 @@ Package: nanolx-games
 Architecture: all
 Depends: glob2,
          freedroidrpg,
-         2048-qml,
          enigma,
          gnome-sudoku,
          gnome-mahjongg,
@@ -533,29 +505,20 @@ Depends: glob2,
          zelda-time-to-triumph,
          zelda-onilink-begins,
          zelda-navis-quest,
-         zelda-tunics,
-         wesnoth-1.13 | wesnoth-1.12,
-         megaglest,
-         edgar,
-         manaplus
+         zelda-tunics
 Description: Collection of games
  This meta-package installs games.
  .
  These are:
  - Globulation 2
  - FreeDroid RPG
- - 2048 (in qml)
  - Enigma
- - Edgar
  - GNOME Sudoku
  - GNOME Mahjongg
  - LinCity-NG
- - Mana Plus
- - MegaGlest
  - Neverball
  - Pingus
  - Super Tux Kart
- - Battle For Wesnoth
  - Zelda Solarus DX
  - Zelda Solarus XD
  - Zelda Solarus XD2: Mercuris Chess
@@ -568,8 +531,7 @@ Description: Collection of games
 
 Package: nanolx-games-emu
 Architecture: all
-Depends: dolphin-emu | bash,
-         dosbox,
+Depends: dosbox,
          mupen64plus,
          mupen64plus-audio-all,
          mupen64plus-video-all,
@@ -602,7 +564,7 @@ Description: Collection of emulators
  - dosbox (DOS)
  - scummvm (Lucas Arts Point'n'Click Adventures)
 
-Package: nanolx-games-hacking
+Package: nanolx-games-hacking-common
 Architecture: all
 Depends: applyppf3,
          makeppf3,
@@ -611,32 +573,7 @@ Depends: applyppf3,
          szs,
          patchimage,
          segher-wii-tools,
-         devkitppc | bash,
          qwad,
-         libfat | bash,
-         libruntimeiospatch | bash,
-         libogc | bash,
-         libogc-7zip | bash,
-         libogc-dopmii | bash,
-         libogc-expat | bash,
-         libogc-ext2fs | bash,
-         libogc-freetype | bash,
-         libogc-gd | bash,
-         libogc-grrlib | bash,
-         libogc-jpeg | bash,
-         libogc-mupdf | bash,
-         libogc-mxml | bash,
-         libogc-nfs | bash,
-         libogc-ntfs | bash,
-         libogc-png | bash,
-         libogc-pngu | bash,
-         libogc-sdl | bash,
-         libogc-smpeg | bash,
-         libogc-tiff | bash,
-         libogc-tremor | bash,
-         libogc-unrar | bash,
-         libogc-zip | bash,
-         libogc-zlib | bash,
          nand-bin-check,
          nand-dump,
          nand-extract,
@@ -666,3 +603,46 @@ Description: Collection of game hacking tools
  - segher-wii-tools, nand-bin-check, nand-dump, nand-extract, savetoy,
    ohne-schwarzenegger (misc. Wii homebrew utilities)
  - xdelta3
+
+Package: nanolx-games-hacking
+Architecture: amd64 i386
+Depends: nanolx-games-hacking-common,
+         devkitppc,
+         libfat,
+         libruntimeiospatch,
+         libogc,
+         libogc-7zip,
+         libogc-dopmii,
+         libogc-expat,
+         libogc-ext2fs,
+         libogc-freetype,
+         libogc-gd,
+         libogc-grrlib,
+         libogc-jpeg,
+         libogc-mupdf,
+         libogc-mxml,
+         libogc-nfs,
+         libogc-ntfs,
+         libogc-png,
+         libogc-pngu,
+         libogc-sdl,
+         libogc-smpeg,
+         libogc-tiff,
+         libogc-tremor,
+         libogc-unrar,
+         libogc-zip,
+         libogc-zlib,
+         dolphin-emu [amd64],
+Description: Collection of game hacking tools
+ This meta-package installs game hacking tools
+ .
+ NOTE: only use self-made ROMs (using homebrew, hardware mods, or
+       tools like Retrode). Downloading ROMs is often illegal. Known
+       exceptions: ROMs where the copyright expired, ROMs distributed
+       by the copyright holder (or it's legal successor) and Homebrew
+       ROMs (completely self-made).
+ .
+ These are:
+ - devkitppc / libogc*, libfat, libruntimeiospatch (GameCube / (v)Wii
+   homebrew development kit [only i386 and amd64])
+ - dolphin emulator [only amd64]
