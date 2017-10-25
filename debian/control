@@ -494,7 +494,7 @@ Description: Collection of games
 Package: nanolx-games-emu
 Architecture: all
 Depends: dosbox,
-         mupen64plus,
+         mupen64plus-qt | mupen64plus-ui-console,
          mupen64plus-audio-all,
          mupen64plus-video-all,
          mupen64plus-input-all,

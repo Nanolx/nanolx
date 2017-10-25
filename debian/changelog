@@ -1,3 +1,13 @@
+nanolx (1:2.1.20171025-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies
+    - mupen64plus				[nanolx-games-emu]
+  * new dependencies
+    - mupen64plus-qt | mupen64plus-ui-console	[nanolx-games-emu]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Wed, 25 Oct 2017 18:34:04 +0200
+
 nanolx (1:2.0.20170919-1nano) unstable; urgency=low
 
   * new upstream release
