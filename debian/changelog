@@ -1,3 +1,46 @@
+nanolx (1:2.0.20170919-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies
+    - firefox | iceweasel			[nanolx-net]
+    - firefox | iceasesel			[nanolx-xul-addons]
+    - xul-ext-configuration-mania		[nanolx-xul-addons]
+    - xul-ext-download-status-bar		[nanolx-xul-addons]
+    - xul-ext-print-edit			[nanolx-xul-addons]
+    - xul-ext-toggle-referer			[nanolx-xul-addons]
+    - xul-ext-ublock-origin			[nanolx-xul-addons]
+    - xul-ext-classic-theme-restorer		[nanolx-xul-addons]
+    - xul-ext-https-everywhere			[nanolx-xul-addons]
+    - xul-ext-noscript				[nanolx-xul-addons]
+    - xul-ext-tabmixplus			[nanolx-xul-addons]
+    - hdparm					[nanolx-admin]
+    - aptsh					[nanolx-admin]
+    - lm-sensors				[nanolx-admin]
+    - fancontrol				[nanolx-admin]
+    - xsensors					[nanolx-admin]
+    - grub2-theme-aurora-penguinis		[nanolx-admin]
+    - plymouth-theme-aurora-penguinis-2		[nanolx-admin]
+    - cupt					[nanolx-apt-tools]
+    - libcupt4-1-downloadmethod-wget		[nanolx-apt-tools]
+    - libcupt4-1-downloadmethod-curl		[nanolx-apt-tools]
+    - gpm					[nanolx-cli]
+    - shc					[nanolx-cli]
+    - dcfldd					[nanolx-cli]
+    - gufw					[nanolx-security]
+  * new dependencies
+    - palemoon-installer			[nanolx-net]
+    - lightdm-gtk-greeter-settings		[nanolx-x11]
+    - firewalld					[nanolx-security]
+    - firewall-config				[nanolx-security]
+  * changed dependencies
+    - nanolx-games-hacking	>>>	nanolx-games-hacking-common	[nanolx]
+    - nanolx-xul-addons		>>>	nanolx-thunderbird-addons	[nanolx]
+    - conky			>>>	conky-std			[nanolx-x11]
+  * renamed packages
+    - nanolx-xul-addons		>>>	nanolx-thunderbird-addons
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 19 Sep 2017 18:54:26 +0200
+
 nanolx (1:1.30.20170916-1nano) unstable; urgency=low
 
   * new upstream release

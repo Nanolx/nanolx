@@ -15,7 +15,7 @@ Depends: nanolx-admin,
          nanolx-x11-theme,
          nanolx-security,
          nanolx-net,
-         nanolx-xul-addons,
+         nanolx-thunderbird-addons,
          nanolx-devel-cli,
          nanolx-devel-android,
          nanolx-devel-x11,
@@ -24,7 +24,7 @@ Depends: nanolx-admin,
          nanolx-media-x11,
          nanolx-games,
          nanolx-games-emu,
-         nanolx-games-hacking
+         nanolx-games-hacking-common
 Description: Nanolx base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
@@ -36,7 +36,6 @@ Description: Nanolx base package
 Package: nanolx-admin
 Architecture: all
 Depends: synaptic,
-         hdparm,
          gsmartcontrol,
          aptitude,
          gadmin-samba,
@@ -53,22 +52,15 @@ Depends: synaptic,
          gtkorphan,
          galternatives,
          gkdebconf,
-         aptsh,
          needrestart,
          cpufrequtils,
          gprename,
          cruft-ng,
-         lm-sensors,
-         fancontrol,
-         xsensors,
          cryptsetup,
-         gparted,
-         grub2-theme-aurora-penguinis,
-         plymouth-theme-aurora-penguinis-2
+         gparted
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
- - hdparm
  - gparted
  - gsmartcontrol
  - aptitude
@@ -90,9 +82,6 @@ Description: Nano admin package
  - cpufrequtils
  - gprename
  - cruft-ng
- - lm-sesnors
- - fancontrol
- - xsensors
  - cryptsetup
 
 Package: nanolx-apt-tools
@@ -103,9 +92,7 @@ Depends: apt-file,
          apt-show-versions,
          apt-transport-https,
          debdelta,
-         reprepro,
-         cupt,
-         libcupt4-1-downloadmethod-wget | libcupt4-1-downloadmethod-curl
+         reprepro
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt,
  including apt-transport-https and debdelta.
@@ -125,18 +112,15 @@ Package: nanolx-cli
 Architecture: all
 Depends: coreutils,
          vim,
-         gpm,
          less,
          rsync,
          bash,
          bash-completion,
-         shc,
          mc,
          p7zip-full,
          zip,
          xz-utils,
          unrar,
-         dcfldd,
          bashstyle-ng (>= 9.0~rc1),
          fortunes-flashrider,
          fdupes,
@@ -147,19 +131,14 @@ Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
  These are:
- - coreutils-nano (coreutils with progressbar patch)
+ - coreutils
  - BashStyle-NG
  - vim
- - gpm
  - less
  - rsync
  - mc
- - bash
- - bash-completion
- - shc
- - dcfldd
+ - bash, bash-completion
  - fortunes-flashrider
- - mc
  - zip, rar, p7zip, xz
  - fdupes
  - unp
@@ -169,10 +148,11 @@ Description: Collection of basic command line tools
 Package: nanolx-x11
 Architecture: all
 Depends: compton,
-         conky,
+         conky-std,
          fehlstart,
          lightdm,
          lightdm-gtk-greeter,
+         lightdm-gtk-greeter-settings,
          rep (>= 0.92),
          rep-gtk (>= 0.90),
          sawfish (>= 1.9.1),
@@ -193,9 +173,9 @@ Description: Collection of X11 applications
  - conky
  - gucharmap
  - fehlstart
- - lightdm (with gtk-greeter)
+ - lightdm (with gtk-greeter and settings editor)
  - librep (with gtk-binding)
- - sawfish (with sawfish-pager and session-dialog)
+ - sawfish (with pager and session-dialog)
  - x11-xserver-utils
  - konsole
  - xarchiver
@@ -223,7 +203,6 @@ Architecture: all
 Depends: clamav,
          clamtk,
          clamassassin,
-         gufw,
          tor,
          torsocks,
          tor-geoipdb,
@@ -235,7 +214,9 @@ Depends: clamav,
          enigmail,
          keepassx,
          lynis,
-         rkhunter
+         rkhunter,
+         firewalld,
+         firewall-config
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
@@ -245,7 +226,7 @@ Description: Collection of security related tools
  .
  These are:
  - clamav (with clamtk ui and clamassassin spam filter)
- - gufw
+ - firewalld (with firewall-config)
  - tor (with torsocks and tor-geoipdb)
  - psad
  - seahorse
@@ -259,7 +240,6 @@ Package: nanolx-net
 Architecture: all
 Depends: openssh-client,
          wireshark,
-         firefox | iceweasel,
          qbittorrent,
          filezilla,
          thunderbird | icedove,
@@ -268,51 +248,33 @@ Depends: openssh-client,
          kvirc,
          openvpn,
          openresolv,
-         torbrowser-launcher
+         torbrowser-launcher,
+         palemoon-installer
 Description: Collection of network applications
  This meta-package installs network applications.
  .
  These are:
  - openssh-client
  - wireshark
- - firefox (or iceweasel before the switch back to firefox)
  - qbittorrent
  - filezilla
  - thunderbird (or icedove before the switch back to thunderbird)
  - smbnetfs
  - GNU ftpsync
  - kvirc
- - openvpn
+ - OpenVPN
  - openresolv
- - torbrowser launcher
+ - TOR Browser launcher
+ - Palemoon Installer
 
-Package: nanolx-xul-addons
+Package: nanolx-thunderbird-addons
 Architecture: all
-Depends: xul-ext-configuration-mania,
-         xul-ext-download-status-bar,
-         xul-ext-print-edit,
-         xul-ext-toggle-referer,
-         xul-ext-ublock-origin,
-         xul-ext-classic-theme-restorer,
-         xul-ext-https-everywhere,
-         xul-ext-noscript,
-         xul-ext-tabmixplus,
-         xul-ext-dovesec,
+Depends: xul-ext-dovesec,
          xul-ext-customize-my-dove,
-         thunderbird | icedove,
-         firefox | iceweasel
+         thunderbird | icedove
 Description: Collection of XUL addons
- This meta-package installs several addons for Firefox and Icedove.
+ This meta-package installs addons for Thunderbird.
  .
- - configuration-mania
- - download-status-bar
- - print-edit
- - toggle-referer
- - uBlock Origin
- - classic-theme-restorer
- - https-everywhere
- - noscript
- - tabmixplus
  - Dove Sec
  - Customize My Bird
 
