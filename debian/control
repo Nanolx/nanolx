@@ -164,7 +164,8 @@ Depends: compton,
          xarchiver,
          yad,
          qt5-configuration-tool,
-         trayer
+         trayer,
+         gtk3-nocsd
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
@@ -182,6 +183,7 @@ Description: Collection of X11 applications
  - YAD (GTK+ Dialogs from shell scripts)
  - Qt5 Configuration Tool
  - Trayer
+ - GTK+3 no client side decoration (CSD)
 
 Package: nanolx-x11-theme
 Architecture: all
