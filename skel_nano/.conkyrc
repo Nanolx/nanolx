@@ -1,56 +1,56 @@
-alignment middle_left
-background true
-border_width 1
-cpu_avg_samples 2
-default_color FFFFFF
-color0 0077FF
-color1 FCAF3E
-color2 55FC00
-color3 FF0019
-color4 EB00FF
-color5 FF9A00
-color6 FFEB00
-color7 00D0FF
-default_outline_color 0077FF
-default_shade_color 0077FF
-double_buffer yes
-draw_borders no
-draw_graph_borders yes
-draw_outline no
-draw_shades no
-gap_x 15
-gap_y 15
-max_port_monitor_connections 64
-max_specials 512
-max_user_text 16384
-maximum_width 210
-net_avg_samples 2
-no_buffers yes
-out_to_console no
-own_window_colour black
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_transparent no
-own_window_type normal
-own_window yes
-stippled_borders 2
-update_interval 1
-uppercase no
-use_spacer right
-use_xft yes
-xftalpha 0.8
-xftfont  Bitstream Vera Sans Mono:size=9
+conky.config = {
+	alignment = 'middle_left',
+	background = true,
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = '#FFFFFF',
+	color0 = '#0077FF',
+	color1 = '#FCAF3E',
+	color2 = '#55FC00',
+	color3 = '#FF0019',
+	color4 = '#EB00FF',
+	color5 = '#FF9A00',
+	color6 = '#FFEB00',
+	color7 = '#00D0FF',
+	default_outline_color = '#0077FF',
+	default_shade_color = '#0077FF',
+	double_buffer = true,
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+	gap_x = 15,
+	gap_y = 15,
+	max_port_monitor_connections = 64,
+	max_specials = '512',
+	max_user_text = 16384,
+	net_avg_samples = 2,
+	no_buffers = true,
+	out_to_console = false,
+	own_window_colour = 'black',
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	own_window_transparent = false,
+	own_window_type = 'normal',
+	own_window = true,
+	stippled_borders = 2,
+	update_interval = 1,
+	uppercase = false,
+	use_spacer = 'right',
+	use_xft = true,
+	xftalpha = 0.8,
+	font = 'Bitstream Vera Sans Mono:size=9',
 
-TEXT
+};
+
+conky.text = [[
 ${color6}${alignc}Debian GNU/Linux ${machine}
 ${color0}${alignc}${kernel}
 ${color7}${time %k:%M:%S}${alignr}${uptime}
 
-${color}${execpi 300 TDY=`date +%d | sed -e 's/^0//'` ; ncal -M -w -h | sed 's/^/     /' | sed /" $TDY "/s/" $TDY "/" "'${color2}'"$TDY"'${color}'" "/}
+${color}${alignc}${execpi 300 TDY=`date +%d | sed -e 's/^0//'` ; ncal -M -w -h | sed 's/^/     /' | sed /" $TDY "/s/" $TDY "/" "'${color2}'"$TDY"'${color}'" "/}
 
 ${color3}Core1: ${cpu cpu1}%${alignr}${cpu cpu2}% :Core2
 ${color2}Core3: ${cpu cpu3}%${alignr}${cpu cpu4}% :Core4
-${color3}Core5: ${cpu cpu5}%${alignr}${cpu cpu6}% :Core6
-${color2}Core7: ${cpu cpu7}%${alignr}${cpu cpu8}% :Core8
 #${color2}CPU: ${execi 30 sensors | grep 'CPU Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'CPU Fan Speed' | awk '{print $4}'} RPM
 #${color2}MB: ${execi 30 sensors | grep 'MB Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'Chassis Fan Speed' | awk '{print $4}'} RPM
 
@@ -59,22 +59,16 @@ ${color4}${membar}
 ${color4}SWAP ${swapperc}%${alignr}${swap}/${swapmax}
 ${color4}${swapbar}
 
-${color7}Local IP:  ${addr enp4s0}
-${color7}Public IP: ${execi 300 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
-${color7}Net Down: ${downspeed enp4s0}${alignr}/ ${totaldown enp4s0}
-${color7}Net Up:   ${upspeed enp4s0}${alignr}/ ${totalup enp4s0}
+${color7}Local IP:  ${alignr}${addr wlp2s0}
+${color7}Public IP: ${alignr}${execi 300 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
+${color7}Net Down: ${alignr}${downspeed wlp2s0}${alignr}/ ${totaldown wlp2s0}
+${color7}Net Up:   ${alignr}${upspeed wlp2s0}${alignr}/ ${totalup wlp2s0}
 
 ${color5}Disk R ${diskio_read}/ W ${diskio_write}
 ${color5}/${alignr}${fs_used /}/${fs_size /}
 ${color5}${fs_bar 5,210 /}
 ${color5}/home${alignr}${fs_used /home}/${fs_size /home}
 ${color5}${fs_bar 5,210 /home}
-${color5}/backup${alignr}${fs_used /backup}/${fs_size /backup}
-${color5}${fs_bar 5,210 /backup}
-${color5}/storage${alignr}${fs_used /storage}/${fs_size /storage}
-${color5}${fs_bar 5,210 /storage}
-${color5}/windows${alignr}${fs_used /windows}/${fs_size /windows}
-${color5}${fs_bar 5,210 /windows}
 
 ${color0}Top:${alignr}Processes: ${processes}
 ${color}${top name 1}${alignr}${top pid 1} ${top cpu 1}
@@ -82,3 +76,4 @@ ${color}${top name 2}${alignr}${top pid 2} ${top cpu 2}
 ${color}${top name 3}${alignr}${top pid 3} ${top cpu 3}
 ${color}${top name 4}${alignr}${top pid 4} ${top cpu 4}
 ${color}${top name 5}${alignr}${top pid 5} ${top cpu 5}
+]];
