@@ -1,0 +1,285 @@
+;;
+;; Sawfish Resource File
+;; Revision: 141 (2017-09-28)
+;;
+
+;; Load Modules
+
+(require 'sawfish.wm.util.prompt)
+(require 'sawfish.wm.util.selection)
+(require 'sawfish.wm.custom)
+(require 'sawfish.wm.commands.jump-or-exec)
+(require 'sawfish.wm.ext.pager)
+(require 'sawfish.wm.state.maximize)
+(require 'sawfish.wm.commands.move-resize)
+(require 'sawfish.wm.edge.actions)
+(require 'fehlstart)
+(require 'rep.io.timers)
+
+(setenv "PATH" "/usr/share/bashstyle-ng/rc/functions/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/chris/bin")
+
+;(setenv "XDG_CURRENT_DESKTOP" "xfce")
+
+;; display-message-with-timeout
+
+(define (display-message-with-timeout message timeout)
+  (display-message message)
+  (make-timer (lambda () (display-message nil)) timeout))
+
+;; view-clipboard
+
+(defcustom clipboard-preview-clip-length 600
+  "Maximum length of Clipboard Preview"
+  :type number
+  :group misc)
+
+(defcustom clipboard-preview-timeout 15
+  "How long to display Clipboard Preview"
+  :type number
+  :group misc)
+
+(define (view-clipboard)
+  "Show the contents of the clipboard in a message window"
+  (let ((c (x-get-selection 'PRIMARY)))
+    (if (> (length c) 0)
+        (if (< (length c) clipboard-preview-clip-length)
+            (display-message-with-timeout c clipboard-preview-timeout)
+          (display-message-with-timeout
+           (format nil "%s ..." (substring c 0 clipboard-preview-clip-length))
+           clipboard-preview-timeout)))))
+
+;; display-ws-name
+
+(defcustom display-ws-name-on-switch nil
+  "Whether to display workspace name upon switch"
+  :type boolean
+  :group workspace
+  :after-set (lambda () (display-ws-name-setter)))
+
+(defcustom display-ws-name-timeout 2
+  "How long to display workspace name"
+  :type number
+  :group workspace)
+
+(define (display-workspace-name)
+  (display-message-with-timeout
+   (format nil "Now on Workspace: %s"
+           (or (nth current-workspace workspace-names)
+               (format nil (_ "Workspace %d") (1+ current-workspace))))
+   display-ws-name-timeout))
+
+(define (display-ws-name-setter)
+  (if (eq display-ws-name-on-switch 't)
+      (add-hook 'enter-workspace-hook display-workspace-name)
+    (remove-hook 'enter-workspace-hook display-workspace-name)))
+
+(define-command 'display-workspace-name display-workspace-name #:class 'default)
+
+;; get-frame-width
+
+(define (get-frame-width w)
+  (let ((dims (window-dimensions w))
+        (frame (window-frame-dimensions w)))
+    (- (car frame) (car dims))))
+
+;; get-frame-height
+(define (get-frame-height w)
+  (let ((dims (window-dimensions w))
+        (frame (window-frame-dimensions w)))
+    (- (cdr frame) (cdr dims))))
+
+;; resize-window-half-screen-size
+(define (resize-window-half-screen w)
+  (let ((half-width (inexact->exact (* (screen-width) .75)))
+        (frame-width (get-frame-width w))
+        (half-height (inexact->exact (* (screen-height) .75)))
+        (frame-height (get-frame-height w)))
+    (resize-window-with-hints* w (- half-width frame-width)
+                                 (- half-height frame-height))))
+
+(define-command 'resize-window-half-screen resize-window-half-screen #:spec "%W")
+
+;; resize-window-half-screen-center
+(define (resize-window-half-screen-center w)
+  (unmaximize-window w)
+  (resize-window-half-screen w)
+  (move-window-center w))
+
+(define-command 'resize-window-half-screen-center resize-window-half-screen-center #:spec "%W")
+
+;; Global Keybindings
+
+(bind-keys global-keymap
+            "F1"      '(system "true &")
+            "W-F3"    '(system "sawfish-config &")
+            "C-W-e"   'display-errors
+            "C-W-n"   'restart
+            "C-W-q"   'quit
+            "C-W-a"   'view-clipboard
+            "W-TAB"   'cycle-windows
+            "C-TAB"   'cycle-windows-backwards
+            "C-W-t"   '(system "eject -T /dev/sr0 &")
+            "W-Menu"  'popup-window-menu
+            "C-Menu"  'popup-root-menu
+            "S-Menu"  'popup-apps-menu
+            "C-S-w"   'change-wallpaper
+            "C-W-d"   'show-desktop
+            "C-S-d"   'hide-desktop
+            "C-S-i"   'iconify-all-windows
+            "C-S-q"   'close-all-windows
+            "S-Print" '(system "import -border window.png")
+            "C-Print" '(system "import -window root root.png")
+            "W-F6"    `(jump-or-exec "Geeqie" "geeqie")
+            "W-F7"    `(jump-or-exec "Firefox" "firefox" #:match-class t)
+            "W-F8"    `(jump-or-exec "Yarock" "yarock" #:match-class t)
+            "W-F9"    `(jump-or-exec "Synaptic" "gksu synaptic")
+            "W-F11"   `(jump-or-exec "Glade-3" "glade-3" #:match-class t)
+            "Home"    `(toggle-or-exec "dolphin" "dolphin ~" #:match-class t)
+            "F12"     `(toggle-or-exec "konsole" "konsole" #:match-class t)
+	    "Super-w" '(system "image")
+	    "Super-e" '(system "comic"))
+
+;; Window Keybindings
+
+(unbind-keys window-keymap "Button1-Click")
+
+;; Rootwindow Keybindings
+
+(bind-keys root-window-keymap
+            "Button2-Click" 'popup-window-list-menu
+            "Button3-Click" 'popup-root-menu)
+
+;; Window Keybindings
+
+(bind-keys window-keymap
+            "W-F4" 'delete-window-safely
+            "W-F5" 'destroy-window
+            "C-W-m" 'maximize-window
+            "C-W-w" 'unmaximize-window
+            "C-W-s" 'shade-window
+            "C-W-u" 'unshade-window
+            "C-W-i" 'iconify-window
+            "C-W-r" 'raise-window
+            "C-W-l" 'lower-window
+            "C-W-R" 'raise-window-depth
+            "C-W-L" 'lower-window-depth
+            "C-W-f" 'maximize-window-fullscreen
+            "C-W-v" 'maximize-window-vertically
+            "C-W-h" 'maximize-window-horizontally
+            "C-W-y" 'move-window-interactively
+            "C-S-x" 'resize-window-interactively
+            "C-S-r" 'rename-window
+            "C-S-c" 'move-window-center
+            "C-S-h" 'halve-window-size
+            "C-S-d" 'double-window-size
+            "C-S-e" 'resize-window-half-screen-center)
+
+;;; Window Snooping
+
+(defvar window-snooper-timeout 15)
+
+(define (window-snooper)
+  "Display information about the focused window."
+  (let* ((w (input-focus))
+         (net-wm-name (get-x-text-property w '_NET_WM_NAME))
+         (wm-class (get-x-text-property w 'WM_CLASS))
+         (net-wm-icon-name (get-x-text-property w '_NET_WM_ICON_NAME))
+         (wm-window-role (get-x-text-property w 'WM_WINDOW_ROLE))
+         (wm-locale-name (get-x-text-property w 'WM_LOCALE_NAME))
+         (pos (window-position w))
+         (dims (window-dimensions w))
+         (frame-dims (window-frame-dimensions w))
+         (window-x (car pos))
+         (window-y (cdr pos))
+         (window-width (car dims))
+         (window-height (cdr dims))
+         (frame-width (- (car frame-dims) window-width))
+         (frame-height (- (cdr frame-dims) window-height)))
+
+    (display-message-with-timeout
+     (format nil
+             "
+About the currently focused window:
+===================================
+
+_NET_WM_NAME: \t\t %s
+WM_CLASS: \t\t\t %s
+_NET_WM_ICON_NAME: \t %s
+WM_WINDOW_ROLE: \t %s
+WM_LOCALE_NAME: \t %s
+Window X: \t\t\t %s pixels
+Window Y: \t\t\t %s pixels
+Window Width: \t\t %s pixels
+Window Height: \t\t %s pixels
+Frame Width: \t\t\t %s pixels
+Frame Height: \t\t %s pixels
+
+===================================\n"
+             (if net-wm-name
+                 (aref net-wm-name 0)
+               "")
+             (concat (aref wm-class 1)
+                     "/"
+                     (aref wm-class 0))
+             (if net-wm-icon-name
+                 (aref net-wm-icon-name 0)
+               "")
+             (if wm-window-role
+                 (aref wm-window-role 0)
+               "")
+             (if wm-locale-name
+                 (aref wm-locale-name 0)
+               "")
+             window-x
+             window-y
+             window-width
+             window-height
+             frame-width
+             frame-height) window-snooper-timeout)))
+
+(define-command 'window-snooper window-snooper)
+
+(bind-keys global-keymap
+           "C-S-s" 'window-snooper)
+
+;;; Configuration
+
+;; Timers
+( defvar-setq edge-flip-delay 250 )
+( defvar-setq hot-spot-delay 125 )
+( defvar-setq edge-actions-enabled t )
+
+;; HotSpots
+(defvar-setq top-left-corner-function
+  (lambda () (jump-or-exec "Pale Moon" "palemoon" #:match-class t)))
+
+;( defvar-setq top-right-corner-function
+; ( lambda () ( pager-unhide ) ) )
+
+( defvar-setq  bottom-right-corner-function
+  ( lambda () ( show-desktop ) ) )
+
+( defvar-setq top-edge-function
+  ( lambda () ( jump-or-exec "konsole" "konsole" #:match-class t ) ) )
+
+( defvar-setq bottom-edge-function
+  ( lambda () ( jump-or-exec "dolphin" "dolphin" #:match-class t ) ) )
+
+;; HotMove
+( defvar-setq top-edge-move-function
+  ( lambda ( win ) ( maximize-window win ) ) )
+
+( defvar-setq bottom-edge-move-function
+  ( lambda ( win ) ( delete-window win ) ) )
+
+;; actions when pointer hits edge
+( defvar-setq left-edge-action 'flip-workspace )
+( defvar-setq right-edge-action 'flip-workspace )
+( defvar-setq bottom-edge-action 'none/hot-spot )
+( defvar-setq top-edge-action 'none/hot-spot )
+
+;; actions while moving window hits edge
+( defvar-setq left-edge-move-action 'flip-workspace )
+( defvar-setq right-edge-move-action 'flip-workspace )
+( defvar-setq bottom-edge-move-action 'none )
+( defvar-setq top-edge-move-action 'none )
