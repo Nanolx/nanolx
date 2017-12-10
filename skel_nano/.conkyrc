@@ -45,30 +45,27 @@ conky.config = {
 conky.text = [[
 ${color6}${alignc}Debian GNU/Linux ${machine}
 ${color0}${alignc}${kernel}
+
 ${color7}${time %k:%M:%S}${alignr}${uptime}
 
 ${color}${alignc}${execpi 300 TDY=`date +%d | sed -e 's/^0//'` ; ncal -M -w -h | sed 's/^/     /' | sed /" $TDY "/s/" $TDY "/" "'${color2}'"$TDY"'${color}'" "/}
 
 ${color3}Core1: ${cpu cpu1}%${alignr}${cpu cpu2}% :Core2
 ${color2}Core3: ${cpu cpu3}%${alignr}${cpu cpu4}% :Core4
-#${color2}CPU: ${execi 30 sensors | grep 'CPU Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'CPU Fan Speed' | awk '{print $4}'} RPM
-#${color2}MB: ${execi 30 sensors | grep 'MB Temperature' | awk '{print $3}' | sed 's/+//;s/°.*//'} °${alignr}Fan: ${execi 30 sensors | grep 'Chassis Fan Speed' | awk '{print $4}'} RPM
 
-${color4}RAM  ${memperc}%${alignr}${mem}/${memmax}
+${color4}RAM ${alignr}${mem} [${memmax}]
 ${color4}${membar}
-${color4}SWAP ${swapperc}%${alignr}${swap}/${swapmax}
-${color4}${swapbar}
 
-${color7}Local IP:  ${alignr}${addr wlp2s0}
-${color7}Public IP: ${alignr}${execi 300 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
-${color7}Net Down: ${alignr}${downspeed wlp2s0}${alignr}/ ${totaldown wlp2s0}
-${color7}Net Up:   ${alignr}${upspeed wlp2s0}${alignr}/ ${totalup wlp2s0}
+${color7}Local ${alignr}${addr wlp2s0}
+${color7}Extern ${alignr}${execi 300 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
+${color7}Down ${alignr}${downspeed wlp2s0} [${totaldown wlp2s0}]
+${color7}Up ${alignr}${upspeed wlp2s0} [${totalup wlp2s0}]
 
-${color5}Disk R ${diskio_read}/ W ${diskio_write}
-${color5}/${alignr}${fs_used /}/${fs_size /}
-${color5}${fs_bar 5,210 /}
-${color5}/home${alignr}${fs_used /home}/${fs_size /home}
-${color5}${fs_bar 5,210 /home}
+${color5}R ${diskio_read} ${alignr}W ${diskio_write}
+${color5}/ ${alignr}${fs_used /} [${fs_size /}]
+${color5}${fs_bar /}
+${color5}/home ${alignr}${fs_used /home} [${fs_size /home}]
+${color5}${fs_bar /home}
 
 ${color0}Top:${alignr}Processes: ${processes}
 ${color}${top name 1}${alignr}${top pid 1} ${top cpu 1}
