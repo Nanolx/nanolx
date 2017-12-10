@@ -1,6 +1,0 @@
-#!/bin/sh
-# copy decryptkeydevice files to initramfs
-#
-
-mkdir -p $DESTIDR/etc/
-cp -rp /etc/decryptkeydevice $DESTDIR/etc/

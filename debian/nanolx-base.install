@@ -1,5 +1,3 @@
-etc/initramfs-tools/
-etc/decryptkeydevice/
 etc/skel_nano/
 etc/sysctl.d/netspeed.conf
 etc/sysctl.d/shared-memory.conf
