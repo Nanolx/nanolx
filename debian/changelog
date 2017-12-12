@@ -11,6 +11,7 @@ nanolx (1:2.2.20171210-1nano) unstable; urgency=low
     - Sawfish configuration			[nanolx-base]
   * removed features
     - decryptkeydevice support			[nanolx-base]
+    - tapastic-dl				[not installed[
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 10 Dec 2017 18:11:42 +0100
 
