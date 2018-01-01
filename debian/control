@@ -504,7 +504,7 @@ Depends: dosbox,
          yabause-gtk,
          gnuboy-sdl,
          scummvm,
-         visualboyadvance-gtk,
+         visualboyadvance,
          desmume,
          fceux
 Description: Collection of emulators
@@ -518,7 +518,7 @@ Description: Collection of emulators
  .
  These are:
  - gnuboy-sdl (Game Boy, Game Boy Color)
- - visualboyadvance-gtk (Game Boy Advance)
+ - visualboyadvance (Game Boy Advance)
  - desmume (Nintendo DS)
  - fceux (Famicom / NES)
  - snex9x-gtk (Super Famicom / SNES)

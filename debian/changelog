@@ -1,3 +1,13 @@
+nanolx (1:2.3.20180101-1nano) unstable; urgency=low
+
+  * new upstream release
+  * changed dependencies
+    - visualboyadvance-gtk >> visualboyadvance	[nanolx-games]
+  * updated scripts
+    - mksbuild 1.2.1	[use HTTP mirror instead of FTP]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 01 Jan 2018 11:51:29 +0100
+
 nanolx (1:2.2.20171210-1nano) unstable; urgency=low
 
   * new upstream release
