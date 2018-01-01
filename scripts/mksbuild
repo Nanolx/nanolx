@@ -1,12 +1,12 @@
 #!/bin/bash
 
-version="1.2.0"
-reldate="2016/05/25"
+version="1.2.1"
+reldate="2018/01/01"
 
 case ${1} in
 	"" | "-h" | "--help" )
 		echo -e "mksbuild v${version} (${reldate})
-© 2015 - 2016 Christopher Roy Bratusek <nano@jpberlin.de>
+© 2015 - 2017 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
@@ -23,6 +23,6 @@ examples:
 		groups $(whoami) | grep sbuild >/dev/null || sudo adduser $(whoami) sbuild
 
 		sudo apt-get install sbuild schroot ubuntu-dev-tools debootstrap
-		mk-sbuild --arch=${1} --debootstrap-mirror=ftp://ftp.debian.org/debian/ ${2}
+		mk-sbuild --arch=${1} --debootstrap-mirror=http://ftp.debian.org/debian/ ${2}
 	;;
 esac
