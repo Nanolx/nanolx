@@ -1,3 +1,11 @@
+nanolx (1:2.4.2018....-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies
+    - kuser					[nanolx-admin]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>
+
 nanolx (1:2.3.20180101-1nano) unstable; urgency=low
 
   * new upstream release
@@ -21,7 +29,7 @@ nanolx (1:2.2.20171210-1nano) unstable; urgency=low
     - Sawfish configuration			[nanolx-base]
   * removed features
     - decryptkeydevice support			[nanolx-base]
-    - tapastic-dl				[not installed[
+    - tapastic-dl				[not installed]
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 10 Dec 2017 18:11:42 +0100
 

@@ -40,7 +40,6 @@ Depends: synaptic,
          aptitude,
          gadmin-samba,
          gadmin-rsync,
-         kuser,
          gksu | kdesudo,
          lm-sensors,
          ntfs-3g,
@@ -66,7 +65,6 @@ Description: Nano admin package
  - aptitude
  - gadmin-samba
  - gadmin-rsync
- - kuser
  - gksu | kdesudo
  - lm-sensors
  - ntfs-3g
