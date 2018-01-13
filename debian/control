@@ -210,13 +210,14 @@ Depends: clamav,
          seahorse,
          gksu | kdesudo,
          gpgv,
-         pinentry-gtk2,
+         pinentry-gtk3 | pinentry-gtk2,
          enigmail,
          keepassx,
          lynis,
          rkhunter,
          firewalld,
-         firewall-config
+         firewall-config,
+         spectre-meltdown-hunter
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
@@ -231,10 +232,11 @@ Description: Collection of security related tools
  - psad
  - seahorse
  - gksu or kdesudo
- - gpgv (with pinentry-gtk2)
+ - gpgv (with pinentry Gtk+3 or Gtk+2)
  - keepassx
  - Lynis
  - rkhunter
+ - Spectre/Meltdown checker
 
 Package: nanolx-net
 Architecture: all
@@ -431,7 +433,6 @@ Architecture: all
 Depends: glade,
          bluefish,
          geany,
-         geany-plugins,
          d-feet,
          okteta,
          nemiver,
@@ -442,7 +443,7 @@ Description: Collection of x11 development tools
  These are:
  - glade
  - bluefish
- - geany (+ plugins)
+ - geany
  - poedit
  - d-feet
  - okteta

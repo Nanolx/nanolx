@@ -1,10 +1,15 @@
-nanolx (1:2.4.2018....-1nano) unstable; urgency=low
+nanolx (1:2.4.20180113-1nano) unstable; urgency=low
 
   * new upstream release
   * removed dependencies
     - kuser					[nanolx-admin]
+    - geany-plugins				[nanolx-devel-x11]
+  * new dependencies
+    - spectre-meltdown-checker			[nanolx-security]
+  * changed dependencies
+    - pinentry-gtk2 >> pinentry-gtk3 | pinentry-gtk2	[nanolx-security]
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 13 Jan 2018 10:46:19 +0100
 
 nanolx (1:2.3.20180101-1nano) unstable; urgency=low
 
