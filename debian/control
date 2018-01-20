@@ -161,7 +161,7 @@ Depends: compton,
          gucharmap,
          xarchiver,
          yad,
-         qt5-configuration-tool,
+         qt5ct,
          trayer,
          gtk3-nocsd
 Description: Collection of X11 applications
