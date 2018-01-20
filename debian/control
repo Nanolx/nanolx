@@ -271,14 +271,16 @@ Description: Collection of network applications
 
 Package: nanolx-thunderbird-addons
 Architecture: all
-Depends: xul-ext-dovesec,
-         xul-ext-customize-my-dove,
+Depends: xul-ext-thundersec,
+         xul-ext-customize-my-bird,
+         xul-ext-thunderbird-conversations,
          thunderbird | icedove
 Description: Collection of XUL addons
  This meta-package installs addons for Thunderbird.
  .
- - Dove Sec
+ - Thunder Sec
  - Customize My Bird
+ - Thunderbird Conversations
 
 Package: nanolx-media-codecs
 Architecture: all

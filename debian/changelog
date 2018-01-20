@@ -2,7 +2,10 @@ nanolx (1:2.5.20180120-1nano) unstable; urgency=low
 
   * new upstream release
   * changed dependencies
-    - qt5-configuration-tool >> qt5ct		[nanolx-x11]
+    - qt5-configuration-tool >> qt5ct						[nanolx-x11]
+    - xul-ext-dovesec >> xul-ext-thundersec					[nanolx-thunderbird-addons]
+    - xul-ext-customize-my-dove >> xul-ext-customize-my-bird			[nanolx-thunderbird-addons]
+    - xul-ext-icedove-conversations >> xul-ext-thunderbird-conversations	[nanolx-thunderbird-addons]
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 20 Jan 2018 19:29:12 +0100
 
