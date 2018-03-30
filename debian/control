@@ -40,11 +40,11 @@ Depends: synaptic,
          aptitude,
          gadmin-samba,
          gadmin-rsync,
-         gksu | kdesudo,
+         policykit-1,
          lm-sensors,
          ntfs-3g,
          dosfstools,
-         btrfs-tools,
+         btrfs-progs | btrfs-tools,
          lsof,
          localepurge,
          bleachbit,
@@ -65,7 +65,6 @@ Description: Nano admin package
  - aptitude
  - gadmin-samba
  - gadmin-rsync
- - gksu | kdesudo
  - lm-sensors
  - ntfs-3g
  - dosfstools
