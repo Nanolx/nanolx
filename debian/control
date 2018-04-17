@@ -80,6 +80,7 @@ Description: Nano admin package
  - gprename
  - cruft-ng
  - cryptsetup
+ - sudo
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -123,7 +124,7 @@ Depends: coreutils,
          fdupes,
          unp,
          sqlite3 | sqlite,
-         sudo
+         only
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -140,7 +141,7 @@ Description: Collection of basic command line tools
  - fdupes
  - unp
  - sqlite
- - sudo
+ - only
 
 Package: nanolx-x11
 Architecture: all
@@ -207,7 +208,7 @@ Depends: clamav,
          tor-geoipdb,
          psad,
          seahorse,
-         gksu | kdesudo,
+         policykit-1,
          gpgv,
          pinentry-gtk3 | pinentry-gtk2,
          enigmail,
@@ -230,7 +231,6 @@ Description: Collection of security related tools
  - tor (with torsocks and tor-geoipdb)
  - psad
  - seahorse
- - gksu or kdesudo
  - gpgv (with pinentry Gtk+3 or Gtk+2)
  - keepassx
  - Lynis

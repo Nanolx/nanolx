@@ -1,10 +1,13 @@
-nanolx (1:2.6.20180330-1nano) unstable; urgency=low
+nanolx (1:2.6.20180417-1nano) unstable; urgency=low
 
   * new upstream release
   * changed dependencies
-    - gksu | kdesudo >> policykit-1				[nanolx-admin]
+    - gksu | kdesudo >> policykit-1			[nanolx-admin]
+    - sudo						[nanolx-cli >> nanolx-admin]
+  * new dependencies
+    - only						[nanolx-cli]
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 30 Mar 2018 20:39:53 +0200
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 17 Apr 2018 18:28:13 +0200
 
 nanolx (1:2.5.20180120-1nano) unstable; urgency=low
 
