@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# © 2015 - 2017 Christopher Roy Bratusek <nano@jpberlin.de>
+# © 2015 - 2018 Christopher Roy Bratusek <nano@jpberlin.de>
 #
 # License: GNU GPL v3+
 #
@@ -10,8 +10,8 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.4.6"
-reldate="2017/03/25"
+version="1.5.0"
+reldate="2018/05/15"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
 	source "${HOME}/.repokit.conf"
@@ -140,11 +140,18 @@ cross_build () {
 }
 
 ftp_push () {
-	ftpsync --delete --notimestampcheck "${REPOKIT_PATH}/pool/" \
+	if [ -f ${HOME}/.repokit.pw ]; then
+		REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
+	else
+		echo "No GPG encrypted password file (${HOME}/.repokit.pw) found"
+		exit 1
+	fi
+
+	ftpsync -p -s "${REPOKIT_PATH}/pool/" \
 		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PWD}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/pool/"
-	ftpsync --delete "${REPOKIT_PATH}/dists/" \
+	ftpsync -p "${REPOKIT_PATH}/dists/" \
 		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PWD}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/dists/"
-	ftpsync --delete "${REPOKIT_PATH}/logs/" \
+	ftpsync -p "${REPOKIT_PATH}/logs/" \
 		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PWD}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/logs/"
 }
 
@@ -226,7 +233,8 @@ case ${cmdarg} in
 
 	* )
 		echo "repokit ${version} (${reldate})
-© 2015 - 2017 Christopher Roy Bratusek <nano@jpberlin.de>
+
+© 2015 - 2018 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
