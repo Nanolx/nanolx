@@ -10,10 +10,10 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.5.1"
-reldate="2018/07/23"
+version="1.5.2"
+reldate="2018/12/26"
 
-if [[ -f ${HOME}/.repokit.conf ]]; then
+if [[ -ft ${HOME}/.repokit.conf ]]; then
 	source "${HOME}/.repokit.conf"
 else	echo "no ${HOME}/.repokit.conf exists"
 	exit 1
@@ -147,11 +147,11 @@ ftp_push () {
 		exit 1
 	fi
 
-	ftpsync-ssl "${REPOKIT_PATH}/pool/" \
+	ftpsync-ssl -s "${REPOKIT_PATH}/pool/" \
 		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/pool/"
-	ftpsync-ssl "${REPOKIT_PATH}/dists/" \
+	ftpsync-ssl -s "${REPOKIT_PATH}/dists/" \
 		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/dists/"
-	ftpsync-ssl "${REPOKIT_PATH}/logs/" \
+	ftpsync-ssl -s "${REPOKIT_PATH}/logs/" \
 		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/logs/"
 }
 
