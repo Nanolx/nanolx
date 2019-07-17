@@ -418,7 +418,9 @@ Depends: adb | android-tools-adb,
          apktool,
          zipalign,
          openjdk-8-jdk,
-         zlib1g:i386
+         zlib1g:i386,
+         brotli,
+         android-sdk-libsparse-utils
 Description: Collection of android development tools
  This meta-package installs android development tools
  .
