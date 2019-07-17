@@ -20,12 +20,10 @@ else
 	apt-get update -q
 
 	# Debian Multimedia signing key
-	# Liquorix signing key
 	# Samsung Unified Printer Driver signing key
 	# i2p singing key
 	apt-get -q -y --force-yes install \
 			deb-multimedia-keyring \
-			'^liquorix-([^-]+-)?keyring.?' \
 			suldr-keyring \
 			i2p-keyring
 
@@ -42,6 +40,12 @@ else
 		wget -q http://www.nanolx.org/apt/photonic.asc \
 			-O /etc/apt/keys/nanolx2016.key
 	apt-key add /etc/apt/keys/nanolx2016.key
+
+	# Liquorix signing key
+	[[ ! -f /etc/apt/keys/liquorix.key ]] && \
+		wget -q https://liquorix.net/linux-liquorix.pub \
+			-O /etc/apt/keys/liquorix.key
+	apt-key add /etc/apt/keys/liquorix.key
 
 	# WineHQ signing key
 	[[ ! -f /etc/apt/keys/winehq.key ]] && \
