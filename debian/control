@@ -48,7 +48,6 @@ Depends: synaptic,
          lsof,
          localepurge,
          bleachbit,
-         gtkorphan,
          galternatives,
          gkdebconf,
          needrestart,
@@ -72,7 +71,6 @@ Description: Nano admin package
  - lsof
  - localepurge
  - bleachbit
- - gtkorphan
  - galternatives
  - gkdebconf
  - needrestart
