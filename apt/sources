@@ -1,6 +1,9 @@
 #Official Debian GNU/Linux Repository
-deb http://ftp.de.debian.org/debian/ sid main contrib non-free 
-deb-src http://ftp.de.debian.org/debian/ sid main contrib non-free 
+deb http://ftp.de.debian.org/debian/ testing main contrib non-free 
+deb-src http://ftp.de.debian.org/debian/ testing main contrib non-free 
+
+deb http://ftp.de.debian.org/debian/ unstable main contrib non-free 
+deb-src http://ftp.de.debian.org/debian/ unstable main contrib non-free 
 
 deb http://ftp.de.debian.org/debian/ experimental main contrib non-free 
 deb-src http://ftp.de.debian.org/debian/ experimental main contrib non-free 
