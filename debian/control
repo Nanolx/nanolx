@@ -55,7 +55,8 @@ Depends: synaptic,
          gprename,
          cruft-ng,
          cryptsetup,
-         gparted
+         gparted,
+         deborphan
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -79,6 +80,7 @@ Description: Nano admin package
  - cruft-ng
  - cryptsetup
  - sudo
+ - deborphan
 
 Package: nanolx-apt-tools
 Architecture: all
