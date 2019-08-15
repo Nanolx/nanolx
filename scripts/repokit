@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# © 2015 - 2018 Christopher Roy Bratusek <nano@jpberlin.de>
+# © 2015 - 2019 Christopher Roy Bratusek <nano@jpberlin.de>
 #
 # License: GNU GPL v3+
 #
@@ -10,14 +10,19 @@
 #	${HOME}/.repokit.conf
 #
 
-version="1.5.2"
-reldate="2018/12/26"
+version="1.5.3"
+reldate="2019/08/15"
 
-if [[ -ft ${HOME}/.repokit.conf ]]; then
+if [[ -f ${HOME}/.repokit.conf ]]; then
 	source "${HOME}/.repokit.conf"
 else	echo "no ${HOME}/.repokit.conf exists"
 	exit 1
 fi
+
+error () {
+	echo -e "${@}"
+	exit 1
+}
 
 reprepro_add () {
 	reprepro -Vb "${REPOKIT_PATH}" include "${REPOKIT_DIST}" "${1}"
@@ -56,7 +61,7 @@ debhelper_get_scripts () {
 		cp -r "${REPOKIT_BUILD_SCRIPTS}/${package}" "${PWD}/debian"
 		debhelper_add_release
 	else
-		echo "no packaging scripts for ${package} found"
+		error "no packaging scripts for ${package} found"
 	fi
 }
 
@@ -66,23 +71,15 @@ debhelper_add_release () {
 	version=${tmp/*_}
 
 	sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
-
 }
 
 debhelper_put_scripts () {
-	tmp=$(basename "${PWD}")
-	package=${tmp/_*}
-	version=${tmp/*_}
+	local tmp=$(basename "${PWD}")
+	local package=${tmp/_*}
+	local version=${tmp/*_}
 
-	if [[ ! ${package} ]]; then
-		echo -e "could not determine package name, stop."
-		exit 1
-	fi
-
-	if [[ ! ${version} ]] ; then
-		echo -e "could not determine package version, stop."
-		exit 1
-	fi
+	[ -z "${package}" ] && error "could not determine package name, stop."
+	[ -z "${version}" ] && error "could not determine package version, stop."
 
 	if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
 		mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
@@ -142,9 +139,7 @@ cross_build () {
 ftp_push () {
 	if [ -f ${HOME}/.repokit.pw ]; then
 		REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
-	else
-		echo "No GPG encrypted password file (${HOME}/.repokit.pw) found"
-		exit 1
+	else	error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
 	fi
 
 	ftpsync-ssl -s "${REPOKIT_PATH}/pool/" \
@@ -234,7 +229,7 @@ case ${cmdarg} in
 	* )
 		echo "repokit ${version} (${reldate})
 
-© 2015 - 2018 Christopher Roy Bratusek <nano@jpberlin.de>
+© 2015 - 2019 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
