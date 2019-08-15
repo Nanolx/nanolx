@@ -1,3 +1,29 @@
+nanolx (1:2.7.20190815-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies
+    - gtkorphan						[nanolx-admin]
+  * new dependencies
+    - deborphan						[nanolx-admin]
+    - bat						[nanolx-cli]
+    - xe						[nanolx-cli]
+    - brotli						[nanolx-devel-android]
+    - android-sdk-libsparse-utils			[nanolx-devel-android]
+  * updated repokit script
+    - 1.5.0	use GPG encrypted file for storing FTP password (if any)
+    - 1.5.1	use ftpsync-ssl, fix passing FTP password
+    - 1.5.2	disable ftpsync-ssl timestamp check
+  * updated apt-getkeys script
+    - 20190717	fix downloading liquorix kernel repository key
+  * deb-multimedia sources.list
+    - drop experimental branch
+    - add deb-src (unstable)
+  * sources.list
+    - add Debian Testing
+    - use unstable instead of sid
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 15 Aug 2019 15:56:43 +0200
+
 nanolx (1:2.6.20180417-2nano) unstable; urgency=low
 
   * changed dependencies
