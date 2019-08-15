@@ -122,7 +122,9 @@ Depends: coreutils,
          fdupes,
          unp,
          sqlite3 | sqlite,
-         only
+         only,
+         xe,
+         bat
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -140,6 +142,8 @@ Description: Collection of basic command line tools
  - unp
  - sqlite
  - only
+ - xe
+ - bat
 
 Package: nanolx-x11
 Architecture: all
