@@ -1,3 +1,18 @@
+nanolx (1:2.8.20190824-1nano) unstable; urgency=low
+
+  * new upstream release
+  * new dependencies
+    - libgtk3-perl					[nanolx-admin]
+    - stubby						[nanolx-net]
+  * updated repokit script
+    - 1.5.3	syntax fix, updated copyright year, minor internal changes
+  * updated apt-getkeys script
+    - 20190823	fix installing key packages from non-verified repos
+    - 		fix retrieving winehq package key
+    - 		update location for i2p repository key
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 24 Aug 2019 11:27:24 +0200
+
 nanolx (1:2.7.20190815-1nano) unstable; urgency=low
 
   * new upstream release

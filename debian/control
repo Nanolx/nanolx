@@ -56,7 +56,8 @@ Depends: synaptic,
          cruft-ng,
          cryptsetup,
          gparted,
-         deborphan
+         deborphan,
+         libgtk3-perl
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -254,7 +255,8 @@ Depends: openssh-client,
          openvpn,
          openresolv,
          torbrowser-launcher,
-         palemoon-installer
+         palemoon-installer,
+         stubby
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -271,6 +273,7 @@ Description: Collection of network applications
  - openresolv
  - TOR Browser launcher
  - Palemoon Installer
+ - Stubby
 
 Package: nanolx-thunderbird-addons
 Architecture: all
