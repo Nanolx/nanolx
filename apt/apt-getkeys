@@ -17,23 +17,19 @@ else
 	[[ $(uname -m) == *x86_64* ]] && dpkg --add-architecture i386
 
 	# update apt index
-	apt-get update -q
+	apt-get update -q -oAcquire::AllowInsecureRepositories=true
 
 	# Debian Multimedia signing key
 	# Samsung Unified Printer Driver signing key
-	# i2p singing key
-	apt-get -q -y --force-yes install \
+	apt-get -q install \
 			deb-multimedia-keyring \
-			suldr-keyring \
-			i2p-keyring
+			suldr-keyring
 
 	# Remove old keys
 	[[ -f /etc/apt/keys/samsung.key ]] && \
 		rm -f /etc/apt/keys/samsung.key
 	[[ -f /etc/apt/keys/nanolx.key ]] && \
 		rm -f /etc/apt/keys/nanolx.key
-	[[ -f /etc/apt/keys/i2p.key ]] && \
-		rm -f /etc/apt/keys/i2p.key
 
 	# Nanolx signing key
 	[[ ! -f /etc/apt/keys/nanolx2016.key ]] && \
@@ -49,11 +45,17 @@ else
 
 	# WineHQ signing key
 	[[ ! -f /etc/apt/keys/winehq.key ]] && \
-		wget -q wget https://dl.winehq.org/wine-builds/Release.key \
+		wget -q https://dl.winehq.org/wine-builds/Release.key \
 			-O /etc/apt/keys/winehq.key
 	apt-key add /etc/apt/keys/winehq.key
 
+	# i2p signing key
+	[[ ! -f /etc/apt/keys/i2p.key ]] && \
+		wget -q https://geti2p.net/_static/i2p-debian-repo.key.asc \
+			-O /etc/apt/keys/i2p.key
+	apt-key add /etc/apt/keys/i2p.key
+
 	# update apt index (again)
-	apt-get update -q
+	apt-get update -q -oAcquire::AllowInsecureRepositories=false
 
 fi
