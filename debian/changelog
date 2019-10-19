@@ -1,3 +1,14 @@
+nanolx (1:2.9.20191019-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies
+    - gui-apt-key					[nanolx-apt-sources]
+    - gprename						[nanolx-admin]
+  * updated repokit script
+    - 1.5.4	fix ftpsync-ssl invocation
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 24 Aug 2019 11:27:24 +0200
+
 nanolx (1:2.8.20190824-1nano) unstable; urgency=low
 
   * new upstream release
