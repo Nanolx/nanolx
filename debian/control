@@ -295,7 +295,6 @@ Depends: gstreamer1.0-alsa,
          gstreamer1.0-pulseaudio,
          gstreamer1.0-crystalhd,
          gstreamer1.0-libav,
-         phonon-backend-gstreamer,
          libdvdcss2,
          libbluray2
 Description: Collection of media codecs
@@ -307,7 +306,6 @@ Description: Collection of media codecs
    - good, base, bad, ugly
    - pulseaudio
    - libav, crystalhd
- - phonon-backend-gstreamer
  - libdvdcss2
  - libbluray2
 
