@@ -52,7 +52,6 @@ Depends: synaptic,
          gkdebconf,
          needrestart,
          cpufrequtils,
-         gprename,
          cruft-ng,
          cryptsetup,
          gparted,
@@ -77,7 +76,6 @@ Description: Nano admin package
  - gkdebconf
  - needrestart
  - cpufrequtils
- - gprename
  - cruft-ng
  - cryptsetup
  - sudo
@@ -98,8 +96,7 @@ Description: Collection of tools for apt
 
 Package: nanolx-apt-sources
 Architecture: all
-Depends: gui-apt-key,
-         wget,
+Depends: wget,
          apt-transport-https
 Description: Collection of extra sources for apt
  This meta-package installs extra apt-sources on the system.
