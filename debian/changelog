@@ -1,3 +1,11 @@
+nanolx (1:2.9.20191022-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies
+    - phonon-backend-gstreamer				[nanolx-media-codecs]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 22 Oct 2019 20:18:16 +0200
+
 nanolx (1:2.9.20191019-1nano) unstable; urgency=low
 
   * new upstream release
