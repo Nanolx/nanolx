@@ -1,3 +1,16 @@
+nanolx (1:2.9.20200316-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed dependencies
+    - nand-dump						[nanolx-games-hacking-common]
+    - nand-bin-check					[nanolx-games-hacking-common]
+    - nand-extract					[nanolx-games-hacking-common]
+    - ohne-schwarzenegger				[nanolx-games-hacking-common]
+    - qwad						[nanolx-games-hacking-common]
+    - savetoy						[nanolx-games-hacking-common]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 16 Mar 2020 20:12:07 +0100
+
 nanolx (1:2.9.20191022-1nano) unstable; urgency=low
 
   * new upstream release

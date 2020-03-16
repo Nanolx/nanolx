@@ -541,12 +541,6 @@ Depends: applyppf3,
          szs,
          patchimage,
          segher-wii-tools,
-         qwad,
-         nand-bin-check,
-         nand-dump,
-         nand-extract,
-         savetoy,
-         ohne-schwarzenegger,
          xdelta3
 Description: Collection of game hacking tools
  This meta-package installs game hacking tools
@@ -564,12 +558,9 @@ Description: Collection of game hacking tools
    homebrew development kit [only i386 and amd64])
  - wit (manipulate GameCube / Wii ISOs)
  - szs (manipulate Mario Kart Wii game data)
- - qwad (download IOS' and channels from NUS (Nintendo Update Server)
-   as Wads or manipulate existing Wads)
  - patchimage (download and apply game hacks to a ROM (mostly for
    New Super Mario Bros. Wii and Mario Kart Wii))
- - segher-wii-tools, nand-bin-check, nand-dump, nand-extract, savetoy,
-   ohne-schwarzenegger (misc. Wii homebrew utilities)
+ - segher-wii-tools (misc. Wii homebrew utilities)
  - xdelta3
 
 Package: nanolx-games-hacking
