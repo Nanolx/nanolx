@@ -1,4 +1,4 @@
-nanolx (1:2.9.20200316-1nano) unstable; urgency=low
+nanolx (1:2.9.20200327-1nano) unstable; urgency=low
 
   * new upstream release
   * depend on gcc/g++ 10 or 9 instead of 7 or 6
