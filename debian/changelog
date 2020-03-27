@@ -1,6 +1,14 @@
 nanolx (1:2.9.20200316-1nano) unstable; urgency=low
 
   * new upstream release
+  * depend on gcc/g++ 10 or 9 instead of 7 or 6
+  * depend on gcc-multilib/g++-multilib 10 or 9 instead of 7 or 6
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 27 Mar 2020 14:39:53 +0100
+
+nanolx (1:2.9.20200316-1nano) unstable; urgency=low
+
+  * new upstream release
   * removed dependencies
     - nand-dump						[nanolx-games-hacking-common]
     - nand-bin-check					[nanolx-games-hacking-common]
