@@ -397,8 +397,7 @@ Depends: ccache,
          codespell,
          shellcheck,
          licensecheck,
-         pycodestyle,
-         mozilla-devscripts
+         pycodestyle
 Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
