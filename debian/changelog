@@ -1,3 +1,37 @@
+nanolx (1:3.0.20210319-1nano) unstable; urgency=low
+
+  * new upstrem release
+  * removed packages
+    - nanolx-x11-theme
+    - nanolx-thunderbird-addons
+  * added dependencies
+    - task-cinnamon-desktop				[nanolx-x11]
+    - grub-customizer					[nanolx-admin]
+    - android-file-transfer				[nanolx-devel-android]
+    - fdroidserver					[nanolx-devel-android]
+    - zstd						[nanolx-devel-android]
+    - firefox | firefox-esr				[nanolx-net]
+    - jq						[nanolx-cli]
+  * changed dependencies
+    - openjdk-8-jdk >>> openjdk-11-jdk			[nanolx-devel-android]
+    - bat >>> bat | bat-cat				[nanolx-cli]
+  * removed dependencies
+    - compton						[nanolx-x11]
+    - lightdm						[nanolx-x11]
+    - lightdm-gtk-greeter				[nanolx-x11]
+    - lightdm-gtk-greeter-settings			[nanolx-x11]
+    - rep						[nanolx-x11]
+    - rep-gtk						[nanolx-x11]
+    - sawfish						[nanolx-x11]
+    - sawfish-pager					[nanolx-x11]
+    - ssd						[nanolx-x11]
+    - konsole						[nanolx-x11]
+    - xarchiver						[nanolx-x11]
+    - trayer						[nanolx-x11]
+    - palemoon-installer				[nanolx-net]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 19 Mar 2021 20:46:39 +0100
+
 nanolx (1:2.9.20200814-1nano) unstable; urgency=low
 
   * new upstream release

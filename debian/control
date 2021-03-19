@@ -56,7 +56,8 @@ Depends: synaptic,
          cryptsetup,
          gparted,
          deborphan,
-         libgtk3-perl
+         libgtk3-perl,
+         grub-customizer
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -80,6 +81,7 @@ Description: Nano admin package
  - cryptsetup
  - sudo
  - deborphan
+ - grub-customizer
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -124,7 +126,8 @@ Depends: coreutils,
          sqlite3 | sqlite,
          only,
          xe,
-         bat
+         bat | cat-bat,
+         jq
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -144,6 +147,7 @@ Description: Collection of basic command line tools
  - only
  - xe
  - bat
+ - jq
 
 Package: nanolx-x11
 Architecture: all
@@ -154,7 +158,8 @@ Depends: conky-std,
          gucharmap,
          yad,
          qt5ct,
-         gtk3-nocsd
+         gtk3-nocsd,
+         task-cinnamon-desktop
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
@@ -168,6 +173,7 @@ Description: Collection of X11 applications
  - Qt5 Configuration Tool
  - Trayer
  - GTK+3 no client side decoration (CSD)
+ - Cinnamon Desktop Environment
 
 Package: nanolx-security
 Architecture: all
@@ -214,6 +220,7 @@ Depends: openssh-client,
          qbittorrent,
          filezilla,
          thunderbird | icedove,
+         firefox | firefox-esr,
          smbnetfs,
          gnu-ftpsync,
          kvirc,
@@ -374,7 +381,10 @@ Depends: adb | android-tools-adb,
          openjdk-11-jdk,
          zlib1g:i386,
          brotli,
-         android-sdk-libsparse-utils
+         android-sdk-libsparse-utils,
+         android-file-transfer,
+         fdroidserver,
+         zstd
 Description: Collection of android development tools
  This meta-package installs android development tools
  .
@@ -384,6 +394,9 @@ Description: Collection of android development tools
  - Gradle
  - Apk Tool
  - Zip Align
+ - Android File Transfer
+ - F-Droid Server
+ - ZStd
 
 Package: nanolx-devel-x11
 Architecture: all
@@ -425,7 +438,8 @@ Depends: glob2,
          zelda-time-to-triumph,
          zelda-onilink-begins,
          zelda-navis-quest,
-         zelda-tunics
+         zelda-tunics,
+         lutris
 Description: Collection of games
  This meta-package installs games.
  .
@@ -448,6 +462,7 @@ Description: Collection of games
  - Zelda Navi's Quest
  - Zelda Book of Mudora
  - Zelda Tunics
+ - Lutris
 
 Package: nanolx-games-emu
 Architecture: all
