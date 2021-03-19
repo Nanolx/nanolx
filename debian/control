@@ -147,58 +147,27 @@ Description: Collection of basic command line tools
 
 Package: nanolx-x11
 Architecture: all
-Depends: compton,
-         conky-std,
+Depends: conky-std,
          fehlstart,
-         lightdm,
-         lightdm-gtk-greeter,
-         lightdm-gtk-greeter-settings,
-         rep (>= 0.92),
-         rep-gtk (>= 0.90),
-         sawfish (>= 1.9.1),
-         sawfish-pager (>= 0.90),
-         ssd (>= 0.40),
          x11-xserver-utils,
-         konsole,
+         guake,
          gucharmap,
-         xarchiver,
          yad,
          qt5ct,
-         trayer,
          gtk3-nocsd
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
  These are:
- - compton
  - conky
  - gucharmap
  - fehlstart
- - lightdm (with gtk-greeter and settings editor)
- - librep (with gtk-binding)
- - sawfish (with pager and session-dialog)
  - x11-xserver-utils
- - konsole
- - xarchiver
+ - guake
  - YAD (GTK+ Dialogs from shell scripts)
  - Qt5 Configuration Tool
  - Trayer
  - GTK+3 no client side decoration (CSD)
-
-Package: nanolx-x11-theme
-Architecture: all
-Depends: gtk2-engines-terranova,
-         gtk2-engines-pixbuf,
-         oxygencursors,
-         oxygen-icon-theme
-Description: Collection of themes
- This meta-package installs themes on the system.
- .
- These are:
- - TerraNova (GTK+2, engine with themes)
- - PixBuf (GTK+2, engine)
- - Oxygen Cursors
- - Oxygen Icon-Theme
 
 Package: nanolx-security
 Architecture: all
@@ -251,7 +220,6 @@ Depends: openssh-client,
          openvpn,
          openresolv,
          torbrowser-launcher,
-         palemoon-installer,
          stubby
 Description: Collection of network applications
  This meta-package installs network applications.
@@ -268,21 +236,7 @@ Description: Collection of network applications
  - OpenVPN
  - openresolv
  - TOR Browser launcher
- - Palemoon Installer
  - Stubby
-
-Package: nanolx-thunderbird-addons
-Architecture: all
-Depends: xul-ext-thundersec,
-         xul-ext-customize-my-bird,
-         xul-ext-thunderbird-conversations,
-         thunderbird | icedove
-Description: Collection of XUL addons
- This meta-package installs addons for Thunderbird.
- .
- - Thunder Sec
- - Customize My Bird
- - Thunderbird Conversations
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -417,7 +371,7 @@ Depends: adb | android-tools-adb,
          gradle,
          apktool,
          zipalign,
-         openjdk-8-jdk,
+         openjdk-11-jdk,
          zlib1g:i386,
          brotli,
          android-sdk-libsparse-utils
