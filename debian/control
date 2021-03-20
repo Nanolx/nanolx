@@ -472,7 +472,7 @@ Depends: dosbox,
          libretro-nestopia,
          libretro-snes9x,
          yabause-gtk,
-         scummvm7
+         scummvm
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
