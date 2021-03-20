@@ -22,7 +22,6 @@ Depends: nanolx-admin,
          nanolx-media-x11,
          nanolx-games,
          nanolx-games-emu,
-         nanolx-games-hacking-common
 Description: Nanolx base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
@@ -300,7 +299,6 @@ Depends: audacity,
          soundkonverter,
          gmtp,
          pavucontrol,
-         yarock,
          mpv,
          geeqie,
          okular,
@@ -309,7 +307,8 @@ Depends: audacity,
          k3b,
          libk3b7-extracodecs,
          mediathekview,
-         easytag
+         easytag,
+         elisa
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
@@ -318,7 +317,6 @@ Description: Collection of graphical media applications
  - soundkonverter
  - gmtp
  - pavucontrol
- - yarock
  - mpv
  - geeqie
  - okular
@@ -327,6 +325,7 @@ Description: Collection of graphical media applications
  - k3b
  - mediathekview
  - easyTAG
+ - elisa
 
 Package: nanolx-devel-cli
 Architecture: all
@@ -465,17 +464,16 @@ Description: Collection of games
 Package: nanolx-games-emu
 Architecture: all
 Depends: dosbox,
-         mupen64plus-qt | mupen64plus-ui-console,
-         mupen64plus-audio-all,
-         mupen64plus-video-all,
-         mupen64plus-input-all,
-         snes9x-gtk,
+         retroarch,
+         libretro-desmume,
+         libretro-mupen64plus,
+         libretro-gambatte,
+         libretro-mgba,
+         libretro-nestopia,
+         libretro-snes9x,
          yabause-gtk,
-         gnuboy-sdl,
          scummvm,
-         visualboyadvance,
-         desmume,
-         fceux
+         dolphin-emu [amd64]
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
@@ -486,87 +484,14 @@ Description: Collection of emulators
        ROMs (completely self-made).
  .
  These are:
- - gnuboy-sdl (Game Boy, Game Boy Color)
- - visualboyadvance (Game Boy Advance)
- - desmume (Nintendo DS)
- - fceux (Famicom / NES)
- - snex9x-gtk (Super Famicom / SNES)
- - mupen64plus (Nintendo 64)
+ - retroarch with the following plugins
+    - desmume (Nintendo DS)
+    - mupen64plus (Nintendo 64)
+    - gambatte (Game Boy, Game Boy Color)
+    - mgba (Game Boy Advance)
+    - nestopia (Famicom / NES)
+    - snes9x (Super Famicom / SNES)
  - dolphin-emu (GameCube / Wii [only amd64])
  - yabause-gtk (SEGA Saturn)
  - dosbox (DOS)
  - scummvm (Lucas Arts Point'n'Click Adventures)
-
-Package: nanolx-games-hacking-common
-Architecture: all
-Depends: applyppf3,
-         makeppf3,
-         cmdpack-uips,
-         wit,
-         szs,
-         patchimage,
-         segher-wii-tools,
-         xdelta3
-Description: Collection of game hacking tools
- This meta-package installs game hacking tools
- .
- NOTE: only use self-made ROMs (using homebrew, hardware mods, or
-       tools like Retrode). Downloading ROMs is often illegal. Known
-       exceptions: ROMs where the copyright expired, ROMs distributed
-       by the copyright holder (or it's legal successor) and Homebrew
-       ROMs (completely self-made).
- .
- These are:
- - applyppf3 / makeppf3 (PlayStation Patch Format)
- - cmdpack-uips (IPS Format)
- - devkitppc / libogc*, libfat, libruntimeiospatch (GameCube / (v)Wii
-   homebrew development kit [only i386 and amd64])
- - wit (manipulate GameCube / Wii ISOs)
- - szs (manipulate Mario Kart Wii game data)
- - patchimage (download and apply game hacks to a ROM (mostly for
-   New Super Mario Bros. Wii and Mario Kart Wii))
- - segher-wii-tools (misc. Wii homebrew utilities)
- - xdelta3
-
-Package: nanolx-games-hacking
-Architecture: amd64 i386
-Depends: nanolx-games-hacking-common,
-         devkitppc,
-         libfat,
-         libruntimeiospatch,
-         libogc,
-         libogc-7zip,
-         libogc-dopmii,
-         libogc-expat,
-         libogc-ext2fs,
-         libogc-freetype,
-         libogc-gd,
-         libogc-grrlib,
-         libogc-jpeg,
-         libogc-mupdf,
-         libogc-mxml,
-         libogc-nfs,
-         libogc-ntfs,
-         libogc-png,
-         libogc-pngu,
-         libogc-sdl,
-         libogc-smpeg,
-         libogc-tiff,
-         libogc-tremor,
-         libogc-unrar,
-         libogc-zip,
-         libogc-zlib,
-         dolphin-emu [amd64],
-Description: Collection of game hacking tools
- This meta-package installs game hacking tools
- .
- NOTE: only use self-made ROMs (using homebrew, hardware mods, or
-       tools like Retrode). Downloading ROMs is often illegal. Known
-       exceptions: ROMs where the copyright expired, ROMs distributed
-       by the copyright holder (or it's legal successor) and Homebrew
-       ROMs (completely self-made).
- .
- These are:
- - devkitppc / libogc*, libfat, libruntimeiospatch (GameCube / (v)Wii
-   homebrew development kit [only i386 and amd64])
- - dolphin emulator [only amd64]

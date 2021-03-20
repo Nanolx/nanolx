@@ -1,3 +1,32 @@
+nanolx (1:3.2.20210320-1nano) unstable; urgency=low
+
+  * new upstream release
+  * removed packages
+    - nanolx-games-hacking
+    - nanolx-games-hacking-common
+  * added dependencies
+    - elisa						[nanolx-media]
+    - retroarch						[nanolx-games-emu]
+    - libretro-desmume					[nanolx-games-emu]
+    - libretro-mupen64plus				[nanolx-games-emu]
+    - libretro-gambatte					[nanolx-games-emu]
+    - libretro-mgba					[nanolx-games-emu]
+    - libretro-nestopia					[nanolx-games-emu]
+    - libretro-snes9x					[nanolx-games-emu]
+  * removed dependencies
+    - yarock						[nanolx-media]
+    - mupen64plus-qt | mupen64plus-ui-console		[nanolx-games-emu]
+    - mupen64plus-audio-all				[nanolx-games-emu]
+    - mupen64plus-video-all				[nanolx-games-emu]
+    - mupen64plus-input-all				[nanolx-games-emu]
+    - snes9x-gtk					[nanolx-games-emu]
+    - gnuboy-sdl					[nanolx-games-emu]
+    - visualboyadvance					[nanolx-games-emu]
+    - desmume						[nanolx-games-emu]
+    - fceux
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 20 Mar 2021 16:49:57 +0100
+
 nanolx (1:3.1.20210320-1nano) unstable; urgency=low
 
   * new upstream release
