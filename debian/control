@@ -472,8 +472,7 @@ Depends: dosbox,
          libretro-nestopia,
          libretro-snes9x,
          yabause-gtk,
-         scummvm,
-         dolphin-emu [amd64]
+         scummvm7
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
