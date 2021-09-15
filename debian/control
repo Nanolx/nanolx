@@ -54,7 +54,11 @@ Depends: synaptic,
          gparted,
          deborphan,
          libgtk3-perl,
-         grub-customizer
+         grub-customizer,
+         cupt,
+         libcupt4-2-downloadmethod-curl,
+         libcupt4-2-downloadmethod-wget,
+         age
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -79,6 +83,8 @@ Description: Nano admin package
  - sudo
  - deborphan
  - grub-customizer
+ - cupt
+ - age
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -86,12 +92,10 @@ Depends: apt-file,
          apt-listchanges,
          apt-rdepends,
          apt-show-versions,
-         apt-transport-https,
          debdelta,
          reprepro
 Description: Collection of tools for apt
- This meta-package installs useful tools for working with apt,
- including apt-transport-https and debdelta.
+ This meta-package installs useful tools for working with apt.
 
 Package: nanolx-apt-sources
 Architecture: all
@@ -124,7 +128,10 @@ Depends: coreutils,
          only,
          xe,
          bat | cat-bat,
-         jq
+         jq,
+         fd-find,
+         plocate,
+         rdfind
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -145,6 +152,9 @@ Description: Collection of basic command line tools
  - xe
  - bat
  - jq
+ - fd-find
+ - plocate
+ - rdfind
 
 Package: nanolx-x11
 Architecture: all
@@ -224,7 +234,8 @@ Depends: openssh-client,
          openvpn,
          openresolv,
          torbrowser-launcher,
-         stubby
+         stubby,
+         syncthing-gtk
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -241,6 +252,7 @@ Description: Collection of network applications
  - openresolv
  - TOR Browser launcher
  - Stubby
+ - Syncthing
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -308,7 +320,8 @@ Depends: audacity,
          libk3b7-extracodecs,
          mediathekview,
          easytag,
-         elisa
+         elisa,
+         ffmpegthumbnailer
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
@@ -326,6 +339,7 @@ Description: Collection of graphical media applications
  - mediathekview
  - easyTAG
  - elisa
+ - FFmpegthumbnailer
 
 Package: nanolx-devel-cli
 Architecture: all
@@ -469,10 +483,10 @@ Depends: dosbox,
          libretro-mupen64plus,
          libretro-gambatte,
          libretro-mgba,
-         libretro-nestopia,
          libretro-snes9x,
          yabause-gtk,
-         scummvm
+         scummvm,
+	 nestopia
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
@@ -488,9 +502,8 @@ Description: Collection of emulators
     - mupen64plus (Nintendo 64)
     - gambatte (Game Boy, Game Boy Color)
     - mgba (Game Boy Advance)
-    - nestopia (Famicom / NES)
     - snes9x (Super Famicom / SNES)
- - dolphin-emu (GameCube / Wii [only amd64])
  - yabause-gtk (SEGA Saturn)
  - dosbox (DOS)
  - scummvm (Lucas Arts Point'n'Click Adventures)
+ - nestopia (Famicom / NES)
