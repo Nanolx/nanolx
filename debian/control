@@ -232,9 +232,10 @@ Depends: openssh-client,
          gnu-ftpsync,
          kvirc,
          openvpn,
-         openresolv,
+         openresolv | resolvconf,
          torbrowser-launcher,
          stubby,
+	 mozillavpn,
          syncthing-gtk
 Description: Collection of network applications
  This meta-package installs network applications.
@@ -249,9 +250,10 @@ Description: Collection of network applications
  - GNU ftpsync
  - kvirc
  - OpenVPN
- - openresolv
+ - openresolv or resolvconf
  - TOR Browser launcher
  - Stubby
+ - Mozilla VPN
  - Syncthing
 
 Package: nanolx-media-codecs

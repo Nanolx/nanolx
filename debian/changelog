@@ -1,3 +1,13 @@
+nanolx (1:3.3.20210920-1nano) unstable; urgency=low
+
+  * new upstream release
+  * added dependencies
+    - mozillavpn					[nanolx-net]
+  * changed dependencies
+    - openresolv 	>>>	openresolv | resolvconf	[nanolx-net]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 20 Sep 2021 19:32:14 +0200
+
 nanolx (1:3.3.20210915-1nano) unstable; urgency=low
 
   * new upstream release
