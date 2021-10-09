@@ -35,8 +35,7 @@ Architecture: all
 Depends: synaptic,
          gsmartcontrol,
          aptitude,
-         gadmin-samba,
-         gadmin-rsync,
+         grsync,
          policykit-1,
          lm-sensors,
          ntfs-3g,
@@ -65,8 +64,7 @@ Description: Nano admin package
  - gparted
  - gsmartcontrol
  - aptitude
- - gadmin-samba
- - gadmin-rsync
+ - grsync
  - lm-sensors
  - ntfs-3g
  - dosfstools
