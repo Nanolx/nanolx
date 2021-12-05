@@ -262,7 +262,6 @@ Depends: gstreamer1.0-alsa,
          gstreamer1.0-plugins-good,
          gstreamer1.0-plugins-ugly,
          gstreamer1.0-pulseaudio,
-         gstreamer1.0-crystalhd,
          gstreamer1.0-libav,
          libdvdcss2,
          libbluray2
@@ -274,7 +273,7 @@ Description: Collection of media codecs
    - alsa
    - good, base, bad, ugly
    - pulseaudio
-   - libav, crystalhd
+   - libav
  - libdvdcss2
  - libbluray2
 
