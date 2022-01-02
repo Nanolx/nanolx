@@ -1,2 +1,2 @@
 # Samsung Unified Printer repository for Debian
-deb http://www.bchemnet.com/suldr/ debian extra
+deb https://www.bchemnet.com/suldr/ debian extra
