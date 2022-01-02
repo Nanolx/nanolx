@@ -6,23 +6,25 @@
 #  apt repository signing keys. ##
                                  #
                              #####
+### version	2.1
+### date	2022/01/02
 
 if [[ ${EUID} != 0 ]]; then
 	echo "not root - exiting"
 else
-	[[ $(which wget) == "" ]] && apt-get install wget
+	[[ $(command -v wget) == "" ]] && apt install wget
 	[[ ! -d /etc/apt/keys ]] && mkdir /etc/apt/keys
 
 	# add i386 to known architectures
 	[[ $(uname -m) == *x86_64* ]] && dpkg --add-architecture i386
 
 	# update apt index
-	apt-get update -q -oAcquire::AllowInsecureRepositories=true
+	apt update -q -oAcquire::AllowInsecureRepositories=true
 
 	# Debian Multimedia signing key
 	# Samsung Unified Printer Driver signing key
-	apt-get -q install \
-			deb-multimedia-keyring \
+	apt -q -oAcquire::AllowInsecureRepositories=true \
+		install deb-multimedia-keyring \
 			suldr-keyring
 
 	# Remove old keys
@@ -33,7 +35,7 @@ else
 
 	# Nanolx signing key
 	[[ ! -f /etc/apt/keys/nanolx2016.key ]] && \
-		wget -q http://www.nanolx.org/apt/photonic.asc \
+		wget -q https://www.nanolx.org/apt/photonic.asc \
 			-O /etc/apt/keys/nanolx2016.key
 	apt-key add /etc/apt/keys/nanolx2016.key
 
@@ -56,6 +58,5 @@ else
 	apt-key add /etc/apt/keys/i2p.key
 
 	# update apt index (again)
-	apt-get update -q -oAcquire::AllowInsecureRepositories=false
-
+	apt update -q -oAcquire::AllowInsecureRepositories=false
 fi
