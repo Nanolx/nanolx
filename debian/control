@@ -173,7 +173,7 @@ Depends: conky-std,
          qt5ct,
          gtk3-nocsd,
          task-cinnamon-desktop,
-         psensors
+         psensor
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
@@ -187,7 +187,7 @@ Description: Collection of X11 applications
  - Qt5 Configuration Tool
  - GTK+3 no client side decoration (CSD)
  - Cinnamon Desktop Environment
- - psensors (for conky)
+ - psensor
 
 Package: nanolx-security
 Architecture: all
