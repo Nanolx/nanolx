@@ -1,3 +1,34 @@
+nanolx (1:3.5.20220102-1nano) unstable; urgency=low
+
+  * new upstream release
+    - update apt/debian-multimedia.list to use https
+    - update apt/i2p.list to point to new repo url, also https
+    - update apt/liquorix.list to use https
+    - update apt/nanolx.list to use https
+    - update apt/samsung.list to use https
+    - remove unused files:
+      - debian/nanolx-games-hacking-common.docs
+      - debian/nanolx-games-hacking.docs
+      - debian/nanolx-x11-theme.docs
+  * mksbuild script version 1.3.0
+    - use apt instead of apt-get
+    - use https for debootstrap
+    - check if sbuild chroot already exists and ask user whether to start from scratch
+  * apt-getkeys script version 2.1
+    - use apt instead of apt-get
+    - use command -v instead of which
+    - use https instead of http
+  * changed dependencies
+    - thunderbird | icdeove	>>>	thunderbird	[nanolx-net]
+  * new dependencies
+    - logsave						[nanolx-admin]
+    - eta						[nanolx-cli]
+    - duf						[nanolx-cli]
+    - organize						[nanolx-cli]
+    - psensors						[nanolx-x11]
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 02 Jan 2022 13:25:21 +0100
+
 nanolx (1:3.4.20211205-1nano) unstable; urgency=low
 
   * new upstream release
