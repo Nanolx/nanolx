@@ -57,7 +57,8 @@ Depends: synaptic,
          cupt,
          libcupt4-2-downloadmethod-curl,
          libcupt4-2-downloadmethod-wget,
-         age
+         age,
+         logsave
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -83,6 +84,7 @@ Description: Nano admin package
  - grub-customizer
  - cupt
  - age
+ - logsave
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -129,7 +131,10 @@ Depends: coreutils,
          jq,
          fd-find,
          plocate,
-         rdfind
+         rdfind,
+         eta,
+         duf,
+         organize
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -153,6 +158,9 @@ Description: Collection of basic command line tools
  - fd-find
  - plocate
  - rdfind
+ - eta
+ - duf
+ - organize
 
 Package: nanolx-x11
 Architecture: all
@@ -164,7 +172,8 @@ Depends: conky-std,
          yad,
          qt5ct,
          gtk3-nocsd,
-         task-cinnamon-desktop
+         task-cinnamon-desktop,
+         psensors
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
@@ -176,9 +185,9 @@ Description: Collection of X11 applications
  - guake
  - YAD (GTK+ Dialogs from shell scripts)
  - Qt5 Configuration Tool
- - Trayer
  - GTK+3 no client side decoration (CSD)
  - Cinnamon Desktop Environment
+ - psensors (for conky)
 
 Package: nanolx-security
 Architecture: all
@@ -224,7 +233,7 @@ Depends: openssh-client,
          wireshark,
          qbittorrent,
          filezilla,
-         thunderbird | icedove,
+         thunderbird,
          firefox | firefox-esr,
          smbnetfs,
          gnu-ftpsync,
@@ -233,7 +242,7 @@ Depends: openssh-client,
          openresolv | resolvconf,
          torbrowser-launcher,
          stubby,
-	 mozillavpn,
+         mozillavpn,
          syncthing-gtk
 Description: Collection of network applications
  This meta-package installs network applications.
@@ -243,7 +252,7 @@ Description: Collection of network applications
  - wireshark
  - qbittorrent
  - filezilla
- - thunderbird (or icedove before the switch back to thunderbird)
+ - thunderbird
  - smbnetfs
  - GNU ftpsync
  - kvirc
@@ -486,7 +495,7 @@ Depends: dosbox,
          libretro-snes9x,
          yabause-gtk,
          scummvm,
-	 nestopia
+         nestopia
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
