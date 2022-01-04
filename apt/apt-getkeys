@@ -6,14 +6,44 @@
 #  apt repository signing keys. ##
                                  #
                              #####
-### version	2.1
-### date	2022/01/02
+### version	2.2
+### date	2022/01/04
+
+key_base=/etc/apt/keys
+
+key_nanolx=https://www.nanolx.org/apt/photonic.asc
+key_nanolx_store=${key_base}/nanolx2016.key
+
+key_liquorix=https://liquorix.net/linux-liquorix.pub
+key_liquorix_store=${key_base}/liquorix.key
+
+key_winehq=https://dl.winehq.org/wine-builds/Release.key
+key_winehq_store=${key_base}/winehq.key
+
+key_i2p=http://geti2p.net/_static/i2p-debian-repo.key.asc
+key_ip2_store=${key_base}/i2p.key
+
+pkg_suldr=suldr-keyring
+pkg_debmultimedia=deb-multimedia-keyring
+
+grab_key () {
+	key=${1}
+	store=${2}
+
+	# Nanolx signing key
+	[[ ! -f ${store} ]] && wget -q ${key} -O ${store}
+	#if [[ ! -d /usr/share/keyrings ]]; then
+		apt-key add ${store}
+	#else
+	#	ln -sf ${store} /usr/share/keyrings/$(basename ${store} .key).gpg
+	#fi
+}
 
 if [[ ${EUID} != 0 ]]; then
 	echo "not root - exiting"
 else
-	[[ $(command -v wget) == "" ]] && apt install wget
-	[[ ! -d /etc/apt/keys ]] && mkdir /etc/apt/keys
+	$(command -v wget) || apt install wget
+	[[ -d ${key_base} ]] || mkdir -p ${key_base}
 
 	# add i386 to known architectures
 	[[ $(uname -m) == *x86_64* ]] && dpkg --add-architecture i386
@@ -24,38 +54,19 @@ else
 	# Debian Multimedia signing key
 	# Samsung Unified Printer Driver signing key
 	apt -q -oAcquire::AllowInsecureRepositories=true \
-		install deb-multimedia-keyring \
-			suldr-keyring
-
-	# Remove old keys
-	[[ -f /etc/apt/keys/samsung.key ]] && \
-		rm -f /etc/apt/keys/samsung.key
-	[[ -f /etc/apt/keys/nanolx.key ]] && \
-		rm -f /etc/apt/keys/nanolx.key
+		install ${key_suldr} ${key_debmultimedia}
 
 	# Nanolx signing key
-	[[ ! -f /etc/apt/keys/nanolx2016.key ]] && \
-		wget -q https://www.nanolx.org/apt/photonic.asc \
-			-O /etc/apt/keys/nanolx2016.key
-	apt-key add /etc/apt/keys/nanolx2016.key
+	grab_key ${key_nanolx} ${key_nanolx_store}
 
 	# Liquorix signing key
-	[[ ! -f /etc/apt/keys/liquorix.key ]] && \
-		wget -q https://liquorix.net/linux-liquorix.pub \
-			-O /etc/apt/keys/liquorix.key
-	apt-key add /etc/apt/keys/liquorix.key
+	grab_key ${key_liquorix} ${key_liquorix_store}
 
 	# WineHQ signing key
-	[[ ! -f /etc/apt/keys/winehq.key ]] && \
-		wget -q https://dl.winehq.org/wine-builds/Release.key \
-			-O /etc/apt/keys/winehq.key
-	apt-key add /etc/apt/keys/winehq.key
+	grab_key ${key_winehq} ${key_winehq_store}
 
 	# i2p signing key
-	[[ ! -f /etc/apt/keys/i2p.key ]] && \
-		wget -q https://geti2p.net/_static/i2p-debian-repo.key.asc \
-			-O /etc/apt/keys/i2p.key
-	apt-key add /etc/apt/keys/i2p.key
+	grab_key ${key_i2p} ${key_i2p_store}
 
 	# update apt index (again)
 	apt update -q -oAcquire::AllowInsecureRepositories=false
