@@ -27,7 +27,7 @@ as root. Afterwards continue with the other nanolx-* packages, as desired.
 
 The apt singing key for my photonic apt repository is located at
 
-	http://www.nanolx.org/apt/photonic.asc
+	https://www.nanolx.org/apt/photonic.asc
 
 Release Information
 =======================================
