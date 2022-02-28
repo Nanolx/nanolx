@@ -1,8 +1,9 @@
-nanolx (1:3.6.20220228-1nano) unstable; urgency=low
+nanolx (1:3.6.20220228-2nano) unstable; urgency=low
 
   * new upstream release
   * apt-getkeys script version 2.3
     - use /etc/apt/trusted.gpg.d/ for storing keys
+    - fix installing key for i2p repo
   * new dependencies
     - btop						[nanolx-admin]
 

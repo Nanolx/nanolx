@@ -21,7 +21,7 @@ key_winehq=https://dl.winehq.org/wine-builds/Release.key
 key_winehq_store=${key_base}/winehq.asc
 
 key_i2p=http://geti2p.net/_static/i2p-debian-repo.key.asc
-key_ip2_store=${key_base}/i2p.asc
+key_i2p_store=${key_base}/i2p.asc
 
 pkg_suldr=suldr-keyring
 pkg_debmultimedia=deb-multimedia-keyring
@@ -36,7 +36,7 @@ grab_key () {
 if [[ ${EUID} != 0 ]]; then
 	echo "not root - exiting"
 else
-	$(command -v wget) || apt install wget
+	command -v wget >/dev/null || apt install wget
 	[[ -d ${key_base} ]] || mkdir -p ${key_base}
 
 	# add i386 to known architectures
