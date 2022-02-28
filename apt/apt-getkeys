@@ -6,22 +6,22 @@
 #  apt repository signing keys. ##
                                  #
                              #####
-### version	2.2
-### date	2022/01/04
+### version	2.3
+### date	2022/02/22
 
-key_base=/etc/apt/keys
+key_base=/etc/apt/trusted.gpg.d/
 
 key_nanolx=https://www.nanolx.org/apt/photonic.asc
-key_nanolx_store=${key_base}/nanolx2016.key
+key_nanolx_store=${key_base}/nanolx2016.asc
 
 key_liquorix=https://liquorix.net/linux-liquorix.pub
-key_liquorix_store=${key_base}/liquorix.key
+key_liquorix_store=${key_base}/liquorix.asc
 
 key_winehq=https://dl.winehq.org/wine-builds/Release.key
-key_winehq_store=${key_base}/winehq.key
+key_winehq_store=${key_base}/winehq.asc
 
 key_i2p=http://geti2p.net/_static/i2p-debian-repo.key.asc
-key_ip2_store=${key_base}/i2p.key
+key_ip2_store=${key_base}/i2p.asc
 
 pkg_suldr=suldr-keyring
 pkg_debmultimedia=deb-multimedia-keyring
@@ -30,13 +30,7 @@ grab_key () {
 	key=${1}
 	store=${2}
 
-	# Nanolx signing key
 	[[ ! -f ${store} ]] && wget -q ${key} -O ${store}
-	#if [[ ! -d /usr/share/keyrings ]]; then
-		apt-key add ${store}
-	#else
-	#	ln -sf ${store} /usr/share/keyrings/$(basename ${store} .key).gpg
-	#fi
 }
 
 if [[ ${EUID} != 0 ]]; then
