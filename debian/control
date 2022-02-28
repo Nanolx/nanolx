@@ -58,7 +58,8 @@ Depends: synaptic,
          libcupt4-2-downloadmethod-curl,
          libcupt4-2-downloadmethod-wget,
          age,
-         logsave
+         logsave,
+	 btop
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -85,6 +86,7 @@ Description: Nano admin package
  - cupt
  - age
  - logsave
+ - btop
 
 Package: nanolx-apt-tools
 Architecture: all
