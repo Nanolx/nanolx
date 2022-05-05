@@ -59,7 +59,7 @@ Depends: synaptic,
          libcupt4-2-downloadmethod-wget,
          age,
          logsave,
-	 btop
+         btop
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -209,7 +209,8 @@ Depends: clamav,
          rkhunter,
          firewalld,
          firewall-config,
-         spectre-meltdown-checker
+         spectre-meltdown-checker,
+         otpclient
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
@@ -228,6 +229,7 @@ Description: Collection of security related tools
  - Lynis
  - rkhunter
  - Spectre/Meltdown checker
+ - OTP Client
 
 Package: nanolx-net
 Architecture: all
@@ -427,8 +429,8 @@ Depends: glade,
          geany,
          d-feet,
          okteta,
-         nemiver,
-         poedit
+         poedit,
+	 valgrind-if-available
 Description: Collection of x11 development tools
  This meta-package installs x11 development tools.
  .
@@ -439,7 +441,7 @@ Description: Collection of x11 development tools
  - poedit
  - d-feet
  - okteta
- - nemiver
+ - valgrind
 
 Package: nanolx-games
 Architecture: all
