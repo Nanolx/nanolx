@@ -274,7 +274,6 @@ Depends: gstreamer1.0-alsa,
          gstreamer1.0-plugins-base,
          gstreamer1.0-plugins-good,
          gstreamer1.0-plugins-ugly,
-         gstreamer1.0-pulseaudio,
          gstreamer1.0-libav,
          libdvdcss2,
          libbluray2
@@ -285,7 +284,6 @@ Description: Collection of media codecs
  - gstreamer plugins:
    - alsa
    - good, base, bad, ugly
-   - pulseaudio
    - libav
  - libdvdcss2
  - libbluray2
@@ -300,7 +298,6 @@ Depends: lame,
          streamripper,
          ffmpeg,
          cdparanoia,
-         pulseaudio (>= 5.0),
          imagemagick
 Description: Collection of cli media tools
  This meta-package installs cli media tools.
@@ -314,7 +311,6 @@ Description: Collection of cli media tools
  - cdparanoia
  - normalize-audio
  - streamripper
- - pulseaudio
  - imagemagick
 
 Package: nanolx-media-x11
