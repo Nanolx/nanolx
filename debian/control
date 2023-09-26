@@ -207,8 +207,8 @@ Depends: clamav,
          keepassx,
          lynis,
          rkhunter,
-         firewalld,
-         firewall-config,
+         firewalld | uwf,
+         firewall-config | gufw,
          spectre-meltdown-checker,
          otpclient
 Description: Collection of security related tools
