@@ -1,10 +1,18 @@
-#Official Debian GNU/Linux Repository
-deb http://ftp.de.debian.org/debian/ testing main contrib non-free 
-deb-src http://ftp.de.debian.org/debian/ testing main contrib non-free 
+# testing
+# trixie-updates, to get updates before a point release is made;
+# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates_and_backports
+deb https://deb.debian.org/debian/ trixie non-free-firmware non-free contrib main
+deb-src https://deb.debian.org/debian/ trixie non-free-firmware non-free contrib main
 
-deb http://ftp.de.debian.org/debian/ unstable main contrib non-free 
-deb-src http://ftp.de.debian.org/debian/ unstable main contrib non-free 
+deb https://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
+deb-src https://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
 
-deb http://ftp.de.debian.org/debian/ experimental main contrib non-free 
-deb-src http://ftp.de.debian.org/debian/ experimental main contrib non-free 
+deb http://security.debian.org/debian-security/ trixie-security non-free-firmware non-free contrib main
+deb-src http://security.debian.org/debian-security/ trixie-security main contrib non-free non-free-firmware
 
+# unstable
+deb https://deb.debian.org/debian/ sid non-free-firmware non-free contrib main
+deb-src https://deb.debian.org/debian/ sid non-free-firmware non-free contrib main
+
+# experimental
+deb https://deb.debian.org/debian/ experimental main contrib non-free non-free-firmware
