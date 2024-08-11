@@ -492,7 +492,7 @@ Depends: dosbox,
          libretro-gambatte,
          libretro-mgba,
          libretro-snes9x,
-         yabause-gtk,
+         yabause-gtk | yabause-qt,
          scummvm,
          nestopia
 Description: Collection of emulators
