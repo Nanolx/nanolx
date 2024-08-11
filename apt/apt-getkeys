@@ -6,7 +6,7 @@
 #  apt repository signing keys. ##
                                  #
                              #####
-### version	2.3.1
+### version	2.4
 ### date	2024/08/11
 
 key_base=/etc/apt/trusted.gpg.d/
@@ -23,45 +23,49 @@ key_winehq_store=${key_base}/winehq.asc
 key_i2p=https://geti2p.net/_static/i2p-archive-keyring.gpg
 key_i2p_store=${key_base}/i2p.asc
 
-pkg_suldr=suldr-keyring
-pkg_debmultimedia=deb-multimedia-keyring
+pkg_suldr_add=https://www.bchemnet.com/suldr/pool/debian/extra/su/
+pkg_suldr_name=suldr-keyring_2_all.deb
+
+pkg_debmultimedia_add=https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/
+pkg_debmultimedia_name=deb-multimedia-keyring_2016.8.1_all.deb
 
 grab_key () {
-	key=${1}
-	store=${2}
+	key="${1}"
+	store="${2}"
 
-	[[ ! -f ${store} ]] && wget -q ${key} -O ${store}
+	[[ ! -f "${store}" ]] && wget -q "${key}" -O "${store}"
+}
+
+grab_pkg () {
+	wget "${1}${2}" -O "/tmp/${2}"
+	dpkg -i "/tmp/${2}"
+	rm -f "/tmp/${2}"
 }
 
 if [[ ${EUID} != 0 ]]; then
 	echo "not root - exiting"
 else
 	command -v wget >/dev/null || apt install wget
-	[[ -d ${key_base} ]] || mkdir -p ${key_base}
-
-	# add i386 to known architectures
-	[[ $(uname -m) == *x86_64* ]] && dpkg --add-architecture i386
-
-	# update apt index
-	apt update -q -oAcquire::AllowInsecureRepositories=true
-
-	# Debian Multimedia signing key
-	# Samsung Unified Printer Driver signing key
-	apt -q -oAcquire::AllowInsecureRepositories=true \
-		install ${key_suldr} ${key_debmultimedia}
+	[[ -d "${key_base}" ]] || mkdir -p "${key_base}"
 
 	# Nanolx signing key
-	grab_key ${key_nanolx} ${key_nanolx_store}
+	grab_key "${key_nanolx}" "${key_nanolx_store}"
 
 	# Liquorix signing key
-	grab_key ${key_liquorix} ${key_liquorix_store}
+	grab_key "${key_liquorix}" "${key_liquorix_store}"
 
 	# WineHQ signing key
-	grab_key ${key_winehq} ${key_winehq_store}
+	grab_key "${key_winehq}" "${key_winehq_store}"
 
 	# i2p signing key
-	grab_key ${key_i2p} ${key_i2p_store}
+	grab_key "${key_i2p}" "${key_i2p_store}"
 
-	# update apt index (again)
-	apt update -q -oAcquire::AllowInsecureRepositories=false
+	# suldr signing key
+	grab_pkg "${pkg_suldr_add}" "${pkg_suldr_name}"
+
+	# deb-multimedia signing key
+	grab_pkg "${pkg_debmultimedia_add}" "${pkg_debmultimedia_name}"
+
+	# update apt index
+	apt update -q
 fi
