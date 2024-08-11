@@ -6,8 +6,8 @@
 #  apt repository signing keys. ##
                                  #
                              #####
-### version	2.3
-### date	2022/02/22
+### version	2.3.1
+### date	2024/08/11
 
 key_base=/etc/apt/trusted.gpg.d/
 
@@ -20,7 +20,7 @@ key_liquorix_store=${key_base}/liquorix.asc
 key_winehq=https://dl.winehq.org/wine-builds/Release.key
 key_winehq_store=${key_base}/winehq.asc
 
-key_i2p=http://geti2p.net/_static/i2p-debian-repo.key.asc
+key_i2p=https://geti2p.net/_static/i2p-archive-keyring.gpg
 key_i2p_store=${key_base}/i2p.asc
 
 pkg_suldr=suldr-keyring
