@@ -11,7 +11,7 @@ Pin: origin liquorix.net
 Pin-Priority: 700
 
 Package: *
-Pin: origin debian.ids-services.de
+Pin: origin tp-stud.hs-esslingen.de
 Pin-Priority: 600
 
 Package: *
@@ -27,7 +27,7 @@ Pin: origin ftp.de.debian.org
 Pin-Priority: 300
 
 Package: *
-Pin: release a=unstable
+Pin: release a=sid
 Pin-Priority: 900
 
 Package: *
