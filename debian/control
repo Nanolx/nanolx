@@ -492,9 +492,9 @@ Depends: dosbox,
          libretro-gambatte,
          libretro-mgba,
          libretro-snes9x,
+         libretro-nestopia,
          yabause-gtk | yabause-qt,
-         scummvm,
-         nestopia
+         scummvm
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
@@ -511,7 +511,7 @@ Description: Collection of emulators
     - gambatte (Game Boy, Game Boy Color)
     - mgba (Game Boy Advance)
     - snes9x (Super Famicom / SNES)
+    - nestopia (Famicom / NES)
  - yabause-gtk (SEGA Saturn)
  - dosbox (DOS)
  - scummvm (Lucas Arts Point'n'Click Adventures)
- - nestopia (Famicom / NES)
