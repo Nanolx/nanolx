@@ -1,10 +1,16 @@
-nanolx (1:3.7.20241108-1nano) unstable; urgency =low
+nanolx (1:3.8.20250726-1nano) unstable; urgendy=low
+
+ * New upstream release
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 26 Jul 2025 10:12:12 +0200
+
+nanolx (1:3.7.20241108-1nano) unstable; urgency=low
 
   * New upstream release
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 11 Aug 2024 16:10:27 +0200
 
-nanolx (1:3.6.20230926-1nano) unstable; urgency =low
+nanolx (1:3.6.20230926-1nano) unstable; urgency=low
 
   * New upstream release
 

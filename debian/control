@@ -36,7 +36,6 @@ Depends: synaptic,
          gsmartcontrol,
          aptitude,
          grsync,
-         policykit-1 | policykit-1-gnome,
          lm-sensors,
          ntfs-3g,
          dosfstools,
@@ -127,7 +126,6 @@ Depends: coreutils,
          fdupes,
          unp,
          sqlite3 | sqlite,
-         only,
          xe,
          bat | cat-bat,
          jq,
@@ -153,7 +151,6 @@ Description: Collection of basic command line tools
  - fdupes
  - unp
  - sqlite
- - only
  - xe
  - bat
  - jq
@@ -316,7 +313,6 @@ Description: Collection of cli media tools
 Package: nanolx-media-x11
 Architecture: all
 Depends: audacity,
-         soundkonverter,
          gmtp,
          pavucontrol,
          mpv,
@@ -335,7 +331,6 @@ Description: Collection of graphical media applications
  .
  These are:
  - audacity
- - soundkonverter
  - gmtp
  - pavucontrol
  - mpv
@@ -488,7 +483,6 @@ Architecture: all
 Depends: dosbox,
          retroarch,
          libretro-desmume,
-         libretro-mupen64plus,
          libretro-gambatte,
          libretro-mgba,
          libretro-snes9x,
@@ -507,7 +501,6 @@ Description: Collection of emulators
  These are:
  - retroarch with the following plugins
     - desmume (Nintendo DS)
-    - mupen64plus (Nintendo 64)
     - gambatte (Game Boy, Game Boy Color)
     - mgba (Game Boy Advance)
     - snes9x (Super Famicom / SNES)
