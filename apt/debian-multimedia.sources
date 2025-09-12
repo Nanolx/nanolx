@@ -1,0 +1,5 @@
+Types: deb deb-src
+URIs: https://ftp-stud.hs-esslingen.de/pub/Mirrors/debian-multimedia/
+Suites: unstable
+Components: main 
+Signed-By: /etc/apt/trusted.gpg.d/deb-multimedia-keyring.asc

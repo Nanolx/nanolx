@@ -1,0 +1,5 @@
+Types: deb
+URIs: https://www.bchemnet.com/suldr/
+Suites: debian
+Components: extra 
+Signed-By: /etc/apt/trusted.gpg.d/suldr-keyring.gpg

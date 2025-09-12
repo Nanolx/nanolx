@@ -1,6 +1,0 @@
-# Nanolx repository for Debian Unstable/Experimental
-# (aka: my own repo)
-
-# remote:
-deb https://apt.nanolx.org/ photonic main
-deb-src https://apt.nanolx.org/ photonic main

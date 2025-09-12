@@ -1,3 +1,11 @@
+nanolx (1:3.9.20250912-1nano) unstable; urgency=low
+
+  * New upstream release
+  * update debian.sources
+  * modernize all other repo.list to repo.sources
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 12 Sep 2025 17:49:31 +0200
+
 nanolx (1:3.8.20250726-1nano) unstable; urgendy=low
 
  * New upstream release

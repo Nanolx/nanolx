@@ -1,0 +1,5 @@
+Types: deb
+URIs: https://dl.winehq.org/wine-builds/debian/
+Suites: sid
+Components: main 
+Signed-By: /etc/apt/trusted.gpg.d/winehq.asc
