@@ -1,5 +1,6 @@
 Types: deb
-URIs: https://dl.winehq.org/wine-builds/debian/
-Suites: sid
-Components: main 
+URIs: https://dl.winehq.org/wine-builds/debian
+Suites: forky
+Components: main
+Architectures: amd64 i386
 Signed-By: /etc/apt/trusted.gpg.d/winehq.asc

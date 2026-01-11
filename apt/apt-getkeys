@@ -6,8 +6,8 @@
 #  apt repository signing keys. ##
                                  #
                              #####
-### version	2.4
-### date	2024/08/11
+### version	2.5
+### date	2026/01/11
 
 key_base=/etc/apt/trusted.gpg.d/
 
@@ -17,7 +17,7 @@ key_nanolx_store=${key_base}/nanolx2016.asc
 key_liquorix=https://liquorix.net/linux-liquorix.pub
 key_liquorix_store=${key_base}/liquorix.asc
 
-key_winehq=https://dl.winehq.org/wine-builds/Release.key
+key_winehq=https://dl.winehq.org/wine-builds/winehq.key
 key_winehq_store=${key_base}/winehq.asc
 
 key_i2p=https://geti2p.net/_static/i2p-archive-keyring.gpg
@@ -27,7 +27,7 @@ pkg_suldr_add=https://www.bchemnet.com/suldr/pool/debian/extra/su/
 pkg_suldr_name=suldr-keyring_2_all.deb
 
 pkg_debmultimedia_add=https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/
-pkg_debmultimedia_name=deb-multimedia-keyring_2016.8.1_all.deb
+pkg_debmultimedia_name=deb-multimedia-keyring_2024.9.1_all.deb
 
 grab_key () {
 	key="${1}"
