@@ -243,7 +243,10 @@ Depends: openssh-client,
          torbrowser-launcher,
          stubby,
          mozillavpn,
-         syncthing-gtk
+         syncthing,
+         syncthing-gtk | syncthingtray,
+         nextcloud-desktop,
+         dolphin-nextcloud
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -261,7 +264,8 @@ Description: Collection of network applications
  - TOR Browser launcher
  - Stubby
  - Mozilla VPN
- - Syncthing
+ - Syncthing (with UI)
+ - Nextcloud (with Dolphin integration)
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -419,7 +423,8 @@ Depends: glade,
          d-feet,
          okteta,
          poedit,
-	 valgrind-if-available
+         valgrind-if-available,
+         qownnotes
 Description: Collection of x11 development tools
  This meta-package installs x11 development tools.
  .
@@ -431,6 +436,7 @@ Description: Collection of x11 development tools
  - d-feet
  - okteta
  - valgrind
+ - qownnotes
 
 Package: nanolx-games
 Architecture: all
