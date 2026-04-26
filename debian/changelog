@@ -1,3 +1,16 @@
+nanolx (1:3.11.20260426-1nano) unstable; urgency=low
+
+  * New upstream release
+  * update apt-getkeys
+  * remove suldr repository
+  * add dep on qownnotes
+  * add dep on syncthing
+  * add dep on syncthing-gtk OR syncthingtray
+  * add dep on nextcloud-desktop
+  * add dep on dolphin-nextcloud
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 26 Apr 2026 20:32:39 +0200
+
 nanolx (1:3.10.20260111-1nano) unstable; urgency=low
 
   * New upstream release
