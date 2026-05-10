@@ -35,7 +35,7 @@ Architecture: all
 Depends: synaptic,
          gsmartcontrol,
          aptitude,
-         grsync,
+         backintime-qt | grsync,
          lm-sensors,
          ntfs-3g,
          dosfstools,
@@ -52,10 +52,6 @@ Depends: synaptic,
          gparted,
          deborphan | packagesearch,
          libgtk3-perl,
-         grub-customizer,
-         cupt,
-         libcupt4-2-downloadmethod-curl,
-         libcupt4-2-downloadmethod-wget,
          age,
          logsave,
          btop
@@ -81,8 +77,6 @@ Description: Nano admin package
  - cryptsetup
  - sudo
  - deborphan
- - grub-customizer
- - cupt
  - age
  - logsave
  - btop
@@ -91,6 +85,7 @@ Package: nanolx-apt-tools
 Architecture: all
 Depends: apt-file,
          apt-listchanges,
+         apt-listbugs,
          apt-rdepends,
          apt-show-versions,
          debdelta,
@@ -121,7 +116,7 @@ Depends: coreutils,
          zip,
          xz-utils,
          unrar,
-         bashstyle-ng (>= 9.0~rc1),
+         bashstyle-ng,
          fortunes-flashrider,
          fdupes,
          unp,
@@ -164,29 +159,26 @@ Description: Collection of basic command line tools
 Package: nanolx-x11
 Architecture: all
 Depends: conky-std,
-         fehlstart,
-         x11-xserver-utils,
-         guake,
-         gucharmap,
+         yakuake | guake,
+         kcharselect | gucharmap,
          yad,
-         qt5ct,
-         gtk3-nocsd,
-         task-cinnamon-desktop,
-         psensor
+         libgtk-nocsd0,
+         task-kde-desktop,
+         psensor,
+         ibus,
+         ibus-table-compose
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
  These are:
  - conky
- - gucharmap
- - fehlstart
- - x11-xserver-utils
- - guake
+ - kcharselect or gucharmap
+ - yakuake or guake
  - YAD (GTK+ Dialogs from shell scripts)
- - Qt5 Configuration Tool
- - GTK+3 no client side decoration (CSD)
- - Cinnamon Desktop Environment
+ - GTK+ no client side decoration (CSD)
+ - Plasma Desktop
  - psensor
+ - IBus (with Compose table)
 
 Package: nanolx-security
 Architecture: all
@@ -197,16 +189,19 @@ Depends: clamav,
          torsocks,
          tor-geoipdb,
          psad,
-         seahorse,
+         kleopatra | seahorse,
          gpgv,
-         pinentry-gnome3 | pinentry-gtk2,
+         pinentry-qt | pinentry-gnome3,
          keepassxc,
          lynis,
          rkhunter,
          firewalld | ufw,
          firewall-config | gufw,
          spectre-meltdown-checker,
-         otpclient
+         yubikey-manager,
+         yubikey-agent,
+         yubikey-piv-tool,
+         yubikey-touch-detector
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
@@ -216,16 +211,16 @@ Description: Collection of security related tools
  .
  These are:
  - clamav (with clamtk ui and clamassassin spam filter)
- - firewalld (with firewall-config)
+ - firewalld (with firewall-config) or ufw (gufw)
  - tor (with torsocks and tor-geoipdb)
  - psad
- - seahorse
- - gpgv (with pinentry Gtk+3 or Gtk+2)
+ - kleopatra or seahorse
+ - gpgv (with pinentry Qt or GNOME 3)
  - keepassx
  - Lynis
  - rkhunter
  - Spectre/Meltdown checker
- - OTP Client
+ - tools for Yubikey
 
 Package: nanolx-net
 Architecture: all
@@ -238,15 +233,15 @@ Depends: openssh-client,
          smbnetfs,
          gnu-ftpsync,
          kvirc,
-         openvpn,
+         openvpn | mozillavpn,
          openresolv | resolvconf,
          torbrowser-launcher,
          stubby,
-         mozillavpn,
          syncthing,
          syncthing-gtk | syncthingtray,
          nextcloud-desktop,
-         dolphin-nextcloud
+         dolphin-nextcloud,
+         privoxy
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -355,10 +350,10 @@ Depends: ccache,
          ubuntu-dev-tools,
          schroot,
          sbuild,
-         gcc-11 | gcc-10,
-         g++-11 | g++-10,
-         gcc-11-multilib | gcc-10-multilib,
-         g++-11-multilib | g++-10-multilib,
+         gcc,
+         gcc-multilib,
+         g++,
+         g++-multilib,
          git,
          dh-make,
          dh-autoreconf,
@@ -380,8 +375,8 @@ Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
  These are:
- - ccache, gcc 11 or 10, g++ 11 or 10
- - gcc-multilib 11 or 10, g++-multilib 11 or 10
+ - ccache
+ - gcc/-multilib and g++/-multilib
  - dpkg-dev, dh-make, dh-autoreconf, devscripts, lintian
  - gdb, make, cmake, pkg-config, git
  - autotools-dev, libtool, autoconf, automake
