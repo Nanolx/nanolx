@@ -4,18 +4,18 @@ this package installs the following additional apt-sources on your system,
 all this repositories have been checked for debian compliance, but there's
 no garantuee for not introducing new (security) bugs:
 
-* debian-multmedia:
+* deb-multmedia:
 	Christian Marillat's multimedia repository
-* debian-mozilla:
-	Debian Mozilla Team Iceweasel beta repository
+* mozilla:
+	Mozilla VPN repository
 * i2p:
 	Official repository of the i2p network
 * liquorix:
 	Zen-Kernel packaged for Debian
 * nanolx:
 	Christopher Roy Bratusek's apt repository
-* samsung:
-	Repository with Samsung linux printer drivers
+* winehq:
+	WineHQ packages
 
 this package will install the following files on your system:
 

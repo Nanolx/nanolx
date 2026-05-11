@@ -5,8 +5,6 @@ You'll need some clue on how to use the software installed by it.
 
 Installed packages:
 
-* bastille:
-        tool aiding in hardening your system
 * chkrootkit:
 	tool for checking your system for rootkits
 * clamav:
@@ -28,9 +26,7 @@ Installed packages:
 	Utilities aiding in hardening your system
 * i2p, i2p-router:
 	Load-balanced unspoofable packet switching network
-* seahorse:
+* kleopartra/seahorse:
 	graphical tool to manage your SSH, GPG and other keys
-* gpgv, pinentry-gtk2:
+* gpgv, pinentry-qt/pinentry-gnome3:
 	GNU Privacy Guard and graphical ask-password dialog
-* gksu:
-	grapical su/sudo frontend

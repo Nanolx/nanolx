@@ -17,8 +17,6 @@ debdelta:
 	install deltas
 reprepro:
 	utility for managing apt repositories
-cupt, libcupt3-0-downloadmethod-wget:
-	apt-get alternative with debdelta support
 
 this package will install the following files on your system:
 
