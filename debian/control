@@ -396,8 +396,7 @@ Depends: adb | android-tools-adb,
          android-sdk-libsparse-utils,
          android-file-transfer,
          fdroidserver,
-         zstd,
-         crossbuild-essential-armhf
+         zstd
 Description: Collection of android development tools
  This meta-package installs android development tools
  .
