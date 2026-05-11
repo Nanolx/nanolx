@@ -9,6 +9,7 @@ nanolx (1:3.12.20260511-1nano) unstable; urgency=low
     - qt5ct
     - task-cinnamon-desktop
     - otpclient
+    - crossbuild-essential-armhf
   * changed dependencies
     - bashstyle-ng (without version requirement)
     - grsync -> backintime-qt or grsync
@@ -26,10 +27,11 @@ nanolx (1:3.12.20260511-1nano) unstable; urgency=low
     - task-desktop-kde
     - yubikey-manager
     - yubikey-agent
-    - yubikey-piv-tool
+    - yubico-piv-tool
     - yubikiey-touch-detector
     - libpam-yubico
     - privoxy
+  * change source format to native
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 11 May 2026 15:28:59 +0200
 
