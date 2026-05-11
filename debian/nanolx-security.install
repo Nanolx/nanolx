@@ -1,2 +1,0 @@
-etc/sysctl.d/tcpip-hardening.conf
-etc/sysctl.d/toctou.conf

@@ -34,9 +34,3 @@ Installed packages:
 	GNU Privacy Guard and graphical ask-password dialog
 * gksu:
 	grapical su/sudo frontend
-
-Installed Files:
-
-* /etc/sysctl.d/tcpip-hardening.conf
-* /etc/sysctl.d/toctou.conf:
-	some security related kernel settings tweaks
