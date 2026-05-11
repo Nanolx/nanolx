@@ -200,7 +200,7 @@ Depends: clamav,
          spectre-meltdown-checker,
          yubikey-manager,
          yubikey-agent,
-         yubikey-piv-tool,
+         yubico-piv-tool,
          yubikey-touch-detector,
          libpam-yubico
 Description: Collection of security related tools
