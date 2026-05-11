@@ -1,3 +1,37 @@
+nanolx (1:3.12.20260511-1nano) unstable; urgency=low
+
+  * New upstream release
+  * removed dependencies
+    - cupt
+    - grub-customizer
+    - fehlstart
+    - x11-xserver-utils
+    - qt5ct
+    - task-cinnamon-desktop
+    - otpclient
+  * changed dependencies
+    - bashstyle-ng (without version requirement)
+    - grsync -> backintime-qt or grsync
+    - guake -> yakuake or guake
+    - gucharmap -> kcharselect or gucharmap
+    - gtk3-nocsd -> libgtk-nocsd0
+    - seahorse -> kleopatra or seahorse
+    - pinentry-gnome3 or pinentry-gtk2 -> pinentry-qt or pinentry-gnome3
+    - openvpn / mozillavpn -> openvpn or mozillavpn
+    - gcc-11/g++11 -> gcc/g++
+    - gcc-11-multilib/g++11-multilib -> gcc-multlib/g++-multilib
+  * new dependecies
+    - ibus
+    - ibus-table-compose
+    - task-desktop-kde
+    - yubikey-manager
+    - yubikey-agent
+    - yubikey-piv-tool
+    - yubikiey-touch-detector
+    - privoxy
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 11 May 2026 15:28:59 +0200
+
 nanolx (1:3.11.20260426-1nano) unstable; urgency=low
 
   * New upstream release
