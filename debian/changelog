@@ -28,6 +28,7 @@ nanolx (1:3.12.20260511-1nano) unstable; urgency=low
     - yubikey-agent
     - yubikey-piv-tool
     - yubikiey-touch-detector
+    - libpam-yubico
     - privoxy
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Mon, 11 May 2026 15:28:59 +0200
