@@ -524,8 +524,8 @@ Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
  AUR: https://aur.archlinux.org/packages/icaclient
  .
- The Script ctx-settings.sh in /usr/sbin may be used to change
- the default settings to Ceip=Disable and DisableHeartBeat=True
+ The Script nanolx-ctx in /usr/sbin may be used to change the
+ default settings to Ceip=Disable and DisableHeartBeat=True
  in citrix global configuration.
  .
  This package also depends on Zoom and the VDI-Plugin, aswell als

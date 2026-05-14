@@ -1,5 +1,5 @@
 usr/lib/systemd/system/*.service
-usr/sbin/ctx-settings.sh
+usr/sbin/nanolx-ctx
 usr/share/applications/*.desktop
 opt/Citrix/ICAClient/*.sh
 
