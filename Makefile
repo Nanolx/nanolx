@@ -11,9 +11,9 @@ install:
 	install -m644 apt/*.sources $(DESTDIR)/etc/apt/sources.list.d/
 	install -m644 apt/apt.conf $(DESTDIR)/etc/apt/apt.conf
 	install -m644 apt/pinning $(DESTDIR)/etc/apt/preferences.d/
-	install -m755 apt/apt-getkeys $(DESTDIR)/usr/sbin/
 	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
 	install -m755 scripts/repokit $(DESTDIR)/usr/bin/
+	install -m755 scripts/apt-getkeys $(DESTDIR)/usr/sbin/
 	install -m755 scripts/nanolx-skel $(DESTDIR)/usr/sbin/
 	install -m644 citrix/*.desktop $(DESTDIR)/usr/share/applications/
 	install -m755 citrix/wfica*.sh $(DESTDIR)/opt/Citrix/ICAClient/
