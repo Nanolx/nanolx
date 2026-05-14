@@ -457,7 +457,8 @@ Depends: glob2,
          zelda-onilink-begins,
          zelda-navis-quest,
          zelda-tunics,
-         lutris
+         lutris,
+         xpadneo-dkms
 Description: Collection of games
  This meta-package installs games.
  .
@@ -481,6 +482,7 @@ Description: Collection of games
  - Zelda Book of Mudora
  - Zelda Tunics
  - Lutris
+ - xpadneo-dkms (XBox Controller Support)
 
 Package: nanolx-games-emu
 Architecture: all
