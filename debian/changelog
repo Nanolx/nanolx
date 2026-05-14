@@ -1,4 +1,4 @@
-nanolx (1:3.90.20260514-1nano) unstable; urgency=low
+nanolx (1:4.0.20260514-1nano) unstable; urgency=low
   * New upstream release
   * updated debian/packaging scripts
   * improved citrix support script (nanolx-ctx)
@@ -86,7 +86,7 @@ nanolx (1:3.9.20250912-1nano) unstable; urgency=low
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 12 Sep 2025 17:49:31 +0200
 
-nanolx (1:3.8.20250726-1nano) unstable; urgendy=low
+nanolx (1:3.8.20250726-1nano) unstable; urgency=low
 
  * New upstream release
 
