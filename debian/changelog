@@ -5,7 +5,10 @@ nanolx (1:3.90.20260514-1nano) unstable; urgency=low
   * updated apt-getkeys (use now photonic repo key)
   * update skel_nano and enable via nanolx-skel instead of modifying
     /etc/useradd on postinst/postrm
-  * add dependency on xpadneo-dkms
+  * add dependency on xpadneo-dkms (nanolx-games)
+  * drop dependency on pavucontrol (nanolx-media-x11)
+  * change dependency openjdk-11-jdk to default-jdk (nanolx-devel-android)
+  * change dependency glade to glade or cambalache (nanolx-devel-x11)
   * other minor changes
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 14 May 2026 23:28:37 +0200

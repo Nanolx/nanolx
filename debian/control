@@ -2,7 +2,9 @@ Source: nanolx
 Section: misc
 Priority: extra
 Maintainer: Christopher Roy Bratusek <nano@jpberlin.de>
-Build-Depends: debhelper (>= 8.0.0), make
+Build-Depends:
+ debhelper-compat (= 13),
+ make
 Standards-Version: 4.7.2
 Homepage: https://nanolx.org
 Vcs-Browser: https://gitlab.com/Nanolx/nanolx
@@ -10,22 +12,23 @@ Vcs-Git: https://gitlab.com/Nanolx/nanolx.git
 
 Package: nanolx-base
 Architecture: all
-Depends: nanolx-admin,
-         nanolx-apt-tools,
-         nanolx-apt-sources,
-         nanolx-cli,
-         nanolx-x11,
-         nanolx-security,
-         nanolx-net,
-         nanolx-devel-cli,
-         nanolx-devel-android,
-         nanolx-devel-x11,
-         nanolx-media-codecs,
-         nanolx-media-cli,
-         nanolx-media-x11,
-         nanolx-games,
-         nanolx-games-emu,
-         nanolx-citrix-config
+Depends:
+ nanolx-admin,
+ nanolx-apt-tools,
+ nanolx-apt-sources,
+ nanolx-cli,
+ nanolx-x11,
+ nanolx-security,
+ nanolx-net,
+ nanolx-devel-cli,
+ nanolx-devel-android,
+ nanolx-devel-x11,
+ nanolx-media-codecs,
+ nanolx-media-cli,
+ nanolx-media-x11,
+ nanolx-games,
+ nanolx-games-emu,
+ nanolx-citrix-config
 Description: Nanolx base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
@@ -36,29 +39,30 @@ Description: Nanolx base package
 
 Package: nanolx-admin
 Architecture: all
-Depends: synaptic,
-         gsmartcontrol,
-         aptitude,
-         backintime-qt | grsync,
-         lm-sensors,
-         ntfs-3g,
-         dosfstools,
-         btrfs-progs | btrfs-tools,
-         lsof,
-         localepurge,
-         bleachbit,
-         galternatives,
-         gkdebconf,
-         needrestart,
-         cpufrequtils | linux-cpupower,
-         cruft-ng,
-         cryptsetup,
-         gparted,
-         deborphan | packagesearch,
-         libgtk3-perl,
-         age,
-         logsave,
-         btop
+Depends:
+ synaptic,
+ gsmartcontrol,
+ aptitude,
+ backintime-qt | grsync,
+ lm-sensors,
+ ntfs-3g,
+ dosfstools,
+ btrfs-progs | btrfs-tools,
+ lsof,
+ localepurge,
+ bleachbit,
+ galternatives,
+ gkdebconf,
+ needrestart,
+ cpufrequtils | linux-cpupower,
+ cruft-ng,
+ cryptsetup,
+ gparted,
+ deborphan | packagesearch,
+ libgtk3-perl,
+ age,
+ logsave,
+ btop
 Description: Nano admin package
  This meta-package installs useful tools for system administration:
  - synaptic
@@ -87,20 +91,22 @@ Description: Nano admin package
 
 Package: nanolx-apt-tools
 Architecture: all
-Depends: apt-file,
-         apt-listchanges,
-         apt-listbugs,
-         apt-rdepends,
-         apt-show-versions,
-         debdelta,
-         reprepro
+Depends:
+ apt-file,
+ apt-listchanges,
+ apt-listbugs,
+ apt-rdepends,
+ apt-show-versions,
+ debdelta,
+ reprepro
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt.
 
 Package: nanolx-apt-sources
 Architecture: all
-Depends: wget,
-         apt-transport-https
+Depends:
+ wget,
+ apt-transport-https
 Description: Collection of extra sources for apt
  This meta-package installs extra apt-sources on the system.
  .
@@ -109,31 +115,32 @@ Description: Collection of extra sources for apt
 
 Package: nanolx-cli
 Architecture: all
-Depends: coreutils,
-         vim,
-         less,
-         rsync,
-         bash,
-         bash-completion,
-         mc,
-         p7zip-full,
-         zip,
-         xz-utils,
-         unrar,
-         bashstyle-ng,
-         fortunes-flashrider,
-         fdupes,
-         unp,
-         sqlite3 | sqlite,
-         xe,
-         bat | cat-bat,
-         jq,
-         fd-find,
-         plocate,
-         rdfind,
-         eta,
-         duf,
-         organize
+Depends:
+ coreutils,
+ vim,
+ less,
+ rsync,
+ bash,
+ bash-completion,
+ mc,
+ p7zip-full,
+ zip,
+ xz-utils,
+ unrar,
+ bashstyle-ng,
+ fortunes-flashrider,
+ fdupes,
+ unp,
+ sqlite3 | sqlite,
+ xe,
+ bat | cat-bat,
+ jq,
+ fd-find,
+ plocate,
+ rdfind,
+ eta,
+ duf,
+ organize
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
  .
@@ -162,15 +169,16 @@ Description: Collection of basic command line tools
 
 Package: nanolx-x11
 Architecture: all
-Depends: conky-std,
-         yakuake | guake,
-         kcharselect | gucharmap,
-         yad,
-         libgtk-nocsd0,
-         task-kde-desktop,
-         psensor,
-         ibus,
-         ibus-table-compose
+Depends:
+ conky-std,
+ yakuake | guake,
+ kcharselect | gucharmap,
+ yad,
+ libgtk-nocsd0,
+ task-kde-desktop,
+ psensor,
+ ibus,
+ ibus-table-compose
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
  .
@@ -186,27 +194,28 @@ Description: Collection of X11 applications
 
 Package: nanolx-security
 Architecture: all
-Depends: clamav,
-         clamtk,
-         clamassassin,
-         tor,
-         torsocks,
-         tor-geoipdb,
-         psad,
-         kleopatra | seahorse,
-         gpgv,
-         pinentry-qt | pinentry-gnome3,
-         keepassxc,
-         lynis,
-         rkhunter,
-         firewalld | ufw,
-         firewall-config | gufw,
-         spectre-meltdown-checker,
-         yubikey-manager,
-         yubikey-agent,
-         yubico-piv-tool,
-         yubikey-touch-detector,
-         libpam-yubico
+Depends:
+ clamav,
+ clamtk,
+ clamassassin,
+ tor,
+ torsocks,
+ tor-geoipdb,
+ psad,
+ kleopatra | seahorse,
+ gpgv,
+ pinentry-qt | pinentry-gnome3,
+ keepassxc,
+ lynis,
+ rkhunter,
+ firewalld | ufw,
+ firewall-config | gufw,
+ spectre-meltdown-checker,
+ yubikey-manager,
+ yubikey-agent,
+ yubico-piv-tool,
+ yubikey-touch-detector,
+ libpam-yubico
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
@@ -229,24 +238,25 @@ Description: Collection of security related tools
 
 Package: nanolx-net
 Architecture: all
-Depends: openssh-client,
-         wireshark,
-         qbittorrent,
-         filezilla,
-         thunderbird,
-         firefox | firefox-esr,
-         smbnetfs,
-         gnu-ftpsync,
-         kvirc,
-         openvpn | mozillavpn,
-         openresolv | resolvconf,
-         torbrowser-launcher,
-         stubby,
-         syncthing,
-         syncthing-gtk | syncthingtray,
-         nextcloud-desktop,
-         dolphin-nextcloud,
-         privoxy
+Depends:
+ openssh-client,
+ wireshark,
+ qbittorrent,
+ filezilla,
+ thunderbird,
+ firefox | firefox-esr,
+ smbnetfs,
+ gnu-ftpsync,
+ kvirc,
+ openvpn | mozillavpn,
+ openresolv | resolvconf,
+ torbrowser-launcher,
+ stubby,
+ syncthing,
+ syncthing-gtk | syncthingtray,
+ nextcloud-desktop,
+ dolphin-nextcloud,
+ privoxy
 Description: Collection of network applications
  This meta-package installs network applications.
  .
@@ -269,14 +279,15 @@ Description: Collection of network applications
 
 Package: nanolx-media-codecs
 Architecture: all
-Depends: gstreamer1.0-alsa,
-         gstreamer1.0-plugins-bad,
-         gstreamer1.0-plugins-base,
-         gstreamer1.0-plugins-good,
-         gstreamer1.0-plugins-ugly,
-         gstreamer1.0-libav,
-         libdvdcss2,
-         libbluray2
+Depends:
+ gstreamer1.0-alsa,
+ gstreamer1.0-plugins-bad,
+ gstreamer1.0-plugins-base,
+ gstreamer1.0-plugins-good,
+ gstreamer1.0-plugins-ugly,
+ gstreamer1.0-libav,
+ libdvdcss2,
+ libbluray2
 Description: Collection of media codecs
  This meta-package installs media codecs.
  .
@@ -290,15 +301,16 @@ Description: Collection of media codecs
 
 Package: nanolx-media-cli
 Architecture: all
-Depends: lame,
-         sox,
-         vorbis-tools,
-         flac,
-         normalize-audio,
-         streamripper,
-         ffmpeg,
-         cdparanoia,
-         imagemagick
+Depends:
+ lame,
+ sox,
+ vorbis-tools,
+ flac,
+ normalize-audio,
+ streamripper,
+ ffmpeg,
+ cdparanoia,
+ imagemagick
 Description: Collection of cli media tools
  This meta-package installs cli media tools.
  .
@@ -315,20 +327,20 @@ Description: Collection of cli media tools
 
 Package: nanolx-media-x11
 Architecture: all
-Depends: audacity,
-         gmtp,
-         pavucontrol,
-         mpv,
-         geeqie,
-         okular,
-         gimp,
-         xsane | simple-scan,
-         k3b,
-         libk3b7-extracodecs | libk3blib8-extracodecs | libk3b-extracodecs,
-         mediathekview,
-         easytag,
-         elisa,
-         ffmpegthumbnailer
+Depends:
+ audacity,
+ gmtp,
+ mpv,
+ geeqie,
+ okular,
+ gimp,
+ xsane | simple-scan,
+ k3b,
+ libk3b7-extracodecs | libk3blib8-extracodecs | libk3b-extracodecs,
+ mediathekview,
+ easytag,
+ elisa,
+ ffmpegthumbnailer
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
  .
@@ -349,33 +361,34 @@ Description: Collection of graphical media applications
 
 Package: nanolx-devel-cli
 Architecture: all
-Depends: ccache,
-         dpkg-dev,
-         fakeroot,
-         ubuntu-dev-tools,
-         schroot,
-         sbuild,
-         gcc,
-         gcc-multilib,
-         g++,
-         g++-multilib,
-         git,
-         dh-make,
-         dh-autoreconf,
-         pkg-config,
-         make,
-         cmake,
-         autoconf,
-         automake,
-         devscripts,
-         autotools-dev,
-         libtool,
-         lintian,
-         gdb,
-         codespell,
-         shellcheck,
-         licensecheck,
-         pycodestyle
+Depends:
+ ccache,
+ dpkg-dev,
+ fakeroot,
+ ubuntu-dev-tools,
+ schroot,
+ sbuild,
+ gcc,
+ gcc-multilib,
+ g++,
+ g++-multilib,
+ git,
+ dh-make,
+ dh-autoreconf,
+ pkg-config,
+ make,
+ cmake,
+ autoconf,
+ automake,
+ devscripts,
+ autotools-dev,
+ libtool,
+ lintian,
+ gdb,
+ codespell,
+ shellcheck,
+ licensecheck,
+ pycodestyle
 Description: Collection of cli development tools
  This meta-package installs cli development tools
  .
@@ -390,17 +403,18 @@ Description: Collection of cli development tools
 
 Package: nanolx-devel-android
 Architecture: all
-Depends: adb | android-tools-adb,
-         fastboot | android-tools-fastboot,
-         gradle,
-         apktool,
-         zipalign,
-         openjdk-11-jdk,
-         brotli,
-         android-sdk-libsparse-utils,
-         android-file-transfer,
-         fdroidserver,
-         zstd
+Depends:
+ adb | android-tools-adb,
+ fastboot | android-tools-fastboot,
+ gradle,
+ apktool,
+ zipalign,
+ default-jdk,
+ brotli,
+ android-sdk-libsparse-utils,
+ android-file-transfer,
+ fdroidserver,
+ zstd
 Description: Collection of android development tools
  This meta-package installs android development tools
  .
@@ -416,14 +430,15 @@ Description: Collection of android development tools
 
 Package: nanolx-devel-x11
 Architecture: all
-Depends: glade,
-         bluefish,
-         geany,
-         d-feet,
-         okteta,
-         poedit,
-         valgrind-if-available,
-         qownnotes
+Depends:
+ glade | cambalache,
+ bluefish,
+ geany,
+ d-feet,
+ okteta,
+ poedit,
+ valgrind-if-available,
+ qownnotes
 Description: Collection of x11 development tools
  This meta-package installs x11 development tools.
  .
@@ -439,26 +454,27 @@ Description: Collection of x11 development tools
 
 Package: nanolx-games
 Architecture: all
-Depends: glob2,
-         freedroidrpg,
-         enigma,
-         gnome-sudoku,
-         gnome-mahjongg,
-         lincity-ng,
-         neverball,
-         pingus,
-         supertuxkart,
-         zelda-solarus-dx,
-         zelda-solarus-xd,
-         zelda-solarus-xd2-mercuris-chess,
-         zelda-solarus-return-of-the-hylian,
-         zelda-book-of-mudora,
-         zelda-time-to-triumph,
-         zelda-onilink-begins,
-         zelda-navis-quest,
-         zelda-tunics,
-         lutris,
-         xpadneo-dkms
+Depends:
+ glob2,
+ freedroidrpg,
+ enigma,
+ gnome-sudoku,
+ gnome-mahjongg,
+ lincity-ng,
+ neverball,
+ pingus,
+ supertuxkart,
+ zelda-solarus-dx,
+ zelda-solarus-xd,
+ zelda-solarus-xd2-mercuris-chess,
+ zelda-solarus-return-of-the-hylian,
+ zelda-book-of-mudora,
+ zelda-time-to-triumph,
+ zelda-onilink-begins,
+ zelda-navis-quest,
+ zelda-tunics,
+ lutris,
+ xpadneo-dkms
 Description: Collection of games
  This meta-package installs games.
  .
@@ -486,15 +502,16 @@ Description: Collection of games
 
 Package: nanolx-games-emu
 Architecture: all
-Depends: dosbox,
-         retroarch,
-         libretro-desmume,
-         libretro-gambatte,
-         libretro-mgba,
-         libretro-snes9x,
-         libretro-nestopia,
-         yabause-gtk | yabause-qt,
-         scummvm
+Depends:
+ dosbox,
+ retroarch,
+ libretro-desmume,
+ libretro-gambatte,
+ libretro-mgba,
+ libretro-snes9x,
+ libretro-nestopia,
+ yabause-gtk | yabause-qt,
+ scummvm
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
@@ -517,13 +534,14 @@ Description: Collection of emulators
 
 Package: nanolx-citrix-config
 Architecture: all
-Depends: ctxusb,
-         icaclient,
-         zoom,
-         zoomvdi-universal-plugin,
-         libjpeg8,
-         libjpeg-turbo8,
-         speex
+Depends:
+ ctxusb,
+ icaclient,
+ zoom,
+ zoomvdi-universal-plugin,
+ libjpeg8,
+ libjpeg-turbo8,
+ speex
 Replaces: icaclient
 Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
