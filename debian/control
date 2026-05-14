@@ -515,7 +515,7 @@ Architecture: all
 Depends: ctxusb,
          icaclient,
          zoom,
-         zoomvid-universal-plugin,
+         zoomvdi-universal-plugin,
          libjpeg8,
          libjpeg-turbo8,
          speex
