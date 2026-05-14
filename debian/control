@@ -22,6 +22,7 @@ Depends: nanolx-admin,
          nanolx-media-x11,
          nanolx-games,
          nanolx-games-emu,
+         nanolx-citrix-config
 Description: Nanolx base package
  Installation instructions:
    a) apt-get install nanolx-apt-sources
@@ -508,3 +509,24 @@ Description: Collection of emulators
  - yabause-gtk (SEGA Saturn)
  - dosbox (DOS)
  - scummvm (Lucas Arts Point'n'Click Adventures)
+
+Package: nanolx-citrix-config
+Architecture: all
+Depends: ctxusb,
+         icaclient,
+         zoom,
+         zoomvid-universal-plugin,
+         libjpeg8,
+         libjpeg-turbo8,
+         speex
+Replaces: icaclient
+Description: Citrix Workspace Support package
+ Additional integration and configuration for Citrix, as per
+ AUR: https://aur.archlinux.org/packages/icaclient
+ .
+ The Script ctx-settings.sh in /usr/sbin may be used to change
+ the default settings to Ceip=Disable and DisableHeartBeat=True
+ in citrix global configuration.
+ .
+ This package also depends on Zoom and the VDI-Plugin, aswell als
+ libjpeg8 and libjpeg-turbo8 from Ubuntu (install manually).
