@@ -3,10 +3,9 @@ Source: https://gitlab.com/Nanolx/nanolx
 Upstream-Name: Nanolx
 Upstream-Contact: https://gitlab.com/Nanolx/nanolx/-/work_items
 
-Files: *
+Files:
+ *
 Copyright: 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
-License: GPL-3.0+
-
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -23,3 +22,31 @@ License: GPL-3.0+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+Files:
+ apt/*
+ skel_nano/*
+Copyright: 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
+License: public-domain
+
+Files:
+ debian/*
+Copyright: 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
+License: permissive
+ Copying and distribution of this package, with or without modification,
+ are permitted in any medium without royalty provided the copyright notice
+ and this notice are preserved.
+
+Files: citrix/*
+Copyright: 2011-2026 Stephan Springer <buzo+arch@Lini.de>
+   2011-2026 Moabeat <moabeat@berlin.de>
+   2011-2026 Eric Liu <eric@hnws.me>
+   2011-2026 Daniele Vazzola <daniele.vazzola@gmail.com>
+   2011-2026 Ciarán Coffey <ciaran@ccoffey.ie>
+   2011-2026 Matthew Gyurgyik <matthew@pyther.net>
+   2011-2026 Giorgio Azzinnaro <giorgio@azzinna.ro>
+License: public-domain
+Comment:
+ According to https://bbs.archlinux.org/viewtopic.php?id=252234 there's no
+ actual license to AUR content by default, nor is anything sated. One would
+ assume either public-domain or permissive.
