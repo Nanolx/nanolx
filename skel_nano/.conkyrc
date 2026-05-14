@@ -1,5 +1,5 @@
 conky.config = {
-	alignment = 'middle_left',
+	alignment = 'middle_right',
 	background = true,
 	border_width = 1,
 	cpu_avg_samples = 2,
@@ -22,7 +22,6 @@ conky.config = {
 	gap_x = 15,
 	gap_y = 15,
 	max_port_monitor_connections = 64,
-	max_specials = '512',
 	max_user_text = 16384,
 	net_avg_samples = 2,
 	no_buffers = true,
@@ -30,6 +29,8 @@ conky.config = {
 	own_window_colour = 'black',
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 	own_window_transparent = false,
+	own_window_argb_visual = true,
+	own_window_argb_value = 145,
 	own_window_type = 'normal',
 	own_window = true,
 	stippled_borders = 2,
@@ -38,8 +39,9 @@ conky.config = {
 	use_spacer = 'right',
 	use_xft = true,
 	xftalpha = 0.8,
-	font = 'Bitstream Vera Sans Mono:size=9',
-
+	font = 'DejaVu Sans Mono:size=10',
+	override_utf8_locale = true,
+	xinerama_head = 2,
 };
 
 conky.text = [[
@@ -48,24 +50,53 @@ ${color0}${alignc}${kernel}
 
 ${color7}${time %k:%M:%S}${alignr}${uptime}
 
-${color}${alignc}${execpi 300 TDY=`date +%d | sed -e 's/^0//'` ; ncal -M -w -h | sed 's/^/     /' | sed /" $TDY "/s/" $TDY "/" "'${color2}'"$TDY"'${color}'" "/}
+#${color}${alignc}${execpi 3600 TDY=`date +%d | sed -e 's/^0//'` ; ncal -hM | sed 's/^/     /' | sed /" $TDY "/s/" $TDY "/" "'${color2}'"$TDY"'${color}'" "/}
 
-${color3}Core1: ${cpu cpu1}%${alignr}${cpu cpu2}% :Core2
-${color2}Core3: ${cpu cpu3}%${alignr}${cpu cpu4}% :Core4
+${color6}${alignc}AMD Ryzen 7 7800X3D
+Core Speed:${alignr}${freq_g 0} GHz
+Core Temp:${alignr}${execpi 30 sensors k10temp-pci-00c3 | awk '/Tctl/{print $2}'}
+Core Load:${alignr}${cpu cpu0} %
+${cpubar}
 
 ${color4}RAM ${alignr}${mem} [${memmax}]
-${color4}${membar}
+${membar}
 
-${color7}Local ${alignr}${addr wlp2s0}
-${color7}Extern ${alignr}${execi 300 wget http://v4.ipv6-test.com/api/myip.php -q -O -}
-${color7}Down ${alignr}${downspeed wlp2s0} [${totaldown wlp2s0}]
-${color7}Up ${alignr}${upspeed wlp2s0} [${totalup wlp2s0}]
+${color5}${alignc}AMD Radeon RX 9070
+GPU Temp:${alignr}${execpi 30 sensors amdgpu-pci-0300 | awk '/edge/{print $2}'}
+#GPU FAN:${alignr}${execpi 30 sensors amdgpu-pci-0300 | awk '/fan1/{print $2 " " $3}'}
+GPU Usage:${alignr}${execpi 30 echo $(cat /sys/class/drm/card0/device/gpu_busy_percent) %}
+#/usr/sbin/radeontop -d- -l1 | grep -o 'gpu [0-9]\{1,3\}' | cut -c 5-7
+GPU RAM:${alignr}${execpi 30 echo $(($(cat /sys/class/drm/card0/device/mem_info_vram_used)/1024/1024))/$(($(cat /sys/class/drm/card0/device/mem_info_vram_total)/1024/1024)) MiB}
+#/usr/sbin/radeontop -d- -l1 | grep -o 'vram [0-9]\{1,3\}' | cut -c 5-7
 
-${color5}R ${diskio_read} ${alignr}W ${diskio_write}
-${color5}/ ${alignr}${fs_used /} [${fs_size /}]
-${color5}${fs_bar /}
-${color5}/home ${alignr}${fs_used /home} [${fs_size /home}]
-${color5}${fs_bar /home}
+${color7}/dev/nvme0 Temp:${alignr}${execpi 30 sensors nvme-pci-0d00 | awk '/Composite/{print $2}'}
+Root ${alignr}⇠ ${diskio_read /dev/nvme0n1p4} ⇢ ${diskio_write /dev/nvme0n1p4}
+${fs_bar 6,75 /} ${alignr}${fs_used /} [${fs_size /}]
+Win C: ${alignr}⇠ ${diskio_read /dev/nvme0n1p2} ⇢ ${diskio_write /dev/nvme0n1p2}
+${fs_bar 6,75 /media/win_c} ${alignr}${fs_used /media/win_c} [${fs_size /media/win_c}]
+
+${color3}/dev/nvme1 Temp:${alignr}${execpi 30 sensors nvme-pci-1200 | awk '/Composite/{print $2}'}
+Win E: ${alignr}⇠ ${diskio_read /dev/nvme1n1p2} ⇢ ${diskio_write /dev/nvme1n1p2}
+${fs_bar 6,75 /media/win_e} ${alignr}${fs_used /media/win_e} [${fs_size /media/win_e}]
+
+${color0}/dev/sda   Temp:${alignr}${execpi 30 sensors drivetemp-scsi-2-0 | awk '/temp1/{print $2}'}
+Exchange ${alignr}⇠ ${diskio_read /dev/sda1} ⇢ ${diskio_write /dev/sda1}
+${fs_bar 6,75 /media/exchange} ${alignr}${fs_used /media/exchange} [${fs_size /media/exchange}]
+Home ${alignr}⇠ ${diskio_read /dev/sda2} ⇢ ${diskio_write /dev/sda2}
+${fs_bar 6,75 /home} ${alignr}${fs_used /home} [${fs_size /home}]
+
+${color6}/dev/sdb   Temp:${alignr}${execpi 30 sensors drivetemp-scsi-3-0 | awk '/temp1/{print $2}'}
+Storage ${alignr}⇠ ${diskio_read /dev/sdb1} ⇢ ${diskio_write /dev/sdb1}
+${fs_bar 6,75 /media/storage} ${alignr}${fs_used /media/storage} [${fs_size /media/storage}]
+
+${color2}/dev/sdc   Temp:${alignr}${execpi 30 sensors drivetemp-scsi-8-0 | awk '/temp1/{print $2}'}
+Playground ${alignr}⇠ ${diskio_read /dev/sdc2} ⇢ ${diskio_write /dev/sdc2}
+${fs_bar 6,75 /media/playground} ${alignr}${fs_used /media/playground} [${fs_size /media/playground}]
+
+
+${color7}Local ${alignr}${addr wlp12s0}
+Current ${alignr}⇣ ${downspeed wlp12s0} ⇡ ${upspeed wlp12s0}
+Total   ${alignr}⇣ ${totaldown wlp12s0} ⇡ ${totalup wlp12s0}
 
 ${color0}Top:${alignr}Processes: ${processes}
 ${color}${top name 1}${alignr}${top pid 1} ${top cpu 1}
