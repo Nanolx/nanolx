@@ -1,5 +1,5 @@
 Types: deb deb-src
 URIs: https://apt.nanolx.org/
 Suites: photonic
-Components: main 
-Signed-By: /etc/apt/trusted.gpg.d/nanolx2016.asc
+Components: main
+Signed-By: /etc/apt/trusted.gpg.d/nanolx2026.asc

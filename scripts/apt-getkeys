@@ -6,13 +6,13 @@
 #  apt repository signing keys. ##
                                  #
                              #####
-### version	2.6
-### date	2026/04/25
+### version	2.6.1
+### date	2026/05/14
 
 key_base=/etc/apt/trusted.gpg.d/
 
-key_nanolx=https://www.nanolx.org/apt/photonic.asc
-key_nanolx_store=${key_base}/nanolx2016.asc
+key_nanolx=https://www.nanolx.org/apt/photonic2026.asc
+key_nanolx_store=${key_base}/nanolx2026.asc
 
 key_liquorix=https://liquorix.net/liquorix-keyring.gpg
 key_liquorix_store=${key_base}/liquorix.asc
