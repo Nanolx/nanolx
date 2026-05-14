@@ -6,19 +6,19 @@ reldate="2026/05/14"
 export ICAROOT=/opt/Citrix/ICAClient
 
 case ${1} in
-	enable )
-		sed -i \
+    enable )
+        sed -i \
             -e 's/Ceip=Disable/Ceip=Enable/' \
             -e 's/DisableHeartBeat=True/DisableHeartBeat=False/' \
-            "${$ICAROOT}/config/module.ini"	;;
+            "${$ICAROOT}/config/module.ini"
     ;;
 
-	disable )
-		sed -i \
+    disable )
+        sed -i \
             -e 's/Ceip=Enable/Ceip=Disable/' \
             -e 's/DisableHeartBeat=False/DisableHeartBeat=True/' \
             "${$ICAROOT}/config/module.ini"
-	;;
+    ;;
 
     check )
         echo "running Citrix Workspace system compatibility check"
@@ -26,16 +26,16 @@ case ${1} in
         echo "see /tmp/logfile.txt for results"
     ;;
 
-	* )
-		echo -e "nanolx-ctx v${version} (${reldate})
+    * )
+        echo -e "nanolx-ctx v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-	nanolx-ctx enable  [telemetry] (why?)
-	nanolx-ctx disable [telemetry]
+    nanolx-ctx enable  [telemetry] (why?)
+    nanolx-ctx disable [telemetry]
     nanolx-ctx check   [system compatibility/missing software]
 "
-	;;
+    ;;
 esac
