@@ -1,2 +1,3 @@
 etc/skel_nano/
 usr/bin/repokit
+usr/sbin/nanolx-skel

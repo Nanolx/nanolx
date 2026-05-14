@@ -14,9 +14,10 @@ install:
 	install -m755 apt/apt-getkeys $(DESTDIR)/usr/sbin/
 	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
 	install -m755 scripts/repokit $(DESTDIR)/usr/bin/
+	install -m755 scripts/nanolx-skel $(DESTDIR)/usr/sbin/
 	install -m644 citrix/*.desktop $(DESTDIR)/usr/share/applications/
 	install -m755 citrix/wfica*.sh $(DESTDIR)/opt/Citrix/ICAClient/
-	install -m755 citrix/ctx-settings.sh $(DESTDIR)/usr/sbin/
+	install -m755 citrix/nanolx-ctx $(DESTDIR)/usr/sbin/
 	install -m755 citrix/*.service $(DESTDIR)/usr/lib/systemd/system/
 	cp -r skel_nano $(DESTDIR)/etc/
 

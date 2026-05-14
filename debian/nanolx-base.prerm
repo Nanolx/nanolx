@@ -1,9 +1,0 @@
-#!/bin/bash
-
-set -e
-
-sed 's,SKEL=.*,SKEL=/etc/skel/,' -i /etc/default/useradd
-
-#DEBHELPER#
-
-exit 0
