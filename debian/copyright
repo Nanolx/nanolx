@@ -1,9 +1,12 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://gitlab.com/Nanolx/nanolx
 Upstream-Name: Nanolx
-Source: https://github.com/Nanolx/nano-meta/tree/master/nanolx
+Upstream-Contact: https://gitlab.com/Nanolx/nanolx/-/work_items
 
 Files: *
-Copyright: 2014 Christopher Roy Bratusek <nano@jpberlin.de>
+Copyright: 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
+License: GPL-3.0+
+
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

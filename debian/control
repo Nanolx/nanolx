@@ -3,7 +3,10 @@ Section: misc
 Priority: extra
 Maintainer: Christopher Roy Bratusek <nano@jpberlin.de>
 Build-Depends: debhelper (>= 8.0.0), make
-Standards-Version: 3.9.4
+Standards-Version: 4.7.2
+Homepage: https://nanolx.org
+Vcs-Browser: https://gitlab.com/Nanolx/nanolx
+Vcs-Git: https://gitlab.com/Nanolx/nanolx.git
 
 Package: nanolx-base
 Architecture: all
