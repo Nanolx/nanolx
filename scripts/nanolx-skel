@@ -1,0 +1,28 @@
+#!/bin/bash
+
+version="0.0.1"
+reldate="2026/05/14"
+
+case ${1} in
+	enable )
+		sed 's,SKEL=.*,SKEL=/etc/skel_nano/,' -i /etc/default/useradd
+		sed 's,#.*SKEL,SKEL,' -i /etc/default/useradd
+	;;
+
+	disable )
+		sed 's,SKEL=.*,SKEL=/etc/skel/,' -i /etc/default/useradd
+		sed 's,SKEL,# SKEL,' -i /etc/default/useradd
+	;;
+
+	* )
+		echo -e "nanolx-skel v${version} (${reldate})
+© 2026 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+usage:
+	nanolx-skel enable
+	nanolx-skel disable
+"
+	;;
+esac
