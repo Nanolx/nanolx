@@ -15,19 +15,27 @@ Some meta-packages also provide additional scripts, tools and configs.
 Installation on Debian GNU/Linux
 =======================================
 
-First install the
-
-	nanolx-apt-sources
-
-package on it's own, then issue
-
-	apt-getkeys
-
-as root. Afterwards continue with the other nanolx-* packages, as desired.
-
-The apt singing key for my photonic apt repository is located at
-
+Get the signing key for my repository, located at:
 	https://www.nanolx.org/apt/photonic2026.asc
+
+and save it as:
+	/etc/apt/trusted.gpg.d/nanolx2026.asc
+
+create:
+	/etc/apt/sources.list.d/nanolx.list
+
+with the following content:
+
+	Types: deb deb-src
+	URIs: https://apt.nanolx.org/
+	Suites: photonic
+	Components: main
+	Signed-By: /etc/apt/trusted.gpg.d/nanolx2026.asc
+
+then proceed to install the
+	nanolx-base
+
+package.
 
 Release Information
 =======================================
