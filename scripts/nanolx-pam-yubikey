@@ -4,9 +4,7 @@ version="0.0.1"
 reldate="2026/05/15"
 
 pam_files=(login sddm su sudo sudo-i polkit-1 kde)
-
-common_string="auth sufficient pam_u2f.so authfile=/etc/u2f_keys userpresence=0"
-kde_string="auth sufficient pam_u2f.so nouserok"
+yubi_string="auth sufficient pam_u2f.so authfile=/etc/u2f_keys userpresence=0"
 
 case ${1} in
     enable )
@@ -16,13 +14,12 @@ case ${1} in
             exit 1
         fi
 
-        # create overrides for /usr/lib/pam.d/{polkit-1,de}
+        # create overrides for /usr/lib/pam.d/{polkit-1,kde}
         [ ! -f /etc/pam.d/polkit-1 ] && cp /usr/lib/pam.d/polkit-1 /etc/pam.d/
         [ ! -f /etc/pam.d/kde ] && cp /usr/lib/pam.d/kde /etc/pam.d/
 
         for file in ${pam_files[@]}; do
-            [ ${file} = "kde" ] && string=${kde_string} || string=${common_string}
-            if grep -q "${string}" /etc/pam.d/${file}; then
+            if grep -q "${yubi_string}" /etc/pam.d/${file}; then
                 echo "skip: Yubikey already enabled in: /etc/pam.d/${file}"
                 continue
             fi
@@ -33,14 +30,13 @@ case ${1} in
             line=$((line-1))
 
             echo "Enabling Yubikey in: /etc/pam.d/${file}"
-            sed "${line} i ${string}" -i /etc/pam.d/${file}
+            sed "${line} i ${yubi_string}" -i /etc/pam.d/${file}
         done
     ;;
 
     disable )
         for file in ${pam_files[@]}; do
-            [ ${file} = "kde" ] && string=${kde_string} || string=${common_string}
-            if ! grep -q "${string}" /etc/pam.d/${file}; then
+            if ! grep -q "${yubi_string}" /etc/pam.d/${file}; then
                 echo "skip: Yubikey not enabled in: /etc/pam.d/${file}"
                 continue
             fi
@@ -52,8 +48,7 @@ case ${1} in
 
     check )
         for file in ${pam_files[@]}; do
-            [ ${file} = "kde" ] && string=${kde_string} || string=${common_string}
-            if grep -q "${string}" /etc/pam.d/${file}; then
+            if grep -q "${yubi_string}" /etc/pam.d/${file}; then
                 echo -e "Yubikey in /etc/pam.d/${file}:\t enabled"
             else
                 echo -e "Yubikey in /etc/pam.d/${file}:\t disabled"
