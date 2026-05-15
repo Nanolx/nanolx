@@ -6,8 +6,10 @@ install:
 	mkdir -p $(DESTDIR)/usr/bin/
 	mkdir -p $(DESTDIR)/usr/sbin/
 	mkdir -p $(DESTDIR)/usr/share/applications/
-	mkdir -p $(DESTDIR)/opt/Citrix/ICAClient/
+	mkdir -p $(DESTDIR)/usr/share/plymouth/themes/
 	mkdir -p $(DESTDIR)/usr/lib/systemd/system/
+	mkdir -p $(DESTDIR)/opt/Citrix/ICAClient/
+	mkdir -p $(DESTDIR)/boot/efi/EFI/refind/themes/
 	install -m644 apt/*.sources $(DESTDIR)/etc/apt/sources.list.d/
 	install -m644 apt/apt.conf $(DESTDIR)/etc/apt/apt.conf
 	install -m644 apt/pinning $(DESTDIR)/etc/apt/preferences.d/
@@ -19,6 +21,8 @@ install:
 	install -m644 citrix/*.desktop $(DESTDIR)/usr/share/applications/
 	install -m755 citrix/wfica*.sh $(DESTDIR)/opt/Citrix/ICAClient/
 	install -m755 citrix/*.service $(DESTDIR)/usr/lib/systemd/system/
-	cp -r skel_nano $(DESTDIR)/etc/
+	cp -r skel_nano/ $(DESTDIR)/etc/
+	cp -r refind/rEFInd-digital-void/ $(DESTDIR)/boot/efi/EFI/refind/themes/
+	cp -r plymouth/debian-mac-style/ $(DESTDIR)/usr/share/plymouth/themes/
 
 clean:

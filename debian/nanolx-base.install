@@ -1,3 +1,5 @@
 etc/skel_nano/
 usr/bin/repokit
 usr/sbin/nanolx-skel
+usr/share/plymouth/themes/debian-mac-style/
+boot/efi/EFI/refind/themes/rEFInd-digital-void/
