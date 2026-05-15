@@ -25,7 +25,6 @@ create:
 	/etc/apt/sources.list.d/nanolx.list
 
 with the following content:
-
 	Types: deb deb-src
 	URIs: https://apt.nanolx.org/
 	Suites: photonic

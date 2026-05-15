@@ -52,40 +52,17 @@ Depends:
  galternatives,
  gkdebconf,
  needrestart,
- cpufrequtils | linux-cpupower,
+ linux-cpupower,
  cruft-ng,
  cryptsetup,
  gparted,
- deborphan | packagesearch,
+ packagesearch,
  libgtk3-perl,
  age,
  logsave,
  btop
-Description: Nano admin package
- This meta-package installs useful tools for system administration:
- - synaptic
- - gparted
- - gsmartcontrol
- - aptitude
- - grsync
- - lm-sensors
- - ntfs-3g
- - dosfstools
- - btrfs-tools
- - lsof
- - localepurge
- - bleachbit
- - galternatives
- - gkdebconf
- - needrestart
- - cpufrequtils
- - cruft-ng
- - cryptsetup
- - sudo
- - deborphan
- - age
- - logsave
- - btop
+Description: Collection of admin-tools
+ This meta-package installs useful tools for system administration.
 
 Package: nanolx-apt-tools
 Architecture: all
@@ -141,29 +118,6 @@ Depends:
  organize
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
- .
- These are:
- - coreutils
- - BashStyle-NG
- - vim
- - less
- - rsync
- - mc
- - bash, bash-completion
- - fortunes-flashrider
- - zip, rar, p7zip, xz
- - fdupes
- - unp
- - sqlite
- - xe
- - bat
- - jq
- - fd-find
- - plocate
- - rdfind
- - eta
- - duf
- - organize
 
 Package: nanolx-x11
 Architecture: all
@@ -179,16 +133,6 @@ Depends:
  ibus-table-compose
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
- .
- These are:
- - conky
- - kcharselect or gucharmap
- - yakuake or guake
- - YAD (GTK+ Dialogs from shell scripts)
- - GTK+ no client side decoration (CSD)
- - Plasma Desktop
- - psensor
- - IBus (with Compose table)
 
 Package: nanolx-security
 Architecture: all
@@ -220,19 +164,6 @@ Description: Collection of security related tools
  .
  Reading https://github.com/Nanolx/nanolx/blob/master/README.nanolx-security
  prior to installing this package is recommended
- .
- These are:
- - clamav (with clamtk ui and clamassassin spam filter)
- - firewalld (with firewall-config) or ufw (gufw)
- - tor (with torsocks and tor-geoipdb)
- - psad
- - kleopatra or seahorse
- - gpgv (with pinentry Qt or GNOME 3)
- - keepassx
- - Lynis
- - rkhunter
- - Spectre/Meltdown checker
- - tools for Yubikey
 
 Package: nanolx-net
 Architecture: all
@@ -257,23 +188,6 @@ Depends:
  privoxy
 Description: Collection of network applications
  This meta-package installs network applications.
- .
- These are:
- - openssh-client
- - wireshark
- - qbittorrent
- - filezilla
- - thunderbird
- - smbnetfs
- - GNU ftpsync
- - kvirc
- - OpenVPN
- - openresolv or resolvconf
- - TOR Browser launcher
- - Stubby
- - Mozilla VPN
- - Syncthing (with UI)
- - Nextcloud (with Dolphin integration)
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -288,14 +202,6 @@ Depends:
  libbluray2
 Description: Collection of media codecs
  This meta-package installs media codecs.
- .
- These are:
- - gstreamer plugins:
-   - alsa
-   - good, base, bad, ugly
-   - libav
- - libdvdcss2
- - libbluray2
 
 Package: nanolx-media-cli
 Architecture: all
@@ -311,17 +217,6 @@ Depends:
  imagemagick
 Description: Collection of cli media tools
  This meta-package installs cli media tools.
- .
- These are:
- - lame
- - sox
- - flac
- - vorbis-tools
- - ffmpeg
- - cdparanoia
- - normalize-audio
- - streamripper
- - imagemagick
 
 Package: nanolx-media-x11
 Architecture: all
@@ -341,21 +236,6 @@ Depends:
  ffmpegthumbnailer
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
- .
- These are:
- - audacity
- - gmtp
- - pavucontrol
- - mpv
- - geeqie
- - okular
- - GIMP
- - xsane
- - k3b
- - mediathekview
- - easyTAG
- - elisa
- - FFmpegthumbnailer
 
 Package: nanolx-devel-cli
 Architecture: all
@@ -389,15 +269,6 @@ Depends:
  pycodestyle
 Description: Collection of cli development tools
  This meta-package installs cli development tools
- .
- These are:
- - ccache
- - gcc/-multilib and g++/-multilib
- - dpkg-dev, dh-make, dh-autoreconf, devscripts, lintian
- - gdb, make, cmake, pkg-config, git
- - autotools-dev, libtool, autoconf, automake
- - ubuntu-dev-tools, schroot, sbuild, fakeroot, mozilla-devscripts
- - codespell, shellcheck, licensecheck, pycodestyle
 
 Package: nanolx-devel-android
 Architecture: all
@@ -415,16 +286,6 @@ Depends:
  zstd
 Description: Collection of android development tools
  This meta-package installs android development tools
- .
- These are:
- - Android Debugging Bridge (adb)
- - Fastboot
- - Gradle
- - Apk Tool
- - Zip Align
- - Android File Transfer
- - F-Droid Server
- - ZStd
 
 Package: nanolx-devel-x11
 Architecture: all
@@ -437,18 +298,8 @@ Depends:
  poedit,
  valgrind-if-available,
  qownnotes
-Description: Collection of x11 development tools
- This meta-package installs x11 development tools.
- .
- These are:
- - glade
- - bluefish
- - geany
- - poedit
- - d-feet
- - okteta
- - valgrind
- - qownnotes
+Description: Collection of ui development tools
+ This meta-package installs ui development tools.
 
 Package: nanolx-games
 Architecture: all
@@ -474,29 +325,7 @@ Depends:
  lutris,
  xpadneo-dkms
 Description: Collection of games
- This meta-package installs games.
- .
- These are:
- - Globulation 2
- - FreeDroid RPG
- - Enigma
- - GNOME Sudoku
- - GNOME Mahjongg
- - LinCity-NG
- - Neverball
- - Pingus
- - Super Tux Kart
- - Zelda Solarus DX
- - Zelda Solarus XD
- - Zelda Solarus XD2: Mercuris Chess
- - Zelda Time to Triumph
- - Zelda Oni-Link Begins
- - Zelda Return of the Hylian Solarus Edition
- - Zelda Navi's Quest
- - Zelda Book of Mudora
- - Zelda Tunics
- - Lutris
- - xpadneo-dkms (XBox Controller Support)
+ This meta-package installs games and launchers.
 
 Package: nanolx-games-emu
 Architecture: all
@@ -518,17 +347,6 @@ Description: Collection of emulators
        exceptions: ROMs where the copyright expired, ROMs distributed
        by the copyright holder (or it's legal successor) and Homebrew
        ROMs (completely self-made).
- .
- These are:
- - retroarch with the following plugins
-    - desmume (Nintendo DS)
-    - gambatte (Game Boy, Game Boy Color)
-    - mgba (Game Boy Advance)
-    - snes9x (Super Famicom / SNES)
-    - nestopia (Famicom / NES)
- - yabause-gtk (SEGA Saturn)
- - dosbox (DOS)
- - scummvm (Lucas Arts Point'n'Click Adventures)
 
 Package: nanolx-citrix-config
 Architecture: all
