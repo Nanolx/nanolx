@@ -1,0 +1,69 @@
+#!/bin/bash
+
+version="0.0.1"
+reldate="2026/05/15"
+
+pam_files=(login sddm su sudo sudo-i polkit-1)
+yubi_string="auth sufficient pam_u2f.so authfile=/etc/u2f_keys userpresence=0"
+
+case ${1} in
+    enable )
+        if [ ! -f /etc/u2f_keys ]; then
+            echo "/etc/u2f_keys not found, exiting!"
+            echo "use pamu2fcfg to create the configuration in /etc/u2fkeys"
+            exit 1
+        fi
+
+        [ ! -f /etc/pam.d/polkit-1 ] && cp /usr/lib/pam.d/polkit-1 /etc/pam.d/
+
+        for file in ${pam_files[@]}; do
+            if grep -q "${yubi_string}" /etc/pam.d/${file}; then
+                echo "skip: Yubikey already enabled in: /etc/pam.d/${file}"
+                continue
+            fi
+
+            # check where common-auth is included and substract 1
+            # we need to put Yubikey entry above
+            line=$(awk '/@include common-auth/ {print FNR}' /etc/pam.d/${file})
+            line=$((line-1))
+
+            echo "Enabling Yubikey in: /etc/pam.d/${file}"
+            sed "${line} i ${yubi_string}" -i /etc/pam.d/${file}
+        done
+    ;;
+
+    disable )
+        for file in ${pam_files[@]}; do
+            if ! grep -q "${yubi_string}" /etc/pam.d/${file}; then
+                echo "skip: Yubikey not enabled in: /etc/pam.d/${file}"
+                continue
+            fi
+
+            echo "Disabling Yubikey in: /etc/pam.d/${file}"
+            sed '/pam_u2f.so/d' -i /etc/pam.d/${file}
+        done
+    ;;
+
+    check )
+        for file in ${pam_files[@]}; do
+            if grep -q "${yubi_string}" /etc/pam.d/${file}; then
+                echo -e "Yubikey in /etc/pam.d/${file}:\t enabled"
+            else
+                echo -e "Yubikey in /etc/pam.d/${file}:\t disabled"
+            fi
+        done
+    ;;
+
+    * )
+        echo -e "nanolx-pam-yubikey v${version} (${reldate})
+© 2026 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+usage:
+    nanolx-pam-yubikey enable
+    nanolx-pam-yubikey disable
+    nanolx-pam-yubikey check
+"
+    ;;
+esac
