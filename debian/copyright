@@ -49,14 +49,14 @@ Copyright: 2011-2026 Stephan Springer <buzo+arch@Lini.de>
 License: public-domain
 Comment:
  According to https://bbs.archlinux.org/viewtopic.php?id=252234 there's no
- actual license to AUR content by default, nor is anything sated. One would
+ actual license to AUR content by default, nor is anything stated. One would
  assume either public-domain or permissive.
 
 Files:
  refind/rEFInd-digital-void/*
 Copyright:
    2025 Aayush Thakur <thakur.aayush@hotmail.com>
-   2026  Wi-Fight-IT <mamaletsgo36@gmail.com>
+   2026 Wi-Fight-IT <mamaletsgo36@gmail.com>
 License: MIT
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
