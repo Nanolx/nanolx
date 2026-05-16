@@ -1,8 +1,9 @@
 all:
 
 install:
-	mkdir -p $(DESTDIR)/etc/apt/sources.list.d/
+	mkdir -p $(DESTDIR)/etc/apt/apt.conf.d/
 	mkdir -p $(DESTDIR)/etc/apt/preferences.d/
+	mkdir -p $(DESTDIR)/etc/apt/sources.list.d/
 	mkdir -p $(DESTDIR)/etc/dracut.conf.d/
 	mkdir -p $(DESTDIR)/usr/bin/
 	mkdir -p $(DESTDIR)/usr/sbin/
@@ -12,7 +13,7 @@ install:
 	mkdir -p $(DESTDIR)/opt/Citrix/ICAClient/
 	mkdir -p $(DESTDIR)/boot/efi/EFI/refind/themes/
 	install -m644 apt/*.sources $(DESTDIR)/etc/apt/sources.list.d/
-	install -m644 apt/apt.conf $(DESTDIR)/etc/apt/apt.conf
+	install -m644 apt/99nanolx.conf $(DESTDIR)/etc/apt/apt.conf.d/
 	install -m644 apt/pinning $(DESTDIR)/etc/apt/preferences.d/
 	install -m644 plymouth/fonts.conf $(DESTDIR)/etc/dracut.conf.d/
 	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
