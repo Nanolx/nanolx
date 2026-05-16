@@ -73,7 +73,8 @@ Depends:
  apt-rdepends,
  apt-show-versions,
  debdelta,
- reprepro
+ reprepro,
+ gdebi
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt.
 
