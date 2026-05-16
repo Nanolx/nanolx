@@ -1,2 +1,4 @@
-/etc/apt/apt.conf.d/99nanolx.conf
-/etc/apt/preferences.d/pinning
+etc/apt/apt.conf.d/99nanolx.conf
+etc/apt/preferences.d/pinning
+usr/share/nanolx/nanolx-orbit.conf
+usr/sbin/nanolx-orbit

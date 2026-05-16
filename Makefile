@@ -7,6 +7,7 @@ install:
 	mkdir -p $(DESTDIR)/etc/dracut.conf.d/
 	mkdir -p $(DESTDIR)/usr/bin/
 	mkdir -p $(DESTDIR)/usr/sbin/
+	mkdir -p $(DESTDIR)/usr/share/nanolx/
 	mkdir -p $(DESTDIR)/usr/share/applications/
 	mkdir -p $(DESTDIR)/usr/share/plymouth/themes/
 	mkdir -p $(DESTDIR)/usr/lib/systemd/system/
@@ -23,6 +24,8 @@ install:
 	install -m755 scripts/nanolx-refind $(DESTDIR)/usr/sbin/
 	install -m755 scripts/nanolx-skel $(DESTDIR)/usr/sbin/
 	install -m755 scripts/nanolx-pam-yubikey $(DESTDIR)/usr/sbin/
+	install -m755 scripts/nanolx-orbit $(DESTDIR)/usr/sbin/
+	install -m644 scripts/nanolx-orbit.conf $(DESTDIR)/usr/share/nanolx/
 	install -m644 citrix/*.desktop $(DESTDIR)/usr/share/applications/
 	install -m755 citrix/wfica*.sh $(DESTDIR)/opt/Citrix/ICAClient/
 	install -m755 citrix/*.service $(DESTDIR)/usr/lib/systemd/system/
