@@ -28,6 +28,8 @@ Files:
  skel_nano/*
 Copyright: 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
 License: public-domain
+ No license required for any purpose; the work is not subject to copyright
+ in any jurisdiction.
 
 Files:
  debian/*
@@ -47,6 +49,8 @@ Copyright: 2011-2026 Stephan Springer <buzo+arch@Lini.de>
    2011-2026 Matthew Gyurgyik <matthew@pyther.net>
    2011-2026 Giorgio Azzinnaro <giorgio@azzinna.ro>
 License: public-domain
+ No license required for any purpose; the work is not subject to copyright
+ in any jurisdiction.
 Comment:
  According to https://bbs.archlinux.org/viewtopic.php?id=252234 there's no
  actual license to AUR content by default, nor is anything stated. One would
