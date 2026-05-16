@@ -46,12 +46,12 @@ manage_repos () {
     for repo in "${@}"; do
         case ${repo} in
             debian ) manage_repos_int ;;
-            nanolx ) manage_repos_int"${key_nanolx}" "${key_nanolx_store}" ;;
+            nanolx ) manage_repos_int "${key_nanolx}" "${key_nanolx_store}" ;;
             liquorix ) manage_repos_int "${key_liquorix}" "${key_liquorix_store}" ;;
             winehq ) manage_repos_int "${key_winehq}" "${key_winehq_store}" ;;
             i2p ) manage_repos_int "${key_i2p}" "${key_i2p_store}" ;;
             deb-multimedia ) manage_repos_int "${debmultimedia_url}" \
-                "/tmp/${debmultimedia_pkg}" ;;
+                "${debmultimedia_pkg}" ;;
             * ) echo "repository ${repo} unknown." ;;
         esac
     done
@@ -70,7 +70,7 @@ case ${user_opt} in
     ;;
     add ) manage_repos "add" "${@}" ;;
     remove ) manage_repos "remove" "${@}" ;;
-    check ) manage_repos "check" "${all_repos}" ;;
+    check ) manage_repos "check" ${all_repos} ;;
     enable-config )
         echo "enabling nanolx apt configuration"
         ln -sf /usr/share/nanolx/apt.d/99nanolx /etc/apt/apt.conf.d/99nanolx
