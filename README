@@ -34,7 +34,19 @@ with the following content:
 then proceed to install the
     nanolx-base
 
-package.
+or specific
+    nanolx-*
+
+package/s. The package
+    nanolx-citrix-config
+
+is not automatically pulled by nanolx-base, as it
+requires citrix, zoom, incl. plugins and libjpeg8
+to be already installed. For that purpose see the
+
+    nanolx-orbit
+
+script, which is bundled with nanolx-apt-tools.
 
 Release Information
 =======================================
