@@ -12,6 +12,14 @@ or change existing packages.
 
 Some meta-packages also provide additional scripts, tools and configs.
 
+Release Information
+=======================================
+
+see debian/changelog for changes
+
+Version:    4.1
+Release:    20260516
+
 Installation on Debian GNU/Linux
 =======================================
 
@@ -22,7 +30,7 @@ and save it as:
     /etc/apt/trusted.gpg.d/nanolx2026.asc
 
 create:
-    /etc/apt/sources.list.d/nanolx.list
+    /etc/apt/sources.list.d/nanolx.sources
 
 with the following content:
     Types: deb deb-src
@@ -37,21 +45,56 @@ then proceed to install the
 or specific
     nanolx-*
 
-package/s. The package
+package/s.
+
+Scripts
+=======================================
+
+Nanolx includes a set of scripts.
+
+nanolx-base:
+    repokit         personal wrapper script for reprepro with config file
+                    support and many features.
+    nanolx-refind   simple script to manage rEFInd bootloader themes,
+                    supports showing installed themes, setting theme,
+                    showing current theme in use or reverting to default.
+    nanolx-skel     enable / disable nanolx skel (/usr/share/nanolx/skel)
+                    for newly created users instead of /etc/skel.
+                    Note: you most likely /don't/ want that...
+
+nanolx-apt-sources:
+    nanolx-apt      manages additional repository configurations, including
+                    key handling, aswell as matching pinning and minor apt
+                    configuration changes (the latter both optional).
+
+nanolx-apt-tools:
+    nanolx-orbit    manages installation of 3rdparty packages, including some
+                    non-free packages, including checking sha256sums. Currently
+                    supported: discord, citrix, citrix-usb, zoom, jpeg8,
+                    zoom-vdi-plugin, openrgb plugins: effects, hwsync, fansync.
+
+nanolx-devel-cli:
+    mksbuild        support script for repokit (possibly outdated).
+
+nanolx-citrix-config:
+    nanolx-ctx      script to disable (or enable [...]) citrix telemetry and
+                    running the included system check script.
+
+nanolx-security:
+    nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
+                        is plugged in, using PAM, currently hooked-into PAM
+                        modules: login, sddm, su, sudo, sudo-i, polkit-1, kde.
+
+Citrix
+=======================================
+
+The package
     nanolx-citrix-config
 
-is not automatically pulled by nanolx-base, as it
-requires citrix, zoom, incl. plugins and libjpeg8
-to be already installed. For that purpose see the
+is not automatically pulled by nanolx-base, as it requires citrix, zoom, incl.
+plugins and libjpeg8 to be already installed. For that purpose see the
 
     nanolx-orbit
 
-script, which is bundled with nanolx-apt-tools.
-
-Release Information
-=======================================
-
-see debian/changelog for changes
-
-Version:    4.1
-Release:    20260516
+script, which is bundled with nanolx-apt-tools. Both together ensure a smoother
+citrix experience.
