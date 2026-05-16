@@ -58,6 +58,10 @@ Core Temp:${alignr}${execpi 30 sensors k10temp-pci-00c3 | awk '/Tctl/{print $2}'
 Core Load:${alignr}${cpu cpu0} %
 ${cpubar}
 
+${color2}Fan 0:${alignr}${execpi 30 sensors asusec-isa-000a | awk '/CPU_Opt/{print $2}'} RPM
+Fan 1:${alignr}${execpi 30 sensors nct6799-isa-0290 | awk '/fan2/{print $2}'} RPM
+Fan 2:${alignr}${execpi 30 sensors nct6799-isa-0290 | awk '/fan7/{print $2}'} RPM
+
 ${color4}RAM ${alignr}${mem} [${memmax}]
 ${membar}
 
@@ -70,38 +74,34 @@ GPU RAM:${alignr}${execpi 30 echo $(($(cat /sys/class/drm/card0/device/mem_info_
 #/usr/sbin/radeontop -d- -l1 | grep -o 'vram [0-9]\{1,3\}' | cut -c 5-7
 
 ${color7}/dev/nvme0 Temp:${alignr}${execpi 30 sensors nvme-pci-0d00 | awk '/Composite/{print $2}'}
+Boot ${alignr}⇠ ${diskio_read /dev/nvme0n1p1} ⇢ ${diskio_write /dev/nvme0n1p1}
+${fs_bar 6,75 /boot} ${alignr}${fs_used /boot} [${fs_size /boot}]
+Home ${alignr}⇠ ${diskio_read /dev/nvme0n1p2} ⇢ ${diskio_write /dev/nvme0n1p2}
+${fs_bar 6,75 /home} ${alignr}${fs_used /home} [${fs_size /home}]
 Root ${alignr}⇠ ${diskio_read /dev/nvme0n1p4} ⇢ ${diskio_write /dev/nvme0n1p4}
 ${fs_bar 6,75 /} ${alignr}${fs_used /} [${fs_size /}]
-Win C: ${alignr}⇠ ${diskio_read /dev/nvme0n1p2} ⇢ ${diskio_write /dev/nvme0n1p2}
-${fs_bar 6,75 /media/win_c} ${alignr}${fs_used /media/win_c} [${fs_size /media/win_c}]
 
 ${color3}/dev/nvme1 Temp:${alignr}${execpi 30 sensors nvme-pci-1200 | awk '/Composite/{print $2}'}
-Win E: ${alignr}⇠ ${diskio_read /dev/nvme1n1p2} ⇢ ${diskio_write /dev/nvme1n1p2}
+Win E ${alignr}⇠ ${diskio_read /dev/nvme1n1p2} ⇢ ${diskio_write /dev/nvme1n1p2}
 ${fs_bar 6,75 /media/win_e} ${alignr}${fs_used /media/win_e} [${fs_size /media/win_e}]
 
 ${color0}/dev/sda   Temp:${alignr}${execpi 30 sensors drivetemp-scsi-2-0 | awk '/temp1/{print $2}'}
 Exchange ${alignr}⇠ ${diskio_read /dev/sda1} ⇢ ${diskio_write /dev/sda1}
 ${fs_bar 6,75 /media/exchange} ${alignr}${fs_used /media/exchange} [${fs_size /media/exchange}]
-Home ${alignr}⇠ ${diskio_read /dev/sda2} ⇢ ${diskio_write /dev/sda2}
-${fs_bar 6,75 /home} ${alignr}${fs_used /home} [${fs_size /home}]
+Backup ${alignr}⇠ ${diskio_read /dev/sda2} ⇢ ${diskio_write /dev/sda2}
+${fs_bar 6,75 /media/backup} ${alignr}${fs_used /media/backup} [${fs_size /media/backup}]
 
 ${color6}/dev/sdb   Temp:${alignr}${execpi 30 sensors drivetemp-scsi-3-0 | awk '/temp1/{print $2}'}
 Storage ${alignr}⇠ ${diskio_read /dev/sdb1} ⇢ ${diskio_write /dev/sdb1}
 ${fs_bar 6,75 /media/storage} ${alignr}${fs_used /media/storage} [${fs_size /media/storage}]
 
 ${color2}/dev/sdc   Temp:${alignr}${execpi 30 sensors drivetemp-scsi-8-0 | awk '/temp1/{print $2}'}
+EFI${alignr}⇠ ${diskio_read /dev/sdc1} ⇢ ${diskio_write /dev/sdc1}
+${fs_bar 6,75 /boot/efi} ${alignr}${fs_used /boot/efi} [${fs_size /boot/efi}]
 Playground ${alignr}⇠ ${diskio_read /dev/sdc2} ⇢ ${diskio_write /dev/sdc2}
 ${fs_bar 6,75 /media/playground} ${alignr}${fs_used /media/playground} [${fs_size /media/playground}]
-
 
 ${color7}Local ${alignr}${addr wlp12s0}
 Current ${alignr}⇣ ${downspeed wlp12s0} ⇡ ${upspeed wlp12s0}
 Total   ${alignr}⇣ ${totaldown wlp12s0} ⇡ ${totalup wlp12s0}
-
-${color0}Top:${alignr}Processes: ${processes}
-${color}${top name 1}${alignr}${top pid 1} ${top cpu 1}
-${color}${top name 2}${alignr}${top pid 2} ${top cpu 2}
-${color}${top name 3}${alignr}${top pid 3} ${top cpu 3}
-${color}${top name 4}${alignr}${top pid 4} ${top cpu 4}
-${color}${top name 5}${alignr}${top pid 5} ${top cpu 5}
 ]];
