@@ -32,6 +32,18 @@ case ${1} in
             echo "Enabling Yubikey in: /etc/pam.d/${file}"
             sed "${line} i ${yubi_string}" -i /etc/pam.d/${file}
         done
+
+        echo -e "\nNote: if pkexec does not respond after applying this changes
+it may be a conflict with your Desktop's polkit-agent running
+e.g. the helper for KDE, XFCE or GNOME. You may try whether
+
+\`systemctl stop polkit-agent-helper.service\`
+
+solves the issue. If so, consider
+
+\`systemctl disable polkit-agent-helper.service\`
+
+at your own risk, keep in mind to eventually re-enable it."
     ;;
 
     disable )
