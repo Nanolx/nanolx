@@ -1,0 +1,116 @@
+#!/bin/bash
+
+version="0.0.1"
+reldate="2026/05/16"
+
+# version management in /etc for more flexibility
+if [ -f nanolx-orbit.conf ]; then
+    source nanolx-orbit.conf
+else
+    source /usr/share/nanolx/nanolx-orbit.conf
+fi
+
+pkg_base="/var/cache/nanolx"
+mkdir -p "${pkg_base}"
+
+curl_opts="-L --progress-bar -C -"
+
+download_packages () {
+    mode="${1}"
+    shift
+
+    for pkg in "${@}"; do
+        case ${pkg} in
+            discord )
+                echo "Downloading discord: ${discord_url##*/}"
+                curl ${curl_opts} -o "${pkg_base}/${discord_url##*/}" "${discord_url}"
+                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${discord_url##*/}"
+            ;;
+
+            zoom )
+                echo "Downloading zoom: ${zoom_url##*/}"
+                curl ${curl_opts} -o "${pkg_base}/${zoom_url##*/}" "${zoom_url}"
+                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${zoom_url##*/}"
+            ;;
+            zoom-vdi )
+                echo "Downloading zoom-vdi-plugin: ${zoom_vdi_url##*/}"
+                curl ${curl_opts} -o "${pkg_base}/${zoom_vdi_url##*/}" "${zoom_vdi_url}"
+                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${zoom_vdi_url##*/}"
+            ;;
+
+            jpeg8 )
+                echo "Downloading libjpeg8: ${jpeg8_url##*/}"
+                curl ${curl_opts} -o "${pkg_base}/${jpeg8_url##*/}" "${jpeg8_url}"
+
+                echo "Downloading libjpg-turbo8: ${jpeg_turbo8_url##*/}"
+                curl ${curl_opts} -o "${pkg_base}/${jpeg_turbo8_url##*/}" "${jpeg_turbo8_url}"
+
+                [[ "${mode}" = "in" ]] && gdebi -n \
+                    "${pkg_base}/${jpeg8_url##*/}" \
+                    "${pkg_base}/${jpeg_turbo8_url##*/}"
+            ;;
+
+            citrix )
+                echo "Downloading citrix: ${citrix_pkg}"
+                curl ${curl_opts} -o "${pkg_base}/${citrix_pkg}" "${citrix_url}"
+                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${citrix_pkg}"
+            ;;
+
+            citrix-usb )
+                echo "Downloading citrix-usb: ${citrix_usb_pkg}"
+                curl ${curl_opts} -o "${pkg_base}/${citrix_usb_pkg}" "${citrix_usb_url}"
+                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${citrix_usb_pkg}"
+            ;;
+
+            * )
+                echo "package ${pkg} unknown"
+            ;;
+        esac
+    done
+}
+
+user_opt="${1}"
+shift
+
+case ${user_opt} in
+    download )
+        if [[ -z "${@}" ]]; then
+            echo "no packages specified, exit."
+            exit 0
+        else
+            download_packages dl "${@}"
+        fi
+    ;;
+
+    install )
+        if [[ -z "${@}" ]]; then
+            echo "no packages specified, exit."
+            exit 0
+        else
+            download_packages in "${@}"
+        fi
+    ;;
+
+    list )
+        echo "nanolx-orbit supports the following packages: ${package_list}"
+    ;;
+
+    clear )
+        echo "removing downloaded packages from ${pkg_base}"
+        rm -fv "${pkg_base}"/*
+    ;;
+
+    help | * )
+        echo -e "nanolx-orbit v${version} (${reldate})
+© 2026 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+usage:
+    nanolx-orbit list
+    nanolx-orbit download
+    nanolx-orbit install
+    nanolx-orbit clear
+"
+    ;;
+esac
