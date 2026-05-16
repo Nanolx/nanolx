@@ -3,8 +3,7 @@ Section: misc
 Priority: optional
 Maintainer: Christopher Roy Bratusek <nano@jpberlin.de>
 Build-Depends:
- debhelper-compat (= 13),
- make
+ debhelper-compat (= 13)
 Standards-Version: 4.7.2
 Homepage: https://nanolx.org
 Vcs-Browser: https://gitlab.com/Nanolx/nanolx
@@ -81,8 +80,7 @@ Description: Collection of tools for apt
 Package: nanolx-apt-sources
 Architecture: all
 Depends:
- wget,
- apt-transport-https
+ wget
 Description: Collection of extra sources for apt
  This meta-package installs extra apt-sources on the system.
  .
@@ -92,11 +90,9 @@ Description: Collection of extra sources for apt
 Package: nanolx-cli
 Architecture: all
 Depends:
- coreutils,
  vim,
  less,
  rsync,
- bash,
  bash-completion,
  mc,
  p7zip-full,
@@ -255,7 +251,7 @@ Depends:
  git,
  dh-make,
  dh-autoreconf,
- pkg-config,
+ pkgconf,
  make,
  cmake,
  autoconf,
