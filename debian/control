@@ -359,7 +359,10 @@ Depends:
  zoomvdi-universal-plugin,
  libjpeg8,
  libjpeg-turbo8,
- speex
+ speex,
+ v4l2loopback-dkms,
+ pipewire-v4l2,
+ libcamera-v4l2
 Replaces: icaclient
 Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
