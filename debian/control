@@ -75,7 +75,8 @@ Depends:
  apt-show-versions,
  debdelta,
  reprepro,
- gdebi
+ gdebi,
+ nanolx-apt-sources
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt.
 
