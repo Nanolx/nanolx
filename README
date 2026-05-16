@@ -16,23 +16,23 @@ Installation on Debian GNU/Linux
 =======================================
 
 Get the signing key for my repository, located at:
-	https://www.nanolx.org/apt/photonic2026.asc
+    https://www.nanolx.org/apt/photonic2026.asc
 
 and save it as:
-	/etc/apt/trusted.gpg.d/nanolx2026.asc
+    /etc/apt/trusted.gpg.d/nanolx2026.asc
 
 create:
-	/etc/apt/sources.list.d/nanolx.list
+    /etc/apt/sources.list.d/nanolx.list
 
 with the following content:
-	Types: deb deb-src
-	URIs: https://apt.nanolx.org/
-	Suites: photonic
-	Components: main
-	Signed-By: /etc/apt/trusted.gpg.d/nanolx2026.asc
+    Types: deb deb-src
+    URIs: https://apt.nanolx.org/
+    Suites: photonic
+    Components: main
+    Signed-By: /etc/apt/trusted.gpg.d/nanolx2026.asc
 
 then proceed to install the
-	nanolx-base
+    nanolx-base
 
 package.
 
@@ -41,5 +41,5 @@ Release Information
 
 see debian/changelog for changes
 
-Version:	4.0
-Release:	20260514
+Version:    4.1
+Release:    20260516
