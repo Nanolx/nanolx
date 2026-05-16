@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.0.1"
+version="0.0.2"
 reldate="2026/05/16"
 
 # version management in /etc for more flexibility
@@ -15,53 +15,79 @@ mkdir -p "${pkg_base}"
 
 curl_opts="-L --progress-bar -C -"
 
+downloader () {
+    url="${1}"
+    pkg="${2}"
+    sha="${3}"
+    out="${4}"
+
+    if [ -f "${out}" ]; then
+        echo -e "\nPackage ${pkg} (${out##*/}) already downloaded, verifying"
+        if ! echo "${sha}" "${out}" | sha256sum -c &>/dev/null; then
+            echo "SHA256 checksum for ${out} is wrong"
+            noinst=true
+        else
+            echo "SHA256 checksum for ${out} is correct"
+        fi
+    else
+        echo -e "\nDownloading ${pkg}: (${url##*/})"
+        curl ${curl_opts} -o "${out}" "${url}"
+        if ! echo "${sha}" "${out}" | sha256sum -c &>/dev/null; then
+            echo "SHA256 checksum for ${out} is wrong"
+            noinst=true
+        else
+            echo "SHA256 checksum for ${out} is correct"
+        fi
+    fi
+
+}
+
+installer () {
+    pkg="${1}"
+
+    if [[ "${mode}" = "in" ]]; then
+        if [[ "${noinst}" = "false" ]]; then
+            gdebi -n "${pkg}"
+        else
+            echo "not installing ${pkg} due to wrong SHA256 checksum"
+        fi
+    fi
+}
+
 download_packages () {
     mode="${1}"
     shift
 
     for pkg in "${@}"; do
+        noinst=false
         case ${pkg} in
             discord )
-                echo "Downloading discord: ${discord_url##*/}"
-                curl ${curl_opts} -o "${pkg_base}/${discord_url##*/}" "${discord_url}"
-                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${discord_url##*/}"
+                downloader "${discord_url}" discord "${discord_sha}" "${pkg_base}/${discord_url##*/}"
+                installer "${pkg_base}/${discord_url##*/}"
             ;;
-
             zoom )
-                echo "Downloading zoom: ${zoom_url##*/}"
-                curl ${curl_opts} -o "${pkg_base}/${zoom_url##*/}" "${zoom_url}"
-                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${zoom_url##*/}"
+                downloader "${zoom_url}" zoom "${zoom_sha}" "${pkg_base}/${zoom_url##*/}"
+                installer "${pkg_base}/${zoom_url##*/}"
             ;;
             zoom-vdi )
-                echo "Downloading zoom-vdi-plugin: ${zoom_vdi_url##*/}"
-                curl ${curl_opts} -o "${pkg_base}/${zoom_vdi_url##*/}" "${zoom_vdi_url}"
-                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${zoom_vdi_url##*/}"
+                downloader "${zoom_vdi_url}" zoom-vdi "${zoom_vdi_sha}" "${pkg_base}/${zoom_vdi_url##*/}"
+                installer "${pkg_base}/${zoom_vdi_url##*/}"
             ;;
-
             jpeg8 )
-                echo "Downloading libjpeg8: ${jpeg8_url##*/}"
-                curl ${curl_opts} -o "${pkg_base}/${jpeg8_url##*/}" "${jpeg8_url}"
+                downloader "${jpeg8_url}" jpeg8 "${jpeg8_sha}" "${pkg_base}/${jpeg8_url##*/}"
+                installer "${pkg_base}/${jpeg8_url##*/}"
 
-                echo "Downloading libjpg-turbo8: ${jpeg_turbo8_url##*/}"
-                curl ${curl_opts} -o "${pkg_base}/${jpeg_turbo8_url##*/}" "${jpeg_turbo8_url}"
-
-                [[ "${mode}" = "in" ]] && gdebi -n \
-                    "${pkg_base}/${jpeg8_url##*/}" \
-                    "${pkg_base}/${jpeg_turbo8_url##*/}"
+                downloader "${jpeg_turbo8_url}" libjpeg-turbo8 "${libjpeg_turbo8_sha}" "${pkg_base}/${jpeg_turbo8_url##*/}"
+                installer "${pkg_base}/${jpeg_turbo8_url##*/}"
             ;;
-
             citrix )
-                echo "Downloading citrix: ${citrix_pkg}"
-                curl ${curl_opts} -o "${pkg_base}/${citrix_pkg}" "${citrix_url}"
-                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${citrix_pkg}"
+                downloader "${citrix_url}" citrix "${citrix_sha}" "${pkg_base}/${citrix_pkg}"
+                installer "${pkg_base}/${citrix_pkg}"
             ;;
-
             citrix-usb )
-                echo "Downloading citrix-usb: ${citrix_usb_pkg}"
-                curl ${curl_opts} -o "${pkg_base}/${citrix_usb_pkg}" "${citrix_usb_url}"
-                [[ "${mode}" = "in" ]] && gdebi -n "${pkg_base}/${citrix_usb_pkg}"
+                downloader "${citrix_usb_url}" citrix-usb "${citrix_usb_sha}" "${pkg_base}/${citrix_usb_pkg}"
+                installer "${pkg_base}/${citrix_usb_pkg}"
             ;;
-
             * )
                 echo "package ${pkg} unknown"
             ;;
