@@ -14,7 +14,7 @@ install:
 	mkdir -p $(DESTDIR)/boot/efi/EFI/refind/themes/
 	install -m644 apt/*.sources $(DESTDIR)/usr/share/nanolx/sources.d/
 	install -m644 apt/pinning $(DESTDIR)/usr/share/nanolx/apt.d/
-	install -m644 apt/99nanolx.conf $(DESTDIR)/usr/share/nanolx/apt.d/
+	install -m644 apt/99nanolx $(DESTDIR)/usr/share/nanolx/apt.d/
 	install -m644 plymouth/fonts.conf $(DESTDIR)/etc/dracut.conf.d/
 	install -m755 scripts/mksbuild $(DESTDIR)/usr/bin/
 	install -m755 scripts/repokit $(DESTDIR)/usr/bin/

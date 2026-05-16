@@ -15,7 +15,7 @@ fi
 manage_repos_int () {
     if [[ "${mode}" = "add" ]]; then
         echo "enabling repo: ${repo}"
-        ln -sf "${sources_d}/${repo}.sources" \
+        cp "${sources_d}/${repo}.sources" \
             "/etc/apt/sources.list.d/${repo}.sources"
 
         case "${1}" in
@@ -28,7 +28,7 @@ manage_repos_int () {
             ;;
         esac
     elif [[ "${mode}" = "check" ]]; then
-        if [ -L "/etc/apt/sources.list.d/${repo}.sources" ]; then
+        if [ -f "/etc/apt/sources.list.d/${repo}.sources" ]; then
             echo "repo ${repo}:       enabled"
         else
             echo "repo ${repo}:       disabled"
@@ -73,7 +73,7 @@ case ${user_opt} in
     check ) manage_repos "check" ${all_repos} ;;
     enable-config )
         echo "enabling nanolx apt configuration"
-        ln -sf /usr/share/nanolx/apt.d/99nanolx /etc/apt/apt.conf.d/99nanolx
+        cp -sf /usr/share/nanolx/apt.d/99nanolx /etc/apt/apt.conf.d/99nanolx
     ;;
     disable-config )
         echo "disabling nanolx apt configuration"
@@ -85,10 +85,10 @@ case ${user_opt} in
             cp /etc/apt/preferences.d/pinning{,.nanolx_old}
         fi
         echo "enabling nanolx apt pinning configuration"
-        ln -sf /usr/share/nanolx/apt.d/pinning /etc/apt/preferences.d/pinning
+        cp /usr/share/nanolx/apt.d/pinning /etc/apt/preferences.d/pinning
     ;;
     disable-pinning )
-        if [ -L /etc/apt/preferences.d/pinning ]; then
+        if [ -f /etc/apt/preferences.d/pinning ]; then
             echo "disabling nanolx apt pinning configuration"
             rm /etc/apt/preferences.d/pinning
         else

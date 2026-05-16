@@ -1,5 +1,5 @@
 usr/sbin/nanolx-apt
 usr/share/nanolx/nanolx-apt.conf
-usr/share/nanolx/apt.d/99nanolx.conf
+usr/share/nanolx/apt.d/99nanolx
 usr/share/nanolx/apt.d/pinning
 usr/share/nanolx/sources.d/*.sources
