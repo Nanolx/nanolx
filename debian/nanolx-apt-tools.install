@@ -1,4 +1,2 @@
-usr/share/nanolx/apt.d/99nanolx.conf
-usr/share/nanolx/apt.d/pinning
 usr/share/nanolx/nanolx-orbit.conf
 usr/sbin/nanolx-orbit
