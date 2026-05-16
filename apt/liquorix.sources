@@ -1,5 +1,5 @@
 Types: deb
 URIs: https://liquorix.net/debian/
 Suites: sid
-Components: main 
-Signed-By: /etc/apt/trusted.gpg.d/liquorix.asc
+Components: main
+Signed-By: /usr/share/nanolx/trusted.d/liquorix.asc

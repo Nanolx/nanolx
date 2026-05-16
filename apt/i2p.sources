@@ -1,5 +1,5 @@
 Types: deb deb-src
 URIs: https://deb.i2p.net/
 Suites: trixie
-Components: main 
-Signed-By: /etc/apt/trusted.gpg.d/i2p.asc
+Components: main
+Signed-By: /usr/share/nanolx/trusted.d/i2p.asc

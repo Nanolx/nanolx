@@ -3,4 +3,4 @@ URIs: https://dl.winehq.org/wine-builds/debian
 Suites: forky
 Components: main
 Architectures: amd64 i386
-Signed-By: /etc/apt/trusted.gpg.d/winehq.asc
+Signed-By: /usr/share/nanolx/trusted.d/winehq.asc
