@@ -1,0 +1,53 @@
+#!/bin/bash
+
+version="0.0.1"
+reldate="2026/05/16"
+
+refind_base=$(find /boot -type d -name 'refind')
+if [ ! -d "${refind_base}" ]; then
+    echo "no folder 'refind' found anywhere in /boot"
+    exit 1
+fi
+
+case ${1} in
+    themes-show )
+        echo "the following refind themes are installed:"
+        ls -1 "${refind_base}/themes/"
+    ;;
+
+    themes-set )
+        if [ -d "${refind_base}/themes/${2}" ]; then
+            echo "setting default refind theme: ${2}"
+            sed -e '/include.*themes/d' -i "${refind_base}/refind.conf"
+            echo "include themes/${2}/theme.conf" >> "${refind_base}/refind.conf"
+        else
+            echo "skip: theme not found: ${2}"
+            exit 1
+        fi
+    ;;
+
+    themes-get )
+        echo "currently active refind theme:"
+        refind_theme="$(gawk -F'/' '/include.*themes/{print $2}' "${refind_base}/refind.conf")"
+        [ -z "${refind_theme}" ] && echo "default (none)" || echo "${refind_theme}"
+    ;;
+
+    themes-unset )
+        echo "reverting to default refind theme"
+        sed -e '/include.*themes/d' -i "${refind_base}/refind.conf"
+    ;;
+
+        * )
+        echo -e "nanolx-refind v${version} (${reldate})
+© 2026 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+usage:
+    nanolx-refind themes-show
+    nanolx-refind themes-set [theme]
+    nanolx-refind themes-get
+    nanolx-refind themes-unset
+"
+    ;;
+esac
