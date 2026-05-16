@@ -1,2 +1,2 @@
-etc/apt/sources.list.d/*.sources
-usr/sbin/apt-getkeys
+usr/sbin/nanolx-apt
+usr/share/apt/sources.d/*.sources
