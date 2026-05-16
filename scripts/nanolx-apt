@@ -1,0 +1,117 @@
+#!/bin/bash
+
+version="3.0.0"
+reldate="2026/05/16"
+
+# configuration management in /usr/share for more flexibility
+if [ -f nanolx-apt.conf ]; then
+    source nanolx-apt.conf
+else
+    source /usr/share/nanolx/nanolx-apt.conf
+fi
+
+[[ -d "${key_base}" ]] || mkdir -p "${key_base}"
+
+manage_repos_int () {
+    if [[ "${mode}" = "add" ]]; then
+        echo "enabling repo: ${repo}"
+        ln -sf "${sources_d}/${repo}.sources" \
+            "/etc/apt/sources.list.d/${repo}.sources"
+
+        case "${1}" in
+            *.asc | *.gpg | *.key )
+                wget "${1}" -O "${2}"
+            ;;
+            *.deb )
+                wget "${1}" -O "/var/cache/nanolx/${2}"
+                dpkg -i "/var/cache/nanolx/${2}"
+            ;;
+        esac
+    elif [[ "${mode}" = "check" ]]; then
+        if [ -L "/etc/apt/sources.list.d/${repo}.sources" ]; then
+            echo "repo ${repo}:       enabled"
+        else
+            echo "repo ${repo}:       disabled"
+        fi
+    else
+        echo "disabling repo: ${repo}"
+        rm "/etc/apt/sources.list.d/${repo}.sources"
+    fi
+}
+
+manage_repos () {
+    mode="${1}"
+    shift
+
+    for repo in "${@}"; do
+        case ${repo} in
+            debian ) manage_repos_int ;;
+            nanolx ) manage_repos_int"${key_nanolx}" "${key_nanolx_store}" ;;
+            liquorix ) manage_repos_int "${key_liquorix}" "${key_liquorix_store}" ;;
+            winehq ) manage_repos_int "${key_winehq}" "${key_winehq_store}" ;;
+            i2p ) manage_repos_int "${key_i2p}" "${key_i2p_store}" ;;
+            deb-multimedia ) manage_repos_int "${debmultimedia_url}" \
+                "/tmp/${debmultimedia_pkg}" ;;
+            * ) echo "repository ${repo} unknown." ;;
+        esac
+    done
+
+    [[ ! "${mode}" = "check" ]] && apt update -q
+}
+
+user_opt="${1}"
+shift
+
+case ${user_opt} in
+    list )
+         echo "nanolx-apt supports the following repos: ${repo_list}"
+         echo "apt config at:  /usr/share/nanolx/apt.d/99nanolx"
+         echo "apt pinning at: /usr/share/nanolx/apt.d/pinning"
+    ;;
+    add ) manage_repos "add" "${@}" ;;
+    remove ) manage_repos "remove" "${@}" ;;
+    check ) manage_repos "check" "${all_repos}" ;;
+    enable-config )
+        echo "enabling nanolx apt configuration"
+        ln -sf /usr/share/nanolx/apt.d/99nanolx /etc/apt/apt.conf.d/99nanolx
+    ;;
+    disable-config )
+        echo "disabling nanolx apt configuration"
+        rm /etc/apt/apt.conf.d/99nanolx
+    ;;
+    enable-pinning )
+        if [ -f /etc/apt/preferences.d/pinning ]; then
+            echo "backing up previous apt pinning to /etc/apt/preferences.d/pinning.nanolx_old"
+            cp /etc/apt/preferences.d/pinning{,.nanolx_old}
+        fi
+        echo "enabling nanolx apt pinning configuration"
+        ln -sf /usr/share/nanolx/apt.d/pinning /etc/apt/preferences.d/pinning
+    ;;
+    disable-pinning )
+        if [ -L /etc/apt/preferences.d/pinning ]; then
+            echo "disabling nanolx apt pinning configuration"
+            rm /etc/apt/preferences.d/pinning
+        else
+            echo "nanolx apt pinning not in use"
+        fi
+        if [ -f /etc/apt/preferences.d/pinning.nanolx_old ]; then
+            echo "resotoring previous apt pinning from /etc/apt/preferences.d/pinning.nanolx_old"
+            mv /etc/apt/preferences.d/pinning{.nanolx_old,}
+        fi
+    ;;
+    * )
+        echo -e "nanolx-apt v${version} (${reldate})
+© 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+usage:
+    nanolx-apt list             (list available repositories)
+    nanolx-apt add              [repo1...repo2]
+    nanolx-apt remove           [repo1...repo2]
+    nanolx-apt enable-config    [enable 99nanolx apt config]
+    nanolx-apt disable-config   [disable 99nanolx apt config]
+    nanolx-apt enable-pinning   [enable nanolx apt pinning]
+    nanolx-apt disable-pinning  [disable nanolx apt pinning]
+"
+esac
