@@ -1,7 +1,7 @@
 etc/dracut.conf.d/fonts.conf
-etc/skel_nano/
 usr/bin/repokit
 usr/sbin/nanolx-refind
 usr/sbin/nanolx-skel
+usr/share/nanolx/skel/
 usr/share/plymouth/themes/debian-mac-style/
 boot/efi/EFI/refind/themes/rEFInd-digital-void/
