@@ -10,8 +10,6 @@ selection between my machine and machines that are maintained by me.
 They can be safely used by anyone on official Debian as they won't remove
 or change existing packages.
 
-Some meta-packages also provide additional scripts, tools and configs.
-
 Release Information
 =======================================
 
@@ -42,10 +40,8 @@ with the following content:
 then proceed to install the
     nanolx-base
 
-or specific
-    nanolx-*
-
-package/s.
+which will pull all other packages, except nanolx-citrix-config (see below) or
+install specific nanolx-* packages indepedently.
 
 Scripts
 =======================================
@@ -65,7 +61,9 @@ nanolx-base:
 nanolx-apt-sources:
     nanolx-apt      manages additional repository configurations, including
                     key handling, aswell as matching pinning and minor apt
-                    configuration changes (the latter both optional).
+                    configuration changes (the latter both optional). Currently
+                    known repos are: debian*, nanolx, liquorix, i2p, winehq,
+                    deb-multimedia. *rolls-out full suite stable->experimental
 
 nanolx-apt-tools:
     nanolx-orbit    manages installation of 3rdparty packages, including some
