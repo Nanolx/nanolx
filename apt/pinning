@@ -1,31 +1,35 @@
 Package: *
 Pin: origin apt.nanolx.org
-Pin-Priority: 900
+Pin-Priority: 990
 
 Package: *
 Pin: origin dl.winehq.org
-Pin-Priority: 800
+Pin-Priority: 980
 
 Package: *
 Pin: origin liquorix.net
-Pin-Priority: 700
+Pin-Priority: 970
 
 Package: *
 Pin: origin www.deb-multimedia.org
-Pin-Priority: 600
+Pin-Priority: 960
 
 Package: *
 Pin: origin deb.i2p2.net
-Pin-Priority: 500
+Pin-Priority: 950
 
 Package: *
-Pin: origin deb.debian.org
-Pin-Priority: 300
-
-Package: *
-Pin: release a=sid
+Pin: release a=sid o=deb.debian.org
 Pin-Priority: 900
 
 Package: *
-Pin: release a=experimental
-Pin-Priority: 300
+Pin: release a=testing o=deb.debian.org
+Pin-Priority: 800
+
+Package: *
+Pin: release a=stable o=deb.debian.org
+Pin-Priority: 700
+
+Package: *
+Pin: release a=experimental o=deb.debian.org
+Pin-Priority: 600
