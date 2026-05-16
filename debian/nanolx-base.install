@@ -1,3 +1,4 @@
+etc/dracut.conf.d/fonts.conf
 etc/skel_nano/
 usr/bin/repokit
 usr/sbin/nanolx-skel
