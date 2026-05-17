@@ -1,3 +1,34 @@
+nanolx (1:4.2.20260517-1nano) unstable; urgency=low
+
+  * New upstream release
+  * greatly revised REAMDE
+  * removed other, separated READMEs
+  * debian/control:
+    - revised package descriptions
+  * nanolx-base:
+    - only suggest nanolx-citrix-config
+    - add postrm/preinst scripts to handle the rEFInd theme during update
+    - the user skel for nanolx is now installed into /usr/share/nanolx the
+      nanolx-skel script is updated accordingly
+  * nanolx-apt-sources:
+    - apt-getkeys script was renamed to nanolx-apt
+    - apt configuration and pinning is now optional, and installed into
+      /usr/share/nanolx/apt.d/ rather than /etc. nanolx-apt script can be
+      used to enable/disable them (separately).
+    - make nanolx apt pinning configuration acutally make sense
+    - additional apt sources are now optional, and installed into
+      /usr/share/nanolx/sources.d/ rather than /etc. nanolx-apt script can be
+      used to enable/disable them (separately), also for keydownloads
+    - nanolx-apt now stores the downloaded keys in /usr/share/nanolx/trusted.d/
+  * nanolx-apt-tools:
+    - add dependency on gdebi
+    - add dependency on nanolx-apt-sources
+    - added nanolx-orbit script, which handles installation of third party
+      applications, currently: citrix, citrix-usb, zoom, zoom-vdi-plugin,
+      discord, libjpeg8 [from Ubuntu], openrgb plugins: effects, hwsync, fansync
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 17 May 2026 11:01:35 +0200
+
 nanolx (1:4.1.20260516-1nano) unstable; urgency=low
   * New upstream release
   * improved README
