@@ -25,7 +25,7 @@ License: GPL-3.0+
 
 Files:
  apt/*
- skel_nano/*
+ skel/*
 Copyright: 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
 License: public-domain
  No license required for any purpose; the work is not subject to copyright

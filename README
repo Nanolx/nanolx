@@ -94,7 +94,7 @@ nanolx-cli:
     bashstyle-ng and more.
 
 nanolx-x11:
-    pulls a small collection of ui tools, like psensor, conky, libgkt-nocsd0
+    pulls a small collection of ui tools, like psensor, conky, libgtk-nocsd0
     and KDE/Plasma.
 
 nanolx-security:
