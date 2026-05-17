@@ -86,9 +86,6 @@ Depends:
  wget
 Description: Collection of extra sources for apt
  This meta-package installs extra apt-sources on the system.
- .
- Reading https://github.com/Nanolx/nanolx/blob/master/README.nanolx-apt-sources
- prior to installing this package is recommended.
 
 Package: nanolx-cli
 Architecture: all
@@ -162,9 +159,6 @@ Depends:
 Description: Collection of security related tools
  This meta-package installs security related. You won't get a secure
  system by just installing this package.
- .
- Reading https://github.com/Nanolx/nanolx/blob/master/README.nanolx-security
- prior to installing this package is recommended
 
 Package: nanolx-net
 Architecture: all
