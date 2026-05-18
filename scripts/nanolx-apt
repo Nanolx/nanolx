@@ -122,6 +122,7 @@ usage:
     nanolx-apt list             (list available repositories)
     nanolx-apt add              [repo1...repo2]
     nanolx-apt remove           [repo1...repo2]
+    nanolx-apt check            [check which repos are enabled]
     nanolx-apt enable-config    [enable 99nanolx apt config]
     nanolx-apt disable-config   [disable 99nanolx apt config]
     nanolx-apt enable-pinning   [enable nanolx apt pinning]
