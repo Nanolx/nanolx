@@ -1,0 +1,66 @@
+.TH nanolx-apt 1 "2026 May 18"
+.SH NAME
+nanolx-apt
+.SH SYNOPSIS
+nanolx-apt
+.Op list
+.Op add Ar repo
+.Op remove Ar repo
+.Op check
+.Op enable-config
+.Op disable-config
+.Op enable-pinning
+.Op disable-pinning
+.SH DESCRIPTION          \" Section Header - required - don't modify
+nanolx-apt manages additional repository configurations, including key handling,
+aswell as matching pinning and minor apt configuration changes (the latter both optional).
+
+Currently known repos are: debian*, nanolx, liquorix, i2p, winehq, deb-multimedia.
+It also checks the downloaded repository key's SHA256sum.
+
+*rolls-out full suite stable->experimental
+.SH OPTIONS
+nanolx-apt knows the following options
+.PP
+.TP 18
+.B list
+Shows the list of supported repositories
+.TP
+.B add \fIrepo\fP
+Enable given repository (downloads signing key)
+.TP
+.B remove \fIrepo\fP
+Disable given repository
+.TP
+.B check
+Check which repositories are enabled
+.TP
+.B enable-config
+Enable nanolx apt configuration
+.TP
+.B disable-config
+Disable nanolx apt configuration
+.TP
+.B enable-pinning
+Enable nanolx apt pinning
+.TP
+.B disable-pinning
+Disable nanolx apt pinning
+
+.SH FILES
+.TP 15
+/usr/share/nanolx/nanolx-apt.conf
+nanolx-apt configuration file
+
+.TP
+/usr/share/nanolx/apt.d/99nanolx
+additional settings for apt
+
+.TP
+/usr/share/nanolx/apt.d/pinning
+nanolx apt pinning configuration
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
