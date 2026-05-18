@@ -29,7 +29,7 @@ manage_repos_int () {
                 wget "${1}" -O "/var/cache/nanolx/${2}"
                 if ! echo "${3}" "/var/cache/nanolx/${2}" | sha256sum -c &>/dev/null; then
                     echo "SHA256 checksum for ${out} is wrong"
-                    rm "${2}"
+                    rm "/var/cache/nanolx/${2}"
                 else
                     dpkg -i "/var/cache/nanolx/${2}"
                     echo "enabling repo: ${repo}"
