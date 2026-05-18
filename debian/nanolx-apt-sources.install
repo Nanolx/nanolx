@@ -1,4 +1,5 @@
 usr/sbin/nanolx-apt
+usr/share/man/man1/nanolx-apt.1.gz
 usr/share/nanolx/nanolx-apt.conf
 usr/share/nanolx/apt.d/99nanolx
 usr/share/nanolx/apt.d/pinning
