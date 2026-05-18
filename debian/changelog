@@ -1,7 +1,7 @@
 nanolx (1:4.2.20260517-1nano) unstable; urgency=low
 
   * New upstream release
-  * greatly revised REAMDE
+  * greatly revised README
   * removed other, separated READMEs
   * debian/control:
     - revised package descriptions
@@ -15,7 +15,7 @@ nanolx (1:4.2.20260517-1nano) unstable; urgency=low
     - apt configuration and pinning is now optional, and installed into
       /usr/share/nanolx/apt.d/ rather than /etc. nanolx-apt script can be
       used to enable/disable them (separately).
-    - make nanolx apt pinning configuration acutally make sense
+    - make nanolx apt pinning configuration actually make sense
     - additional apt sources are now optional, and installed into
       /usr/share/nanolx/sources.d/ rather than /etc. nanolx-apt script can be
       used to enable/disable them (separately), also for keydownloads
@@ -163,7 +163,7 @@ nanolx (1:3.9.20250912-1nano) unstable; urgency=low
 
 nanolx (1:3.8.20250726-1nano) unstable; urgency=low
 
- * New upstream release
+  * New upstream release
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 26 Jul 2025 10:12:12 +0200
 
