@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.0"
-reldate="2026/05/16"
+version="3.0.1"
+reldate="2026/05/18"
 
 # configuration management in /usr/share for more flexibility
 if [ -f nanolx-apt.conf ]; then
@@ -14,17 +14,30 @@ fi
 
 manage_repos_int () {
     if [[ "${mode}" = "add" ]]; then
-        echo "enabling repo: ${repo}"
-        cp "${sources_d}/${repo}.sources" \
-            "/etc/apt/sources.list.d/${repo}.sources"
-
         case "${1}" in
             *.asc | *.gpg | *.key )
                 wget "${1}" -O "${2}"
+                if ! echo "${3}" "${2}" | sha256sum -c &>/dev/null; then
+                    echo "SHA256 checksum for ${out} is wrong"
+                    rm "${2}"
+                else
+                    echo "enabling repo: ${repo}"
+                    cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                fi
             ;;
             *.deb )
                 wget "${1}" -O "/var/cache/nanolx/${2}"
-                dpkg -i "/var/cache/nanolx/${2}"
+                if ! echo "${3}" "/var/cache/nanolx/${2}" | sha256sum -c &>/dev/null; then
+                    echo "SHA256 checksum for ${out} is wrong"
+                    rm "${2}"
+                else
+                    dpkg -i "/var/cache/nanolx/${2}"
+                    echo "enabling repo: ${repo}"
+                    cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                fi
+            ;;
+            "" )
+                cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
             ;;
         esac
     elif [[ "${mode}" = "check" ]]; then
@@ -46,12 +59,12 @@ manage_repos () {
     for repo in "${@}"; do
         case ${repo} in
             debian ) manage_repos_int ;;
-            nanolx ) manage_repos_int "${key_nanolx}" "${key_nanolx_store}" ;;
-            liquorix ) manage_repos_int "${key_liquorix}" "${key_liquorix_store}" ;;
-            winehq ) manage_repos_int "${key_winehq}" "${key_winehq_store}" ;;
-            i2p ) manage_repos_int "${key_i2p}" "${key_i2p_store}" ;;
+            nanolx ) manage_repos_int "${nanolx}" "${nanolx_store}" "${nanolx_sha}" ;;
+            liquorix ) manage_repos_int "${liquorix}" "${liquorix_store}" "${liquorix_sha256}" ;;
+            winehq ) manage_repos_int "${winehq}" "${winehq_store}" "${winehq_sha}" ;;
+            i2p ) manage_repos_int "${i2p}" "${i2p_store}" "${ip2_sha256}" ;;
             deb-multimedia ) manage_repos_int "${debmultimedia_url}" \
-                "${debmultimedia_pkg}" ;;
+                "${debmultimedia_pkg}" "${debmultimedia_sha}" ;;
             * ) echo "repository ${repo} unknown." ;;
         esac
     done
@@ -73,7 +86,7 @@ case ${user_opt} in
     check ) manage_repos "check" ${all_repos} ;;
     enable-config )
         echo "enabling nanolx apt configuration"
-        cp -sf /usr/share/nanolx/apt.d/99nanolx /etc/apt/apt.conf.d/99nanolx
+        cp /usr/share/nanolx/apt.d/99nanolx /etc/apt/apt.conf.d/99nanolx
     ;;
     disable-config )
         echo "disabling nanolx apt configuration"
