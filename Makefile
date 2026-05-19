@@ -28,7 +28,7 @@ install:
 	for sscript in apt ctx orbit pam-yubikey refind skel; do \
 		install -m755 scripts/nanolx-$$sscript $(DESTDIR)/usr/sbin/; \
 	done
-	# apt sources configuration
+	# apt sources and configuration files
 	mkdir -p $(DESTDIR)/usr/share/nanolx/skel/
 	for skel in bashrc bash_logout profile bashstyle-ng.ini conkyrc ; do \
 		install -m644 skel/.$$skel $(DESTDIR)/usr/share/nanolx/skel/; \
