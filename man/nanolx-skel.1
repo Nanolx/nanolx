@@ -1,0 +1,27 @@
+.TH nanolx-skel 1 "2026 May 19"
+.SH NAME
+nanolx-ctx
+.SH SYNOPSIS
+nanolx-skel [enable] [disable]
+.SH DESCRIPTION          \" Section Header - required - don't modify
+nanolx-skels modifies \fB/etc/default/useradd\fP to set the default shell for
+newly created users to \fB/usr/bin/bash\fP and changes the skeleton config files
+to use from \fB/etc/skel\fP to \fB/usr/share/nanolx/skel\fP
+
+.SH OPTIONS
+nanolx-skel knows the following options
+.PP
+.TP 4
+.B enable
+Set default shell to bash and enable nanolx skeleton for new users.
+.TP
+.B disable
+Revert to system defaults.
+.TP
+.PP
+
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
