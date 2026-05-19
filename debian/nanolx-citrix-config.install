@@ -2,4 +2,4 @@ usr/lib/systemd/system/*.service
 usr/sbin/nanolx-ctx
 usr/share/applications/*.desktop
 opt/Citrix/ICAClient/*.sh
-
+usr/share/man/man1/nanolx-ctx.1.gz
