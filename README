@@ -140,7 +140,7 @@ nanolx-themes:
       - Cursors:  Empty Butterfly
       - Qt:       Midnight Bright Kvantum
       - Icons:    Tela (red dark)
-      - sddm:	  Pixel Rainy Room
+      - sddm:     Pixel Rainy Room
       - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
 
 nanolx-citrix-config:
@@ -149,7 +149,7 @@ nanolx-citrix-config:
 Scripts
 =======================================
 
-Nanolx includes a set of scripts.
+Nanolx includes a set of scripts, all scripts ship their own manpage.
 
 nanolx-base:
     nanolx-skel     enable / disable nanolx skel (/usr/share/nanolx/skel)
