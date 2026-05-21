@@ -43,7 +43,7 @@ install:
 	done
 	# manpages
 	mkdir -p $(DESTDIR)/usr/share/man/man1/
-	for man in man/nanolx*.1; do \
+	for man in man/*.1; do \
 		gzip $$man -c > $$man.gz; \
 		install -m644 $$man.gz $(DESTDIR)/usr/share/man/man1/; \
 		rm $$man.gz; \
