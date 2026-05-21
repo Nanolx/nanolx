@@ -27,6 +27,7 @@ Depends:
  nanolx-media-x11,
  nanolx-games,
  nanolx-games-emu,
+Recommends:
  nanolx-themes
 Suggests:
  nanolx-citrix-config
