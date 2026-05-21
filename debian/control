@@ -126,7 +126,8 @@ Depends:
  task-kde-desktop,
  psensor,
  ibus,
- ibus-table-compose
+ ibus-table-compose,
+ sddm
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
 
@@ -384,5 +385,7 @@ Description: Collection of themes
  rEFInd:   rEFInd digital void
  Cursors:  Empty Butterfly
  Qt:       Midnight Bright Kvantum
+ Icons:    Tela (red dark)
+ sddm:     Pixel Rainy Room
  .
  Nothing style for Plasma, KWin, Konsole including color schemes and wallpapers
