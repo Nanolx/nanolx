@@ -63,3 +63,6 @@ install:
 	cp -r themes/konsole/ $(DESTDIR)/usr/share/
 	# Wallpapers
 	cp -r wallpapers/ $(DESTDIR)/usr/share/
+	# sddm
+	mkdir -p $(DESTDIR)/usr/share/sddm/themes/
+	cp -r sddm/* $(DESTDIR)/usr/share/sddm/themes/

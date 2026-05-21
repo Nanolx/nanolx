@@ -140,6 +140,7 @@ nanolx-themes:
       - Cursors:  Empty Butterfly
       - Qt:       Midnight Bright Kvantum
       - Icons:    Tela (red dark)
+      - sddm:	  Pixel Rainy Room
       - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
 
 nanolx-citrix-config:
