@@ -1,0 +1,15 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "gicalucejo@gmail.com",
+                "Name": "jomada"
+            }
+        ],
+        "Id": "Nothing2",
+        "License": "CC-BY-SA-4.0",
+        "Version": "1.1",
+        "Name": "Nothing2",
+         "Name[x-test]": "xxNothing2xx"
+    }
+}
