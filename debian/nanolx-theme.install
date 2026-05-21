@@ -1,0 +1,10 @@
+etc/dracut.conf.d/fonts.conf
+usr/sbin/nanolx-refind
+usr/share/icons/
+usr/share/Kvantum/
+usr/share/aurorae/
+usr/share/color-schemes/
+usr/share/konsole/
+usr/share/plasma/
+usr/share/plymouth/themes/
+boot/efi/EFI/refind/themes/

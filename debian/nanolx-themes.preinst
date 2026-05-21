@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+
+case "$1" in
+    install|upgrade)
+        rm -rf /boot/efi/EFI/refind/themes/rEFInd-digital-void.old
+        mv /boot/efi/EFI/refind/themes/rEFInd-digital-void/ \
+            /boot/efi/EFI/refind/themes/rEFInd-digital-void.old/
+        ;;
+
+    abort-upgrade)
+        ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
