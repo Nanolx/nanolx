@@ -31,7 +31,7 @@ download_package () {
             echo "SHA256 checksum for ${out} is correct"
         fi
     else
-        echo -e "\nDownloading ${pkg}: (${url##*/})"
+        echo -e "\nDownloading ${pkg}: (${out})"
         curl ${curl_opts} -o "${out}" "${url}"
         if ! echo "${sha}" "${out}" | sha256sum -c &>/dev/null; then
             echo "SHA256 checksum for ${out} is wrong"
@@ -68,8 +68,8 @@ handle_packages () {
                 install_package "${discord_url##*/}"
             ;;
             zoom )
-                download_package "${zoom_url}" zoom "${zoom_sha}" "${zoom_url##*/}"
-                install_package "${zoom_url##*/}"
+                download_package "${zoom_url}" zoom "${zoom_sha}" "zoom_${zoom_ver}.deb"
+                install_package "zoom_${zoom_ver}.deb"
             ;;
             zoom-vdi )
                 download_package "${zoom_vdi_url}" zoom-vdi "${zoom_vdi_sha}" "${zoom_vdi_url##*/}"
