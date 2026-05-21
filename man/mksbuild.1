@@ -1,0 +1,29 @@
+.TH mksbuild 1 "2026 May 21"
+.SH NAME
+mksbuild
+.SH SYNOPSIS
+mksbuild [arch] [tree]
+.SH DESCRIPTION          \" Section Header - required - don't modify
+mksbuild is a simple script which let's you create an \fIschroot\fP environemnt.
+It checks whether the current user is part of the \fIsbuild\fP group and if not
+add you to the group (using \fIsudo\fP).
+
+mksbuild expects a pair of parameters:
+
+.TP 0
+.B [arch] [tree]
+examples:
+.TP
+mksbuild \fIi386\fP \fItesting\fP
+.TP
+mksbuild \fIarmhf\fP \fIunstable\fP
+.PP
+
+If the requested \fIschroot\fP environment already exists, mksbuild asks you
+whether you want to remove and rebuild it.
+
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
