@@ -38,8 +38,8 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/nanolx/apt.d/
 	install -m644 apt/pinning $(DESTDIR)/usr/share/nanolx/apt.d/
 	install -m644 apt/99nanolx $(DESTDIR)/usr/share/nanolx/apt.d/
-	for conf in apt orbit; do \
-		install -m644 scripts/nanolx-$$conf.conf $(DESTDIR)/usr/share/nanolx/; \
+	for conf in scripts/*.conf; do \
+		install -m644 $$conf $(DESTDIR)/usr/share/nanolx/; \
 	done
 	# manpages
 	mkdir -p $(DESTDIR)/usr/share/man/man1/
@@ -48,4 +48,19 @@ install:
 		install -m644 $$man.gz $(DESTDIR)/usr/share/man/man1/; \
 		rm $$man.gz; \
 	done
-
+	# Cursors
+	mkdir -p $(DESTDIR)/usr/share/icons/
+	cp -r icons/Empty-Butterfly-* $(DESTDIR)/usr/share/icons/
+	# Kvantum Design
+	mkdir -p $(DESTDIR)/usr/share/Kvantum/
+	cp -r themes/Kvantum/* $(DESTDIR)/usr/share/Kvantum/
+	# KWin
+	mkdir -p $(DESTDIR)/usr/share/aurorae/themes/
+	cp -r themes/aurorae/* $(DESTDIR)/usr/share/aurorae/themes/
+	# Plasma
+	cp -r themes/plasma/ $(DESTDIR)/usr/share/
+	cp -r themes/color-schemes/ $(DESTDIR)/usr/share/
+	# Konsole
+	cp -r themes/konsole/ $(DESTDIR)/usr/share/
+	# Wallpapers
+	cp -r wallpapers/ $(DESTDIR)/usr/share/

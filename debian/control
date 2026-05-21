@@ -27,9 +27,7 @@ Depends:
  nanolx-media-x11,
  nanolx-games,
  nanolx-games-emu,
- refind,
- plymouth,
- dracut
+ nanolx-themes
 Suggests:
  nanolx-citrix-config
 Description: Nanolx base package
@@ -367,3 +365,23 @@ Description: Citrix Workspace Support package
  .
  This package also depends on Zoom and the VDI-Plugin, aswell als
  libjpeg8 and libjpeg-turbo8 from Ubuntu (install manually).
+
+Package: nanolx-themes
+Architecture: all
+Depends:
+ refind,
+ plymouth,
+ dracut,
+ qt-style-kvantum,
+ kwin-style-aurorae,
+ kde-plasma-desktop,
+ konsole
+Description: Collection of themes
+ Themes for Nanolx
+ .
+ Plymouth: debian mac style
+ rEFInd:   rEFInd digital void
+ Cursors:  Empty Butterfly
+ Qt:       Midnight Bright Kvantum
+ .
+ Nothing style for Plasma, KWin, Konsole including color schemes and wallpapers
