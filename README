@@ -74,8 +74,6 @@ consult debian/control for full description and pulled packages.
 
 nanolx-base:
     base-package pulling all other packages except nanolx-citrix-config
-    includes a plymouth theme (debian-mac-style)
-    included a rEFInd theme (rEFInd-digital-void)
 
 nanolx-admin:
     pulls cli and gui tools for system administration,
@@ -131,6 +129,14 @@ nanolx-games:
 nanolx-games-emu:
     pulls a collection of emulators, including dosbox, retroarch and more.
 
+nanolx-themes:
+    provides a theme selection
+      - Plymouth: debian mac style
+      - rEFInd:   rEFInd digital void
+      - Cursors:  Empty Butterfly
+      - Qt:       Midnight Bright Kvantum
+      - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
+
 nanolx-citrix-config:
     see    Citrix    below.
 
@@ -140,11 +146,6 @@ Scripts
 Nanolx includes a set of scripts.
 
 nanolx-base:
-    repokit         personal wrapper script for reprepro with config file
-                    support and many features.
-    nanolx-refind   simple script to manage rEFInd bootloader themes,
-                    supports showing installed themes, setting theme,
-                    showing current theme in use or reverting to default.
     nanolx-skel     enable / disable nanolx skel (/usr/share/nanolx/skel)
                     for newly created users instead of /etc/skel.
                     Note: you most likely /don't/ want that...
@@ -157,6 +158,8 @@ nanolx-apt-sources:
                     deb-multimedia. *rolls-out full suite stable->experimental
 
 nanolx-apt-tools:
+    repokit         personal wrapper script for reprepro with config file
+                    support and many features.
     nanolx-orbit    manages installation of 3rdparty packages, including some
                     non-free packages, including checking sha256sums. Currently
                     supported: discord, citrix, citrix-usb, zoom, jpeg8,
@@ -173,6 +176,11 @@ nanolx-security:
     nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
                         is plugged in, using PAM, currently hooked-into PAM
                         modules: login, sddm, su, sudo, sudo-i, polkit-1, kde.
+
+nanolx-themes:
+    nanolx-refind   simple script to manage rEFInd bootloader themes,
+                    supports showing installed themes, setting theme,
+                    showing current theme in use or reverting to default.
 
 Citrix
 =======================================
