@@ -49,8 +49,7 @@ install:
 		rm $$man.gz; \
 	done
 	# Cursors
-	mkdir -p $(DESTDIR)/usr/share/icons/
-	cp -r icons/Empty-Butterfly-* $(DESTDIR)/usr/share/icons/
+	cp -r icons/ $(DESTDIR)/usr/share/
 	# Kvantum Design
 	mkdir -p $(DESTDIR)/usr/share/Kvantum/
 	cp -r themes/Kvantum/* $(DESTDIR)/usr/share/Kvantum/
