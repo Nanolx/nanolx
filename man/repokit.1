@@ -1,0 +1,85 @@
+.TH repokit 1 "2026 May 21"
+.SH NAME
+repokit
+.SH SYNOPSIS
+repokit [add \fI.changes\fP] [remove \fIpackage\fP] [orig \fIsourcedir\fP]
+[prepare \fIlicense\fP] [build] [clean] [slist] [scopy \fIfiles\fP]
+[senter \fIschroot\fP] [dist \fIsourcedir\fP] [crossbuild \fI.dsc\fP]
+[ftp] [get] [release] [put]
+.SH DESCRIPTION          \" Section Header - required - don't modify
+repokit is my personal wrapper script for reprepro with config file support and
+many features. repokit expects a configuration file \fI$HOME/.repokit.conf\fP
+to be provided.
+
+This configuration for example stores your apt repository location, which suite
+to use, which compression (for \fBorig\fP and \fBdist\fP) or, if you use a git
+repository to manage your packaging scripts, it's local location. Finally, if
+you have gnu-ftpsync installed and you're using a managed home page, rather than
+an actual server for publishing your apt repository, the configuration parameters
+for your ftp account are stored as well, the password for ftp is stored in a
+GPG encrytped file \fI$HOME/.repokit.pw\fP and unlocked when required.
+
+An example configuration with explainations is found at
+\fI/usr/share/nanolx/repokit.conf\fP.
+
+repokit knows the following options:
+
+.TP 4
+.B add \fI.changes\fP
+add binary packages to reprepro repository, using it's .changes file
+.TP
+.B remove \fIpackage\fP
+remove a package from reprepro repository
+.TP
+.B orig \fIsourcedir\fP
+create an .orig tarball from given source directory
+.TP
+.B prepare \fIlicense\fP
+create skeleton debian/ packaging files, using given license
+.TP
+.B build
+build debian binary packages
+.TP
+.B clean
+clean the debian build directory
+.TP
+.B slist
+list available \fIschroot\fP build environments
+.TP
+.B scopy \fIfiles\fP
+copy files into the schroot build directory for given environment
+.TP
+.B scenter \fIschroot\fP
+enter given schroot
+.TP
+.B crossbuild \fI.dsc\fP
+crossbuild a debian packges using it's .dsc file
+.TP
+.B ftp
+push your apt repository to your webspace using ftp
+.TP
+.B get
+if you manage your build scripts inside a git repository, you can use this to
+pull them to your build directory, eg. when build a new release
+.TP
+.B release
+afterwards you can use this command to add a new, empty changelog entry to
+\fIdebian/changelog\fP which determines the package version from the directory
+.TP
+.B put
+once your packaging scripts are updated for the new relase, you can use this
+command to git commit them to your git repository you use to store your build
+scripts
+.PP
+
+.SH FILES
+.TP 15
+/usr/share/nanolx/repokit.conf
+example repokit configuration file
+.PP
+
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
