@@ -66,3 +66,9 @@ install:
 	# sddm
 	mkdir -p $(DESTDIR)/usr/share/sddm/themes/
 	cp -r sddm/* $(DESTDIR)/usr/share/sddm/themes/
+
+update-conf:
+	mkdir -p $(DESTDIR)/usr/share/nanolx/
+	for conf in scripts/*.conf; do \
+		install -m644 $$conf $(DESTDIR)/usr/share/nanolx/; \
+	done
