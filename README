@@ -12,6 +12,9 @@ or change existing packages. As of version 4.2. no configuration changes to
 /etc are done automatically, configuration is stored in /usr/share/nanolx/
 and you can use the provided scripts (see below) to adjust as you like.
 
+Addtionally Nanolx contains the default set of themes I prefer to use, see
+the nanolx-themes package below
+
 On Debian-based distributions you'll likely not be able to meet all dependecies
 of the packages. In that case
 
@@ -56,8 +59,8 @@ with the following content:
 then proceed to install the
     nanolx-base
 
-which will pull all other packages, except nanolx-citrix-config (see below) or
-install specific nanolx-* packages indepedently.
+which will pull all other packages, except nanolx-citrix-config and nanolx-themes
+(see below) or install specific nanolx-* packages indepedently.
 
 License
 =======================================
@@ -130,7 +133,8 @@ nanolx-games-emu:
     pulls a collection of emulators, including dosbox, retroarch and more.
 
 nanolx-themes:
-    provides a theme selection
+    this package is recommended by nanolx-base, but not a hard dependency, it
+    provides a theme selection containing:
       - Plymouth: debian mac style
       - rEFInd:   rEFInd digital void
       - Cursors:  Empty Butterfly
