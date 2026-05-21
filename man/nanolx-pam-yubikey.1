@@ -1,0 +1,66 @@
+.TH nanolx-pam-yubikey 1 "2026 May 21"
+.SH NAME
+nanolx-pam-yubikey
+.SH SYNOPSIS
+nanolx-pam-yubikey [enable] [disable] [check]
+.SH DESCRIPTION          \" Section Header - required - don't modify
+nanolx-pam-yubikey is a simple script to enable password-less logins when a
+Yubikey is plugged in, using PAM.
+
+nanolx-pam-yubikey expects your \fIu2f\fP configuration to reside in
+\fI/etc/u2f_keys\fP, refer to \fIpamu2fcg\fP for generating the file.
+
+Currently hooked-into PAM modules:
+
+.TP 4
+.B login
+For passwordless terminal logins off-side Wayland/X11
+.TP
+.B sddm
+This is not an autologin, instead you simply press enter to login
+.TP
+.B su
+.TP
+.B sudo
+.TP
+.B sudo-i
+.TP
+.B polkit-1
+Allows for passwordless invocation of \fIpkexec\fP
+.TP
+.B kde
+Allows for passwordless screen-unlocking in KDE
+.PP
+
+When no Yubikey is plugged in, all tools ask for passwords normally.
+
+Note: if \fIpkexec\P does not respond after applying this changes it may be a
+conflict with your Desktop's polkit-agent running e.g. the helper for KDE, XFCE
+or GNOME. You may try whether
+
+\fIsystemctl stop polkit-agent-helper.service\fP
+
+solves the issue. If so, consider
+
+\fIsystemctl disable polkit-agent-helper.service\fP
+
+at your own risk, keep in mind to eventually re-enable it.
+
+.SH OPTIONS
+nanolx-pam-yubikey knows the following options
+.TP 4
+.B enable
+Enable passwordless logins
+.TP
+.B disable
+Disable passwordless logins
+.TP
+.B check
+Check whether passwordless logins are enabled or disabled
+.PP
+
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
