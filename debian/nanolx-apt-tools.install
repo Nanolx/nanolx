@@ -1,2 +1,4 @@
-usr/share/nanolx/nanolx-orbit.conf
+usr/bin/repokit
 usr/sbin/nanolx-orbit
+usr/share/nanolx/nanolx-orbit.conf
+usr/share/nanolx/repokit.conf
