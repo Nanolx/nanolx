@@ -8,7 +8,7 @@ Nanolx is a set of meta-packages, wich I use to aid in syncing the package
 selection between my machine and machines that are maintained by me.
 
 They can be safely used by anyone on Debian GNU/Linux as they won't remove
-or change existing packages. As of version 4.2. no configuration changes to
+or change existing packages. As of version 4.2 no configuration changes to
 /etc are done automatically, configuration is stored in /usr/share/nanolx/
 and you can use the provided scripts (see below) to adjust as you like.
 
@@ -23,18 +23,18 @@ of the packages. In that case
 would only install the included scripts (see below), configuration and themes.
 
 If you only want to update the configuration for the following scripts:
-  - repokit
-  - nanolx-apt
-  - nanolx-orbit
+    - repokit
+    - nanolx-apt
+    - nanolx-orbit
 
 use
 
    make update-conf
 
 On non Debian-based distributions you'll only be able to use the scripts:
-    nanolx-ctx
-    nanolx-pam-yubikey
-    nanolx-refind
+    - nanolx-ctx
+    - nanolx-pam-yubikey
+    - nanolx-refind
 
 copy/install them manually if desired.
 
@@ -85,7 +85,8 @@ Packages
 consult debian/control for full description and pulled packages.
 
 nanolx-base:
-    base-package pulling all other packages except nanolx-citrix-config
+    base-package pulling all other packages except nanolx-citrix-config and
+    nanolx-themes
 
 nanolx-admin:
     pulls cli and gui tools for system administration,
