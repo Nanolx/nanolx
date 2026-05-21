@@ -1,0 +1,44 @@
+.TH nanolx-refind 1 "2026 May 21"
+.SH NAME
+nanolx-refind
+.SH SYNOPSIS
+nanolx-refind [themes-show] [themes-set \fItheme\fP] [themes-get] [themes-unset]
+[lock-grub] [unlock-grub]
+.SH DESCRIPTION          \" Section Header - required - don't modify
+nanolx-refind is a simple script to manage rEFInd bootloader themes, supports
+showing installed themes, setting theme, showing current theme in use or
+reverting to default.
+
+It's looking for a \fIrefind\fP folder somewhere below \fI/boot\fP and uses it
+as base folder for further actions.
+
+.SH OPTIONS
+nanolx-refind knows the following options
+.TP 4
+.B themes-show
+List installed rEFInd themes
+.TP
+.B themes-set \fItheme\fP
+Set given theme as new default
+.TP
+.B themes-get
+Show which theme is currently in use
+.TP
+.B themes-unset
+Revert to default theme
+.TP
+.B lock-grub
+Mark \fIgrub\fP and related packages as locked by \fIapt-mark\fP to prevent
+\fIgrup\fP to override rEFInd for no particular reason
+
+(\fIshim\fP packages are not held, so a boot coup might still happen)
+.TP
+.B
+Unlock \fIgrup\fP and related packages
+.PP
+
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
