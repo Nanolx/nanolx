@@ -22,6 +22,15 @@ of the packages. In that case
 
 would only install the included scripts (see below), configuration and themes.
 
+If you only want to update the configuration for the following scripts:
+  - repokit
+  - nanolx-apt
+  - nanolx-orbit
+
+use
+
+   make update-conf
+
 On non Debian-based distributions you'll only be able to use the scripts:
     nanolx-ctx
     nanolx-pam-yubikey
