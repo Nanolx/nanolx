@@ -350,8 +350,6 @@ Depends:
  icaclient,
  zoom,
  zoomvdi-universal-plugin,
- libjpeg8,
- libjpeg-turbo8,
  speex,
  v4l2loopback-dkms,
  pipewire-v4l2,
@@ -365,8 +363,7 @@ Description: Citrix Workspace Support package
  default settings to Ceip=Disable and DisableHeartBeat=True
  in citrix global configuration.
  .
- This package also depends on Zoom and the VDI-Plugin, aswell als
- libjpeg8 and libjpeg-turbo8 from Ubuntu (install manually).
+ This package also depends on Zoom and the VDI-Plugin.
 
 Package: nanolx-themes
 Architecture: all
