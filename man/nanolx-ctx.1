@@ -34,6 +34,13 @@ Use \fI/etc/ssl/certs\fP instead of bundled certificates for citrix
 .TP
 .B citrix-certs
 Use citrix' bundled certificates
+.TP
+.B disable-scdlog
+Disable citrix smartcard logging, which creates gigantic log files, sucking up
+all your disk space in literally no time (also useful if you have a Yubikey)
+.TP
+.B enable-scdlog
+Enable citrix smarcard logging
 .PP
 
 .SH AUTHORS
