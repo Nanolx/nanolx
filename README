@@ -152,6 +152,7 @@ nanolx-themes:
       - Icons:    Tela (red dark)
       - sddm:     Pixel Rainy Room
       - wall:     Matrixrain (Plasma 6)
+      - splash:   Infinity (Plasma Splash 6)
       - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
 
 nanolx-citrix-config:
