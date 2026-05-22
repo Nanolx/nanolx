@@ -4,10 +4,12 @@ set -e
 
 case "$1" in
     install|upgrade)
-        rm -rf /boot/efi/EFI/refind/themes/rEFInd-digital-void.old
-        mv /boot/efi/EFI/refind/themes/rEFInd-digital-void/ \
-            /boot/efi/EFI/refind/themes/rEFInd-digital-void.old/
-        ;;
+        if [ -d /boot/efi/EFI/refind/themes/rEFInd-digital-void.old/ ]; then
+	    rm -rf /boot/efi/EFI/refind/themes/rEFInd-digital-void.old
+	    mv /boot/efi/EFI/refind/themes/rEFInd-digital-void/ \
+               /boot/efi/EFI/refind/themes/rEFInd-digital-void.old/
+	fi
+	;;
 
     abort-upgrade)
         ;;
