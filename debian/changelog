@@ -1,3 +1,13 @@
+nanolx (1:4.3.20260522-2nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-citrix-config:
+    - nanolx-ctx script now can install or uninstall the webkit2gtk-4.0 bundled
+      with citrix to your system, at your own risk. webkit2gtk-4.0 is required
+      for full citrix operation, but is not shipped with Debian anymore.
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 22 May 2026 18:12:10 +0200
+
 nanolx (1:4.3.20260522-1nano) unstable; urgency=low
 
   * New upstream release
