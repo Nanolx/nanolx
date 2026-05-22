@@ -344,7 +344,7 @@ Description: Collection of emulators
        ROMs (completely self-made).
 
 Package: nanolx-citrix-config
-Architecture: all
+Architecture: amd64
 Depends:
  ctxusb,
  icaclient,
