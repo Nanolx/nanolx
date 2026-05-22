@@ -225,6 +225,8 @@ may choose to install that version using nanolx-ctx, at your own risk, via:
 
     nanolx-ctx load-webkit
 
+Additionally nanolx-ctx features more useful commands, you might want to check.
+
 Citrix requires libjpeg8 to run, which is not provided by Debian. Installing
 libjpeg-turbo8 from UbuntU conflicts with installing libjpegturbo0 (which is
 required by Krita), nanolx-citrix-config ships the libjpeg.so.8{,.2.2} from
