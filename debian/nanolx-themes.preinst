@@ -6,7 +6,7 @@ case "$1" in
     install|upgrade)
         if [ -d /boot/efi/EFI/refind/themes/rEFInd-digital-void.old ]; then
             rm -rf /boot/efi/EFI/refind/themes/rEFInd-digital-void.old
-        if
+    fi
         if [ -d /boot/efi/EFI/refind/themes/rEFInd-digital-void/ ]; then
             mv /boot/efi/EFI/refind/themes/rEFInd-digital-void/ \
                /boot/efi/EFI/refind/themes/rEFInd-digital-void.old/
