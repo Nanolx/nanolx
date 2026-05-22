@@ -357,7 +357,8 @@ Depends:
  libcamera-v4l2,
  bind9-dnsutils,
  pipewire-alsa,
- pipewire-pulse
+ pipewire-pulse,
+ llvm-libunwind1
 Replaces: icaclient
 Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
