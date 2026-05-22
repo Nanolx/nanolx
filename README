@@ -188,7 +188,10 @@ nanolx-devel-cli:
 
 nanolx-citrix-config:
     nanolx-ctx      script to disable (or enable [...]) citrix telemetry and
-                    running the included system check script.
+                    running the included system check script. It also allows to
+                    install or uninstall the webkit2gtk-4.0 bundled with citrix,
+                    which is required for full citrix operation, but no longer
+                    shipped with Debian (or Ubuntu).
 
 nanolx-security:
     nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
@@ -215,6 +218,12 @@ script, which is bundled with nanolx-apt-tools. nanolx-citrix-config provides
 additional system integrations (Menu entries, systemd services), as per
 
     https://aur.archlinux.org/packages/icaclient
+
+If Citrix Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no
+longer shipped with Debian (or Ubuntu). Citrix bundles it's own version, so you
+may choose to install that version using, at your own risk, via:
+
+    nanolx-ctx load-webkit
 
 Citrix requires libjpeg8 to run, which is not provided by Debian. Installing
 libjpeg-turbo8 from UbuntU conflicts with installing libjpegturbo0 (which is

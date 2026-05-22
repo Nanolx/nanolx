@@ -2,10 +2,14 @@
 .SH NAME
 nanolx-ctx
 .SH SYNOPSIS
-nanolx-ctx [enable] [disable] [check]
+nanolx-ctx [enable] [disable] [check] [load-webkit] [unload-webkit]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-ctx disables (or enable [...]) citrix telemetry and allows to run the
 system check script bundled with citrix in an accessible manner.
+
+If Citrix Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no
+longer shipped with Debian (or Ubuntu). Citrix bundles it's own version, so you
+may choose to install that version using using nanolx-ctx, at your own risk.
 
 .SH OPTIONS
 nanolx-ctx knows the following options
@@ -18,6 +22,12 @@ Enable some citrix telemetry
 .TP
 .B check
 Run the citrix workspace check script to check the system for missing packages.
+.TP
+.B load-webkit
+Install citrix' bundled webkit2gtk-4.0 into your system
+.TP
+.B unload-webkit
+Uninstall citri'x bundled webkit2gtk-4.0 from your system
 .PP
 
 .SH AUTHORS

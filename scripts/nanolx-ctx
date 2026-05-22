@@ -1,9 +1,28 @@
 #!/bin/bash
 
-version="0.0.2"
-reldate="2026/05/14"
+version="0.0.3"
+reldate="2026/05/22"
 
 export ICAROOT=/opt/Citrix/ICAClient
+
+citrix_webkit="${ICAROOT}/Webkit2gtk4.0/webkit2gtk-4.0.tar.gz"
+webkit_dirs="(/usr/share/doc/libwebkit2gtk-4.0-37/
+/usr/share/doc/libicu70/
+/usr/share/doc/libjavascriptcoregtk-4.0-18/
+/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/)"
+webkit_files="(/usr/share/lintian/overrides/libwebkit2gtk-4.0-37
+/usr/share/lintian/overrides/libicu70
+/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
+/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/MiniBrowser
+/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0/WebKitWebProcess
+/usr/lib/x86_64-linux-gnu/libjavascriptcoregtk-4.0.so.18.20.4
+/usr/lib/x86_64-linux-gnu/libicudata.so.70.1
+/usr/lib/x86_64-linux-gnu/libicutu.so.70.1
+/usr/lib/x86_64-linux-gnu/libicuuc.so.70.1
+/usr/lib/x86_64-linux-gnu/libicui18n.so.70.1
+/usr/lib/x86_64-linux-gnu/libicuio.so.70.1
+/usr/lib/x86_64-linux-gnu/libicutest.so.70.1
+/usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37.56.4)"
 
 case ${1} in
     enable )
@@ -26,6 +45,21 @@ case ${1} in
         echo "see /tmp/logfile.txt for results"
     ;;
 
+    load-webkit )
+        echo "installing webkit bundled with citrix"
+        tar -xf "${citrix_webkit}" -C / --strip-components=1
+    ;;
+
+    unload-webkit )
+        echo "uninstalling webkit bundled with citrix"
+        for dir in ${webkit_dirs[@]}; do
+            rm -rf "${dir}"
+        done
+        for file in ${webkit_files[@]}; do
+            rm -f "${file}"
+        done
+    ;;
+
     * )
         echo -e "nanolx-ctx v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -33,9 +67,11 @@ case ${1} in
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-ctx enable  [telemetry] (why?)
-    nanolx-ctx disable [telemetry]
-    nanolx-ctx check   [system compatibility/missing software]
+    nanolx-ctx enable         [telemetry] (why?)
+    nanolx-ctx disable        [telemetry]
+    nanolx-ctx check          [system compatibility/missing software]
+    nanolx-ctx load-webkit    [install citrix' bundled webkit to /]
+    nanolx-ctx unload-webkit  [uninstall citrix' bundled webkit from /]
 "
     ;;
 esac
