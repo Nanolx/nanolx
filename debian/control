@@ -355,7 +355,9 @@ Depends:
  v4l2loopback-dkms,
  pipewire-v4l2,
  libcamera-v4l2,
- bind9-dnsutils
+ bind9-dnsutils,
+ pipewire-alsa,
+ pipewire-pulse
 Replaces: icaclient
 Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
