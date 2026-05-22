@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "$1" == "--version" ]; then
+    pactl info | grep Server\ Name | sed -e "s/Server Name: //"
+else
+    echo "This is a dummy file for apps that check if PulseAudio is available by checking for the binary existing"
+fi

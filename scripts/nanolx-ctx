@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.0.5"
+version="0.0.6"
 reldate="2026/05/22"
 
 export ICAROOT=/opt/Citrix/ICAClient
@@ -102,6 +102,25 @@ case ${1} in
         sed "${line}s/false/true/" -i "${ICAROOT}/config/AuthManConfig.xml"
     ;;
 
+    enable-padummy )
+        if [ -f "/usr/bin/pulseaudio" ]; then
+            echo "pulseaudio is installed, doing nothing"
+        else
+            echo "installing pulseaudio dummy"
+            ln -sf /usr/share/nanolx/pulseaudio-dummy /usr/bin/pulseaudio
+            chmod +x /usr/bin/pulseaudio
+        fi
+    ;;
+
+    disable-padummy )
+        if [ -L "/usr/bin/pulseaudio" ]; then
+            echo "removing pulseaudio dummy"
+            rm /usr/bin/pulseaudio
+        else
+            echo "pulseaudio dummy not in use, doing nothing"
+        fi
+    ;;
+
     * )
         echo -e "nanolx-ctx v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -119,6 +138,9 @@ usage:
     nanolx-ctx disable-scdlog [disable logging of smartcard messages from citrix
                                preventing it from creating gigantic log files]
     nanolx-ctx enable-scdlog  [enable logging of smartcard messages from citrix]
+    nanolx-ctx enable-padummy [install a dummy 'pulseaudio' script, so we can
+                               trick citrix into using 'pipewire' instead of pa]
+    nanolx-ctx disable-padummy [uninstall the dummy 'pulseaudio' sript]
 "
     ;;
 esac
