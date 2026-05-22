@@ -221,7 +221,7 @@ additional system integrations (Menu entries, systemd services), as per
 
 If Citrix Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no
 longer shipped with Debian (or Ubuntu). Citrix bundles it's own version, so you
-may choose to install that version using, at your own risk, via:
+may choose to install that version using nanolx-ctx, at your own risk, via:
 
     nanolx-ctx load-webkit
 
