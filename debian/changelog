@@ -1,3 +1,47 @@
+nanolx (1:4.3.20260522-1nano) unstable; urgency=low
+
+  * New upstream release
+  * general:
+    - fixed a few lintian warnings
+    - all scripts now ship a man page
+    - improved Makefile
+      - Makefile as update-conf target for only updating script configs
+    - improved README
+    - updated debian/copyright
+  * nanolx-base:
+    - moved refind and plymouth theme to nanolx-themes
+    - nanolx-themes is a recommended package for nanolx-base
+  * nanolx-apt-sources:
+    - nanolx-apt now checks sha256sums of keys or key-packages
+    - nanolx-apt [check] was not displayed in --help
+  * nanolx-apt-tools:
+    - nanolx-orbit no longer supports libjpeg8
+    - nanolx-orbit now downloads discord 1.0.139 and zoom 7.0.5
+    - nanolx-orbit now gives the downloaded zoom package it's proper version
+    - repokit has been moved here from nanolx-base
+  * nanolx-themes:
+    - new package, themes were moved from nanolx-base here
+    - nanolx-refind script now can lock/unlock-grub
+    - depend on qt-style-kvantum
+    - depend on kwin-style-aurorae
+    - depend on kde-plasma-desktop
+    - depend on konsole
+    - ships Empty Butterfly cursors
+    - ships Midnight Bright Kvantum style
+    - ships Tela (red dark) icons
+    - ships Pixel Rainy Room sddm theme
+    - ships Nothing design  for Plasma, KWin, Konsole
+  * nanolx-x11:
+    - depend on sddm
+  * nanolx-citrix-config:
+    - no longer depend on libjpeg8/libjpeg-turbo8
+    - it now ships libjpeg.so.8.2.2 from libjpeg-turbo8_2.1.5-4ubuntu4 on it's
+      own, as libjpegturbo0 conflicts with libjpeg-turbo8 and we want to be able
+      to install Krita and Citrix at the same time.
+    - changed arch from all to amd64 because of libjpeg8
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 22 May 2026 16:29:42 +0200
+
 nanolx (1:4.2.20260517-1nano) unstable; urgency=low
 
   * New upstream release
