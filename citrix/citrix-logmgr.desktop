@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Citrix Log Manager
+NoDisplay=false
+Categories=Application;Network;X-Red-Hat-Base;X-SuSE-Core-Internet;
+Icon=/opt/Citrix/ICAClient/icons/utility.png
+TryExec=/opt/Citrix/ICAClient/util/logmgr
+Exec=/opt/Citrix/ICAClient/util/logmgr
