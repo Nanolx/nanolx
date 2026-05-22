@@ -178,8 +178,8 @@ nanolx-apt-tools:
                     support and many features.
     nanolx-orbit    manages installation of 3rdparty packages, including some
                     non-free packages, including checking sha256sums. Currently
-                    supported: discord, citrix, citrix-usb, zoom, jpeg8,
-                    zoom-vdi-plugin, openrgb plugins: effects, hwsync, fansync.
+                    supported: discord, citrix, citrix-usb, zoom + vdi-plugin,
+                    openrgb plugins: effects, hwsync, fansync.
 
 nanolx-devel-cli:
     mksbuild        support script for repokit (possibly outdated).
@@ -205,7 +205,7 @@ The package
     nanolx-citrix-config
 
 is not automatically pulled by nanolx-base, as it requires citrix, zoom, incl.
-plugins and libjpeg8 to be already installed. For that purpose see the
+plugins to be already installed. For that purpose see the
 
     nanolx-orbit
 
@@ -213,3 +213,8 @@ script, which is bundled with nanolx-apt-tools. nanolx-citrix-config provides
 additional system integrations (Menu entries, systemd services), as per
 
     https://aur.archlinux.org/packages/icaclient
+
+Citrix requires libjpeg8 to run, which is not provided by Debian. Installing
+libjpeg-turbo8 from UbuntU conflicts with installing libjpegturbo0 (which is
+required by Krita), nanolx-citrix-config ships the libjpeg.so.8{,.2.2} from
+Ubuntu itself.
