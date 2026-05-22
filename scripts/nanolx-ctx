@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.0.6"
+version="0.0.7"
 reldate="2026/05/22"
 
 export ICAROOT=/opt/Citrix/ICAClient
@@ -25,14 +25,14 @@ webkit_files="(/usr/share/lintian/overrides/libwebkit2gtk-4.0-37
 /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37.56.4)"
 
 case ${1} in
-    enable )
+    enable-telemetry )
         sed -i \
             -e 's/Ceip=Disable/Ceip=Enable/' \
             -e 's/DisableHeartBeat=True/DisableHeartBeat=False/' \
             "${$ICAROOT}/config/module.ini"
     ;;
 
-    disable )
+    disable-telemetry )
         sed -i \
             -e 's/Ceip=Enable/Ceip=Disable/' \
             -e 's/DisableHeartBeat=False/DisableHeartBeat=True/' \
@@ -121,6 +121,18 @@ case ${1} in
         fi
     ;;
 
+    enable-teams )
+        echo "enabling teams optimizations"
+        mkdir -p /var/.config/citrix/hdx_rtc_engine
+        cp /usr/share/nanolx/citrix_hdx_config.json \
+            /var/.config/citrix/hdx_rtc_engine/config.json
+    ;;
+
+    disable-teams )
+        echo "disabling teams optimizations"
+        rm /var/.config/citrix/hdx_rtc_engine/config.json
+    ;;
+
     * )
         echo -e "nanolx-ctx v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -128,19 +140,21 @@ case ${1} in
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-ctx enable         [telemetry] (why?)
-    nanolx-ctx disable        [telemetry]
-    nanolx-ctx check          [system compatibility/missing software]
-    nanolx-ctx load-webkit    [install citrix' bundled webkit to /]
-    nanolx-ctx unload-webkit  [uninstall citrix' bundled webkit from /]
-    nanolx-ctx system-certs   [use system's ssl certificates intead of citrix']
-    nanolx-ctx citrix-certs   [use citrix' ssl certificates intead of system's]
-    nanolx-ctx disable-scdlog [disable logging of smartcard messages from citrix
-                               preventing it from creating gigantic log files]
-    nanolx-ctx enable-scdlog  [enable logging of smartcard messages from citrix]
-    nanolx-ctx enable-padummy [install a dummy 'pulseaudio' script, so we can
-                               trick citrix into using 'pipewire' instead of pa]
-    nanolx-ctx disable-padummy [uninstall the dummy 'pulseaudio' sript]
+    nanolx-ctx enable-telemetry (why?)
+    nanolx-ctx disable-telemetry
+    nanolx-ctx check            [system compatibility/missing software]
+    nanolx-ctx load-webkit      [install citrix' bundled webkit to /]
+    nanolx-ctx unload-webkit    [uninstall citrix' bundled webkit from /]
+    nanolx-ctx system-certs     [use system's ssl certificates intead of citrix']
+    nanolx-ctx citrix-certs     [use citrix' ssl certificates intead of system's]
+    nanolx-ctx disable-scdlog   [disable logging of smartcard messages from citrix
+                                 preventing it from creating gigantic log files]
+    nanolx-ctx enable-scdlog    [enable logging of smartcard messages from citrix]
+    nanolx-ctx enable-padummy   [install a dummy 'pulseaudio' script, so we can
+                                 trick citrix into using 'pipewire' instead of pa]
+    nanolx-ctx disable-padummy  [uninstall the dummy 'pulseaudio' sript]
+    nanolx-ctx enable-teams     [enable optimizations for Microsoft Teams]
+    nanolx-ctx disable-teams    [disable optimizations for Microsoft Teams]
 "
     ;;
 esac
