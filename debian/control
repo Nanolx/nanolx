@@ -76,6 +76,7 @@ Depends:
  reprepro,
  gdebi,
  nanolx-apt-sources
+Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt.
 
@@ -375,6 +376,7 @@ Depends:
  kwin-style-aurorae,
  kde-plasma-desktop,
  konsole
+Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of themes
  Themes for Nanolx
  .
