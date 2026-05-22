@@ -66,6 +66,9 @@ install:
 	# sddm
 	mkdir -p $(DESTDIR)/usr/share/sddm/themes/
 	cp -r sddm/* $(DESTDIR)/usr/share/sddm/themes/
+	# libjpeg8
+	mkdir -p $(DESTDIR)/usr/lib/x86_64-linux-gnu/
+	install -m644 lib/* $(DESTDIR)/usr/lib/x86_64-linux-gnu/
 
 update-conf:
 	mkdir -p $(DESTDIR)/usr/share/nanolx/
