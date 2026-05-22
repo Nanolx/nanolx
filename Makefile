@@ -38,7 +38,7 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/nanolx/apt.d/
 	install -m644 apt/pinning $(DESTDIR)/usr/share/nanolx/apt.d/
 	install -m644 apt/99nanolx $(DESTDIR)/usr/share/nanolx/apt.d/
-	for conf in scripts/*.conf scripts/pulseaudio-dummy; do \
+	for conf in scripts/*.conf scripts/pulseaudio-dummy scripts/*.json; do \
 		install -m644 $$conf $(DESTDIR)/usr/share/nanolx/; \
 	done
 	# manpages
