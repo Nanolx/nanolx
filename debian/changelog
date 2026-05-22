@@ -31,6 +31,8 @@ nanolx (1:4.3.20260522-1nano) unstable; urgency=low
     - ships Tela (red dark) icons
     - ships Pixel Rainy Room sddm theme
     - ships Nothing design  for Plasma, KWin, Konsole
+    - ships Matrix Rain Plasma 6 wallpaper
+    - ships Infinity Plasma 6 Splash
   * nanolx-x11:
     - depend on sddm
   * nanolx-citrix-config:
