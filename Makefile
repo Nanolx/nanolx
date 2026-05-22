@@ -68,7 +68,9 @@ install:
 	cp -r sddm/* $(DESTDIR)/usr/share/sddm/themes/
 	# libjpeg8
 	mkdir -p $(DESTDIR)/usr/lib/x86_64-linux-gnu/
-	install -m644 lib/* $(DESTDIR)/usr/lib/x86_64-linux-gnu/
+	install -m644 lib/libjpeg.so.8.2.2 $(DESTDIR)/usr/lib/x86_64-linux-gnu/
+	ln -sf $(DESTDIR)/usr/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
+		$(DESTDIR)/usr/lib/x86_64-linux-gnu/libjpeg.so.8
 
 update-conf:
 	mkdir -p $(DESTDIR)/usr/share/nanolx/
