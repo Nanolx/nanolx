@@ -1,0 +1,24 @@
+{
+  "KPlugin": {
+    "Id": "obsidianreq.plasma.wallpaper.matrixrain",
+    "Name": "Matrix Rain Wallpaper",
+    "Version": "1.4-fix",
+    "Category": "Wallpaper",
+    "Description": "Matrix-style code waterfall wallpaper with multi-color, jitter, and fixed glitch chance",
+    "Icon": "preferences-desktop-wallpaper",
+    "Authors": [
+        {
+            "Email": "sean@bioslevel.com",
+            "Name": "Sean Potter"
+        }
+    ]
+  },
+  "X-Plasma-API": "org.kde.plasma.wallpaper",
+  "X-Plasma-API-Version": 2.0,
+  "X-KDE-PluginInfo-Name": "matrixrain",
+  "X-KDE-PluginInfo-Category": "Wallpaper",
+  "X-KDE-PluginInfo-HasConfiguration": true,
+  "X-KDE-PluginInfo-ConfigurationFile": "ui/config.qml",
+  "X-Plasma-MainScript": "ui/main.qml",
+  "KPackageStructure": "Plasma/Wallpaper"
+}

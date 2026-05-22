@@ -139,13 +139,18 @@ Copyright: 2023-2025 jomada <gicalucejo@gmail.com>
 License: GPL-3.0+
 
 Files:
- icons/Tela-red-dark
+ icons/Tela-red-dark/
 Copyright: 2019-2025 vinceliuice <vinceliuice@hotmail.com>
 License: GPL-3.0+
 
 Files:
  sddm/*
 Copyright: 2026 Darkkal44 <91195954+Darkkal44@users.noreply.github.com>
+License: GPL-3.0+
+
+Files:
+ themes/plasma/wallpapers/obsidianreq.plasma.wallpaper.matrixrain/
+Copyright: 2025-2026 Sean Potter <sean@savvior.com>
 License: GPL-3.0+
 
 License: GPL-3.0+
