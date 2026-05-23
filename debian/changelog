@@ -1,3 +1,27 @@
+nanolx (1:4.4.20260523-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-citrix-config
+    - depend on bind9-dnsutils
+    - depend on pipewire-alsa
+    - depend on pipewire-pulse
+    - depend on llvm-libunwind1
+    - use utility.png for citrix-configmgr.desktop
+    - add citrix-logmgr.desktop (menu entry for Citrix Log Manager)
+    - nanolx-ctx script now has more capabilities, it can now:
+      - install the webkit2gtk-4.0 bundled with citrix into the system
+      - switch beetween system and citrix own certificates
+      - disable smartcard logging, which immensively reduces log size if you use
+        a smartcard or something similar (like a Yubikey)
+      - create a dummy pulseaudio executable, to trick citrix into use pipewire
+      - enable optimizations for Microsoft Teams
+      - restrict citrix remote access to local machine
+      - Note: all above can also be reverted
+  * nanolx-apt-tools:
+    - nanolx-orbit now supports downloading citrix epa
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 23 May 2026 09:51:44 +0200
+
 nanolx (1:4.3.20260522-2nano) unstable; urgency=low
 
   * New upstream release
