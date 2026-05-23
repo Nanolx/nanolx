@@ -4,7 +4,7 @@ nanolx-ctx
 .SH SYNOPSIS
 nanolx-ctx [enable-telemetry] [disable-telemetry] [check] [load-webkit] [unload-webkit]
 [system-certs] [citrix-certs] [disable-scdlog] [enable-scdlog] [enable-padummy]
-[disable-padummy] [enable-teams] [disable-teams]
+[disable-padummy] [enable-teams] [disable-teams] [restrict-local] [allow-local]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-ctx disables (or enable [...]) citrix telemetry and allows to run the
 system check script bundled with citrix in an accessible manner.
@@ -56,6 +56,13 @@ Enable optimizations for Microsoft Teams
 .TP
 .B disable-teams
 Disable optimizations for Microsoft Teams
+.TP
+.B restrict-local
+Restrict citrix remote access to local machine, e.g. storage access or access to
+local machine printer queue, see https://return42.github.io/handsOn/citrix/index.html#konfiguration
+.TP
+.B allow-local
+Revert citrix remote acess to local machine to default settings
 .PP
 
 .SH AUTHORS

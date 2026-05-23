@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.0.7"
-reldate="2026/05/22"
+version="0.0.8"
+reldate="2026/05/23"
 
 export ICAROOT=/opt/Citrix/ICAClient
 
@@ -27,15 +27,15 @@ webkit_files="(/usr/share/lintian/overrides/libwebkit2gtk-4.0-37
 case ${1} in
     enable-telemetry )
         sed -i \
-            -e 's/Ceip=Disable/Ceip=Enable/' \
-            -e 's/DisableHeartBeat=True/DisableHeartBeat=False/' \
+            -e 's/Ceip=.*/Ceip=Enable/' \
+            -e 's/DisableHeartBeat=.*/DisableHeartBeat=False/' \
             "${$ICAROOT}/config/module.ini"
     ;;
 
     disable-telemetry )
         sed -i \
-            -e 's/Ceip=Enable/Ceip=Disable/' \
-            -e 's/DisableHeartBeat=False/DisableHeartBeat=True/' \
+            -e 's/Ceip=.*/Ceip=Disable/' \
+            -e 's/DisableHeartBeat=.*/DisableHeartBeat=True/' \
             "${$ICAROOT}/config/module.ini"
     ;;
 
@@ -133,6 +133,34 @@ case ${1} in
         rm /var/.config/citrix/hdx_rtc_engine/config.json
     ;;
 
+    restrict-local )
+        echo "restrict citrix remote access to local system"
+        echo "see https://return42.github.io/handsOn/citrix/index.html#konfiguration"
+        sed -i \
+            -e 's/CREnabled=.*/CREnabled=Off/' \
+            -e 's/CDMAllowed=.*/CDMAllowed=Off/' \
+            -e 's/ClientPrinterQueue=.*/ClientPrinterQueue=Off/' \
+            -e 's/ClientManagement=.*/ClientManagement=Off/' \
+            -e 's/ClientComm=.*/ClientComm=Off/' \
+            "${ICAROOT}/config/wfclient.template"
+        echo "Note: you may want to copy ${ICAROOT}/config/wfclient.template to
+existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
+    ;;
+
+    allow-local )
+        echo "allow citrix remote access to local system"
+        echo "see https://return42.github.io/handsOn/citrix/index.html#konfiguration"
+        sed \
+            -e 's/CREnabled=.*/CREnabled=On/' \
+            -e 's/CDMAllowed=.*/CDMAllowed=On/' \
+            -e 's/ClientPrinterQueue=.*/ClientPrinterQueue=On/' \
+            -e 's/ClientManagement=.*/ClientManagement=On/' \
+            -e 's/ClientComm=.*/ClientComm=On/' \
+            -i "${ICAROOT}/config/wfclient.template"
+        echo "Note: you may want to copy ${ICAROOT}/config/wfclient.template to
+existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
+    ;;
+
     * )
         echo -e "nanolx-ctx v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -155,6 +183,8 @@ usage:
     nanolx-ctx disable-padummy  [uninstall the dummy 'pulseaudio' sript]
     nanolx-ctx enable-teams     [enable optimizations for Microsoft Teams]
     nanolx-ctx disable-teams    [disable optimizations for Microsoft Teams]
+    nanolx-ctx restrict-local   [restrict citrix remote access to local system]
+    nanolx-ctx allow-local      [allow citrix remote access to local system]
 "
     ;;
 esac
