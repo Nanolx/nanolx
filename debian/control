@@ -358,7 +358,8 @@ Depends:
  bind9-dnsutils,
  pipewire-alsa,
  pipewire-pulse,
- llvm-libunwind1
+ llvm-libunwind1,
+ gnome-keyring
 Replaces: icaclient
 Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
