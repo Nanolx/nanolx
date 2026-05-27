@@ -29,14 +29,14 @@ case ${1} in
         sed -i \
             -e 's/Ceip=.*/Ceip=Enable/' \
             -e 's/DisableHeartBeat=.*/DisableHeartBeat=False/' \
-            "${$ICAROOT}/config/module.ini"
+            "${ICAROOT}/config/module.ini"
     ;;
 
     disable-telemetry )
         sed -i \
             -e 's/Ceip=.*/Ceip=Disable/' \
             -e 's/DisableHeartBeat=.*/DisableHeartBeat=True/' \
-            "${$ICAROOT}/config/module.ini"
+            "${ICAROOT}/config/module.ini"
     ;;
 
     check )
