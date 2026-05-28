@@ -4,7 +4,7 @@ version="0.0.9"
 reldate="2026/05/28"
 
 ICAROOT=/opt/Citrix/ICAClient
-ICA_VER=$(/opt/Citrix/ICAClient/wfica -version | awk '/Version/{print $2}')
+ICA_VER=$(${ICAROOT}/wfica -version | awk '/Version/{print $2}')
 ICA_VER=${ICA_VER%.*}
 ICA_VER=${ICA_VER//./}
 
@@ -177,7 +177,7 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
     ;;
 
     register-zoom )
-        if ! grep -q ZoomMedia /opt/Citrix/ICAClient/config/module.ini; then
+        if ! grep -q ZoomMedia ${ICAROOT}/config/module.ini; then
             echo "running zoomvdi-universal-plugin postinstall script"
             /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst
         else
