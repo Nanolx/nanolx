@@ -1,9 +1,12 @@
 #!/bin/bash
 
-version="0.0.8"
-reldate="2026/05/23"
+version="0.0.9"
+reldate="2026/05/28"
 
-export ICAROOT=/opt/Citrix/ICAClient
+ICAROOT=/opt/Citrix/ICAClient
+ICA_VER=$(/opt/Citrix/ICAClient/wfica -version | awk '/Version/{print $2}')
+ICA_VER=${ICA_VER%.*}
+ICA_VER=${ICA_VER//./}
 
 citrix_webkit="${ICAROOT}/Webkit2gtk4.0/webkit2gtk-4.0.tar.gz"
 webkit_dirs="(/usr/share/doc/libwebkit2gtk-4.0-37/
@@ -46,18 +49,26 @@ case ${1} in
     ;;
 
     load-webkit )
-        echo "installing webkit bundled with citrix"
-        tar -xf "${citrix_webkit}" -C / --strip-components=1
+        if [ ${ICA_VER} -ge 26040 ]; then
+            echo "Citrix 26.04.0+ works with webkit 4.1, no need to install 4.0"
+        else
+            echo "installing webkit bundled with citrix"
+            tar -xf "${citrix_webkit}" -C / --strip-components=1
+        fi
     ;;
 
     unload-webkit )
-        echo "uninstalling webkit bundled with citrix"
-        for dir in ${webkit_dirs[@]}; do
-            rm -rf "${dir}"
-        done
-        for file in ${webkit_files[@]}; do
-            rm -f "${file}"
-        done
+        if [ -f /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37.56.4 ]; then
+            echo "uninstalling webkit bundled with citrix"
+            for dir in ${webkit_dirs[@]}; do
+                rm -rf "${dir}"
+            done
+            for file in ${webkit_files[@]}; do
+                rm -f "${file}"
+            done
+        else
+            echo "Citrix webkit not installed, doing nothing"
+        fi
     ;;
 
     system-certs )
@@ -103,12 +114,16 @@ case ${1} in
     ;;
 
     enable-padummy )
-        if [ -f "/usr/bin/pulseaudio" ]; then
-            echo "pulseaudio is installed, doing nothing"
+        if [ ${ICA_VER} -ge 26040 ]; then
+            echo "recent Citrix works with pipewire, nothing to do"
         else
-            echo "installing pulseaudio dummy"
-            ln -sf /usr/share/nanolx/pulseaudio-dummy /usr/bin/pulseaudio
-            chmod +x /usr/bin/pulseaudio
+            if [ -f "/usr/bin/pulseaudio" ]; then
+                echo "pulseaudio is installed, doing nothing"
+            else
+                echo "installing pulseaudio dummy"
+                ln -sf /usr/share/nanolx/pulseaudio-dummy /usr/bin/pulseaudio
+                chmod +x /usr/bin/pulseaudio
+            fi
         fi
     ;;
 
@@ -161,6 +176,15 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
 existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
     ;;
 
+    register-zoom )
+        if ! grep -q ZoomMedia /opt/Citrix/ICAClient/config/module.ini; then
+            echo "running zoomvdi-universal-plugin postinstall script"
+            /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst
+        else
+            echo "ZoomMedia Plugin active, doing nothing"
+        fi
+    ;;
+
     * )
         echo -e "nanolx-ctx v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -171,20 +195,24 @@ usage:
     nanolx-ctx enable-telemetry (why?)
     nanolx-ctx disable-telemetry
     nanolx-ctx check            [system compatibility/missing software]
-    nanolx-ctx load-webkit      [install citrix' bundled webkit to /]
-    nanolx-ctx unload-webkit    [uninstall citrix' bundled webkit from /]
     nanolx-ctx system-certs     [use system's ssl certificates intead of citrix']
     nanolx-ctx citrix-certs     [use citrix' ssl certificates intead of system's]
     nanolx-ctx disable-scdlog   [disable logging of smartcard messages from citrix
                                  preventing it from creating gigantic log files]
     nanolx-ctx enable-scdlog    [enable logging of smartcard messages from citrix]
-    nanolx-ctx enable-padummy   [install a dummy 'pulseaudio' script, so we can
-                                 trick citrix into using 'pipewire' instead of pa]
-    nanolx-ctx disable-padummy  [uninstall the dummy 'pulseaudio' sript]
     nanolx-ctx enable-teams     [enable optimizations for Microsoft Teams]
     nanolx-ctx disable-teams    [disable optimizations for Microsoft Teams]
     nanolx-ctx restrict-local   [restrict citrix remote access to local system]
     nanolx-ctx allow-local      [allow citrix remote access to local system]
+    nanolx-ctx register-zoom    [if icaclient gets uninstalled and reinstalled,
+                                 but not zoom-vdi-plugin, it's not active]
+
+    for Citrix version older than 26.04.0:
+    nanolx-ctx load-webkit      [install citrix' bundled webkit to /]
+    nanolx-ctx unload-webkit    [uninstall citrix' bundled webkit from /]
+    nanolx-ctx enable-padummy   [install a dummy 'pulseaudio' script, so we can
+                                 trick citrix into using 'pipewire' instead of pa]
+    nanolx-ctx disable-padummy  [uninstall the dummy 'pulseaudio' sript]
 "
     ;;
 esac
