@@ -1,3 +1,25 @@
+nanolx (1:4.5.20260604-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-apt-sources:
+    - nanolx and liquorix repositories are amd64-only
+  * nanolx-citrix-config:
+    - add dependency on gnome-keyring
+    - nanolx-ctx typo fixes
+    - nanolx-ctx now checks the installed citrix version, if it's 26.04.0 (beta)
+      or newer, it will no longer do anything on load-webkit or enable-padummy
+      commands. Starting with 26.04.0 citrix is linked against webkit2 4.1 and
+      other more recent libraries, among other updates, so those workarounds are
+      no longer required
+    - nanolx-ctx now has a register-zoom command. If you uninstall icaclient
+      (citrix) and reinstall it (no update), but don't do the same for the
+      zoomvdi-universal-plugin it's no longer registered as available citrix
+      module. This command re-runs the zoomvdi postinstall script to fix that
+  * nanolx-apt-tools:
+    - update discord to 1.0.141
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 04 Jun 2026 06:55:26 +0200
+
 nanolx (1:4.4.20260523-1nano) unstable; urgency=low
 
   * New upstream release

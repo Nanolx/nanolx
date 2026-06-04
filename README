@@ -43,8 +43,8 @@ Release Information
 
 see debian/changelog for changes
 
-Version:    4.4
-Release:    20260523
+Version:    4.5
+Release:    20260604
 
 Installation on Debian GNU/Linux
 =======================================
@@ -192,7 +192,7 @@ nanolx-citrix-config:
                     install or uninstall the webkit2gtk-4.0 bundled with citrix,
                     which is required for full citrix operation, but no longer
                     shipped with Debian (or Ubuntu). It has more features, be
-		    sure to check out, if you use citrix.
+            sure to check out, if you use citrix.
 
 nanolx-security:
     nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
