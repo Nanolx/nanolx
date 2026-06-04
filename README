@@ -192,7 +192,7 @@ nanolx-citrix-config:
                     install or uninstall the webkit2gtk-4.0 bundled with citrix,
                     which is required for full citrix operation, but no longer
                     shipped with Debian (or Ubuntu). It has more features, be
-            sure to check out, if you use citrix.
+                    sure to check out, if you use citrix.
 
 nanolx-security:
     nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
@@ -219,6 +219,8 @@ script, which is bundled with nanolx-apt-tools. nanolx-citrix-config provides
 additional system integrations (Menu entries, systemd services), as per
 
     https://aur.archlinux.org/packages/icaclient
+
+The following only applies to Citrix version below 26.04.0 (currently in beta):
 
 If Citrix Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no
 longer shipped with Debian (or Ubuntu). Citrix bundles it's own version, so you
