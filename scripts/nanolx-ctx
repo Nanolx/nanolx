@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.0.10"
+version="0.1.0"
 reldate="2026/06/25"
 
 ICAROOT=/opt/Citrix/ICAClient
@@ -27,6 +27,19 @@ webkit_files="(/usr/share/lintian/overrides/libwebkit2gtk-4.0-37
 /usr/lib/x86_64-linux-gnu/libicutest.so.70.1
 /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37.56.4)"
 
+check_modern_citrix () {
+    if [ ${ICA_VER} -ge 26040 ]; then
+        is_webkitgtk41=$(ldd "${ICAROOT}/selfservice" | awk '/libwebkit2gtk-4.1/')
+        if [ -z "${is_webkitgtk41}" ]; then
+            return 1
+        else
+            return 0
+        fi
+    else
+        return 1
+    fi
+}
+
 case ${1} in
     enable-telemetry )
         sed -i \
@@ -49,12 +62,12 @@ case ${1} in
     ;;
 
     load-webkit )
-        #if [ ${ICA_VER} -ge 26040 ]; then
-        #    echo "Citrix 26.04.0+ works with webkit 4.1, no need to install 4.0"
-        #else
+        if check_modern_citrix; then
+            echo "Citrix 26.04.0+ works with webkit 4.1, no need to install 4.0"
+        else
             echo "installing webkit bundled with citrix"
             tar -xf "${citrix_webkit}" -C / --strip-components=1
-        #fi
+        fi
     ;;
 
     unload-webkit )
@@ -114,9 +127,9 @@ case ${1} in
     ;;
 
     enable-padummy )
-        #if [ ${ICA_VER} -ge 26040 ]; then
-        #    echo "recent Citrix works with pipewire, nothing to do"
-        #else
+        if check_modern_citrix; then
+            echo "recent Citrix works with pipewire, nothing to do"
+        else
             if [ -f "/usr/bin/pulseaudio" ]; then
                 echo "pulseaudio is installed, doing nothing"
             else
@@ -124,7 +137,7 @@ case ${1} in
                 ln -sf /usr/share/nanolx/pulseaudio-dummy /usr/bin/pulseaudio
                 chmod +x /usr/bin/pulseaudio
             fi
-        #fi
+        fi
     ;;
 
     disable-padummy )
