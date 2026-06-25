@@ -63,7 +63,7 @@ case ${1} in
 
     load-webkit )
         if check_modern_citrix; then
-            echo "Citrix 26.04.0+ works with webkit 4.1, no need to install 4.0"
+            echo "Citrix tech preview 26.04.0+ works with webkit 4.1, no need to install 4.0"
         else
             echo "installing webkit bundled with citrix"
             tar -xf "${citrix_webkit}" -C / --strip-components=1
@@ -190,7 +190,7 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
     ;;
 
     register-zoom )
-        if ! grep -q ZoomMedia ${ICAROOT}/config/module.ini; then
+        if ! grep -q ZoomMedia=On ${ICAROOT}/config/module.ini; then
             if [ -f /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst ]; then
                 echo "running zoomvdi-universal-plugin postinstall script"
                 /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst
