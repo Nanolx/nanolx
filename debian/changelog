@@ -1,3 +1,29 @@
+nanolx (1:4.6.20260626-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-apt-sources
+    - fix variable name in nanolx-apt.conf for key storing location
+  * nanolx-apt-tools
+    - nanolx-orbit now support downloading citrix beta versions
+    - nanolx-orbit version updates:
+      - discord 1.0.144
+      - citrix / citrix-usb 26.04.0
+      - zoom 7.1.0.3715
+      - zoom vdi 7.0.10.26980
+    * repokit.conf fix variable name in example configuration
+  * nanolx-base
+    - update bashstyle-ng.ini to latest version for BashStyle-NG 11.1
+  * nanolx-citrix-config
+    - add dependency on rng-tools5 (some causes of slow down might be related to
+      random number generation, so rngd might help, according to Citrix support)
+    - nanolx-ctx script now checks whether the user has the Citrix tech preview
+      (built with GCC 11 and linked against more recent library versions), or
+      the default build. If it's the GCC 11 build the script will refuse to
+      install the webkit bundled with citrix or install the dummy for pulseaudio,
+      as both is no longer required with that build.
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 26 Jun 2026 17:55:02 +0200
+
 nanolx (1:4.5.20260604-1nano) unstable; urgency=low
 
   * New upstream release
