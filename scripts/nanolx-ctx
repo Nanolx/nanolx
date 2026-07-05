@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.1.0"
-reldate="2026/06/25"
+version="0.1.1"
+reldate="2026/07/05"
 
 ICAROOT=/opt/Citrix/ICAClient
 ICA_VER=$(${ICAROOT}/wfica -version | awk '/Version/{print $2}')
@@ -189,6 +189,36 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
 existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
     ;;
 
+    zoom-smartvb-on )
+        if grep -q "^SMARTVB" /etc/zoomvdi/ZoomMedia.ini; then
+            sed -e 's/^SMARTVB=.*/SMARTVB=1/' -i /etc/zoomvdi/ZoomMedia.ini
+        else
+            sed -i '/\[FEATURE\]/a SMARTVB=1' -i /etc/zoomvdi/ZoomMedia.ini
+        fi
+    ;;
+
+    zoom-smartvb-off )
+        if grep -q "^SMARTVB" /etc/zoomvdi/ZoomMedia.ini; then
+            sed -e 's/^SMARTVB=.*/SMARTVB=0/' -i /etc/zoomvdi/ZoomMedia.ini
+        else
+            echo "Zoom smart virtual backgrounds not enabled"
+        fi
+    ;;
+
+    zoom-hwaccel-on )
+        for zoomconf in /home/*/.config/zoomus.conf; do
+            echo "Enabling CefGpu in ${zoomconf}"
+            sed -e 's/^enableCefGpu=.*/enableCefGpu=true/' -i ${zoomconf}
+        done
+    ;;
+
+    zoom-hwaccel-off )
+        for zoomconf in /home/*/.config/zoomus.conf; do
+            echo "Disableing CefGpu in ${zoomconf}"
+            sed -e 's/^enableCefGpu=.*/enableCefGpu=false/' -i ${zoomconf}
+        done
+    ;;
+
     register-zoom )
         if ! grep -q ZoomMedia=On ${ICAROOT}/config/module.ini; then
             if [ -f /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst ]; then
@@ -208,28 +238,37 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
 
 licensed under the GNU General Public License v3 (or newer)
 
-usage:
-    nanolx-ctx enable-telemetry (why?)
-    nanolx-ctx disable-telemetry
-    nanolx-ctx check            [system compatibility/missing software]
-    nanolx-ctx system-certs     [use system's ssl certificates intead of citrix']
-    nanolx-ctx citrix-certs     [use citrix' ssl certificates intead of system's]
-    nanolx-ctx disable-scdlog   [disable logging of smartcard messages from citrix
-                                 preventing it from creating gigantic log files]
-    nanolx-ctx enable-scdlog    [enable logging of smartcard messages from citrix]
-    nanolx-ctx enable-teams     [enable optimizations for Microsoft Teams]
-    nanolx-ctx disable-teams    [disable optimizations for Microsoft Teams]
-    nanolx-ctx restrict-local   [restrict citrix remote access to local system]
-    nanolx-ctx allow-local      [allow citrix remote access to local system]
-    nanolx-ctx register-zoom    [if icaclient gets uninstalled and reinstalled,
-                                 but not zoom-vdi-plugin, it's not active]
+usage   nanolx-ctx [option], where [option] is one of:
 
-    for Citrix stable version still compiled with GCC 8:
-    nanolx-ctx load-webkit      [install citrix' bundled webkit to /]
-    nanolx-ctx unload-webkit    [uninstall citrix' bundled webkit from /]
-    nanolx-ctx enable-padummy   [install a dummy 'pulseaudio' script, so we can
+    ** Citrix Options
+    enable-telemetry (why?)
+    disable-telemetry
+    check            [system compatibility/missing software]
+    system-certs     [use system's ssl certificates intead of citrix']
+    citrix-certs     [use citrix' ssl certificates intead of system's]
+    disable-scdlog   [disable logging of smartcard messages from citrix
+                                 preventing it from creating gigantic log files]
+    enable-scdlog    [enable logging of smartcard messages from citrix]
+    enable-teams     [enable optimizations for Microsoft Teams]
+    disable-teams    [disable optimizations for Microsoft Teams]
+    restrict-local   [restrict citrix remote access to local system]
+    allow-local      [allow citrix remote access to local system]
+
+    ** For Citrix stable version still compiled with GCC 8:
+    load-webkit      [install citrix' bundled webkit to /]
+    unload-webkit    [uninstall citrix' bundled webkit from /]
+    enable-padummy   [install a dummy 'pulseaudio' script, so we can
                                  trick citrix into using 'pipewire' instead of pa]
-    nanolx-ctx disable-padummy  [uninstall the dummy 'pulseaudio' sript]
+    disable-padummy  [uninstall the dummy 'pulseaudio' sript]
+
+    ** Zoom Options
+    register-zoom    [if icaclient gets uninstalled and reinstalled,
+                      but not zoom-vdi-plugin, it's not active]
+    zoom-smartvb-on  [enable Zoom smart virtual backgrounds]
+    zoom-smartvb-off [disable Zoom smart virtual backgrounds]
+    zoom-hwaccel-on  [enable zoom graphics/hardware acceleration]
+    zoom-hwaccel-off [diable zoom graphics/hardware acceleration]
+
 "
     ;;
 esac

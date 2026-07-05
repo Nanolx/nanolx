@@ -1,11 +1,11 @@
-.TH nanolx-ctx 1 "2026 May 22"
+.TH nanolx-ctx 1 "2026 Jul 05"
 .SH NAME
 nanolx-ctx
 .SH SYNOPSIS
 nanolx-ctx [enable-telemetry] [disable-telemetry] [check] [load-webkit] [unload-webkit]
 [system-certs] [citrix-certs] [disable-scdlog] [enable-scdlog] [enable-padummy]
 [disable-padummy] [enable-teams] [disable-teams] [restrict-local] [allow-local]
-[register-zoom]
+[register-zoom] [zoom-smartvb-on] [zoom-smartvb-off] [zoom-hwaccel-on] [zoom-hwaccel-off]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-ctx disables (or enable [...]) citrix telemetry and allows to run the
 system check script bundled with citrix in an accessible manner.
@@ -14,8 +14,8 @@ If Citrix Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no
 longer shipped with Debian (or Ubuntu). Citrix bundles it's own version, so you
 may choose to install that version using using nanolx-ctx, at your own risk.
 
-Starting with Citrix 26.04.0 Citrix works with webkitgtk2-4.1, so that's no
-longer required.
+Starting with Citrix 26.04.0 Citrix provides a beta/tech preview built with GCC 11
+and linked against webkitgtk2-4.1, so that's no longer required.
 
 .SH OPTIONS
 nanolx-ctx knows the following options
@@ -31,7 +31,7 @@ Run the citrix workspace check script to check the system for missing packages.
 .TP
 .B load-webkit
 Install citrix' bundled webkit2gtk-4.0 into your system
-Note: this is no longer required with Citrix 26.04.0 so the script does nothing
+Note: this is no longer required when using Citrix built with GCC 11
 .TP
 .B unload-webkit
 Uninstall citrix' bundled webkit2gtk-4.0 from your system
@@ -52,8 +52,8 @@ Enable citrix smarcard logging
 .B enable-padummy
 Install a dummy \fIpulseaudio\fP script, so we can trick citrix into using \fIpipewire\fP
 Note: if you actually have pulseaudio installed, this does nothing
-Note: this is only required for older Citrix versions, starting with 26.04.0
-the script does nothing
+Note: this is only required for older Citrix versions, when using Citrix built
+with GCC 11 the script does nothing
 .TP
 .B disable-padummy
 Uninstall the dummy \fIpulseaudio\fP script
@@ -75,6 +75,17 @@ Revert citrix remote acess to local machine to default settings
 If Citrix gets uninstalled and reinstalled, but zoomvdi-universal-plugin does
 not get reinstalled at the same time, the module is no longer active. This
 force runs it's postinstallation script
+.TP
+.B zoom-smartvb-on
+Enable Zoom smart virtual backgrounds
+.TP
+.B zoom-smartvb-off
+Disable Zoom smart virtual backgrounds
+.B zoom-hwaccel-on
+Enable Zoom graphics and hardware acceleration (per user)
+.TP
+.B zoom-hwaccel-off
+Disable Zoom graphics and hardware acceleration (per user)
 .PP
 
 .SH AUTHORS
