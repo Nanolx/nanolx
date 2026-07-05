@@ -58,8 +58,7 @@ Core Temp:${alignr}${execpi 30 sensors k10temp-pci-00c3 | awk '/Tctl/{print $2}'
 Core Load:${alignr}${cpu cpu0} %
 ${cpubar}
 
-${color2}
-Fan 0-2 (AIO):${alignr}${execpi 30 sensors nct6799-isa-0290 | awk '/fan2/{print $2}'} RPM
+${color2}Fan 0-2 (AIO):${alignr}${execpi 30 sensors nct6799-isa-0290 | awk '/fan2/{print $2}'} RPM
 Fan 3-4 (Chasis):${alignr}${execpi 30 sensors nct6799-isa-0290 | awk '/fan7/{print $2}'} RPM
 
 ${color4}RAM ${alignr}${mem} [${memmax}]
