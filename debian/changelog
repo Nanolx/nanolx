@@ -1,3 +1,20 @@
+nanolx (1:4.7.20260711-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-apt-tools
+    - nanolx-orbit version updates:
+      - discord 1.0.146
+  * nanolx-base
+    - update conkyrc
+    - update bashstyle-ng.ini
+  * nanolx-themes
+    - add Aura glow [burn-my-windows] KWin effect
+  * nanolx-citrix-config
+    - nanolx-ctx script now can enable/disable smart virtual backgrounds (system
+      wide), aswell as enabling/disabling hw acceleration for zoom (per user)
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 11 Jul 2026 12:23:24 +0200
+
 nanolx (1:4.6.20260626-1nano) unstable; urgency=low
 
   * New upstream release

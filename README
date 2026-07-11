@@ -43,8 +43,8 @@ Release Information
 
 see debian/changelog for changes
 
-Version:    4.6
-Release:    20260626
+Version:    4.7
+Release:    20260711
 
 Installation on Debian GNU/Linux
 =======================================
@@ -153,6 +153,7 @@ nanolx-themes:
       - sddm:     Pixel Rainy Room
       - wall:     Matrixrain (Plasma 6)
       - splash:   Infinity (Plasma Splash 6)
+      - KWin:     Aura glow effect (burn my windows)
       - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
 
 nanolx-citrix-config:
