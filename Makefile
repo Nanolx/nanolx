@@ -56,6 +56,8 @@ install:
 	# KWin
 	mkdir -p $(DESTDIR)/usr/share/aurorae/themes/
 	cp -r themes/aurorae/* $(DESTDIR)/usr/share/aurorae/themes/
+	mkdir -p $(DESTDIR)/usr/share/kwin/effects/
+	cp -r themes/effects/* $(DESTDIR)/usr/share/kwin/effects/
 	# Plasma
 	cp -r themes/plasma/ $(DESTDIR)/usr/share/
 	cp -r themes/color-schemes/ $(DESTDIR)/usr/share/

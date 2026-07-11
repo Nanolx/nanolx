@@ -3,6 +3,7 @@ usr/sbin/nanolx-refind
 usr/share/man/man1/nanolx-refind.1.gz
 usr/share/icons/
 usr/share/Kvantum/
+usr/share/kwin/
 usr/share/aurorae/
 usr/share/color-schemes/
 usr/share/konsole/
