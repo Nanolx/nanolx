@@ -4,6 +4,7 @@ nanolx (1:4.7.20260711-1nano) unstable; urgency=low
   * nanolx-apt-tools
     - nanolx-orbit version updates:
       - discord 1.0.146
+      - openrgb 1.0rc3
   * nanolx-base
     - update conkyrc
     - update bashstyle-ng.ini
