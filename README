@@ -153,7 +153,14 @@ nanolx-themes:
       - sddm:       Pixel Rainy Room
       - wall:       Matrixrain (Plasma 6)
       - splash:     Infinity (Plasma Splash 6)
-      - KWin:       Aura glow effect (burn my windows)
+      - KWin:
+                effects:
+                    Aura glow (burn my windows)
+                    Geometry Changes
+                scripts:
+                    KNeko
+                    KZones
+                    Remember Window Positions
       - Plasmoids:  AndromedaLauncher, Advanced Separator, Panel Colorizer
       - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
 
