@@ -1,0 +1,15 @@
+#!/bin/bash
+FIRST_SCREEN_WIDTH=$(kscreen-doctor -o | sed -n '/priority 1/,/Geometry:/p' | \grep "Geometry" | awk '{print $4}' | cut -d'x' -f1)
+X_OFFSET=200
+Y_OFFSET=500
+TARGET_X=$((FIRST_SCREEN_WIDTH + X_OFFSET))
+TARGET_Y=$Y_OFFSET
+
+ydotool mousemove -x -9999999 -y -9999999
+ydotool mousemove -x -9999999 -y -9999999
+sleep 0.1
+
+ydotool mousemove -x $TARGET_X -y $TARGET_Y
+sleep 0.2
+
+conky &
