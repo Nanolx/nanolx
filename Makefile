@@ -61,6 +61,7 @@ install:
 	# Plasma
 	cp -r themes/plasma/ $(DESTDIR)/usr/share/
 	cp -r themes/color-schemes/ $(DESTDIR)/usr/share/
+	cp -r plasmoids/ $(DESTDIR)/usr/share/plasma/
 	# Konsole
 	cp -r themes/konsole/ $(DESTDIR)/usr/share/
 	# Wallpapers

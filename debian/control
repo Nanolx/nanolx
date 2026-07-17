@@ -381,18 +381,23 @@ Depends:
  qt-style-kvantum,
  kwin-style-aurorae,
  kde-plasma-desktop,
- konsole
+ konsole,
+ kde-spectacle,
+ python3-dbus,
+ python3-gi
 Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of themes
  Themes for Nanolx
  .
- Plymouth: debian mac style
- rEFInd:   rEFInd digital void
- Cursors:  Empty Butterfly
- Qt:       Midnight Bright Kvantum
- Icons:    Tela (red dark)
- sddm:     Pixel Rainy Room
- wall:     Matrix Rain (Plasma 6)
- splash:   Infinity (Plasma Splash 6)
+ Plymouth:   debian mac style
+ rEFInd:     rEFInd digital void
+ Cursors:    Empty Butterfly
+ Qt:         Midnight Bright Kvantum
+ Icons:      Tela (red dark)
+ sddm:       Pixel Rainy Room
+ wall:       Matrix Rain (Plasma 6)
+ splash:     Infinity (Plasma Splash 6)
+ KWin:       Aura glow effect (burn my windows)
+ Plasmoids:  AndromedaLauncher and Panel Colorizer
  .
  Nothing style for Plasma, KWin, Konsole including color schemes and wallpapers
