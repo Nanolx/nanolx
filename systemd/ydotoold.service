@@ -1,0 +1,11 @@
+[Unit]
+Description=ydotool automation daemon (User Space)
+Documentation=man:ydotoold(8)
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ydotoold
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
