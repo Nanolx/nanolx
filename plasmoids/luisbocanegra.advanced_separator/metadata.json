@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "luisbocanegra17b@gmail.com",
+                "Name": "Luis Bocanegra"
+            }
+        ],
+        "BugReportUrl": "https://github.com/luisbocanegra/plasma-advanced-separator/issues",
+        "Category": "Utilities",
+        "Description": "Customizable separator with settings sync",
+        "Description[nl]": "Een aanpasbare scheiding, met de mogelijkheid instellingen te klonen",
+        "Icon": "filename-divider",
+        "Id": "luisbocanegra.advanced_separator",
+        "License": "GPLv2",
+        "Name": "Advanced Separator",
+        "Name[nl]": "Uitgebreide scheiding",
+        "Version": "0.2.0",
+        "Website": "https://github.com/luisbocanegra/plasma-advanced-separator"
+    },
+    "Keywords": "separator",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

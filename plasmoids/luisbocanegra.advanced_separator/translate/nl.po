@@ -1,0 +1,199 @@
+# Translation of advanced_separator in nl
+# Copyright (C) 2026
+# This file is distributed under the same license as the advanced_separator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: advanced_separator\n"
+"Report-Msgid-Bugs-To: https://github.com/luisbocanegra/plasma-advanced-"
+"separator\n"
+"POT-Creation-Date: 2026-04-11 19:44-0600\n"
+"PO-Revision-Date: 2026-04-12 11:19+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: ../metadata.json
+msgid "Advanced Separator"
+msgstr "Uitgebreide scheiding"
+
+#: ../metadata.json
+msgid "Customizable separator with settings sync"
+msgstr "Een aanpasbare scheiding, met de mogelijkheid instellingen te klonen"
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "Algemeen"
+
+#: ../contents/config/config.qml
+msgid "Support Me"
+msgstr "Doneren"
+
+#: ../contents/ui/components/ColorPickerList.qml
+msgid "Widget background"
+msgstr "Widgetachtergrond"
+
+#: ../contents/ui/components/FormColors.qml ../contents/ui/configGeneral.qml
+msgid "Color"
+msgstr "Kleur"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color source:"
+msgstr "Kleur gebruiken:"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Custom"
+msgstr "Zelfgekozen"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "A fixed custom color"
+msgstr "Een zelfgekozen kleur"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "System"
+msgstr "Systeemkleur"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color that updates with your System theme"
+msgstr "Een kleur op basis van de kleuren van het systeemthema"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Random"
+msgstr "Willekeurig"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Random color"
+msgstr "Een willekeurige kleur"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Custom list"
+msgstr "Aangepaste lijst"
+
+#: ../contents/ui/components/FormColors.qml
+msgid ""
+"Define a list of colors that will be applied to all the separators, wraps "
+"around if there are more separators than colors"
+msgstr ""
+"Stel een lijst op met kleuren die op alle scheidingen moeten worden "
+"toegepast. De kleuren worden een voor een afgegaan als er meer scheidingen "
+"dan kleuren zijn."
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color:"
+msgstr "Kleur:"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color set:"
+msgstr "Kleurenpalet:"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Colors:"
+msgstr "Kleuren:"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Alpha:"
+msgstr "Alfa:"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Contrast Correction"
+msgstr "Contrastafstelling"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Saturation:"
+msgstr "Verzadiging:"
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Lightness:"
+msgstr "Helderheid:"
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Thank you for using %1!"
+msgstr "Bedankt voor het gebruiken van %1!"
+
+#: ../contents/ui/components/SupportMe.qml
+msgid ""
+"If you enjoy using the plugin please consider sponsoring or donating so I "
+"can dedicate more time to maintain and improve this and <a href=\"https://"
+"github.com/luisbocanegra?"
+"tab=repositories&q=&type=source&language=&sort=stargazers\">my other "
+"projects</a>."
+msgstr ""
+"Als je graag gebruikmaakt van deze plug-in, overweeg dan om me te sponsoren "
+"of een donatie te doen, zodat ik meer tijd kan vrijmaken voor dit <a "
+"href=\"https://github.com/luisbocanegra?"
+"tab=repositories&q=&type=source&language=&sort=stargazers\">andere "
+"projecten</a>."
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "You can also"
+msgstr "Je kunt ook"
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Star the project on GitHub"
+msgstr "het project een ster toekennen op GitHub"
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Rate in the KDE Store"
+msgstr "een beoordeling achterlaten in de KDE Store"
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Translate %1 to your language"
+msgstr "Helpen met vertalen van %1"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Do not sync:"
+msgstr "Niet synchroniseren:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Do not copy the configuration from/to other separators"
+msgstr "Kloon de instellingen niet van/naar andere scheidingen"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Width mode:"
+msgstr "Breedtemodus:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Height mode:"
+msgstr "Hoogtemodus:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Percentage"
+msgstr "Percentage"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Absolute"
+msgstr "Waarde"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Width:"
+msgstr "Breedte:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Height:"
+msgstr "Hoogte:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Top margin:"
+msgstr "Bovenste marge:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Left margin:"
+msgstr "Linker marge:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Bottom margin:"
+msgstr "Onderste marge:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Right margin:"
+msgstr "Rechter marge:"
+
+#: ../contents/ui/configGeneral.qml
+msgid "Radius:"
+msgstr "Straal:"

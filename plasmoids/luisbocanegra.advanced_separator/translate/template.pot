@@ -1,0 +1,184 @@
+# Translation of advanced_separator in LANGUAGE
+# Copyright (C) 2026
+# This file is distributed under the same license as the advanced_separator package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: advanced_separator\n"
+"Report-Msgid-Bugs-To: https://github.com/luisbocanegra/plasma-advanced-separator\n"
+"POT-Creation-Date: 2026-04-11 19:44-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../metadata.json
+msgid "Advanced Separator"
+msgstr ""
+
+#: ../metadata.json
+msgid "Customizable separator with settings sync"
+msgstr ""
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr ""
+
+#: ../contents/config/config.qml
+msgid "Support Me"
+msgstr ""
+
+#: ../contents/ui/components/ColorPickerList.qml
+msgid "Widget background"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml ../contents/ui/configGeneral.qml
+msgid "Color"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color source:"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Custom"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "A fixed custom color"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "System"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color that updates with your System theme"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Random"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Random color"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Custom list"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Define a list of colors that will be applied to all the separators, wraps around if there are more separators than colors"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color:"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Color set:"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Colors:"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Alpha:"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Contrast Correction"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Saturation:"
+msgstr ""
+
+#: ../contents/ui/components/FormColors.qml
+msgid "Lightness:"
+msgstr ""
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Thank you for using %1!"
+msgstr ""
+
+#: ../contents/ui/components/SupportMe.qml
+msgid ""
+"If you enjoy using the plugin please consider sponsoring or donating so I can dedicate more time to maintain and improve this and <a href=\"https://github.com/luisbocanegra?"
+"tab=repositories&q=&type=source&language=&sort=stargazers\">my other projects</a>."
+msgstr ""
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "You can also"
+msgstr ""
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Star the project on GitHub"
+msgstr ""
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Rate in the KDE Store"
+msgstr ""
+
+#: ../contents/ui/components/SupportMe.qml
+msgid "Translate %1 to your language"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Do not sync:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Do not copy the configuration from/to other separators"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Width mode:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Height mode:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Percentage"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Absolute"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Width:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Height:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Top margin:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Left margin:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Bottom margin:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Right margin:"
+msgstr ""
+
+#: ../contents/ui/configGeneral.qml
+msgid "Radius:"
+msgstr ""
