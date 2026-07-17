@@ -128,7 +128,9 @@ Depends:
  psensor,
  ibus,
  ibus-table-compose,
- sddm
+ sddm,
+ xinput,
+ ydotool
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
 
