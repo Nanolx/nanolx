@@ -160,9 +160,38 @@ Copyright: L4ki <45247573+L4ki@users.noreply.github.com>
 License: GPL-3.0+
 
 Files:
- ../themes/effects/kwin6_effect_aura_glow//
+ themes/effects/kwin6_effect_aura_glow/
 Copyright: Simon Schneegans <code@simonschneegans.de>
 License: GPL-3.0+
+
+Files:
+ plasmoids/luisbocanegra.panel.colorizer/
+Copyright: 2024-2026 Luis Bocanegra <luisbocanegra17b@gmail.com>
+ License: GPL-3.0+
+
+Files:
+ plasmoids/AndromedaLauncher/
+Copyright: 2022-2023 snoutie <71790678+SnoutBug@users.noreply.github.com>
+           2023-2026 Eliver Lara <eliverlara@gmail.com>
+License: GPL-2.0
+
+License: GPL-2.0
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-2".
 
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
