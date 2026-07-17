@@ -58,6 +58,8 @@ install:
 	cp -r themes/aurorae/* $(DESTDIR)/usr/share/aurorae/themes/
 	mkdir -p $(DESTDIR)/usr/share/kwin/effects/
 	cp -r themes/effects/* $(DESTDIR)/usr/share/kwin/effects/
+	mkdir -p $(DESTDIR)/usr/share/kwin/scripts/
+	cp -r kwin/* $(DESTDIR)/usr/share/kwin/scripts/
 	# Plasma
 	cp -r themes/plasma/ $(DESTDIR)/usr/share/
 	cp -r themes/color-schemes/ $(DESTDIR)/usr/share/
