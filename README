@@ -145,15 +145,16 @@ nanolx-games-emu:
 nanolx-themes:
     this package is recommended by nanolx-base, but not a hard dependency, it
     provides a theme selection containing:
-      - Plymouth: debian mac style
-      - rEFInd:   rEFInd digital void
-      - Cursors:  Empty Butterfly
-      - Qt:       Midnight Bright Kvantum
-      - Icons:    Tela (red and red dark)
-      - sddm:     Pixel Rainy Room
-      - wall:     Matrixrain (Plasma 6)
-      - splash:   Infinity (Plasma Splash 6)
-      - KWin:     Aura glow effect (burn my windows)
+      - Plymouth:   debian mac style
+      - rEFInd:     rEFInd digital void
+      - Cursors:    Empty Butterfly
+      - Qt:         Midnight Bright Kvantum
+      - Icons:      Tela (red and red dark)
+      - sddm:       Pixel Rainy Room
+      - wall:       Matrixrain (Plasma 6)
+      - splash:     Infinity (Plasma Splash 6)
+      - KWin:       Aura glow effect (burn my windows)
+      - Plasmoids:  AndromedaLauncher and Panel Colorizer
       - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
 
 nanolx-citrix-config:
