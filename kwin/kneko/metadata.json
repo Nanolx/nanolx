@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Name": "KNeko",
+        "Description": "An Oneko implementation in kwinscript",
+        "Icon": "preferences-desktop-gestures-touch",
+
+        "Authors": [
+            {
+                "Email": "riley.aft@outlook.com",
+                "Name": "Riley Tinkl"
+            }
+        ],
+        "Id": "kneko",
+        "Version": "0.0.5",
+        "License": "GPLv3",
+        "Website": "https://github.com/rileyaft/KNeko"
+    },
+    "X-Plasma-API": "declarativescript",
+    "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "KPackageStructure": "KWin/Script"
+}

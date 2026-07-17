@@ -1,0 +1,1604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>KWin::RememberWindowPositionsConfigForm</class>
+ <widget class="QWidget" name="KWin::RememberWindowPositionsConfigForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1189</width>
+    <height>792</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab_general">
+      <attribute name="icon">
+       <iconset theme="preferences-system">
+        <normaloff>../../../../../../../../.designer/backup</normaloff>../../../../../../../../.designer/backup</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>General</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_general">
+       <item>
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; If you are using older hardware, have poor internet speed, or are for any other reasons experiencing issues with window restoration - please increase the &lt;span style=&quot; font-weight:700;&quot;&gt;Restore Attempts&lt;/span&gt; and &lt;span style=&quot; font-weight:700;&quot;&gt;Perfect Restore Attempts&lt;/span&gt; in the &lt;span style=&quot; font-weight:700;&quot;&gt;Multi-Window Restore&lt;/span&gt; tab - the default settings should be sufficient for most people with modern hardware and decent internet speeds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; If you use a &lt;span style=&quot; font-weight:700;&quot;&gt;HDD&lt;/span&gt; as your /home drive and experience lag/stutter when closing apps/windows, please enable &lt;span style=&quot; font-weight:700;&quot;&gt;Only save during shutdown&lt;/span&gt; in the &lt;span style=&quot; font-weight:700;&quot;&gt;Debug / Experimental&lt;/span&gt; tab.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; You can block restoration of a single window, or disable restoring temporarily by toggling restoration mode (&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;Meta+X&lt;/span&gt;).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; You can override a single app/window configuration (such as a splash screen or a dialog) in the &amp;quot;Per Application/Window Override&amp;quot; (&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;Ctrl+Meta+W&lt;/span&gt;).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffaa00;&quot;&gt;WARNING&lt;/span&gt; Window Rules might interfere with this script. If you want to use Window Rules with a certain application, please add it to Blacklist or ignore it in Per Appplication/Window Override (&lt;span style=&quot; font-weight:700;&quot;&gt;Ctrl+Meta+W&lt;/span&gt; by default). You can also delete your old Window Rules and use this script instead. Thank you.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_restoreType">
+         <property name="title">
+          <string>Application Settings</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_restoreType">
+          <item>
+           <widget class="QLabel" name="label_restoreTypeExplanation">
+            <property name="text">
+             <string>Configure which applications to remember windows for. Window position, screen and stacking order will be remembered. Window size, virtual desktop, activities and minimized state will be remembered unless disabled.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QFormLayout" name="formLayout_restoreType">
+            <item row="0" column="1">
+             <widget class="QComboBox" name="kcfg_restoreType">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="currentText">
+               <string>All applications</string>
+              </property>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <item>
+               <property name="text">
+                <string>All applications</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>All multi-window applications</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>All except blacklisted applications</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Only whitelisted applications</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_restoreType">
+              <property name="text">
+               <string>Remember</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreSize">
+            <property name="text">
+             <string>Restore window size - window size is not always restored by default, so it is recommended to restore it</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreVirtualDesktop">
+            <property name="text">
+             <string>Restore virtual desktop - windows will open on the virtual desktop they were closed on - disable to open all windows on current desktop</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="kcfg_moveVirtualDesktop">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Move to virtual desktop - automatically moves to the virtual desktop where last application was restored - only works for single window applications</string>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreActivities">
+            <property name="text">
+             <string>Restore activities - windows will remember which activity/activities they belong to</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="kcfg_moveActivity">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Move to activity - automatically moves to the activity where last application was restored - only works for single window applications</string>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreMinimized">
+            <property name="text">
+             <string>Restore minimized state - some windows might be minimized when the application is closed (such as browser windows) - use this setting to keep the window minimized</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreKeepAbove">
+            <property name="text">
+             <string>Restore keep above state - applications will remember their keep above state</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreKeepBelow">
+            <property name="text">
+             <string>Restore keep below state - applications will remember their keep below state</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreWindowsWithoutCaption">
+            <property name="text">
+             <string>Restore windows with empty caption (window title) - If disabled, windows with empty caption will not be restored at all (left with default size and position)</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreTile">
+            <property name="text">
+             <string>Restore tile - attempts to restore the tile and quick tile when using the default system tiler. Will only restore the tile if it has not changed and is matching current position and size</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Policy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="kcfg_restoreResizedQuickTile">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Restore resized quick tile - WARNING - This will override the saved size/position with those of the quick tile. The quick tile dimensions might change while the window is closed</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreMouseTiler">
+            <property name="text">
+             <string>Restore Mouse Tiler auto tiler status. Will remember if a window was auto tiled or not. Make sure to increase the auto tile delay in Mouse Tiler settings to enable the restoration process</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreTransient">
+            <property name="text">
+             <string>Restore transient windows (some dialogs, popup windows and other sub-windows - recommended to keep disabled unless you need it)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_restoreModal">
+            <property name="text">
+             <string>Restore modal windows (some dialogs, popup windows and other sub-windows - recommended to keep disabled unless you need it)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Multi-monitor behavior</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>This setting determines what happens when a monitor is not connected or monitors get re-arranged prior to window restoration. Depending on the setting - windows might appear outside of connected monitors or visible screen areas. A window will always try to restore on the monitor it was last connected to if possible.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QFormLayout" name="formLayout">
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Restore to</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="kcfg_multiMonitorType">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <item>
+               <property name="text">
+                <string>Last monitor window was on - if a monitor is disconnected, this will only restore window size and not position. (Recommended for most laptop and multi-monitor users).</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Last position - even if windows end up off-screen. (Recommended for users using a single monitor or a permanent configuration - faster than first option).</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Port the last monitor was connected to - restore window based on connection/cable such as HDMI. (Recommended for office workers with flexible work spaces).</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_general">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+      <zorder>verticalSpacer_general</zorder>
+      <zorder>groupBox_restoreType</zorder>
+      <zorder>groupBox</zorder>
+      <zorder>label_16</zorder>
+      <zorder>label_18</zorder>
+      <zorder>label_24</zorder>
+      <zorder>label_25</zorder>
+      <zorder>label_26</zorder>
+     </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="icon">
+       <iconset theme="emblem-important"/>
+      </attribute>
+      <attribute name="title">
+       <string>Configure Single Application/Window</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_perAppInformation">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>To override default settings of a single application or window, please open the configuration window through the &quot;&lt;b&gt;Remember Window Positions: Show Config&lt;/b&gt;&quot; keyboard shortcut (&quot;&lt;b&gt;Ctrl+Meta+W&lt;/b&gt;&quot; by default - Meta key depends on your keyboard, but on most keyboards it is the Windows key). If this keyboard shortcut does not work, please manually assign it (or any shortcut you like) in &quot;&lt;b&gt;System Settings &gt; Keyboard &gt; Shortcuts &gt; Window Management &gt; Remember Window Positions: Show Config&lt;/b&gt;&quot;.
+&lt;br&gt;&lt;br&gt;
+When upgrading from an earlier version, a reboot might be required to enable the shortcut. Disabling and enabling the script might also work.</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_mulltiWindowRestore">
+      <attribute name="icon">
+       <iconset theme="preferences-desktop"/>
+      </attribute>
+      <attribute name="title">
+       <string>Multi-Window Restore</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="kcfg_instantRestore">
+         <property name="title">
+          <string>Instantly Restore 100% Matching Windows</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_instantRestoreDescription">
+            <property name="text">
+             <string>Will instantly restore the window properties for saved windows that 100% match caption even before all windows are loaded. All properties except for stacking order (z-index) will be restored. Once all windows are loaded, stacking order will also be restored. Will ignore numbers if enabled.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_multiWindowRestoreAttempts">
+         <property name="title">
+          <string>Default Multi-Window Restore Attempts</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_multiWindowRestoreAttempts">
+          <item>
+           <widget class="QLabel" name="label_multiWindowRestoreAttemptsExplanation">
+            <property name="text">
+             <string>An attempt to restore multi-window applications will be performed each second until the window captions match almost perfectly - after specified number of attempts is performed without a match, the windows are restored to best ability instead. This setting applies only to multi-window appplications. Decrease for quicker window restoration, but higher risk of incorrect window placement.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="kcfg_multiWindowRestoreAttempts">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>60</number>
+            </property>
+            <property name="singleStep">
+             <number>1</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>false</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TickPosition::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="hBoxLayout_multiWindowRestoreAttempts">
+            <item>
+             <widget class="QLabel" name="label_multiWindowRestoreAttemptsMin">
+              <property name="text">
+               <string>  1</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_multiWindowRestoreAttemptInfo">
+              <property name="text">
+               <string>Restore Attempts</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_multiWindowRestoreAttemptsMax">
+              <property name="text">
+               <string>60 </string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="kcfg_usePerfectMultiWindowRestore">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Use Perfect Multi-Window Restore List</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_usePerfectMultiWindowRestore">
+          <item>
+           <widget class="QLabel" name="label_perfectMultiWindowRestoreAttemptsExplanation">
+            <property name="text">
+             <string>This setting overrides the Default multi-window restore attempts. It is recommended to include your browsers here since browser window captions might not match until a few seconds after the browser has been opened. This is affected by many factors such as internet speed or window count, so leaving this at a higher number increases the chance that browsers are restored correctly.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="kcfg_perfectMultiWindowRestoreAttempts">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>60</number>
+            </property>
+            <property name="value">
+             <number>30</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TickPosition::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="hBoxLayout_perfectMultiWindowRestoreAttempts">
+            <item>
+             <widget class="QLabel" name="label_perfectMultiWindowRestoreAttemptsMin">
+              <property name="text">
+               <string>  1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_perfectMultiWindowRestoreAttemptsInfo">
+              <property name="text">
+               <string>Perfect Restore Attempts</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_perfectMultiWindowRestoreAttemptsMax">
+              <property name="text">
+               <string>60 </string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_perfectMultiWindowRestoreListExplanation">
+            <property name="text">
+             <string>Add browsers or other multi-window applications that are slow to set their window captions to this list, one per line. Wildcards are allowed by using the * character, such as &quot;*.exe&quot; or &quot;steam_*&quot; without the quotes. Enable &quot;Print Application Name To Log&quot; in the &quot;Debug&quot; tab to find application names.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="kcfg_perfectMultiWindowRestoreList">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="icon">
+       <iconset theme="system-shutdown"/>
+      </attribute>
+      <attribute name="title">
+       <string>Session</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <widget class="QGroupBox" name="kcfg_loginBoost">
+         <property name="title">
+          <string>Session Login Restore Boost</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>When logging in, apps will increase the configured number of Multi-Window/Perfect Multi-Window Restore attempts by X times. This is helpful for people starting a lot of apps at once or using slower hardware. This boost applies for 2 minutes after logging in. Setting this too high might unnecessarily increase the restoration time.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="kcfg_loginBoostMultiplier">
+            <property name="minimum">
+             <number>2</number>
+            </property>
+            <property name="maximum">
+             <number>5</number>
+            </property>
+            <property name="pageStep">
+             <number>2</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TickPosition::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_15">
+              <property name="text">
+               <string>2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>multiplier</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_13">
+              <property name="text">
+               <string>8</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="kcfg_sessionRestore">
+         <property name="title">
+          <string>Session Restore Overrides</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>When enabled, apps that close within the specified time before the script shuts down (usually when logging out/shutting down) will use these settings when restoring at next session start. These settings will override both the settings from the General tab, and per app configuration. The override is active for two minutes after logging in to give plenty of time for all apps from previous session to start. Use this if you use session restore and want different behaviour compared to rest of the session.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_sessionRestoreSize">
+            <property name="text">
+             <string>Restore window size - window size is not always restored by default, so it is recommended to restore it</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_sessionRestoreVirtualDesktop">
+            <property name="text">
+             <string>Restore virtual desktop - windows will open on the virtual desktop they were closed on - disable to open all windows on current desktop</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_sessionRestoreActivities">
+            <property name="text">
+             <string>Restore activities - windows will remember which activity/activities they belong to</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_sessionRestoreMinimized">
+            <property name="text">
+             <string>Restore minimized state - some windows might be minimized when the application is closed (such as browser windows) - use this setting to keep the window minimized</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_sessionRestoreKeepAbove">
+            <property name="text">
+             <string>Restore keep above state - applications will remember their keep above state</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_sessionRestoreKeepBelow">
+            <property name="text">
+             <string>Restore keep below state - applications will remember their keep below state</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Policy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Determines how long before shutdown apps will be considered as part of the closing session. Due to lack of APIs to determine if system is shutting down, a time based approach is used instead.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="kcfg_sessionRestoreTime">
+            <property name="minimum">
+             <number>15</number>
+            </property>
+            <property name="maximum">
+             <number>120</number>
+            </property>
+            <property name="value">
+             <number>25</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TickPosition::TicksBelow</enum>
+            </property>
+            <property name="tickInterval">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>15</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>seconds</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>120</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_blacklist">
+      <attribute name="icon">
+       <iconset theme="list-remove">
+        <normaloff>../../../../../../../../.designer/backup</normaloff>../../../../../../../../.designer/backup</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Blacklist</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_blacklist">
+       <item>
+        <widget class="QGroupBox" name="groupBox_applicationBlacklist">
+         <property name="title">
+          <string>Application Blacklist</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_applicationBlacklist">
+          <item>
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; This list will only apply if &amp;quot;Application Settings - Remember&amp;quot; in the &amp;quot;General&amp;quot; settings tab is set to &amp;quot;All except blacklisted applications&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; You can blacklist individual windows (overrides all other settings) such as splash screens or dialogs in the &amp;quot;Per Application/Window Configuration&amp;quot; (&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;Ctrl+Meta+W&lt;/span&gt;).&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/rxappdev/RememberWindowPositions?tab=readme-ov-file#single-window-blacklist&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#5294e2;&quot;&gt;Here&lt;/span&gt;&lt;/a&gt; you can see a step-by-step example of how to blacklist a splash screen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="kcfg_blacklist">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="lineWrapMode">
+             <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+            </property>
+            <property name="plainText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_blacklistExplanation">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;One application per line. Wildcards are allowed by using the * character, such as &amp;quot;*.exe&amp;quot; or &amp;quot;steam_*&amp;quot; without the quotes.&lt;/p&gt;&lt;p&gt;Enable &amp;quot;Print Application Name To Log&amp;quot; in the &amp;quot;Debug&amp;quot; tab to find application names.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_whitelist">
+      <attribute name="icon">
+       <iconset theme="list-add">
+        <normaloff>../../../../../../../../.designer/backup</normaloff>../../../../../../../../.designer/backup</iconset>
+      </attribute>
+      <attribute name="title">
+       <string>Whitelist</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_whitelist">
+       <item>
+        <widget class="QGroupBox" name="groupBox_applicationWhitelist">
+         <property name="title">
+          <string>Application Whitelist</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_applicationWhitelist">
+          <item>
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; This list will only apply if &amp;quot;Application Settings - Remember&amp;quot; in the &amp;quot;General&amp;quot; settings tab is set to &amp;quot;Only whitelisted applications&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;IMPORTANT&lt;/span&gt; You can whitelist individual windows (overrides all other settings) in the &amp;quot;Per Application/Window Configuration&amp;quot; (&lt;span style=&quot; font-weight:700; color:#ffaa00;&quot;&gt;Ctrl+Meta+W&lt;/span&gt;).&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/rxappdev/RememberWindowPositions?tab=readme-ov-file#firefox&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#5294e2;&quot;&gt;Here&lt;/span&gt;&lt;/a&gt; you can see a step-by-step example of how to override an individual window.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="kcfg_whitelist">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="plainText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_whitelistExplanation">
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;One application per line. Wildcards are allowed by using the * character, such as &amp;quot;*.exe&amp;quot; or &amp;quot;steam_*&amp;quot; without the quotes.&lt;/p&gt;&lt;p&gt;Enable &amp;quot;Print Application Name To Log&amp;quot; in the &amp;quot;Debug&amp;quot; tab to find application names.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_debug">
+      <attribute name="icon">
+       <iconset theme="applications-development"/>
+      </attribute>
+      <attribute name="title">
+       <string>Debug / Experimental</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="kcfg_printApplicationNameToLog">
+         <property name="title">
+          <string>Print Application Names To Log</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_printApplicationNameToLog">
+          <item>
+           <widget class="QLabel" name="label_printTypeExplanation">
+            <property name="text">
+             <string>For ease of adding apps to the different lists, application names will be printed in the log.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QFormLayout" name="formLayout_printType">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_printType">
+              <property name="text">
+               <string>Print when</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="kcfg_printType">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <item>
+               <property name="text">
+                <string>First window for the application is opened or last window is closed</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Any window is opened or last window is closed</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_printApplicationNameToLogExplanation">
+            <property name="text">
+             <string>To check the log - type this in the console:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_printApplicationNameToLogCommand">
+            <property name="toolTip">
+             <string>Copy this command and paste it into a terminal window to list application names when they are opened.</string>
+            </property>
+            <property name="text">
+             <string>journalctl -f | grep RememberWindowPositions</string>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Experimental Settings</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <item>
+           <widget class="QCheckBox" name="kcfg_ignoreNumbers">
+            <property name="text">
+             <string>Ignore numbers in captions - this should be left enabled. Only disable it if it causes any unexpected issues (like if the only way to differentiate applications you use is by numbers)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_onlySaveOnShutdown">
+            <property name="text">
+             <string>Only save during shutdown (on script closure) - enable this if you experience lag when using the script - this could be caused by using a hard disk drive (HDD) as your /home drive</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_minimumCaptionMatch">
+            <property name="title">
+             <string>Minimum Caption Match Percentage</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_minimumCaptionMatch" stretch="0,0,0,0">
+             <item>
+              <widget class="QLabel" name="label_17">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffaa00;&quot;&gt;WARNING&lt;/span&gt; This used to be a valid way to filter windows, but is now considered obsolete. You can still use it if you need it, but it is recommended to be left at 0 for almost everyone.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_minimumCaptionMatchExplanation">
+               <property name="text">
+                <string>Restore only windows that reach this level of caption (window title) match percentage. If a re-opened windows caption match does not reach this level, it will not be restored at all (left with default size and position). Set to 0 to restore all windows to best ability. Some window captions contain information such as number of messages - this means the caption won't match 100%. Because of this, it is not recommended to set this value higher than 85%.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="kcfg_minimumCaptionMatch">
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="tickPosition">
+                <enum>QSlider::TickPosition::TicksBelow</enum>
+               </property>
+               <property name="tickInterval">
+                <number>2</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="hBoxLayout_minimumCaptionMatch">
+               <item>
+                <widget class="QLabel" name="label_minimumCaptionMatchMin">
+                 <property name="text">
+                  <string>  0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_minimumCpationMatchInfo">
+                 <property name="text">
+                  <string>%</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_minimumCaptionMatchMax">
+                 <property name="text">
+                  <string>100</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_debug">
+         <property name="title">
+          <string>Debug Settings</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Intended for development or when submitting a bug/issue to give more details to the current issue. This will write a lot of data to the system log. Not recommended for every day use.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_debugLogs">
+            <property name="text">
+             <string>Enable Debug Logs - Enable to print a lot of debug data to solve generic issues - this will spam a lot data to the logs</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="kcfg_printMonitorInfoToLog">
+            <property name="text">
+             <string>Monitor Logs - Enable to print saved monitor information for each window that restores - with a matching list of currently connected monitors</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_debug">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Policy::MinimumExpanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="icon">
+       <iconset theme="media-floppy"/>
+      </attribute>
+      <attribute name="title">
+       <string>Other</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_12">
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>240</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_21">
+           <item>
+            <widget class="Line" name="line_13">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_63">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt;❤ &amp;nbsp; &lt;/span&gt;Thank you for using this script!&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt; &amp;nbsp; ❤&lt;/span&gt;&lt;/p&gt;&lt;p&gt;If you enjoy it and maybe also &lt;a href=&quot;https://store.kde.org/p/2334027&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#5294e2;&quot;&gt;Mouse Tiler&lt;/span&gt;&lt;/a&gt;, I would really apreciate if you could support me in one way or another.&lt;/p&gt;&lt;p&gt;I have by now spent around 5 months (full time, 8+ hours of work a day) developing these two scripts, and I need to feed myself, my 4 year old son, and pay rent. Sadly donations are scarce (not even covering a single months rent. I am around $5000 behind by now).&lt;/p&gt;&lt;p&gt;Starting February 1st 2026, I will stop adding new features to the scripts, only fixing bugs. This is because I need to do work that earns money so I do not go bankrupt. If the donations ever take off, I will continue with the script development.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt;❤ &amp;nbsp; &lt;/span&gt;Thank you - Rafael&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt; &amp;nbsp; ❤&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_12">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QLabel" name="label_64">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can support me by:&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;   Donating - even a small donation goes a long way (links below)&lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;   Leaving a &lt;a href=&quot;https://store.kde.org/p/2324743&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#5294e2;&quot;&gt;review&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;   Downloading some of my &lt;a href=&quot;https://rxweb.epizy.com/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#5294e2;&quot;&gt;free games&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="openExternalLinks">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="Line" name="line_14">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>240</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="vBoxLayout_bottomInformation">
+     <item>
+      <widget class="QLabel" name="label_reloadInstructions">
+       <property name="font">
+        <font>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;To apply changes, please reboot or reload the script on the previous screen (disable - untick then click &amp;quot;Apply&amp;quot;, and re-enable - tick then click &amp;quot;Apply&amp;quot;.) (Limitation of KDE.)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="hBoxLayout_bottomInformation">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <property name="toolTip">
+          <string>https://discord.gg/Js6AYsnQQj</string>
+         </property>
+         <property name="text">
+          <string>&amp;nbsp;&lt;a href=&quot;https://discord.gg/Js6AYsnQQj&quot;&gt;Discord page&lt;/a&gt;</string>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_webpageLink">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>https://github.com/rxappdev/RememberWindowPositions</string>
+         </property>
+         <property name="text">
+          <string>&lt;a href=&quot;https://github.com/rxappdev/RememberWindowPositions&quot;&gt;Github page&lt;/a&gt;</string>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <property name="toolTip">
+          <string>https://buymeacoffee.com/rxappdev</string>
+         </property>
+         <property name="text">
+          <string>&lt;a href=&quot;https://buymeacoffee.com/rxappdev&quot;&gt;Buy me a coffee&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#FF0000&quot;&gt;❤&lt;/b&gt;</string>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="toolTip">
+          <string>https://patreon.com/rxappdev</string>
+         </property>
+         <property name="text">
+          <string>&lt;a href=&quot;https://patreon.com/rxappdev&quot;&gt;Patreon&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#FF0000&quot;&gt;❤&lt;/b&gt;</string>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_19">
+         <property name="toolTip">
+          <string>https://github.com/rxappdev/MouseTiler</string>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Designed to work optimally with my &lt;a href=&quot;https://github.com/rxappdev/MouseTiler&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Mouse Tiler&lt;/span&gt;&lt;/a&gt;. Use it to effortlessly place windows, and this script to restore them.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
