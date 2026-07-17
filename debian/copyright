@@ -168,7 +168,27 @@ Files:
  plasmoids/luisbocanegra.panel.colorizer/
  plasmoids/luisbocanegra.advanced_separator/
 Copyright: 2024-2026 Luis Bocanegra <luisbocanegra17b@gmail.com>
- License: GPL-3.0+
+License: GPL-3.0+
+
+Files:
+ themes/effects/kwin4_effect_geometry_change
+Copyright: Peter Fajdiga <peter.fajdiga@gmail.com>
+License: GPL-3.0+
+
+Files:
+ kwin/kneko
+Copyright: Riley Tinkl <riley.aft@outlook.com>
+License: GPL-3.0+
+
+Files:
+ kwin/kzones
+Copyright: gerritdevriese <1899386+gerritdevriese@users.noreply.github.com>
+License: GPL-3.0+
+
+Files:
+ kwin/rememberwindowpositions
+Copyright: Rafael <rxappdev@gmail.com>
+License: GPL-3.0+
 
 Files:
  plasmoids/AndromedaLauncher/
