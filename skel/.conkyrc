@@ -47,13 +47,13 @@ conky.config = {
 
 conky.text = [[
 ${color3}${hr 1}
-${font DejaVu Sans Mono:size=10:bold}${exec [ -f /etc/os-release ] && awk -F= '/^NAME=/ {gsub(/"/, "", $2); print $2}' /etc/os-release || lsb-release -ds} ${machine}${font}${color0}${alignr}${kernel}
+${font DejaVu Sans Mono:size=10:bold}${exec [ -f /etc/os-release ] && awk -F= '/^NAME=/ {gsub(/"/, "", $2); print $2}' /etc/os-release || lsb-release -ds}${font}                   ${machine}${color0}${alignr}${kernel}
 
 ${color7}${time %d.%m.%Y}                        ${time %k:%M:%S}${alignr}${uptime}
 ${hr 1}
 ${color6}${hr 1}
 ${font DejaVu Sans Mono:size=10:bold}AMD Ryzen 7 7800X3D${font}
-Speed: ${freq_g 0} GHz    Temp: ${hwmon k10temp temp 1}°C    ${cpubar 6,200}   Load: ${cpu cpu0} %
+Clock: ${freq_g 0} GHz    Temp: ${hwmon k10temp temp 1}°C    ${cpubar 6,200}   Load: ${cpu cpu0} %
 
 ${color2}${font DejaVu Sans Mono:size=10:bold}Fans${font}
 AIO:   ${hwmon nct6799 fan 2} RPM                    Chassis: ${hwmon nct6799 fan 7} RPM
