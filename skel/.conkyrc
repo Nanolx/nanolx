@@ -46,38 +46,43 @@ conky.config = {
 };
 
 conky.text = [[
-${color6}Debian GNU/Linux ${machine}${color0}${alignr}${kernel}
+${color3}${hr 1}
+${font DejaVu Sans Mono:size=10:bold}${exec [ -f /etc/os-release ] && awk -F= '/^NAME=/ {gsub(/"/, "", $2); print $2}' /etc/os-release || lsb-release -ds} ${machine}${font}${color0}${alignr}${kernel}
 
 ${color7}${time %d.%m.%Y}                        ${time %k:%M:%S}${alignr}${uptime}
-
-${color6}AMD Ryzen 7 7800X3D
+${hr 1}
+${color6}${hr 1}
+${font DejaVu Sans Mono:size=10:bold}AMD Ryzen 7 7800X3D${font}
 Speed: ${freq_g 0} GHz    Temp: ${hwmon k10temp temp 1}°C    ${cpubar 6,200}   Load: ${cpu cpu0} %
 
-${color2}Fans
+${color2}${font DejaVu Sans Mono:size=10:bold}Fans${font}
 AIO:   ${hwmon nct6799 fan 2} RPM                    Chassis: ${hwmon nct6799 fan 7} RPM
 
-${color4}Corsair Vengeance RGB
+${color4}${font DejaVu Sans Mono:size=10:bold}Corsair Vengeance RGB${font}
 Usage:                            ${membar 6,200}   ${mem} / ${memmax}
 
-${color5}AMD Radeon RX 9070
+${color5}${font DejaVu Sans Mono:size=10:bold}AMD Radeon RX 9070${font}
 Temp:  ${hwmon amdgpu temp 1}°C       Load: ${execi 5 tr -d '\n' < /sys/class/drm/card0/device/gpu_busy_percent} %      VRAM: ${execi 30 awk '{printf "%.0f", $1/1024/1024}' /sys/class/drm/card0/device/mem_info_vram_used} / ${execi 30 awk '{printf "%.0f", $1/1024/1024}' /sys/class/drm/card0/device/mem_info_vram_total} MiB
-
-${color7}Samsung 980                       /dev/nvme0                  Temp:       ${hwmon nvme temp 1}°C
+${hr 1}
+${color7}${hr 1}
+${font DejaVu Sans Mono:size=10:bold}Samsung 980${font}                       /dev/nvme0                  Temp:       ${hwmon nvme temp 1}°C
 Boot        ⇠ ${diskio_read /dev/nvme0n1p1} ⇢ ${diskio_write /dev/nvme0n1p1}   ${fs_bar 6,200 /boot}   ${fs_used /boot} / ${fs_size /boot}
 Home        ⇠ ${diskio_read /dev/nvme0n1p2} ⇢ ${diskio_write /dev/nvme0n1p2}   ${fs_bar 6,200 /home}   ${fs_used /home} / ${fs_size /home}
 Root        ⇠ ${diskio_read /dev/nvme0n1p4} ⇢ ${diskio_write /dev/nvme0n1p4}   ${fs_bar 6,200 /}   ${fs_used /} / ${fs_size /}
 
-${color3}Samsung 980                       /dev/nvme1                  Temp:       ${hwmon nvme temp 2}°C
+${color0}${font DejaVu Sans Mono:size=10:bold}Samsung 980${font}                       /dev/nvme1                  Temp:       ${hwmon nvme temp 2}°C
 Win E       ⇠ ${diskio_read /dev/nvme1n1p2} ⇢ ${diskio_write /dev/nvme1n1p2}   ${fs_bar 6,200 /media/win_e}   ${fs_used /media/win_e} / ${fs_size /media/win_e}
 
-${color0}Seagate Ironwolf Pro              /dev/sda                    Temp:       ${hwmon drivetemp temp 1}°C
+${color2}${font DejaVu Sans Mono:size=10:bold}Seagate Ironwolf Pro${font}              /dev/sda                    Temp:       ${hwmon drivetemp temp 1}°C
 Exchange    ⇠ ${diskio_read /dev/sda1} ⇢ ${diskio_write /dev/sda1}   ${fs_bar 6,200 /media/exchange}   ${fs_used /media/exchange} / ${fs_size /media/exchange}
 Backup      ⇠ ${diskio_read /dev/sda2} ⇢ ${diskio_write /dev/sda2}   ${fs_bar 6,200 /media/backup}   ${fs_used /media/backup} / ${fs_size /media/backup}
 
-${color2}Transcend TS64GSSD340             /dev/sdb                    Temp:       -- °C
+${color3}${font DejaVu Sans Mono:size=10:bold}Transcend TS64GSSD340${font}             /dev/sdb                    Temp:       -- °C
 EFI         ⇠ ${diskio_read /dev/sdb1} ⇢ ${diskio_write /dev/sdb1}   ${fs_bar 6,200 /boot/efi}   ${fs_used /boot/efi} / ${fs_size /boot/efi}
 Playground  ⇠ ${diskio_read /dev/sdb2} ⇢ ${diskio_write /dev/sdb2}   ${fs_bar 6,200 /media/playground}   ${fs_used /media/playground} / ${fs_size /media/playground}
-
-${color7}Mediatek MT7922                   Address:     ${addr wlp12s0}
+${hr 1}
+${color5}${hr 1}
+${font DejaVu Sans Mono:size=10:bold}Mediatek MT7922${font}                   ${addr wlp12s0}
 Current: ⇣ ${downspeed wlp12s0}   ⇡ ${upspeed wlp12s0}    Total: ⇣ ${totaldown wlp12s0}   ⇡ ${totalup wlp12s0}
+${color6}${hr 1}
 ]];
