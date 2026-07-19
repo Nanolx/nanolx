@@ -119,7 +119,11 @@ Depends:
  lsd,
  ugrep,
  fzf,
- gdu
+ gdu,
+ procs,
+ broot,
+ zoxide,
+ dust
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
 
