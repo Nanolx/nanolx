@@ -117,7 +117,9 @@ Depends:
  thefuck,
  lolcat,
  lsd,
- ugrep
+ ugrep,
+ fzf,
+ gdu
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
 
