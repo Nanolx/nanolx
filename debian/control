@@ -273,7 +273,8 @@ Depends:
  codespell,
  shellcheck,
  licensecheck,
- pycodestyle
+ pycodestyle,
+ git-delta,
 Description: Collection of cli development tools
  This meta-package installs cli development tools
 
