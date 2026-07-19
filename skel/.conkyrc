@@ -47,7 +47,7 @@ conky.config = {
 
 conky.text = [[
 ${color3}${hr 1}
-${font DejaVu Sans Mono:size=10:bold}${exec [ -f /etc/os-release ] && awk -F= '/^NAME=/ {gsub(/"/, "", $2); print $2}' /etc/os-release || lsb-release -ds}${font}                   ${machine}${color0}${alignr}${kernel}
+${font DejaVu Sans Mono:size=10:bold}${exec [ -f /etc/os-release ] && awk -F= '/^NAME=/ {gsub(/"/, "", $2); print $2}' /etc/os-release || lsb-release -ds}${font}                  ${machine}${color0}${alignr}${kernel}
 
 ${color7}${time %d.%m.%Y}                        ${time %k:%M:%S}${alignr}${uptime}
 ${hr 1}

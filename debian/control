@@ -112,7 +112,12 @@ Depends:
  rdfind,
  eta,
  duf,
- organize
+ dikus,
+ organize,
+ thefuck,
+ lolcat,
+ lsd,
+ ugrep
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
 
@@ -130,7 +135,8 @@ Depends:
  ibus-table-compose,
  sddm,
  xinput,
- ydotool
+ ydotool,
+ czkawka-gui
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
 
@@ -212,7 +218,8 @@ Depends:
  streamripper,
  ffmpeg,
  cdparanoia,
- imagemagick
+ imagemagick,
+ gpu-screen-recorder-cli
 Description: Collection of cli media tools
  This meta-package installs cli media tools.
 
