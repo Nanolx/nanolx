@@ -25,7 +25,7 @@ install:
 	done
 	# sbin scripts
 	mkdir -p $(DESTDIR)/usr/sbin/
-	for sscript in apt ctx orbit pam-yubikey refind skel; do \
+	for sscript in apt backup ctx orbit pam-yubikey refind skel; do \
 		install -m755 scripts/nanolx-$$sscript $(DESTDIR)/usr/sbin/; \
 	done
 	# apt sources and configuration files
@@ -41,6 +41,8 @@ install:
 	for conf in scripts/*.conf scripts/pulseaudio-dummy scripts/*.json; do \
 		install -m644 $$conf $(DESTDIR)/usr/share/nanolx/; \
 	done
+	install -m644 scripts/nanolx-backup.service scripts/nanolx-backup.timer \
+		$(DESTDIR)/usr/share/nanolx/
 	# manpages
 	mkdir -p $(DESTDIR)/usr/share/man/man1/
 	for man in man/*.1; do \

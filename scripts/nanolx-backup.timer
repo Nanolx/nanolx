@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer for rsync backup for @SOURCE@
+
+[Timer]
+OnCalendar=@PERIOD@
+Persistent=true
+RandomizedDelaySec=15m
+
+[Install]
+WantedBy=timers.target

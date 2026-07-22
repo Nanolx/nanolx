@@ -1,0 +1,7 @@
+[Unit]
+Description=rsync backup for @SOURCE@
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rsync -aAXv --delete @SOURCE@ @DEST@

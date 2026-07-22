@@ -1,0 +1,90 @@
+#!/bin/bash
+
+version="0.0.1"
+reldate="2026/07/22"
+
+SYSDIR=/etc/systemd/system
+
+if [ -f nanolx-backup ]; then
+    SERVICE="nanolx-backup.service"
+    TIMER="nanolx-backup.timer"
+else
+    CFGDIR=/usr/share/nanolx
+    SERVICE="${CFGDIR}/nanolx-backup.service"
+    TIMER="${CFGDIR}/nanolx-backup.timer"
+fi
+
+#sudo systemctl status <timer>
+#sudo systemctl list-timers | grep nanolx-backup
+
+backup_create () {
+    # ensure trailing /
+    srcdir="${1%/}/"
+    destdir="${2%/}/"
+    period="${3:-daily}"
+
+    # if systemd doesn't recognize the value of period, fallback to daily aswell
+    if ! systemd-analyze calendar "${period}" &>/dev/null; then
+        echo "period \"${period}\" not supported by systemd, falling back to \"daily\"."
+        period="daily"
+    fi
+
+    # cleanup srcdir so it's usable as file name for service
+    # eg.: /home/testuser -> .home.testuser
+    name=$(echo "${srcdir%/}" | sed -e 's/ /_/g;s,/,.,g' -e 's/[^a-zA-Z0-9._-]//g')
+    service="nanolx-backup${name}.service"
+    timer="nanolx-backup${name}.timer"
+
+    if [ ! -d "${srcdir}" ]; then
+        echo "Source directory: ${srcdir} does not exist!"
+        exit 1
+    fi
+
+    if [ ! -d "$(dirname ${destdir})" ]; then
+        echo "Toplevel directory: $(dirname ${destdir}) for backup does not exist!"
+        exit 1
+    fi
+
+    sed -e "s#@SOURCE@#${srcdir}#;s#@DEST@#${destdir}#" "${SERVICE}" > \
+        "${SYSDIR}/${service}"
+
+    sed -e "s#@SOURCE@#${srcdir}#;s#@PERIOD@#${period}#" "${TIMER}" > \
+        "${SYSDIR}/${timer}"
+
+    systemctl daemon-reload
+    systemctl enable --now "${timer}"
+}
+
+case "${1}" in
+    create )
+        backup_create "${2}" "${3}" "${4}"
+    ;;
+
+    delete | list | status )
+        echo "nothing yet"
+    ;;
+
+    help | * )
+        echo "nanolx-backup v${version} (${reldate})
+© 2026 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+usage   nanolx-backup [option], where [option] is one of:
+
+    create source destination period
+        period is optional, any value known to systemd (fallback is 'daily')
+
+        typically: hourly, daily, weekly, monthly, quarterly or yearly
+
+        others: Mon,Wed,Fri       (backup on theese days)
+                \"Mon..Fri 22:00\"  (backup monday to friday on 22:00 (10:00 PM))
+                    since this period contains a space, quote it
+                use 'systemd-analyze calendar [period]' to validate
+
+    delete  **not yet implemented**
+    list    **not yet implemented**
+    status  **not yet implemented**
+"
+    ;;
+esac
