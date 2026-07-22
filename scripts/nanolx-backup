@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.0.1"
+version="0.0.2"
 reldate="2026/07/22"
 
 SYSDIR=/etc/systemd/system
@@ -60,8 +60,32 @@ case "${1}" in
         backup_create "${2}" "${3}" "${4}"
     ;;
 
-    delete | list | status )
-        echo "nothing yet"
+    list )
+        systemctl list-timers --all "nanolx-backup*"
+    ;;
+
+    list-short )
+        systemctl list-timers --all "nanolx-backup*" | \
+            gawk '/nanolx-backup/{print $(NF-1)}'
+    ;;
+
+    status )
+        TIMERS=$(systemctl list-timers --all "nanolx-backup*" | \
+            gawk '/nanolx-backup/{print $(NF-1)}')
+        if [ -n "${TIMERS[@]}" ]; then
+            STRING="TIMER ACTIVE ENABLED"
+            for timer in "${TIMERS[@]}"; do
+                # remove nanolx-backup prefix and .timer suffix
+                _timer="${timer%.timer}"
+                _timer="${_timer#nanolx-backup}"
+                _active="$(systemctl is-active "${timer}")"
+                _enabled="$(systemctl is-enabled "${timer}")"
+                STRING+="\n${_timer} ${_active} ${_enabled}"
+            done
+            echo -e "${STRING}" | column -t
+        else
+            echo "No timers created by nanolx-backup"
+        fi
     ;;
 
     help | * )
@@ -82,9 +106,16 @@ usage   nanolx-backup [option], where [option] is one of:
                     since this period contains a space, quote it
                 use 'systemd-analyze calendar [period]' to validate
 
+    list
+        list timers created by nanolx-backup
+
+    list-short
+        list timers created by nanolx-backup (names only)
+
+    status
+        show status of timers created by nanolx-backup
+
     delete  **not yet implemented**
-    list    **not yet implemented**
-    status  **not yet implemented**
 "
     ;;
 esac
