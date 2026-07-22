@@ -31,7 +31,9 @@ backup_create () {
 
     # cleanup srcdir so it's usable as file name for service
     # eg.: /home/testuser -> .home.testuser
-    name=$(echo "${srcdir%/}" | sed -e 's/ /_/g;s,/,.,g' -e 's/[^a-zA-Z0-9._-]//g')
+    # use [:alnum:] for all alphanumeric chars, not just latin
+    # and to be double safe enforce C.UTF-8 locale
+    name=$(echo "${srcdir%/}" | LC_ALL=C.UTF-8 sed 's,/,.,g;s/[^[:alnum:]._-]//g')
     service="nanolx-backup${name}.service"
     timer="nanolx-backup${name}.timer"
 
