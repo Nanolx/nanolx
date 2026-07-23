@@ -1,0 +1,59 @@
+.TH nanolx-backup 1 "2026 Jul 23"
+.SH NAME
+nanolx-backup
+.SH SYNOPSIS
+nanolx-backup [create \fIsource\fP \fIdestination\fP \fIperiod\fP] [list]
+[list-short] [status] [enable] [disable] [delete]
+.SH DESCRIPTION          \" Section Header - required - don't modify
+nanolx-backup schedules regular backups using systemd timers and let's you manage
+those timers.
+
+SH OPTIONS
+nanolx-backup knows the following options
+.TP 4
+.B create \fIsource\fP \fIdestination\fP \fIperiod\fP
+period is optional, any value known to systemd (fallback is 'daily')
+
+typically: hourly, daily, weekly, monthly, quarterly or yearly
+
+others:
+    Mon,Wed,Fri       (backup on theese days)
+    \"Mon..Fri 22:00\"  (backup monday to friday on 22:00 (10:00 PM))
+
+since this period contains a space, quote it. use 'systemd-analyze calendar [period]'
+to validate, if the given period is invalid, the script falls back to 'daily' aswell.
+.TP
+.B list
+list all timers created by nanolx-backup, with full information on enabled timers,
+and limited information for disabled timers.
+.TP
+.B list-short
+list all timers created by nanolx-backup, names only
+.TP
+.B status
+show the status of all timers created by nanolx-backup
+.TP
+.B enable
+creates a shell menu to select and enable nanolx-backup timers
+.TP
+.B disable
+creates a shell menu to select and disable nanolx-backup timers
+.TP
+.B delete
+creates a shell menu to select, disable and delete nanolx-backup timers
+.PP
+
+.SH FILES
+.TP 15
+/usr/share/nanolx/nanolx-backup.service
+nanolx-backup template systemd service
+
+.TP
+/usr/share/nanolx/nanolx-backup.timer
+nanolx-backup template systemd timer
+
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
