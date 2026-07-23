@@ -80,7 +80,7 @@ install:
 		$(DESTDIR)/usr/lib/x86_64-linux-gnu/libjpeg.so.8
 	# systemd service
 	mkdir -p $(DESTDIR)/etc/systemd/user/
-	install -m755 systemd/ydotoold.service /etc/systemd/user/
+	install -m755 systemd/ydotoold.service $(DESTDIR)/etc/systemd/user/
 
 update-conf:
 	mkdir -p $(DESTDIR)/usr/share/nanolx/
