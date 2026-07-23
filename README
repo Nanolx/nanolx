@@ -32,6 +32,7 @@ use
    make update-conf
 
 On non Debian-based distributions you'll only be able to use the scripts:
+    - nanolx-backup (if systemd is in use)
     - nanolx-ctx
     - nanolx-pam-yubikey
     - nanolx-refind
@@ -173,6 +174,8 @@ Scripts
 Nanolx includes a set of scripts, all scripts ship their own manpage.
 
 nanolx-base:
+    nanolx-backup   create and manage systemd timers for rsync backups
+
     nanolx-skel     enable / disable nanolx skel (/usr/share/nanolx/skel)
                     for newly created users instead of /etc/skel.
                     Note: you most likely /don't/ want that...
