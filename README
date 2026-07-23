@@ -180,6 +180,10 @@ nanolx-base:
                     for newly created users instead of /etc/skel.
                     Note: you most likely /don't/ want that...
 
+    conky-on-second-screen  this uses ydotool to force conky on second screen
+                            this part of the nanolx skel files, so not in /usr
+                            see skel/bin if you want to check it.
+
 nanolx-apt-sources:
     nanolx-apt      manages additional repository configurations, including
                     key handling, aswell as matching pinning and minor apt
@@ -216,6 +220,10 @@ nanolx-themes:
     nanolx-refind   simple script to manage rEFInd bootloader themes,
                     supports showing installed themes, setting theme,
                     showing current theme in use or reverting to default.
+
+nanolx-x11:
+    ydotoold.service    not a script, but a simple systemd user unit for running
+                        ydotoold as a service.
 
 Citrix
 =======================================
