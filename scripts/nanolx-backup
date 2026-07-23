@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.1.0"
+version="0.1.1"
 reldate="2026/07/23"
 
 SYSDIR=/etc/systemd/system
@@ -92,15 +92,13 @@ case "${1}" in
     ;;
 
     list-short )
-        systemctl list-timers --all "nanolx-backup*" | \
-            gawk '/nanolx-backup/{print $(NF-1)}'
         systemctl list-unit-files --type=timer "nanolx-backup*" | \
             gawk '/nanolx-backup/{print $1}'
     ;;
 
     status )
-        TIMERS=$(systemctl list-timers --all "nanolx-backup*" | \
-            gawk '/nanolx-backup/{print $(NF-1)}')
+        TIMERS=$(systemctl list-unit-files --type=timer "nanolx-backup*" | \
+            gawk '/nanolx-backup/{print $1}')
         if [ -n "${TIMERS[@]}" ]; then
             STRING="TIMER ACTIVE ENABLED"
             for timer in "${TIMERS[@]}"; do
