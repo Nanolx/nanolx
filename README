@@ -44,8 +44,8 @@ Release Information
 
 see debian/changelog for changes
 
-Version:    4.7
-Release:    20260711
+Version:    4.8
+Release:    20260723
 
 Installation on Debian GNU/Linux
 =======================================
@@ -190,6 +190,7 @@ nanolx-apt-sources:
 nanolx-apt-tools:
     repokit         personal wrapper script for reprepro with config file
                     support and many features.
+
     nanolx-orbit    manages installation of 3rdparty packages, including some
                     non-free packages, including checking sha256sums. Currently
                     supported: discord, citrix, citrix-usb, zoom + vdi-plugin,

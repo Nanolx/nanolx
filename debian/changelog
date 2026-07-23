@@ -1,3 +1,50 @@
+nanolx (1:4.8.20260723-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-apt-tools
+    - nanolx-orbit version updates:
+      - discord 1.0.150
+      - zoom 7.1.5
+      - zoomvdi-plugin 7.11
+  * nanolx-base
+    - update bashrc
+    - update conkyrc
+    - update bashstyle-ng.ini
+    - add conky-on-second-screen script (to skel)
+    - add nanolx-backup script (see man nanolx-backup)
+  * nanolx-cli
+    - new dependencies:
+      - diskus
+      - thefuck
+      - lolcat
+      - lsd
+      - ugrep
+      - fzf
+      - gdu
+      - procs
+      - broot
+      - zoxide
+      - dust
+  * nanolx-devel-cli
+    - new dependency:
+      - git-delta
+  * nanolx-themes
+    - update debian-mac-style plymouth theme
+    - Plasmoids added:
+      - Andromeda app launcher
+      - Panel Colorizer
+      - Advanced Separator
+    - KWin Scripts added:
+      - Geometry Change
+      - KNeko
+      - Kzones
+      - Remember Window Positions
+  * nanolx-x11
+    - add dependency on xinput and ydotool
+    - add systemd user unit for ydotoold
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 23 Jul 2026 20:30:24 +0200
+
 nanolx (1:4.7.20260711-1nano) unstable; urgency=low
 
   * New upstream release
