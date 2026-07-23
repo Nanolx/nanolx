@@ -1,3 +1,7 @@
+usr/sbin/nanolx-backup
 usr/sbin/nanolx-skel
+usr/share/nanolx/nanolx-backup.service
+usr/share/nanolx/nanolx-backup.timer
 usr/share/nanolx/skel/
+usr/share/man/man1/nanolx-backup.1.gz
 usr/share/man/man1/nanolx-skel.1.gz
