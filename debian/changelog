@@ -24,7 +24,7 @@ nanolx (1:4.8.20260723-1nano) unstable; urgency=low
       - procs
       - broot
       - zoxide
-      - dust
+      - du-dust
   * nanolx-devel-cli
     - new dependency:
       - git-delta

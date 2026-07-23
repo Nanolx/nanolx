@@ -123,7 +123,7 @@ Depends:
  procs,
  broot,
  zoxide,
- dust
+ du-dust
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
 
