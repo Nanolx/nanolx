@@ -1,256 +1,255 @@
 #!/bin/bash
 #
-# © 2015 - 2019 Christopher Roy Bratusek <nano@jpberlin.de>
+# © 2015 - 2026 Christopher Roy Bratušek <nano@jpberlin.de>
 #
 # License: GNU GPL v3+
 #
 # Various functions to aid maintanance of an apt repo and building packages
 #
 # See repokit.conf for example configuration. Save that file as
-#	${HOME}/.repokit.conf
+#   ${HOME}/.repokit.conf
 #
 
-version="1.5.4"
-reldate="2019/08/24"
+version="1.5.5"
+reldate="2026/07/29"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
-	source "${HOME}/.repokit.conf"
-else	echo "no ${HOME}/.repokit.conf exists"
-	exit 1
+    source "${HOME}/.repokit.conf"
+else    echo "no ${HOME}/.repokit.conf exists"
+    exit 1
 fi
 
 error () {
-	echo -e "${@}"
-	exit 1
+    echo -e "${@}"
+    exit 1
 }
 
 reprepro_add () {
-	reprepro -Vb "${REPOKIT_PATH}" include "${REPOKIT_DIST}" "${1}"
+    reprepro -Vb "${REPOKIT_PATH}" include "${REPOKIT_DIST}" "${1}"
 }
 
 reprepro_remove () {
-	reprepro -Vb "${REPOKIT_PATH}" remove "${REPOKIT_DIST}" "${1}"
+    reprepro -Vb "${REPOKIT_PATH}" remove "${REPOKIT_DIST}" "${1}"
 }
 
 debhelper_build_orig () {
-	if [[ -d "${1}" ]]; then
-		tarname="$(basename "${1}")"
-		tardir="$(dirname "${1}")"
-		tar cf "${tarname}".orig.tar -C "${tardir}" "${tarname}"
-		${REPOKIT_ORIG_COMPRESSOR} "${REPOKIT_LEVL_COMPRESSOR}" "${tarname}".orig.tar
-	fi
+    if [[ -d "${1}" ]]; then
+        tarname="$(basename "${1}")"
+        tardir="$(dirname "${1}")"
+        tar cf "${tarname}".orig.tar -C "${tardir}" "${tarname}"
+        ${REPOKIT_ORIG_COMPRESSOR} "${REPOKIT_LEVL_COMPRESSOR}" "${tarname}".orig.tar
+    fi
 }
 
 debhelper_prepare () {
-	dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "$(basename "${PWD}")" || exit 1
-	rm -f debian/*.ex debian/README* debian/*.EX
-	sed -e "s/1) unstable;urgency=.*/${REPOKIT_REV}) unstable; urgency=low/g" -i debian/changelog
-	sed -e 's/\#export/export/g' -i debian/rules
-	sed -e 's/<insert.*//g' \
-		-e '/\#Vcs/d' \
-		-e 's/Section.*/Section:/g' \
-		-i debian/control
+    dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "$(basename "${PWD}")" || exit 1
+    rm -f debian/*.ex debian/README* debian/*.EX
+    sed -e "s/1) unstable;urgency=.*/${REPOKIT_REV}) unstable; urgency=low/g" -i debian/changelog
+    sed -e 's/\#export/export/g' -i debian/rules
+    sed -e 's/<insert.*//g' \
+        -e '/\#Vcs/d' \
+        -e 's/Section.*/Section:/g' \
+        -i debian/control
 }
 
 debhelper_get_scripts () {
-	tmp=$(basename "${PWD}")
-	package=${tmp/_*}
-	version=${tmp/*_}
+    tmp=$(basename "${PWD}")
+    package=${tmp/_*}
+    version=${tmp/*_}
 
-	if [[ -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
-		cp -r "${REPOKIT_BUILD_SCRIPTS}/${package}" "${PWD}/debian"
-		debhelper_add_release
-	else
-		error "no packaging scripts for ${package} found"
-	fi
+    if [[ -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
+        cp -r "${REPOKIT_BUILD_SCRIPTS}/${package}" "${PWD}/debian"
+        debhelper_add_release
+    else
+        error "no packaging scripts for ${package} found"
+    fi
 }
 
 debhelper_add_release () {
-	tmp=$(basename "${PWD}")
-	package=${tmp/_*}
-	version=${tmp/*_}
+    tmp=$(basename "${PWD}")
+    package=${tmp/_*}
+    version=${tmp/*_}
 
-	sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
+    sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
 }
 
 debhelper_put_scripts () {
-	local tmp=$(basename "${PWD}")
-	local package=${tmp/_*}
-	local version=${tmp/*_}
+    local tmp=$(basename "${PWD}")
+    local package=${tmp/_*}
+    local version=${tmp/*_}
 
-	[ -z "${package}" ] && error "could not determine package name, stop."
-	[ -z "${version}" ] && error "could not determine package version, stop."
+    [ -z "${package}" ] && error "could not determine package name, stop."
+    [ -z "${version}" ] && error "could not determine package version, stop."
 
-	if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
-		mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
-		status="[new]"
-	else	status="[update]"
-	fi
+    if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
+        mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
+        status="[new]"
+    else    status="[update]"
+    fi
 
-	cp -r debian/* "${REPOKIT_BUILD_SCRIPTS}/${package}"
-	cd "${REPOKIT_BUILD_SCRIPTS}"
-	[[ ${status} == "[new]" ]] && git add "${package}"
-	git commit "${package}" -m "${package} ${status} ${version}"
+    cp -r debian/* "${REPOKIT_BUILD_SCRIPTS}/${package}"
+    cd "${REPOKIT_BUILD_SCRIPTS}"
+    [[ ${status} == "[new]" ]] && git add "${package}"
+    git commit "${package}" -m "${package} ${status} ${version}"
 }
 
 schroot_list () {
-	for chroot in "${REPOKIT_SCHROOTS[@]}"; do
-		echo "${chroot}"
-	done
+    for chroot in "${REPOKIT_SCHROOTS[@]}"; do
+        echo "${chroot}"
+    done
 }
 
 schroot_copy () {
-	sudo cp -r "${@}" /var/lib/sbuild/build/
+    sudo cp -r "${@}" /var/lib/sbuild/build/
 }
 
 schroot_enter () {
-	[[ -d /var/lib/schroot/chroots/${1} ]] && \
-		sudo schroot -c source:"${1}" -u root --directory="${2:-/build}"
+    [[ -d /var/lib/schroot/chroots/${1} ]] && \
+        sudo schroot -c source:"${1}" -u root --directory="${2:-/build}"
 }
 
 source_dist () {
-	if [[ -d ${1} ]]; then
-		dir=$(readlink -m "${1}")
+    if [[ -d ${1} ]]; then
+        dir=$(readlink -m "${1}")
 
-		for comp in "${REPOKIT_DIST_COMPRESSOR[@]}"; do
-			compexe=${comp/*:}
-			compsuf=${comp/:*}
+        for comp in "${REPOKIT_DIST_COMPRESSOR[@]}"; do
+            compexe=${comp/*:}
+            compsuf=${comp/:*}
 
-			tarname="$(basename "${1}")"
-			tardir="$(dirname "${1}")"
-			tar cf "${dir}".tar -C "${tardir}" "${tarname}"
-			${compexe} "${REPOKIT_LEVL_COMPRESSOR}" "${dir}.tar"
+            tarname="$(basename "${1}")"
+            tardir="$(dirname "${1}")"
+            tar cf "${dir}".tar -C "${tardir}" "${tarname}"
+            ${compexe} "${REPOKIT_LEVL_COMPRESSOR}" "${dir}.tar"
 
-			[[ ${REPOKIT_SHA256} == True ]] && \
-				sha256sum "${dir}.tar.${compsuf}" > "${dir}.tar.${compsuf}.sha256"
+            [[ ${REPOKIT_SHA256} == True ]] && \
+                sha256sum "${dir}.tar.${compsuf}" > "${dir}.tar.${compsuf}.sha256"
 
-			[[ ${REPOKIT_SHA256} == True && ${REPOKIT_SIGN} == True ]] && \
-				gpg --sign --detach-sign "${dir}.tar.${compsuf}.sha256"
-		done
-	fi
+            [[ ${REPOKIT_SHA256} == True && ${REPOKIT_SIGN} == True ]] && \
+                gpg --sign --detach-sign "${dir}.tar.${compsuf}.sha256"
+        done
+    fi
 }
 
 cross_build () {
-	sbuild --no-arch-all -d "${dist}" -c "${dist}-${arch}" \
-		--host="${arch}" --build="${arch}" "${REPOKIT_SBUILD_FLAGS}" \
-		"${@}"
+    sbuild --no-arch-all -d "${dist}" -c "${dist}-${arch}" \
+        --host="${arch}" --build="${arch}" "${REPOKIT_SBUILD_FLAGS}" \
+        "${@}"
 }
 
 ftp_push () {
-	if [ -f ${HOME}/.repokit.pw ]; then
-		REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
-	else	error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
-	fi
+    if [ -f ${HOME}/.repokit.pw ]; then
+        REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
+    else    error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
+    fi
 
-	ftpsync-ssl "${REPOKIT_PATH}/pool/" \
-		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/pool/"
-	ftpsync-ssl "${REPOKIT_PATH}/dists/" \
-		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/dists/"
-	ftpsync-ssl "${REPOKIT_PATH}/logs/" \
-		"ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}/${REPOKIT_FTP_DIR}/logs/"
+    for dir in pool dists logs; do
+        lftp -c "set ssl:check-hostname no; \
+                open ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}; \
+                mirror -R -L --delete ${REPOKIT_PATH}/${dir}/ /${REPOKIT_FTP_DIR}/${dir}/"
+    done
 }
 
 cmdarg="${1}"
 shift
 
 case ${cmdarg} in
-	-a | add )
-		for arg in "${@}"; do
-			reprepro_add "${arg}"
-		done
-	;;
+    -a | add )
+        for arg in "${@}"; do
+            reprepro_add "${arg}"
+        done
+    ;;
 
-	-r | remove )
-		for arg in "${@}"; do
-			reprepro_remove "${arg}"
-		done
-	;;
+    -r | remove )
+        for arg in "${@}"; do
+            reprepro_remove "${arg}"
+        done
+    ;;
 
-	-o | orig )
-		for arg in "${@}"; do
-			debhelper_build_orig "$(readlink -m "${arg}")"
-		done
-	;;
+    -o | orig )
+        for arg in "${@}"; do
+            debhelper_build_orig "$(readlink -m "${arg}")"
+        done
+    ;;
 
-	-p | prepare )
-		debhelper_prepare "${@}"
-	;;
+    -p | prepare )
+        debhelper_prepare "${@}"
+    ;;
 
-	-b | build )
-		dpkg-buildpackage "${REPOKIT_BUILD_FLAGS}" -rfakeroot "${@}"
-	;;
+    -b | build )
+        dpkg-buildpackage "${REPOKIT_BUILD_FLAGS}" -rfakeroot "${@}"
+    ;;
 
-	-c | clean )
-		fakeroot debian/rules clean
-	;;
+    -c | clean )
+        fakeroot debian/rules clean
+    ;;
 
-	-sl | slist )
-		schroot_list
-	;;
+    -sl | slist )
+        schroot_list
+    ;;
 
-	-sc | scopy )
-		schroot_copy "${@}"
-	;;
+    -sc | scopy )
+        schroot_copy "${@}"
+    ;;
 
-	-se | senter )
-		schroot_enter "${@}"
-	;;
+    -se | senter )
+        schroot_enter "${@}"
+    ;;
 
-	-d | dist )
-		for arg in "${@}"; do
-			source_dist "${arg}"
-		done
-	;;
+    -d | dist )
+        for arg in "${@}"; do
+            source_dist "${arg}"
+        done
+    ;;
 
-	-x | crossbuild )
-		dist=${1/-*}
-		arch=${1/*-}
-		shift
+    -x | crossbuild )
+        dist=${1/-*}
+        arch=${1/*-}
+        shift
 
-		cross_build "${@}"
-	;;
+        cross_build "${@}"
+    ;;
 
-	-f | ftp )
-		ftp_push
-	;;
+    -f | ftp )
+        ftp_push
+    ;;
 
-	-dg | get )
-		debhelper_get_scripts
-	;;
+    -dg | get )
+        debhelper_get_scripts
+    ;;
 
-	-dp | put )
-		debhelper_put_scripts
-	;;
-	
-	-dr | release )
-		debhelper_add_release
-	;;
+    -dp | put )
+        debhelper_put_scripts
+    ;;
 
-	* )
-		echo "repokit ${version} (${reldate})
+    -dr | release )
+        debhelper_add_release
+    ;;
 
-© 2015 - 2019 Christopher Roy Bratusek <nano@jpberlin.de>
+    * )
+        echo "repokit ${version} (${reldate})
+
+© 2015 - 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
 Options
-short	long		Parameters	Description
+short   long        Parameters  Description
 
--a	add		<.changes>	add package to repository
--r	remove		<packagename>	remove package from repository
--o	orig		<directory>	create orig tarball from source tree
--p	prepare		<license>	prepare source directory for package build
--b	build		---		build package using dpkg-buildpackage
--c	clean		---		clean package build directory
--sl	slist		---		list availabe schroots
--sc	scopy		<files>		copy files to schroot build directory
--se	senter		<schroot>	enter schroot environment as root
--d	dist		<directory>	generate tarballs, checksums and signatures for release distribution
--x	crossbuild	<.dsc>		cross build package using sbuild
--f	ftp		---		push local apt repo to remote using ftpsync
--dg	get		---		get packaging scripts for current package (if any)
--dr	release		---		add new release to debian/changelog
--dp	put		---		push packaging scripts for current package to script repo"
-	;;
+-a  add     <.changes>  add package to repository
+-r  remove      <packagename>   remove package from repository
+-o  orig        <directory> create orig tarball from source tree
+-p  prepare     <license>   prepare source directory for package build
+-b  build       ---     build package using dpkg-buildpackage
+-c  clean       ---     clean package build directory
+-sl slist       ---     list availabe schroots
+-sc scopy       <files>     copy files to schroot build directory
+-se senter      <schroot>   enter schroot environment as root
+-d  dist        <directory> generate tarballs, checksums and signatures for release distribution
+-x  crossbuild  <.dsc>      cross build package using sbuild
+-f  ftp     ---     push local apt repo to remote using wput
+-dg get     ---     get packaging scripts for current package (if any)
+-dr release     ---     add new release to debian/changelog
+-dp put     ---     push packaging scripts for current package to script repo"
+    ;;
 
 esac
