@@ -246,7 +246,7 @@ short   long        Parameters  Description
 -se senter      <schroot>   enter schroot environment as root
 -d  dist        <directory> generate tarballs, checksums and signatures for release distribution
 -x  crossbuild  <.dsc>      cross build package using sbuild
--f  ftp     ---     push local apt repo to remote using wput
+-f  ftp     ---     push local apt repo to remote using lftp
 -dg get     ---     get packaging scripts for current package (if any)
 -dr release     ---     add new release to debian/changelog
 -dp put     ---     push packaging scripts for current package to script repo"
