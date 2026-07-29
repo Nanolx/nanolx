@@ -211,6 +211,10 @@ nanolx-citrix-config:
                     shipped with Debian (or Ubuntu). It has more features, be
                     sure to check out, if you use citrix.
 
+nanolx-net:
+    hugo-push       simple script to build a hugo website and push it to webspace
+                    using lftp, uses a configuration file.
+
 nanolx-security:
     nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
                         is plugged in, using PAM, currently hooked-into PAM
