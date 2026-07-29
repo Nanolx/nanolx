@@ -195,7 +195,8 @@ Depends:
  syncthing-gtk | syncthingtray,
  nextcloud-desktop,
  dolphin-nextcloud,
- privoxy
+ privoxy,
+ hugo
 Description: Collection of network applications
  This meta-package installs network applications.
 

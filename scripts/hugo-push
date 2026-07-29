@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+# © 2026 Christopher Roy Bratušek <nano@jpberlin.de>
+#
+# License: GNU GPL v3+
+#
+# See hugo-push.conf for example configuration. Save that file as
+#   ${HOME}/.hugo-push.conf
+#
+
+version="0.0.1"
+reldate="2026/07/29"
+
+if [[ -f ${HOME}/.repokit.conf ]]; then
+        source "${HOME}/.hugo-push.conf"
+else    echo "no ${HOME}/.hugo-push.conf exists"
+    exit 1
+fi
+
+case "${@}" in
+   "" )
+        if [ -d "${HUGO_PATH}" ]; then
+            cd "${HUGO_PATH}"
+            hugo || exit 1
+            if [ -f ${HOME}/.hugo-push.pw ]; then
+                HUGO_FTP_PW=$(gpg --decrypt ${HOME}/.hugo-push.pw) || HUGO_FTP_PW=""
+            else    error "No GPG encrypted password file (${HOME}/.hugo-push.pw) found"
+            fi
+
+            lftp -c "set ssl:check-hostname no; \
+                    open ftp://${HUGO_FTP_USR}:${HUGO_FTP_PW}@${HUGO_FTP_SRV}; \
+                    mirror -R -L ${HUGO_PATH}/public/ /${HUGO_FTP_DIR}"
+        else
+            echo "no hugo repository at ${HUGO_PATH}"
+        fi
+    ;;
+
+    -h | --help | * )
+        echo "hugo-push ${version} (${reldate})
+
+© 2026 Christopher Roy Bratušek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+builds hugo website and uploads it to webspace using ftp, requires lftp and
+
+    ${HOME}/.hugo-push.conf
+
+see
+
+    /usr/share/nanolx/hugo-push.conf
+
+for example configuration"
+    ;;
+
+esac

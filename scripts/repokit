@@ -228,7 +228,7 @@ case ${cmdarg} in
     * )
         echo "repokit ${version} (${reldate})
 
-© 2015 - 2026 Christopher Roy Bratusek <nano@jpberlin.de>
+© 2015 - 2026 Christopher Roy Bratušek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 

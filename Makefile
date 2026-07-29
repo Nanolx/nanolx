@@ -20,7 +20,7 @@ install:
 	cp -r refind/rEFInd-digital-void/ $(DESTDIR)/boot/efi/EFI/refind/themes/
 	# user scripts
 	mkdir -p $(DESTDIR)/usr/bin/
-	for bscript in mksbuild repokit; do \
+	for bscript in mksbuild repokit hugo-push; do \
 		install -m755 scripts/$$bscript $(DESTDIR)/usr/bin/; \
 	done
 	# sbin scripts
