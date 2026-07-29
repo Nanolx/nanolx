@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.1"
-reldate="2026/05/18"
+version="3.0.2"
+reldate="2026/07/29"
 
 # configuration management in /usr/share for more flexibility
 if [ -f nanolx-apt.conf ]; then
@@ -60,11 +60,12 @@ manage_repos () {
         case ${repo} in
             debian ) manage_repos_int ;;
             nanolx ) manage_repos_int "${nanolx}" "${nanolx_store}" "${nanolx_sha}" ;;
-            liquorix ) manage_repos_int "${liquorix}" "${liquorix_store}" "${liquorix_sha256}" ;;
+            liquorix ) manage_repos_int "${liquorix}" "${liquorix_store}" "${liquorix_sha}" ;;
             winehq ) manage_repos_int "${winehq}" "${winehq_store}" "${winehq_sha}" ;;
-            i2p ) manage_repos_int "${i2p}" "${i2p_store}" "${ip2_sha256}" ;;
+            i2p ) manage_repos_int "${i2p}" "${i2p_store}" "${ip2_sha}" ;;
             deb-multimedia ) manage_repos_int "${debmultimedia_url}" \
                 "${debmultimedia_pkg}" "${debmultimedia_sha}" ;;
+            mozilla ) manage_repos_int "${mozilla}" "${mozilla_store}" "${mozilla_sha}"
             * ) echo "repository ${repo} unknown." ;;
         esac
     done

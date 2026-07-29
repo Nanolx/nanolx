@@ -189,7 +189,7 @@ nanolx-apt-sources:
                     key handling, aswell as matching pinning and minor apt
                     configuration changes (the latter both optional). Currently
                     known repos are: debian*, nanolx, liquorix, i2p, winehq,
-                    deb-multimedia. *rolls-out full suite stable->experimental
+                    deb-multimedia, mozilla. *rolls-out full suite stable->experimental
 
 nanolx-apt-tools:
     repokit         personal wrapper script for reprepro with config file
