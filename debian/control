@@ -185,7 +185,7 @@ Depends:
  thunderbird,
  firefox | firefox-esr,
  smbnetfs,
- gnu-ftpsync,
+ lftp,
  kvirc,
  openvpn | mozillavpn,
  openresolv | resolvconf,
