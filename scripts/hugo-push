@@ -11,7 +11,7 @@
 version="0.0.1"
 reldate="2026/07/29"
 
-if [[ -f ${HOME}/.repokit.conf ]]; then
+if [[ -f ${HOME}/.hugo-push.conf ]]; then
         source "${HOME}/.hugo-push.conf"
 else    echo "no ${HOME}/.hugo-push.conf exists"
     exit 1
