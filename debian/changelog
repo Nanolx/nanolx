@@ -1,3 +1,25 @@
+nanolx (1:4.9.20260730-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-apt-sources
+    - nanolx-apt
+      -  since mozillavpn now works on Debian (again) add mozilla repo
+    - nanolx-orbit version updates:
+      - discord 1.0.151
+  * nanolx-apt-tools
+    - changed dependency
+      - lftp instead of gnu-ftpsync
+    - repokit
+      - use lftp and instead of gnu-ftpsync for uploading repo via ftp
+  * nanolx-net
+    - new dependecy
+      - hugo
+    - hugo-push
+      - simple script to build a hugo website and push it to webspace using lftp,
+        uses a configuration file
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 30 Jul 2026 10:08:31 +0200
+
 nanolx (1:4.8.20260723-1nano) unstable; urgency=low
 
   * New upstream release
