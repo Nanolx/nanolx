@@ -23,6 +23,7 @@ of the packages. In that case
 would only install the included scripts (see below), configuration and themes.
 
 If you only want to update the configuration for the following scripts:
+    - hugo-push
     - repokit
     - nanolx-apt
     - nanolx-orbit
@@ -32,6 +33,7 @@ use
    make update-conf
 
 On non Debian-based distributions you'll only be able to use the scripts:
+    - hugo-push
     - nanolx-backup (if systemd is in use)
     - nanolx-ctx
     - nanolx-pam-yubikey
