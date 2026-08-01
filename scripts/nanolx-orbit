@@ -1,7 +1,15 @@
 #!/bin/bash
 
-version="0.0.9"
+version="0.1.0"
 reldate="2026/08/01"
+
+if (( EUID != 0 )); then
+    echo "nanolx-orbit must be run as root"
+    exit 1
+fi
+
+pkg_base="/var/cache/nanolx"
+mkdir -p "${pkg_base}"
 
 # version management in /usr/share for more flexibility
 echo "loading configuration (takes a few seconds because of Citrix)"
@@ -10,9 +18,6 @@ if [ -f nanolx-orbit.conf ]; then
 else
     source /usr/share/nanolx/nanolx-orbit.conf
 fi
-
-pkg_base="/var/cache/nanolx"
-mkdir -p "${pkg_base}"
 
 curl_opts="-L --progress-bar -C -"
 
