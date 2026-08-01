@@ -1,9 +1,10 @@
 #!/bin/bash
 
-version="0.0.8"
-reldate="2026/07/31"
+version="0.0.9"
+reldate="2026/08/01"
 
 # version management in /usr/share for more flexibility
+echo "loading configuration (takes a few seconds because of Citrix)"
 if [ -f nanolx-orbit.conf ]; then
     source nanolx-orbit.conf
 else
@@ -110,6 +111,14 @@ handle_packages () {
             openrgb-fansync )
                 download_package "${openrgb_fansync_url}" openrgb-effects "${openrgb_fansync_sha}" "${openrgb_fansync_url##*/}"
                 install_package "${openrgb_fansync_url##*/}"
+            ;;
+            ulauncher )
+                download_package "${ulauncher_url}" ulauncher "${ulauncher_sha}" "${ulauncher_url##*/}"
+                install_package "${ulauncher_url##*/}"
+            ;;
+            appimagelauncher )
+                download_package "${appimagelauncher_url}" appimagelauncher "${appimagelauncher_sha}" "${appimagelauncher_url##*/}"
+                install_package "${appimagelauncher_url##*/}"
             ;;
             * )
                 echo "package ${pkg} unknown"
