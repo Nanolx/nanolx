@@ -12,8 +12,8 @@ source /etc/default/useradd
 
 case ${1} in
     enable )
-        sed 's,^[#][ ]SKEL=.*,SKEL=/usr/share/nanolx/skel/,' -i /etc/default/useradd
-        sed 's,^[#][ ]SHELL=.*,SHELL=/bin/bash,' -i /etc/default/useradd
+        sed 's,^.*SKEL=.*,SKEL=/usr/share/nanolx/skel/,' -i /etc/default/useradd
+        sed 's,^.*SHELL=.*,SHELL=/bin/bash,' -i /etc/default/useradd
     ;;
 
     disable )
