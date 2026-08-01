@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.2"
-reldate="2026/07/29"
+version="3.0.3"
+reldate="2026/08/01"
 
 # configuration management in /usr/share for more flexibility
 if [ -f nanolx-apt.conf ]; then
@@ -18,7 +18,7 @@ manage_repos_int () {
             *.asc | *.gpg | *.key )
                 wget "${1}" -O "${2}"
                 if ! echo "${3}" "${2}" | sha256sum -c &>/dev/null; then
-                    echo "SHA256 checksum for ${out} is wrong"
+                    echo "SHA256 checksum for ${2} is wrong"
                     rm "${2}"
                 else
                     echo "enabling repo: ${repo}"
@@ -28,12 +28,22 @@ manage_repos_int () {
             *.deb )
                 wget "${1}" -O "/var/cache/nanolx/${2}"
                 if ! echo "${3}" "/var/cache/nanolx/${2}" | sha256sum -c &>/dev/null; then
-                    echo "SHA256 checksum for ${out} is wrong"
+                    echo "SHA256 checksum for ${2} is wrong"
                     rm "/var/cache/nanolx/${2}"
                 else
                     dpkg -i "/var/cache/nanolx/${2}"
                     echo "enabling repo: ${repo}"
                     cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                fi
+            ;;
+            0x* )
+                gpg --keyserver "${3}" --recv-keys "${1}"
+                gpg --export "${1}" > "${2}"
+                if [ -f "${2}" ]; then
+                    echo "enabling repo: ${repo}"
+                    cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                else
+                    echo "failed to grab key ${1} from ${3}"
                 fi
             ;;
             "" )
@@ -65,7 +75,7 @@ manage_repos () {
             i2p ) manage_repos_int "${i2p}" "${i2p_store}" "${ip2_sha}" ;;
             deb-multimedia ) manage_repos_int "${debmultimedia_url}" \
                 "${debmultimedia_pkg}" "${debmultimedia_sha}" ;;
-            mozilla ) manage_repos_int "${mozilla}" "${mozilla_store}" "${mozilla_sha}"
+            mozilla ) manage_repos_int "${mozilla}" "${mozilla_store}" "${mozilla_sha}" ;;
             * ) echo "repository ${repo} unknown." ;;
         esac
     done
