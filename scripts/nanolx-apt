@@ -3,6 +3,11 @@
 version="3.0.3"
 reldate="2026/08/01"
 
+if (( EUID != 0 )); then
+    echo "nanolx-apt must be run as root"
+    exit 1
+fi
+
 # configuration management in /usr/share for more flexibility
 if [ -f nanolx-apt.conf ]; then
     source nanolx-apt.conf

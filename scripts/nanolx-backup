@@ -3,6 +3,11 @@
 version="0.1.1"
 reldate="2026/07/23"
 
+if (( EUID != 0 )); then
+    echo "nanolx-backup must be run as root"
+    exit 1
+fi
+
 SYSDIR=/etc/systemd/system
 
 if [ -f nanolx-backup ]; then

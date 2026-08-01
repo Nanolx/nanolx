@@ -3,6 +3,11 @@
 version="0.0.2"
 reldate="2026/05/18"
 
+if (( EUID != 0 )); then
+    echo "nanolx-refind must be run as root"
+    exit 1
+fi
+
 refind_base=$(find /boot -type d -name 'refind')
 if [ ! -d "${refind_base}" ]; then
     echo "no folder 'refind' found anywhere in /boot"

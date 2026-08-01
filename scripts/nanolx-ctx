@@ -3,6 +3,11 @@
 version="0.1.1"
 reldate="2026/07/05"
 
+if (( EUID != 0 )); then
+    echo "nanolx-ctx must be run as root"
+    exit 1
+fi
+
 ICAROOT=/opt/Citrix/ICAClient
 ICA_VER=$(${ICAROOT}/wfica -version | awk '/Version/{print $2}')
 ICA_VER=${ICA_VER%.*}

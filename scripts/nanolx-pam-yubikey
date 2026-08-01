@@ -3,6 +3,11 @@
 version="0.0.1"
 reldate="2026/05/15"
 
+if (( EUID != 0 )); then
+    echo "nanolx-pam-yubikey must be run as root"
+    exit 1
+fi
+
 pam_files=(login sddm su sudo sudo-i polkit-1 kde)
 yubi_string="auth sufficient pam_u2f.so authfile=/etc/u2f_keys userpresence=0"
 
