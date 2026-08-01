@@ -201,7 +201,7 @@ nanolx-apt-tools:
                     non-free packages, including checking sha256sums. Currently
                     supported: discord, pixes citrix, citrix-usb, citrix-epa,
                     citrix-beta, citrix-usb-beta, zoom, zoom-vdi plugin, ulauncher,
-                    appimagelauncher, openrgb plugins: effects, hwsync, fansync.
+                    appimagelauncher, kando, openrgb plugins: effects, hwsync, fansync.
 
 nanolx-devel-cli:
     mksbuild        support script for repokit (possibly outdated).

@@ -62,7 +62,11 @@ install_helper () {
 
     local -n url="${name/-/_}_url"
     local -n sha="${name/-/_}_sha"
-    local filename="${url##*/}"
+    if [ -z "${2}" ]; then
+        local filename="${url##*/}"
+    else
+        local -n filename="${name/-/_}_pkg"
+    fi
 
     download_package "${url}" "${name}" "${sha}" "${filename}"
     install_package "${filename}"
@@ -76,32 +80,11 @@ handle_packages () {
     for pkg in "${@}"; do
         noinst=false
         case ${pkg} in
-            discord | pixes | zoom-vdi | openrgb-effects | openrgb-hwsync | openrgb-fansync | ulauncher | appimagelauncher )
+            discord | pixes | zoom-vdi | openrgb-effects | openrgb-hwsync | openrgb-fansync | ulauncher | appimagelauncher | kando )
                 install_helper "${pkg}"
             ;;
-            zoom )
-                download_package "${zoom_url}" zoom "${zoom_sha}" "zoom_${zoom_ver}.deb"
-                install_package "zoom_${zoom_ver}.deb"
-            ;;
-            citrix )
-                download_package "${citrix_url}" citrix "${citrix_sha}" "${citrix_pkg}"
-                install_package "${citrix_pkg}"
-            ;;
-            citrix-usb )
-                download_package "${citrix_usb_url}" citrix-usb "${citrix_usb_sha}" "${citrix_usb_pkg}"
-                install_package "${citrix_usb_pkg}"
-            ;;
-            citrix-epa )
-                download_package "${citrix_epa_url}" citrix-epa "${citrix_epa_sha}" "${citrix_epa_pkg}"
-                install_package "${citrix_epa_pkg}"
-            ;;
-            citrix-beta )
-                download_package "${citrix_beta_url}" citrix-beta "${citrix_beta_sha}" "${citrix_beta_pkg}"
-                install_package "${citrix_beta_pkg}"
-            ;;
-            citrix-beta-usb )
-                download_package "${citrix_beta_usb_url}" citrix-beta-usb "${citrix_beta_usb_sha}" "${citrix_beta_usb_pkg}"
-                install_package "${citrix_beta_usb_pkg}"
+            zoom | citrix | citrix-usb | citrix-epa | citrix-beta | citrix-usb-beta )
+                install_helper "${pkg}" true
             ;;
             * )
                 echo "package ${pkg} unknown"
