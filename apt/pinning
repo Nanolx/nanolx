@@ -19,6 +19,10 @@ Pin: origin deb.i2p2.net
 Pin-Priority: 950
 
 Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 940
+
+Package: *
 Pin: release a=sid o=deb.debian.org
 Pin-Priority: 900
 
