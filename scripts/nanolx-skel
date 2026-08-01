@@ -37,11 +37,18 @@ case ${1} in
 
             if [ -d "${home}" ]; then
                 echo "Updating ${user} (${home})"
-                cp -rT "${SKEL}"/ "${home}/"
                 for rel_path in "${skel_files[@]}"; do
-                    if [ -e "${home}/${rel_path}" ]; then
-                        chown "${user}:${user}" "${home}/${rel_path}"
+                    src="${SKEL}/${rel_path}"
+                    dest="${home}/${rel_path}"
+
+                    if [ -d "${src}" ]; then
+                        mkdir -p "${dest}"
+                    elif [ -f "${src}" ]; then
+                        [ -f "${dest}" ] && cp -p "${dest}" "${dest}.bak"
+                        cp "${src}" "${dest}"
                     fi
+
+                    chown "${user}:${user}" "${dest}"
                 done
             fi
         done
