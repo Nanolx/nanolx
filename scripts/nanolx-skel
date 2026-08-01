@@ -1,12 +1,14 @@
 #!/bin/bash
 
-version="0.0.2"
-reldate="2026/05/16"
+version="0.0.3"
+reldate="2026/08/01"
 
 if (( EUID != 0 )); then
     echo "nanolx-skel must be run as root"
     exit 1
 fi
+
+source /etc/default/useradd
 
 case ${1} in
     enable )
@@ -19,6 +21,32 @@ case ${1} in
         sed 's,^SHELL=.*,# SHELL=/bin/sh,' -i /etc/default/useradd
     ;;
 
+    check )
+        if [[ "${SKEL%/}" == "/usr/share/nanolx/skel" ]]; then
+            echo "nanolx-skel:  enabled"
+        else
+            echo "nanolx-skel:  disabled"
+        fi
+    ;;
+
+    force-update )
+        mapfile -t skel_files < <(cd "${SKEL}" && LC_ALL=C find . -mindepth 1 -printf '%P\n')
+        awk -F: '$3 >= 1000 && $3 < 60000 {print $1 ":" $6}' /etc/passwd | while read -r line; do
+            user="${line%%:*}"
+            home="${line##*:}"
+
+            if [ -d "${home}" ]; then
+                echo "Updating ${user} (${home})"
+                cp -rT "${SKEL}"/ "${home}/"
+                for rel_path in "${skel_files[@]}"; do
+                    if [ -e "${home}/${rel_path}" ]; then
+                        chown "${user}:${user}" "${home}/${rel_path}"
+                    fi
+                done
+            fi
+        done
+    ;;
+
     * )
         echo -e "nanolx-skel v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -26,8 +54,10 @@ case ${1} in
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-skel enable
-    nanolx-skel disable
+    nanolx-skel enable          [use '/usr/share/nanolx/skel' instead of '/etc/skel']
+    nanolx-skel disable         [use original '/etc/skel']
+    nanolx-skel check           [check whether nanolx-skel is active]
+    nanolx-skel force-update    [force update skel files for existing users]
 "
     ;;
 esac
