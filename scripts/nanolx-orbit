@@ -57,6 +57,18 @@ install_package () {
     fi
 }
 
+install_helper () {
+    local name="${1}"
+
+    local -n url="${name/-/_}_url"
+    local -n sha="${name/-/_}_sha"
+    local filename="${url##*/}"
+
+    download_package "${url}" "${name}" "${sha}" "${filename}"
+    install_package "${filename}"
+}
+
+
 handle_packages () {
     mode="${1}"
     shift
@@ -64,21 +76,12 @@ handle_packages () {
     for pkg in "${@}"; do
         noinst=false
         case ${pkg} in
-            discord )
-                download_package "${discord_url}" discord "${discord_sha}" "${discord_url##*/}"
-                install_package "${discord_url##*/}"
-            ;;
-            pixes )
-                download_package "${pixes_url}" pixes "${pixes_sha}" "${pixes_url##*/}"
-                install_package "${pixes_url##*/}"
+            discord | pixes | zoom-vdi | openrgb-effects | openrgb-hwsync | openrgb-fansync | ulauncher | appimagelauncher )
+                install_helper "${pkg}"
             ;;
             zoom )
                 download_package "${zoom_url}" zoom "${zoom_sha}" "zoom_${zoom_ver}.deb"
                 install_package "zoom_${zoom_ver}.deb"
-            ;;
-            zoom-vdi )
-                download_package "${zoom_vdi_url}" zoom-vdi "${zoom_vdi_sha}" "${zoom_vdi_url##*/}"
-                install_package "${zoom_vdi_url##*/}"
             ;;
             citrix )
                 download_package "${citrix_url}" citrix "${citrix_sha}" "${citrix_pkg}"
@@ -99,26 +102,6 @@ handle_packages () {
             citrix-beta-usb )
                 download_package "${citrix_beta_usb_url}" citrix-beta-usb "${citrix_beta_usb_sha}" "${citrix_beta_usb_pkg}"
                 install_package "${citrix_beta_usb_pkg}"
-            ;;
-            openrgb-effects )
-                download_package "${openrgb_effects_url}" openrgb-effects "${openrgb_effects_sha}" "${openrgb_effects_url##*/}"
-                install_package "${openrgb_effects_url##*/}"
-            ;;
-            openrgb-hwsync )
-                download_package "${openrgb_hwsync_url}" openrgb-effects "${openrgb_hwsync_sha}" "${openrgb_hwsync_url##*/}"
-                install_package "${openrgb_hwsync_url##*/}"
-            ;;
-            openrgb-fansync )
-                download_package "${openrgb_fansync_url}" openrgb-effects "${openrgb_fansync_sha}" "${openrgb_fansync_url##*/}"
-                install_package "${openrgb_fansync_url##*/}"
-            ;;
-            ulauncher )
-                download_package "${ulauncher_url}" ulauncher "${ulauncher_sha}" "${ulauncher_url##*/}"
-                install_package "${ulauncher_url##*/}"
-            ;;
-            appimagelauncher )
-                download_package "${appimagelauncher_url}" appimagelauncher "${appimagelauncher_sha}" "${appimagelauncher_url##*/}"
-                install_package "${appimagelauncher_url##*/}"
             ;;
             * )
                 echo "package ${pkg} unknown"
