@@ -1,29 +1,29 @@
-#nanolx (1:4.10.202608xx-1nano) unstable; urgency=low
-#
-#  * New upstream release
-#  * nanolx-base
-#    - nanolx-skel
-#      - add check parameter (check whether nanolx-skel or system skel is in use)
-#      - add force-update parameter (force update skel files for existing users)
-#      - minor improvement to enabling nanolx-skel
-#  * nanolx-apt-source
-#    - nanolx-apt
-#      - support grabbing keys from keyserver (unused yet)
-#      - add mozilla repository to pinning
-#    - nanolx-orbit
-#      - support downloading pixes
-#      - support downloading ulauncher
-#      - support downloading appimagelauncher
-#      - support downloading kando
-#      - simplify script
-#      - improve and simplify citrix url extraction, also reuse previously
-#        gathered citrix information, if it isn't older than 30 Minutes
-#      - set cURL user agent to Firefox 153.0
-#    * general
-#      - exit root scripts if not running as root
-#
-# -- Christopher Roy Bratusek <nano@jpberlin.de>
-#
+nanolx (1:4.10.20260802-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-base
+    - nanolx-skel
+      - add check parameter (check whether nanolx-skel or system skel is in use)
+      - add force-update parameter (force update skel files for existing users)
+      - minor improvement to enabling nanolx-skel
+  * nanolx-apt-source
+    - nanolx-apt
+      - support grabbing keys from keyserver (unused yet)
+      - add mozilla repository to pinning
+    - nanolx-orbit
+      - support downloading pixes
+      - support downloading ulauncher
+      - support downloading appimagelauncher
+      - support downloading kando
+      - simplify script
+      - improve and simplify citrix url extraction, also reuse previously
+        gathered citrix information, if it isn't older than 30 Minutes
+      - set cURL user agent to Firefox 153.0
+    * general
+      - exit root scripts if not running as root
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 02 Aug 2026 10:03:50 +0200
+
 nanolx (1:4.9.20260730-1nano) unstable; urgency=low
 
   * New upstream release
