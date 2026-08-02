@@ -16,7 +16,8 @@
 #      - support downloading appimagelauncher
 #      - support downloading kando
 #      - simplify script
-#      - improve and simplify citrix url extraction
+#      - improve and simplify citrix url extraction, also reuse previously
+#        gathered citrix information, if it isn't older than 30 Minutes
 #      - set cURL user agent to Firefox 153.0
 #    * general
 #      - exit root scripts if not running as root
