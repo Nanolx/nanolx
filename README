@@ -176,7 +176,9 @@ Scripts
 Nanolx includes a set of scripts, all scripts ship their own manpage.
 
 nanolx-base:
-    nanolx-backup   create and manage systemd timers for rsync backups
+    nanolx-backup   create and manage systemd timers for rsync backups, alternatively
+                    create backup triggers for when a specific device/partition was
+                    plugged in (sends desktop notifications).
 
     nanolx-skel     enable / disable nanolx skel (/usr/share/nanolx/skel)
                     for newly created users instead of /etc/skel.
