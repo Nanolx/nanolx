@@ -210,7 +210,7 @@ Depends:
  gstreamer1.0-plugins-ugly,
  gstreamer1.0-libav,
  libdvdcss2,
- libbluray2
+ libbluray4 | libbluray3 | libbluray2
 Description: Collection of media codecs
  This meta-package installs media codecs.
 
