@@ -24,7 +24,7 @@ else
     USB_RULES="${CFGDIR}/nanolx-backup-usb.rules"
 fi
 
-manage_timers () {
+manage_backups () {
     action="${1}"
     delete="${2}"
 
@@ -183,15 +183,15 @@ case "${1}" in
     ;;
 
     disable )
-        manage_timers disable false
+        manage_backups disable false
     ;;
 
     enable )
-        manage_timers enable false
+        manage_backups enable false
     ;;
 
     delete )
-        manage_timers disable true
+        manage_backups disable true
     ;;
 
     help | * )
