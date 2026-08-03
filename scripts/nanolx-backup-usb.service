@@ -1,0 +1,6 @@
+[Unit]
+Description=rsync USB backup for @SOURCE@
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/nanolx-backup-helper-usb @SOURCE@ @UUID@

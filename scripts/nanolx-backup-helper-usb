@@ -1,0 +1,45 @@
+#!/bin/bash
+SOURCE="${1}"
+UUID="${2}"
+MOUNT="/media/${UUID}"
+LOGFILE="/var/log/nanolx-backup-${UUID}-$(date '+%Y%m%d_%H%M%S').log"
+
+send_notification () {
+    local title="${1}"
+    local message="${2}"
+    local icon="${3}"
+
+    local user=$(loginctl list-sessions | awk '$3 == "yes" {print $4}')
+    [ -z "${user}" ] && user=$(who | awk '{print $1}' | head -n1)
+
+    local uid=$(id -u "${user}")
+
+    if [ -n "${user}" ] && [ -d "/run/user/${uid}" ]; then
+        sudo -u "${user}" \
+          DISPLAY=:0 \
+          DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${uid}/bus \
+          PATH=/usr/bin:${PATH} \
+          notify-send -t 20000 -i "${icon}" "${title}" "${message}"
+    fi
+}
+
+mkdir -p "${MOUNT}"
+mount -U "${UUID}" -orw "${MOUNT}"
+if [ $? -ne 0 ]; then
+    send_notification "Backup failed" "Disk ${UUID} could not be mounted!" "dialog-error"
+    exit 1
+fi
+
+send_notification "Backup started" "Disk ${UUID} was plugged in, rsync'ing: ${SOURCE}..." "drive-harddisk"
+
+rsync -aAXv --delete "${SOURCE}" "${MOUNT}/$(basename "${SOURCE}")/" 2> "${LOGFILE}"
+RSYNC_STATUS=$?
+
+umount "${MOUNT}"
+
+if [ ${RSYNC_STATUS} -eq 0 ]; then
+    send_notification "Backup finished" "All files syncronized, Drive ${UUID} may be removed." "emblem-success"
+    rm -f "${LOGFILE}"
+else
+    send_notification "Backup failed" "rsync failed with Error: ${RSYNC_STATUS} (see ${LOGFILE} for details)!" "dialog-error"
+fi
