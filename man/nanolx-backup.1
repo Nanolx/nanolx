@@ -1,12 +1,14 @@
-.TH nanolx-backup 1 "2026 Jul 23"
+.TH nanolx-backup 1 "2026 Aug 03"
 .SH NAME
 nanolx-backup
 .SH SYNOPSIS
-nanolx-backup [create \fIsource\fP \fIdestination\fP \fIperiod\fP] [list]
-[list-short] [status] [enable] [disable] [delete]
+nanolx-backup [timed \fIsource\fP \fIdestination\fP \fIperiod\fP]
+[usb \fIsource\fP \fIUUID\fP] [list] [list-short] [status] [enable] [disable]
+[delete]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-backup schedules regular backups using systemd timers and let's you manage
-those timers.
+those timers, it also allows to schedule usb backups as sonn as  a given device
+was plugged in.
 
 SH OPTIONS
 nanolx-backup knows the following options
@@ -23,21 +25,31 @@ others:
 since this period contains a space, quote it. use 'systemd-analyze calendar [period]'
 to validate, if the given period is invalid, the script falls back to 'daily' aswell.
 .TP
+.B usb \fIsource\fP \fIuuid\fP
+Create a udev rule and systemd service, that will trigger an rsync backup
+as soon as the specific device/partition becomes available.
+
+Only the source must exist, the UUID is checked for technical validity,
+not for actual correctness, so the device must not be plugged in to use
+nanolx-backup to create the necessary triggers.
+.TP
 .B list
-list all timers created by nanolx-backup, with full information on enabled timers,
-and limited information for disabled timers.
+list all timers/USB backups created by nanolx-backup, with full information on
+enabled timers, and limited information for disabled timers.
 .TP
 .B list-short
-list all timers created by nanolx-backup, names only
+list all timers/USB backups created by nanolx-backup, names only
 .TP
 .B status
-show the status of all timers created by nanolx-backup
+show the status of all timers/USB backups created by nanolx-backup
 .TP
 .B enable
 creates a shell menu to select and enable nanolx-backup timers
+Note: USB backups can only be deleted, neither enabled or disabled.
 .TP
 .B disable
 creates a shell menu to select and disable nanolx-backup timers
+Note: USB backups can only be deleted, neither enabled or disabled.
 .TP
 .B delete
 creates a shell menu to select, disable and delete nanolx-backup timers
