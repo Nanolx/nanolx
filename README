@@ -68,11 +68,12 @@ with the following content:
     Components: main
     Signed-By: /etc/apt/trusted.gpg.d/nanolx2026.asc
 
-then proceed to install the
-    nanolx-base
+then proceed to install. Install either
 
-which will pull all other packages, except nanolx-citrix-config and nanolx-themes
-(see below) or install specific nanolx-* packages indepedently.
+- nanolx-base + selected individual packages
+    - nanolx-base only requires nanolx-apt-sources and nanolx-apt-tools
+- nanolx-full for all packages except nanolx-citrix-config
+    - nanolx-full is new with nanolx-4.11
 
 License
 =======================================
@@ -87,9 +88,13 @@ Packages
 
 consult debian/control for full description and pulled packages.
 
+nanolx-full:
+    new with nanolx-4.11, pulls all packages below, except nanolx-citrix-config
+
 nanolx-base:
-    base-package pulling all other packages except nanolx-citrix-config and
-    nanolx-themes
+    as of nanolx-4.11: base-package pulling nanolx-apt-sources and nanolx-apt-tools
+    before nanolx-4.11: base-package pulling all packages below, except nanolx-themes
+    and nanolx-citrix-config
 
 nanolx-admin:
     pulls cli and gui tools for system administration,
@@ -146,8 +151,7 @@ nanolx-games-emu:
     pulls a collection of emulators, including dosbox, retroarch and more.
 
 nanolx-themes:
-    this package is recommended by nanolx-base, but not a hard dependency, it
-    provides a theme selection containing:
+    this package provides a theme selection containing:
       - Plymouth:   debian mac style
       - rEFInd:     rEFInd digital void
       - Cursors:    Empty Butterfly
@@ -168,7 +172,7 @@ nanolx-themes:
       - Nothing for Plasma, KWin, Konsole including color schemes and wallpapers
 
 nanolx-citrix-config:
-    see    Citrix    below.
+    extra Citrix integration for Debian, see    Citrix    below.
 
 Scripts
 =======================================
@@ -240,7 +244,7 @@ Citrix
 The package
     nanolx-citrix-config
 
-is not automatically pulled by nanolx-base, as it requires citrix, zoom, incl.
+is not automatically pulled by nanolx-full, as it requires citrix, zoom, incl.
 plugins to be already installed. For that purpose see the
 
     nanolx-orbit
