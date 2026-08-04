@@ -1,3 +1,20 @@
+nanolx (1:4.10.1.20260804-1nano) unstable; urgency=low
+
+  * New upstream release
+  * nanolx-base
+    - this package is now only the minimal set, providing it's scripts and only
+      pulling nanolx-apt-sources and nanolx-apt-tools
+  * nanolx-full
+    - this package is the new full-suite, also pulling nanolx-themes. the only
+      package not pulled is nanolx-citrix-config.
+  * nanolx-media-codecs
+    - update dependency from libbluray2 to libbluray4 | libbluray3 | libbluray2
+  * nanolx-apt-tools
+    - nanolx-orbit
+      - update discord to 1.0.152
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 04 Aug 2026 16:18:53 +0200
+
 nanolx (1:4.10.20260802-1nano) unstable; urgency=low
 
   * New upstream release
@@ -10,6 +27,7 @@ nanolx (1:4.10.20260802-1nano) unstable; urgency=low
     - nanolx-apt
       - support grabbing keys from keyserver (unused yet)
       - add mozilla repository to pinning
+  * nanolx-apt-tools
     - nanolx-orbit
       - support downloading pixes
       - support downloading ulauncher
