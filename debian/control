@@ -44,7 +44,8 @@ Depends:
  nanolx-media-x11,
  nanolx-games,
  nanolx-games-emu,
- nanolx-themes
+ nanolx-themes,
+ nanolx-office
 Suggests:
  nanolx-citrix-config
 Description: Nanolx (full suite)
@@ -120,9 +121,9 @@ Depends:
  fortunes-flashrider,
  fdupes,
  unp,
- sqlite3 | sqlite,
+ sqlite3,
  xe,
- bat | cat-bat,
+ cat-bat,
  jq,
  fd-find,
  plocate,
@@ -140,7 +141,8 @@ Depends:
  procs,
  broot,
  zoxide,
- du-dust
+ du-dust,
+ pdfgrep
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
 
@@ -148,8 +150,8 @@ Package: nanolx-x11
 Architecture: all
 Depends:
  conky-std,
- yakuake | guake,
- kcharselect | gucharmap,
+ yakuake,
+ kcharselect,
  yad,
  libgtk-nocsd0,
  task-kde-desktop,
@@ -159,7 +161,8 @@ Depends:
  sddm,
  xinput,
  ydotool,
- czkawka-gui
+ czkawka-gui,
+ gnome-icon-theme
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
 
@@ -173,9 +176,9 @@ Depends:
  torsocks,
  tor-geoipdb,
  psad,
- kleopatra | seahorse,
+ kleopatra,
  gpgv,
- pinentry-qt | pinentry-gnome3,
+ pinentry-qt,
  keepassxc,
  lynis,
  rkhunter,
@@ -254,16 +257,15 @@ Depends:
  gmtp,
  mpv,
  geeqie,
- okular,
  gimp,
- xsane | simple-scan,
  k3b,
- libk3b7-extracodecs | libk3blib8-extracodecs | libk3b-extracodecs,
+ libk3b-extracodecs,
  mediathekview,
  easytag,
  elisa,
  ffmpegthumbnailer,
- dbus-x11
+ dbus-x11,
+ inkscape
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
 
@@ -321,14 +323,13 @@ Description: Collection of android development tools
 Package: nanolx-devel-x11
 Architecture: all
 Depends:
- glade | cambalache,
+ cambalache,
  bluefish,
  geany,
  d-feet,
  okteta,
  poedit,
- valgrind-if-available,
- qownnotes
+ valgrind
 Description: Collection of ui development tools
  This meta-package installs ui development tools.
 
@@ -378,6 +379,25 @@ Description: Collection of emulators
        exceptions: ROMs where the copyright expired, ROMs distributed
        by the copyright holder (or it's legal successor) and Homebrew
        ROMs (completely self-made).
+
+Package: nanolx-office
+Architecture: all
+Depends:
+ scribus,
+ libreoffice,
+ qownnotes,
+ scantpaper,
+ catdoc,
+ unpaper,
+ qpdf,
+ djvulibre-bin,
+ tesseract-ocr-deu,
+ gnucash,
+ okular,
+ qreator,
+ qrencode
+Description: Collection of office tools
+ This meta-package installs a collection of office tools.
 
 Package: nanolx-citrix-config
 Architecture: amd64
