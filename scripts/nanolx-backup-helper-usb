@@ -36,6 +36,7 @@ rsync -aAXv --delete "${SOURCE}" "${MOUNT}/$(basename "${SOURCE}")/" 2> "${LOGFI
 RSYNC_STATUS=$?
 
 umount "${MOUNT}"
+rmdir "${MOUNT}"
 
 if [ ${RSYNC_STATUS} -eq 0 ]; then
     send_notification "Backup finished" "All files syncronized, Drive ${UUID} may be removed." "emblem-success"
