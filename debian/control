@@ -13,7 +13,10 @@ Package: nanolx-base
 Architecture: all
 Depends:
  nanolx-apt-tools,
- nanolx-apt-sources
+ nanolx-apt-sources,
+ systemd,
+ libnotify-bin,
+ rsync
 Suggests:
  nanolx-citrix-config
 Description: Nanolx base package
@@ -107,7 +110,6 @@ Architecture: all
 Depends:
  vim,
  less,
- rsync,
  bash-completion,
  mc,
  p7zip-full,
@@ -260,7 +262,8 @@ Depends:
  mediathekview,
  easytag,
  elisa,
- ffmpegthumbnailer
+ ffmpegthumbnailer,
+ dbus-x11
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
 
