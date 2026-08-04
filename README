@@ -46,7 +46,7 @@ Release Information
 
 see debian/changelog for changes
 
-Version:    4.10.1
+Version:    4.11.0
 Release:    20260804
 
 Installation on Debian GNU/Linux
@@ -73,7 +73,7 @@ then proceed to install. Install either
 - nanolx-base + selected individual packages
     - nanolx-base only requires nanolx-apt-sources and nanolx-apt-tools
 - nanolx-full for all packages except nanolx-citrix-config
-    - nanolx-full is new with nanolx-4.10.1
+    - nanolx-full is new with nanolx-4.11.0
 
 License
 =======================================
@@ -89,11 +89,11 @@ Packages
 consult debian/control for full description and pulled packages.
 
 nanolx-full:
-    new with nanolx-4.10.1, pulls all packages below, except nanolx-citrix-config
+    new with nanolx-4.11.0, pulls all packages below, except nanolx-citrix-config
 
 nanolx-base:
-    as of nanolx-4.10.1: base-package pulling nanolx-apt-sources and nanolx-apt-tools
-    before nanolx-4.10.1: base-package pulling all packages below, except nanolx-themes
+    as of nanolx-4.11.0: base-package pulling nanolx-apt-sources and nanolx-apt-tools
+    before nanolx-4.11.0: base-package pulling all packages below, except nanolx-themes
     and nanolx-citrix-config
 
 nanolx-admin:
