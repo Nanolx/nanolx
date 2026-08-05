@@ -1,3 +1,61 @@
+#nanolx (1:4.11.1.2026mmdd-1nano) unstable; urgency=low
+#.
+#  New upstream release
+#  * nanolx-base
+#    - new dependencies
+#      - systemd
+#      - libnotify-bin
+#      - rsync
+#  * nanolx-media-x11
+#    - new dependency
+#      - dbus-x11 (for geeqie 3.1)
+#      - inkscape
+#    - removed dependencies
+#      - okular (moved to nanolx-office)
+#      - xsane | simple-scan
+#    - changed dependency
+#      - libk3b7-extracodecs | libk3blib8-extracodecs | libk3b-extracodecs -> libk3b-extracodecs
+#  * nanolx-office
+#    - new package pulling office related packages
+#    - dependencies
+#      - libreoffice
+#      - okular (was in nanolx-media before)
+#      - qownnotes (was in nanolx-devel-x11 before)
+#      - scribus
+#      - scantpaper
+#      - unpaper
+#      - catdoc
+#      - qpdf
+#      - djvulibre-bin
+#      - tesseract-ocr-deu
+#      - gnucash
+#      - qreator
+#      - qrencode
+#  * nanolx-cli
+#    - changed dependecies
+#      - sqlite3 | sqlite -> sqlite3
+#      - bat | cat-bat -> bat
+#    - new dependency
+#      - pdfgrep
+#  * nanolx-x11
+#    - changed dependencies
+#      - yakuake | guake -> yakuake
+#      - kcharselect | gucharmap -> kcharselect
+#    - new dependency
+#      - gnome-icon-theme (without it, several Gtk apps don't have proper icons)
+#  * nanolx-security
+#    - changed dependencies
+#      - kleopatra | seahorse -> kleopatra
+#      - pinentry-qt | pinentry-gnome3 -> pinentry-qt
+#  * nanolx-devel-x11
+#    - changed dependencies
+#      - glade | cambalache -> cambalache
+#      - valgrind-if-available -> valgrind (nanolx apt repo is amd64 only)
+#    - removed dependency
+#      - qownnotes
+#.
+#  -- Christopher Roy Bratusek <nano@jpberlin.de>
+
 nanolx (1:4.11.0.20260804-1nano) unstable; urgency=low
 
   * New upstream release
