@@ -1,6 +1,9 @@
 #nanolx (1:4.11.1.2026mmdd-1nano) unstable; urgency=low
 #.
 #  New upstream release
+#  * nanolx-full
+#     - new dependency
+#       - nanolx-office
 #  * nanolx-base
 #    - new dependencies
 #      - systemd

@@ -124,6 +124,10 @@ nanolx-net:
     pulls a collection of networking and connectivity tools, like firefox,
     thunderbird, kvirc, syncthing or nextcloud-desktop.
 
+nanolx-office:
+    new with 4.11.1: pulls a collection of office related packages, like libreoffice,
+    okular, gnucash or scantpaper.
+
 nanolx-media-codecs:
     pulls additional codes for gstreamer, aswell as libdvdcss2 and libbluray2.
 
