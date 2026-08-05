@@ -123,7 +123,7 @@ Depends:
  unp,
  sqlite3,
  xe,
- cat-bat,
+ bat,
  jq,
  fd-find,
  plocate,
