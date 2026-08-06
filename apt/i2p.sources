@@ -1,5 +1,5 @@
 Types: deb deb-src
 URIs: https://deb.i2p.net/
-Suites: trixie
+Suites: unstable
 Components: main
 Signed-By: /usr/share/nanolx/trusted.d/i2p.asc
