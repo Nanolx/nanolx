@@ -62,6 +62,7 @@
 #      - use branch names rather than code names
 #      - add missing deb-src entries
 #      - include testing-updates and testing-security
+#    - pinning: include -updates and -security repos
 #.
 #  -- Christopher Roy Bratusek <nano@jpberlin.de>
 

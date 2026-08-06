@@ -27,8 +27,24 @@ Pin: release a=sid o=deb.debian.org
 Pin-Priority: 900
 
 Package: *
+Pin: release a=testing-security o=deb.debian.org
+Pin-Priority: 820
+
+Package: *
+Pin: release a=testing-updates o=deb.debian.org
+Pin-Priority: 810
+
+Package: *
 Pin: release a=testing o=deb.debian.org
 Pin-Priority: 800
+
+Package: *
+Pin: release a=stable-security o=deb.debian.org
+Pin-Priority: 720
+
+Package: *
+Pin: release a=stable-updates o=deb.debian.org
+Pin-Priority: 710
 
 Package: *
 Pin: release a=stable o=deb.debian.org
