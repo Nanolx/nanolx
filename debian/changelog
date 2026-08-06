@@ -56,6 +56,12 @@
 #      - valgrind-if-available -> valgrind (nanolx apt repo is amd64 only)
 #    - removed dependency
 #      - qownnotes
+#  * nanolx-apt-sources
+#    - i2p: move from stable to unstable
+#    - debian:
+#      - use branch names rather than code names
+#      - add missing deb-src entries
+#      - include testing-updates and testing-security
 #.
 #  -- Christopher Roy Bratusek <nano@jpberlin.de>
 
