@@ -1,41 +1,47 @@
-# Modernized from /etc/apt/sources.list
 Types: deb deb-src
 URIs: https://deb.debian.org/debian/
-Suites: trixie
-Components: non-free-firmware non-free contrib main 
+Suites: stable
+Components: non-free-firmware non-free contrib main
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
-# Modernized from /etc/apt/sources.list
 Types: deb deb-src
 URIs: https://deb.debian.org/debian/
-Suites: trixie-updates
-Components: non-free-firmware non-free contrib main 
+Suites: stable-updates
+Components: non-free-firmware non-free contrib main
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
-# Modernized from /etc/apt/sources.list
 Types: deb deb-src
 URIs: http://security.debian.org/debian-security/
-Suites: trixie-security
-Components: non-free-firmware non-free contrib main 
+Suites: stable-security
+Components: non-free-firmware non-free contrib main
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
-# Modernized from /etc/apt/sources.list
+Types: deb deb-src
+URIs: https://deb.debian.org/debian/
+Suites: testing
+Components: main  contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb deb-src
+URIs: https://deb.debian.org/debian/
+Suites: testing-updates
+Components: non-free-firmware non-free contrib main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb deb-src
+URIs: http://security.debian.org/debian-security/
+Suites: testing-security
+Components: non-free-firmware non-free contrib main
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
 Types: deb deb-src
 URIs: https://deb.debian.org/debian/
 Suites: sid
-Components: main contrib non-free non-free-firmware 
+Components: main contrib non-free non-free-firmware
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
-# Modernized from /etc/apt/sources.list
-Types: deb
+Types: deb deb-src
 URIs: https://deb.debian.org/debian/
 Suites: experimental
-Components: non-free-firmware  non-free contrib main
-Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
-
-# Modernized from /etc/apt/sources.list
-Types: deb
-URIs: https://deb.debian.org/debian/
-Suites: stable
-Components: main  contrib non-free non-free-firmware
+Components: non-free-firmware non-free contrib main
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
