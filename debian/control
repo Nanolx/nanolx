@@ -165,7 +165,11 @@ Depends:
  gnome-icon-theme,
  kando,
  kando-kwin-integration,
- ulauncher
+ ulauncher,
+ openrgb,
+ openrgb-plugin-effects,
+ openrgb-plugin-hardware-sync,
+ openrgb-plugin-fan-sync
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
 

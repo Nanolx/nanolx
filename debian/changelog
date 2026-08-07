@@ -49,6 +49,10 @@
 #      - kando (new in my photonic repo)
 #      - kando-kwin-integration (new in my photonic repo)
 #      - ulauncher (new in my photonic repo)
+#      - openrgb (new in my photonic repo)
+#      - openrgb-plugin-effects (new in my photonic repo)
+#      - openrgb-plugin-hardware-sync (new in my photonic repo)
+#      - openrgb-plugin-fan-sync (new in my photonic repo)
 #  * nanolx-security
 #    - changed dependencies
 #      - kleopatra | seahorse -> kleopatra
