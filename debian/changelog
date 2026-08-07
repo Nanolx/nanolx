@@ -46,6 +46,8 @@
 #      - kcharselect | gucharmap -> kcharselect
 #    - new dependency
 #      - gnome-icon-theme (without it, several Gtk apps don't have proper icons)
+#      - kando (new in my photonic repo)
+#      - kando-kwin-integration (new in my photonic repo)
 #  * nanolx-security
 #    - changed dependencies
 #      - kleopatra | seahorse -> kleopatra

@@ -162,7 +162,9 @@ Depends:
  xinput,
  ydotool,
  czkawka-gui,
- gnome-icon-theme
+ gnome-icon-theme,
+ kando,
+ kando-kwin-integration
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
 
