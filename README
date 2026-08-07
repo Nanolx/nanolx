@@ -216,7 +216,7 @@ nanolx-apt-tools:
     nanolx-orbit    manages installation of 3rdparty packages, including some
                     non-free packages, including checking sha256sums. Currently
                     supported: discord, pixes, citrix, citrix-usb, citrix-epa,
-                    citrix-beta, citrix-usb-beta, zoom, zoom-vdi plugin, ulauncher,
+                    citrix-beta, citrix-usb-beta, zoom, zoom-vdi plugin,
                     appimagelauncher, openrgb plugins: effects, hwsync, fansync.
 
 nanolx-devel-cli:
