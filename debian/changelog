@@ -9,6 +9,8 @@
 #      - systemd
 #      - libnotify-bin
 #      - rsync
+#    - new recommends
+#      - appimagelauncher (now in my photonic repo)
 #  * nanolx-media-x11
 #    - new dependency
 #      - dbus-x11 (for geeqie 3.1)
@@ -88,6 +90,7 @@
 #      - removed support for kando (now in my photonic repo)
 #      - removed support for ulauncher (now in my photonic repo)
 #      - removed support for openrgb plugins (now in my photonic repo)
+#      - removed support for appimagelauncher (now in my photonic repo)
 #  * nanolx-yubikey
 #    - split from nanolx-security
 #  * nanolx-security

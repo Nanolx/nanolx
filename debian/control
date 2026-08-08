@@ -17,6 +17,8 @@ Depends:
  systemd,
  libnotify-bin,
  rsync
+Recommends:
+ appimagelauncher
 Suggests:
  nanolx-citrix-config
 Description: Nanolx base package
