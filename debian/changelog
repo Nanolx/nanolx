@@ -83,6 +83,11 @@
 #      - add missing deb-src entries
 #      - include testing-updates and testing-security
 #    - pinning: include -updates and -security repos
+#  * nanolx-apt-tools
+#    - nanolx-orbit
+#      - removed support for kando (now in my photonic repo)
+#      - removed support for ulauncher (now in my photonic repo)
+#      - removed support for openrgb plugins (now in my photonic repo)
 #  * nanolx-yubikey
 #    - split from nanolx-security
 #  * nanolx-security
