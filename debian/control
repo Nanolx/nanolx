@@ -166,7 +166,8 @@ Depends:
  kando,
  kando-kwin-integration,
  ulauncher,
- openrgb,
+ openrgb
+Suggests:
  openrgb-plugin-effects,
  openrgb-plugin-hardware-sync,
  openrgb-plugin-fan-sync
