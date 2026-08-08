@@ -124,7 +124,11 @@ nanolx-x11:
 
 nanolx-security:
     pulls a collection of security related tools, like psad, lynis, rkhunter,
-    clamav, also Yubikey tools.
+    clamav.
+    Until version 4.11.0: also Yubikey tools.
+
+nanolx-security:
+    new with 4.11.1: collection of Yubikey tools, split from nanolx-security.
 
 nanolx-net:
     pulls a collection of networking and connectivity tools, like firefox,
@@ -234,7 +238,8 @@ nanolx-net:
     hugo-push       simple script to build a hugo website and push it to webspace
                     using lftp, uses a configuration file.
 
-nanolx-security:
+until 4.11.0 nanolx-security:
+since 4.11.1 nanolx-yubikey:
     nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
                         is plugged in, using PAM, currently hooked-into PAM
                         modules: login, sddm, su, sudo, sudo-i, polkit-1, kde.

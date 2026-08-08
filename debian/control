@@ -45,7 +45,8 @@ Depends:
  nanolx-games,
  nanolx-games-emu,
  nanolx-themes,
- nanolx-office
+ nanolx-office,
+ nanolx-yubikey
 Suggests:
  nanolx-citrix-config
 Description: Nanolx (full suite)
@@ -64,7 +65,7 @@ Depends:
  lm-sensors,
  ntfs-3g,
  dosfstools,
- btrfs-progs | btrfs-tools,
+ btrfs-progs,
  lsof,
  localepurge,
  bleachbit,
@@ -128,20 +129,16 @@ Depends:
  fd-find,
  plocate,
  rdfind,
- eta,
  duf,
  diskus,
- organize,
  thefuck,
  lolcat,
  lsd,
- ugrep,
  fzf,
  gdu,
  procs,
  broot,
  zoxide,
- du-dust,
  pdfgrep
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
@@ -152,7 +149,6 @@ Depends:
  conky-std,
  yakuake,
  kcharselect,
- yad,
  libgtk-nocsd0,
  task-kde-desktop,
  psensor,
@@ -179,6 +175,7 @@ Architecture: all
 Depends:
  clamav,
  clamtk,
+ clamav-daemon,
  clamassassin,
  tor,
  torsocks,
@@ -192,16 +189,22 @@ Depends:
  rkhunter,
  firewalld | ufw,
  firewall-config | gufw,
- spectre-meltdown-checker,
+ spectre-meltdown-checker
+Description: Collection of security related tools
+ This meta-package installs security related tools. You won't get a secure
+ system by just installing this package.
+
+Package: nanolx-yubikey
+Architecture: all
+Depends:
  yubikey-manager,
  yubikey-agent,
  yubico-piv-tool,
  yubikey-touch-detector,
  pamu2fcfg,
  libpam-u2f
-Description: Collection of security related tools
- This meta-package installs security related. You won't get a secure
- system by just installing this package.
+Description: Collection of Yubikey related tools
+ This meta-package installs Yubikey related tools
 
 Package: nanolx-net
 Architecture: all
@@ -212,7 +215,6 @@ Depends:
  filezilla,
  thunderbird,
  firefox | firefox-esr,
- smbnetfs,
  lftp,
  kvirc,
  openvpn | mozillavpn,

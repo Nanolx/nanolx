@@ -54,6 +54,8 @@
 #      - openrgb-plugin-effects (new in my photonic repo)
 #      - openrgb-plugin-hardware-sync (new in my photonic repo)
 #      - openrgb-plugin-fan-sync (new in my photonic repo)
+#    - removed dependency:
+#      - yad
 #  * nanolx-security
 #    - changed dependencies
 #      - kleopatra | seahorse -> kleopatra
@@ -71,6 +73,22 @@
 #      - add missing deb-src entries
 #      - include testing-updates and testing-security
 #    - pinning: include -updates and -security repos
+#  * nanolx-yubikey
+#    - split from nanolx-security
+#  * nanolx-security
+#    - new dependency
+#      - depend on clamav-daemon
+#  * nanolx-net
+#    - removed dependencies
+#      - smbnetfs
+#  * nanolx-admin
+#    - changed dependency
+#      - btrfs-progs | btrfs-tools -> btrfs-progs
+#    - removed dependencies
+#      - eta
+#      - organize
+#      - ugrep
+#      - du-dust
 #.
 #  -- Christopher Roy Bratusek <nano@jpberlin.de>
 
