@@ -84,7 +84,7 @@ handle_packages () {
     for pkg in "${@}"; do
         noinst=false
         case ${pkg} in
-            discord | pixes | zoom-vdi )
+            discord | zoom-vdi )
                 install_helper "${pkg}"
             ;;
             zoom | citrix | citrix-usb | citrix-epa | citrix-beta | citrix-usb-beta )
