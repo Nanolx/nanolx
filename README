@@ -127,7 +127,7 @@ nanolx-security:
     clamav.
     Until version 4.11.0: also Yubikey tools.
 
-nanolx-security:
+nanolx-yubikey:
     new with 4.11.1: collection of Yubikey tools, split from nanolx-security.
 
 nanolx-net:
