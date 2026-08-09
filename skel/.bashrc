@@ -1,10 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
 shopt -s checkwinsize
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -53,3 +48,8 @@ unset __conda_setup
 
 source /home/chris/.config/broot/launcher/bash/br
 eval "$(zoxide init bash)"
+
+export SDL_GAMECONTROLLERCONFIG="050000007e0500000920000001800000,Nintendo Switch Pro Controller,a:b0,b:b1,back:b9,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b11,leftshoulder:b5,leftstick:b12,lefttrigger:b7,leftx:a0,lefty:a1,rightshoulder:b6,rightstick:b13,righttrigger:b8,rightx:a2,righty:a3,start:b10,x:b3,y:b2,platform:Linux,"
+export ANDROID_HOME=/usr/lib/android-sdk/
+export NDK_HOME=//usr/lib/android-sdk/ndk/28.2.13676358/
+export PATH="${HOME}/.pub-cache/bin:/media/backup/Playground/5_ANDROID/flutter/bin:${PATH}"
