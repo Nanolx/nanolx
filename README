@@ -217,10 +217,9 @@ nanolx-apt-tools:
     repokit         personal wrapper script for reprepro with config file
                     support and many features.
 
-    nanolx-orbit    manages installation of 3rdparty packages, including some
-                    non-free packages, including checking sha256sums. Currently
-                    supported: discord, citrix, citrix-usb, citrix-epa,
-                    citrix-beta, citrix-usb-beta, zoom, and zoom-vdi plugin.
+    nanolx-orbit    manages installation of citrix and zoom, including checking
+                    sha256sums. Currently supported: citrix, citrix-usb,
+                    citrix-epa, citrix-beta, citrix-usb-beta, zoom + vdi plugin.
 
 nanolx-devel-cli:
     mksbuild        support script for repokit (possibly outdated).

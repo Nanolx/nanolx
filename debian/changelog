@@ -92,6 +92,7 @@
 #      - removed support for openrgb plugins (now in my photonic repo)
 #      - removed support for appimagelauncher (now in my photonic repo)
 #      - removed support for pixes (now in my photonic repo)
+#      - removed support for discord (vesktop now in my photonic repo)
 #  * nanolx-yubikey
 #    - split from nanolx-security
 #  * nanolx-security
