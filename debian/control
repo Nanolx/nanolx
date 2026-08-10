@@ -229,7 +229,8 @@ Depends:
  nextcloud-desktop,
  dolphin-nextcloud,
  privoxy,
- hugo
+ hugo,
+ webapps
 Description: Collection of network applications
  This meta-package installs network applications.
 

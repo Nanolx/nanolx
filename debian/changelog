@@ -101,6 +101,8 @@
 #  * nanolx-net
 #    - removed dependencies
 #      - smbnetfs
+#    - new dependency
+#      - webapps
 #  * nanolx-admin
 #    - changed dependency
 #      - btrfs-progs | btrfs-tools -> btrfs-progs
