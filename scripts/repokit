@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.5.5"
-reldate="2026/07/29"
+version="1.6.0"
+reldate="2026/08/10"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
     source "${HOME}/.repokit.conf"
@@ -42,38 +42,76 @@ debhelper_build_orig () {
 }
 
 debhelper_prepare () {
+    if [[ -d "${PWD}/debian" ]]; then
+        echo "debian packaging scripts already exist in ${PWD}"
+        echo "you may want to use repokit release instead."
+        return 1
+    fi
+
     dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "$(basename "${PWD}")" || exit 1
-    rm -f debian/*.ex debian/README* debian/*.EX
-    sed -e "s/1) unstable;urgency=.*/${REPOKIT_REV}) unstable; urgency=low/g" -i debian/changelog
-    sed -e 's/\#export/export/g' -i debian/rules
+    rm -rf debian/*.ex debian/README* debian/*.EX
+
+    sed -e "s/1) unstable;urgency=.*/${REPOKIT_REV}) ${REPOKIT_DIST}; urgency=low/g" \
+        -i "${PWD}debian/changelog"
+    sed -e 's/\#export/export/g' -i "${PWD}/debian/rules"
     sed -e 's/<insert.*//g' \
         -e '/\#Vcs/d' \
         -e 's/Section.*/Section:/g' \
-        -i debian/control
+        -i "${PWD}/debian/control"
 }
 
 debhelper_get_scripts () {
-    tmp=$(basename "${PWD}")
-    package=${tmp/_*}
-    version=${tmp/*_}
+    local tmp=$(basename "${PWD}")
+    local package=${tmp/_*}
+    local version=${tmp/*_}
 
-    if [[ -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
-        cp -r "${REPOKIT_BUILD_SCRIPTS}/${package}" "${PWD}/debian"
-        debhelper_add_release
-    else
+    if [[ ! -d "${REPOKIT_BUILD_SCRIPTS}/${package}" ]]; then
         error "no packaging scripts for ${package} found"
+        return 1
     fi
+
+    [[ -d "${PWD}/debian" ]] && rm -rf "${PWD}/debian"
+    mkdir -p "${PWD}/debian"
+
+    rsync -a --exclude='.git*' "${REPOKIT_BUILD_SCRIPTS}/${package}/" "${PWD}/debian/"
+    debhelper_add_release
+
 }
 
 debhelper_add_release () {
-    tmp=$(basename "${PWD}")
-    package=${tmp/_*}
-    version=${tmp/*_}
+    if [[ ! -d "${PWD}/debian" ]]; then
+        echo "No debian packagings scripts in ${PWD}, stop."
+        return 1
+    fi
 
-    sed -i "1s/^/${package} (${version}-${REPOKIT_REV}) unstable; urgency=low\n\n  * New upstream release\n\n -- ${REPOKIT_NAME} <${REPOKIT_MAIL}>  $(date -R)\n\n/" debian/changelog
+    local tmp=$(basename "${PWD}")
+    local package=${tmp/_*}
+    local version=${tmp/*_}
+    local revision=1
+    local rev_text="New upstream release"
+
+    if [[ -s "${PWD}/debian/changelog" ]]; then
+        local first_line=$(head -n 1 "${PWD}/debian/changelog")
+        if [[ "${first_line}" =~ ${package}\ \(${version}-([0-9]+)${REPOKIT_REV}\) ]]; then
+            revision=$(( BASH_REMATCH[1] + 1 ))
+            local rev_text="New build"
+        fi
+    fi
+
+    DEBEMAIL="${REPOKIT_MAIL}" DEBFULLNAME="${REPOKIT_NAME}" \
+    dch --changelog "${PWD}/debian/changelog" \
+        --newversion "${version}-${revision}${REPOKIT_REV}" \
+        --distribution "${REPOKIT_DIST}" \
+        --urgency "low" \
+        "${rev_text}"
 }
 
 debhelper_put_scripts () {
+    if [[ ! -d "${PWD}/debian" ]]; then
+        echo "No debian packagings scripts in ${PWD}, stop."
+        return 1
+    fi
+
     local tmp=$(basename "${PWD}")
     local package=${tmp/_*}
     local version=${tmp/*_}
@@ -82,14 +120,14 @@ debhelper_put_scripts () {
     [ -z "${version}" ] && error "could not determine package version, stop."
 
     if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
-        mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
-        status="[new]"
+            mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
+            status="[new]"
     else    status="[update]"
     fi
 
-    cp -r debian/* "${REPOKIT_BUILD_SCRIPTS}/${package}"
+    rsync -a --delete "${PWD}/debian/" "${REPOKIT_BUILD_SCRIPTS}/${package}"
     cd "${REPOKIT_BUILD_SCRIPTS}"
-    [[ ${status} == "[new]" ]] && git add "${package}"
+    git add -A "${package}"
     git commit "${package}" -m "${package} ${status} ${version}"
 }
 

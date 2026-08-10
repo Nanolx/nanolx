@@ -93,6 +93,19 @@ nanolx (1:4.12.0.20260810-1nano) unstable; urgency=low
       - removed support for appimagelauncher (now in my photonic repo)
       - removed support for pixes (now in my photonic repo)
       - removed support for discord (vesktop now in my photonic repo)
+    - repokit 1.6.0
+      - repokit get is now more robust
+      - repokit prepare now checks there aren't any previous packaging scripts,
+        if so suggest repokit release instead, minor fixes and now honouring
+        REPOKIT_DIST variable from repokit.conf properly
+      - repokit get is now more robust, using rsync and now honours REPOKIT_DIST
+        variable from repokit.conf properly
+      - repokit put is now more robust, uses rsync and in all cases ensures
+        that added/removed files are properly commited to the git repository
+      - repokit release now handlings rebuilds (1nano -> 2nano -> 3nano) if the
+        current release already is in debian/changelog, it uses dch to generate
+        the changelog entry and now honours REPOKIT_DIST variable from repokit.conf
+        properly
   * nanolx-yubikey
     - split from nanolx-security
   * nanolx-security
