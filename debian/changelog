@@ -1,124 +1,124 @@
-#nanolx (1:4.11.1.2026mmdd-1nano) unstable; urgency=low
-#.
-#  New upstream release
-#  * nanolx-full
-#     - new dependency
-#       - nanolx-office
-#  * nanolx-base
-#    - new dependencies
-#      - systemd
-#      - libnotify-bin
-#      - rsync
-#    - new recommends
-#      - appimagelauncher (now in my photonic repo)
-#  * nanolx-media-x11
-#    - new dependency
-#      - dbus-x11 (for geeqie 3.1)
-#      - inkscape
-#    - removed dependencies
-#      - okular (moved to nanolx-office)
-#      - xsane | simple-scan
-#    - changed dependency
-#      - libk3b7-extracodecs | libk3blib8-extracodecs | libk3b-extracodecs -> libk3b-extracodecs
-#  * nanolx-office
-#    - new package pulling office related packages
-#    - dependencies
-#      - libreoffice
-#      - okular (was in nanolx-media before)
-#      - qownnotes (was in nanolx-devel-x11 before)
-#      - scribus
-#      - scantpaper
-#      - unpaper
-#      - catdoc
-#      - qpdf
-#      - djvulibre-bin
-#      - gnucash
-#      - qreator
-#      - qrencode
-#      - pdfgrep
-#    - suggestions
-#      - tesseract-ocr-deu
-#  * nanolx-cli
-#    - changed dependecies
-#      - sqlite3 | sqlite -> sqlite3
-#      - bat | cat-bat -> bat
-#    - moved from depends to recommends:
-#      -  fortunes-flashrider
-#      -  mc
-#      -  duf
-#      -  gdu
-#      -  thefuck
-#      -  lolcat
-#      -  procs
-#      -  broot
-#      -  zoxide
-#  * nanolx-x11
-#    - changed dependencies
-#      - yakuake | guake -> yakuake
-#      - kcharselect | gucharmap -> kcharselect
-#    - new dependency
-#      - gnome-icon-theme (without it, several Gtk apps don't have proper icons)
-#      - kando (new in my photonic repo)
-#      - kando-kwin-integration (new in my photonic repo)
-#      - ulauncher (new in my photonic repo)
-#      - openrgb (new in my photonic repo)
-#    - new suggestions
-#      - openrgb-plugin-effects (new in my photonic repo)
-#      - openrgb-plugin-hardware-sync (new in my photonic repo)
-#      - openrgb-plugin-fan-sync (new in my photonic repo)
-#    - removed dependency:
-#      - yad
-#  * nanolx-security
-#    - changed dependencies
-#      - kleopatra | seahorse -> kleopatra
-#      - pinentry-qt | pinentry-gnome3 -> pinentry-qt
-#  * nanolx-devel-x11
-#    - changed dependencies
-#      - glade | cambalache -> cambalache
-#      - valgrind-if-available -> valgrind (nanolx apt repo is amd64 only)
-#    - removed dependency
-#      - qownnotes
-#  * nanolx-apt-sources
-#    - i2p: move from stable to unstable
-#    - debian:
-#      - use branch names rather than code names
-#      - add missing deb-src entries
-#      - include testing-updates and testing-security
-#    - pinning: include -updates and -security repos
-#  * nanolx-apt-tools
-#    - nanolx-orbit
-#      - removed support for kando (now in my photonic repo)
-#      - removed support for ulauncher (now in my photonic repo)
-#      - removed support for openrgb plugins (now in my photonic repo)
-#      - removed support for appimagelauncher (now in my photonic repo)
-#      - removed support for pixes (now in my photonic repo)
-#      - removed support for discord (vesktop now in my photonic repo)
-#  * nanolx-yubikey
-#    - split from nanolx-security
-#  * nanolx-security
-#    - new dependency
-#      - depend on clamav-daemon
-#  * nanolx-net
-#    - removed dependencies
-#      - smbnetfs
-#    - new dependency
-#      - webapps
-#  * nanolx-admin
-#    - changed dependency
-#      - btrfs-progs | btrfs-tools -> btrfs-progs
-#      - backintime-qt | grsync -> backintime-qt
-#    - removed dependencies
-#      - eta
-#      - organize
-#      - ugrep
-#      - du-dust
-#    - moved from depends to recommends
-#      - age
-#      - logsave
-#      - btop
-#      - packagesearch
-#.
-#  -- Christopher Roy Bratusek <nano@jpberlin.de>
+nanolx (1:4.12.0.20260810-1nano) unstable; urgency=low
+
+  New upstream release
+  * nanolx-full
+     - new dependency
+       - nanolx-office
+  * nanolx-base
+    - new dependencies
+      - systemd
+      - libnotify-bin
+      - rsync
+    - new recommends
+      - appimagelauncher (now in my photonic repo)
+  * nanolx-media-x11
+    - new dependency
+      - dbus-x11 (for geeqie 3.1)
+      - inkscape
+    - removed dependencies
+      - okular (moved to nanolx-office)
+      - xsane | simple-scan
+    - changed dependency
+      - libk3b7-extracodecs | libk3blib8-extracodecs | libk3b-extracodecs -> libk3b-extracodecs
+  * nanolx-office
+    - new package pulling office related packages
+    - dependencies
+      - libreoffice
+      - okular (was in nanolx-media before)
+      - qownnotes (was in nanolx-devel-x11 before)
+      - scribus
+      - scantpaper
+      - unpaper
+      - catdoc
+      - qpdf
+      - djvulibre-bin
+      - gnucash
+      - qreator
+      - qrencode
+      - pdfgrep
+    - suggestions
+      - tesseract-ocr-deu
+  * nanolx-cli
+    - changed dependecies
+      - sqlite3 | sqlite -> sqlite3
+      - bat | cat-bat -> bat
+    - moved from depends to recommends:
+      -  fortunes-flashrider
+      -  mc
+      -  duf
+      -  gdu
+      -  thefuck
+      -  lolcat
+      -  procs
+      -  broot
+      -  zoxide
+  * nanolx-x11
+   - changed dependencies
+      - yakuake | guake -> yakuake
+      - kcharselect | gucharmap -> kcharselect
+    - new dependency
+      - gnome-icon-theme (without it, several Gtk apps don't have proper icons)
+      - kando (new in my photonic repo)
+      - kando-kwin-integration (new in my photonic repo)
+      - ulauncher (new in my photonic repo)
+      - openrgb (new in my photonic repo)
+    - new suggestions
+      - openrgb-plugin-effects (new in my photonic repo)
+      - openrgb-plugin-hardware-sync (new in my photonic repo)
+      - openrgb-plugin-fan-sync (new in my photonic repo)
+    - removed dependency:
+      - yad
+  * nanolx-security
+    - changed dependencies
+      - kleopatra | seahorse -> kleopatra
+      - pinentry-qt | pinentry-gnome3 -> pinentry-qt
+  * nanolx-devel-x11
+    - changed dependencies
+      - glade | cambalache -> cambalache
+      - valgrind-if-available -> valgrind (nanolx apt repo is amd64 only)
+    - removed dependency
+      - qownnotes
+  * nanolx-apt-sources
+    - i2p: move from stable to unstable
+    - debian:
+      - use branch names rather than code names
+      - add missing deb-src entries
+      - include testing-updates and testing-security
+    - pinning: include -updates and -security repos
+  * nanolx-apt-tools
+    - nanolx-orbit
+      - removed support for kando (now in my photonic repo)
+      - removed support for ulauncher (now in my photonic repo)
+      - removed support for openrgb plugins (now in my photonic repo)
+      - removed support for appimagelauncher (now in my photonic repo)
+      - removed support for pixes (now in my photonic repo)
+      - removed support for discord (vesktop now in my photonic repo)
+  * nanolx-yubikey
+    - split from nanolx-security
+  * nanolx-security
+    - new dependency
+      - depend on clamav-daemon
+  * nanolx-net
+    - removed dependencies
+      - smbnetfs
+    - new dependency
+      - webapps
+  * nanolx-admin
+    - changed dependency
+      - btrfs-progs | btrfs-tools -> btrfs-progs
+      - backintime-qt | grsync -> backintime-qt
+    - removed dependencies
+      - eta
+      - organize
+      - ugrep
+      - du-dust
+    - moved from depends to recommends
+      - age
+      - logsave
+      - btop
+      - packagesearch
+
+  -- Christopher Roy Bratusek <nano@jpberlin.de> Mon, 10 Aug 2026 19:43:19 +0200
 
 nanolx (1:4.11.0.20260804-1nano) unstable; urgency=low
 
