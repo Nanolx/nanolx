@@ -73,7 +73,6 @@ then proceed to install. Install either
 - nanolx-base + selected individual packages
     - nanolx-base only requires nanolx-apt-sources and nanolx-apt-tools
 - nanolx-full for all packages except nanolx-citrix-config
-    - nanolx-full is new with nanolx-4.11.0
 
 Note: Nanolx is built to be used with Debian Sid/Unstable, additionally some of
 the sub-packages may depend on packages only available from the deb-mulitmedia
@@ -95,12 +94,10 @@ Packages
 consult debian/control for full description and pulled packages.
 
 nanolx-full:
-    new with nanolx-4.11.0, pulls all packages below, except nanolx-citrix-config
+    pulls all packages below, except nanolx-citrix-config
 
 nanolx-base:
-    as of nanolx-4.11.0: base-package pulling nanolx-apt-sources and nanolx-apt-tools
-    before nanolx-4.11.0: base-package pulling all packages below, except nanolx-themes
-    and nanolx-citrix-config
+    base-package pulling nanolx-apt-sources and nanolx-apt-tools
 
 nanolx-admin:
     pulls cli and gui tools for system administration,
@@ -125,17 +122,16 @@ nanolx-x11:
 nanolx-security:
     pulls a collection of security related tools, like psad, lynis, rkhunter,
     clamav.
-    Until version 4.11.0: also Yubikey tools.
 
 nanolx-yubikey:
-    new with 4.11.1: collection of Yubikey tools, split from nanolx-security.
+    collection of Yubikey tools, split from nanolx-security.
 
 nanolx-net:
     pulls a collection of networking and connectivity tools, like firefox,
     thunderbird, kvirc, syncthing or nextcloud-desktop.
 
 nanolx-office:
-    new with 4.11.1: pulls a collection of office related packages, like libreoffice,
+    pulls a collection of office related packages, like libreoffice,
     okular, gnucash or scantpaper.
 
 nanolx-media-codecs:
@@ -236,8 +232,7 @@ nanolx-net:
     hugo-push       simple script to build a hugo website and push it to webspace
                     using lftp, uses a configuration file.
 
-until 4.11.0 nanolx-security:
-since 4.11.1 nanolx-yubikey:
+nanolx-yubikey:
     nanolx-pam-yubikey  script to enable password-less logins when a Yubikey
                         is plugged in, using PAM, currently hooked-into PAM
                         modules: login, sddm, su, sudo, sudo-i, polkit-1, kde.
