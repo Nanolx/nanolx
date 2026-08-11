@@ -10,11 +10,11 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.6.0"
-reldate="2026/08/10"
+version="1.7.0"
+reldate="2026/08/11"
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
-    source "${HOME}/.repokit.conf"
+        source "${HOME}/.repokit.conf"
 else    echo "no ${HOME}/.repokit.conf exists"
     exit 1
 fi
@@ -22,23 +22,6 @@ fi
 error () {
     echo -e "${@}"
     exit 1
-}
-
-reprepro_add () {
-    reprepro -Vb "${REPOKIT_PATH}" include "${REPOKIT_DIST}" "${1}"
-}
-
-reprepro_remove () {
-    reprepro -Vb "${REPOKIT_PATH}" remove "${REPOKIT_DIST}" "${1}"
-}
-
-debhelper_build_orig () {
-    if [[ -d "${1}" ]]; then
-        tarname="$(basename "${1}")"
-        tardir="$(dirname "${1}")"
-        tar cf "${tarname}".orig.tar -C "${tardir}" "${tarname}"
-        ${REPOKIT_ORIG_COMPRESSOR} "${REPOKIT_LEVL_COMPRESSOR}" "${tarname}".orig.tar
-    fi
 }
 
 debhelper_prepare () {
@@ -51,8 +34,9 @@ debhelper_prepare () {
     dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "$(basename "${PWD}")" || exit 1
     rm -rf debian/*.ex debian/README* debian/*.EX
 
-    sed -e "s/1) unstable;urgency=.*/${REPOKIT_REV}) ${REPOKIT_DIST}; urgency=low/g" \
-        -i "${PWD}debian/changelog"
+    sed -e "s/1) UNRELEASED.*/1${REPOKIT_REV}) ${REPOKIT_DIST}; urgency=low/g" \
+        -e "s/ (Closes: #nnnn)  <nnnn is the bug number of your ITP>//g" \
+        -i "${PWD}/debian/changelog"
     sed -e 's/\#export/export/g' -i "${PWD}/debian/rules"
     sed -e 's/<insert.*//g' \
         -e '/\#Vcs/d' \
@@ -67,7 +51,6 @@ debhelper_get_scripts () {
 
     if [[ ! -d "${REPOKIT_BUILD_SCRIPTS}/${package}" ]]; then
         error "no packaging scripts for ${package} found"
-        return 1
     fi
 
     [[ -d "${PWD}/debian" ]] && rm -rf "${PWD}/debian"
@@ -80,8 +63,7 @@ debhelper_get_scripts () {
 
 debhelper_add_release () {
     if [[ ! -d "${PWD}/debian" ]]; then
-        echo "No debian packagings scripts in ${PWD}, stop."
-        return 1
+        error "No debian packagings scripts in ${PWD}, stop."
     fi
 
     local tmp=$(basename "${PWD}")
@@ -108,8 +90,7 @@ debhelper_add_release () {
 
 debhelper_put_scripts () {
     if [[ ! -d "${PWD}/debian" ]]; then
-        echo "No debian packagings scripts in ${PWD}, stop."
-        return 1
+        error "No debian packagings scripts in ${PWD}, stop."
     fi
 
     local tmp=$(basename "${PWD}")
@@ -125,25 +106,115 @@ debhelper_put_scripts () {
     else    status="[update]"
     fi
 
+    fakeroot "${PWD}/debian/rules" clean &>/dev/null
+
     rsync -a --delete "${PWD}/debian/" "${REPOKIT_BUILD_SCRIPTS}/${package}"
     cd "${REPOKIT_BUILD_SCRIPTS}"
     git add -A "${package}"
     git commit "${package}" -m "${package} ${status} ${version}"
 }
 
-schroot_list () {
-    for chroot in "${REPOKIT_SCHROOTS[@]}"; do
-        echo "${chroot}"
+reprepro_add () {
+    reprepro -Vb "${REPOKIT_PATH}" include "${REPOKIT_DIST}" "${1}"
+}
+
+reprepro_remove () {
+    reprepro -Vb "${REPOKIT_PATH}" remove "${REPOKIT_DIST}" "${1}"
+}
+
+ftp_push () {
+    if [ -f ${HOME}/.repokit.pw ]; then
+        REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
+    else    error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
+    fi
+
+    for dir in pool dists logs; do
+        lftp -c "set ssl:check-hostname no; \
+                open ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}; \
+                mirror -R -L --delete ${REPOKIT_PATH}/${dir}/ /${REPOKIT_FTP_DIR}/${dir}/"
     done
 }
 
-schroot_copy () {
-    sudo cp -r "${@}" /var/lib/sbuild/build/
+user_add_subids () {
+    if ! grep -q "${USER}" /etc/subuid; then
+        echo "user ${USER} doesn't have sub UIDs/sub GIDs, adding"
+        echo "(sudo may ask for password)"
+        MAX_ID=$(awk -F: '{print $2}' /etc/subuid 2>/dev/null | sort -n | tail -n 1)
+        START_ID=$(( ${MAX_ID:-100000} + 65536 ))
+        END_ID=$(( START_ID + 65535 ))
+        sudo usermod --add-subuids ${START_ID}-${END_ID} \
+            --add-subgids ${START_ID}-${END_ID} "${USER}"
+    fi
 }
 
-schroot_enter () {
-    [[ -d /var/lib/schroot/chroots/${1} ]] && \
-        sudo schroot -c source:"${1}" -u root --directory="${2:-/build}"
+sbuild_bootstrap () {
+    user_add_subids
+
+    local native_arch=$(dpkg --print-architecture)
+    local foreign_arch=${REPOKIT_CROSS}
+
+    mkdir -p "${HOME}/.cache/sbuild/"
+    mmdebstrap --include=ca-certificates \
+        --skip=output/dev --variant=buildd "${REPOKIT_DIST}" \
+        --arch="${native_arch},${foreign_arch}" \
+        --include=apt-utils,build-essential,ccache \
+        --customize-hook='chroot "$1" update-ccache-symlinks' \
+         "${HOME}/.cache/sbuild/${REPOKIT_DIST}-${native_arch}.tar.zst" \
+         https://deb.debian.org/debian
+
+    if [ ! -f "${HOME}/.config/sbuild/config.pl" ]; then
+        echo "no sbuild configuration file at ${HOME}/.config/sbuild/config.pl found"
+        echo "see https://wiki.debian.org/sbuild#Setup for example file"
+    fi
+}
+
+sbuild_get_arch () {
+    tar --wildcards -O -xf "${1}" './var/lib/dpkg/arch' 2>/dev/null
+}
+
+sbuild_get_suite () {
+    tar --wildcards -O -xf "${1}" './etc/apt/sources.list' 2>/dev/null \
+        | grep -v '^#' \
+        | grep -m 1 'deb ' \
+        | awk '{print $3}' \
+        | sed 's/[-/].*//' || echo "unstable"
+}
+
+sbuild_list () {
+    for tarball in ${HOME}/.cache/sbuild/*.tar.*; do
+        echo "$(basename "${tarball}")"
+        echo -n "   -> Architectures: "
+        sbuild_get_arch "${tarball}"
+        echo -n "   -> Suite: "
+        sbuild_get_suite "${tarball}"
+        echo ""
+    done
+}
+
+sbuild_update () {
+    for tarball in ${HOME}/.cache/sbuild/*.tar.*; do
+        echo "updating $(basename "${tarball}")"
+        mmdebstrap --variant=buildd $(sbuild_get_suite "${tarball}") "${tarball}"
+    done
+}
+
+sbuild_cross () {
+    if [[ "${1}" == *.dsc ]]; then
+        for arch in ${REPOKIT_CROSS//,/ }; do
+            sbuild --host=${arch} "${1}"
+        done
+    else
+        echo "${1} is not a .dsc file"
+    fi
+}
+
+debhelper_build_orig () {
+    if [[ -d "${1}" ]]; then
+        tarname="$(basename "${1}")"
+        tardir="$(dirname "${1}")"
+        tar cf "${tarname}".orig.tar -C "${tardir}" "${tarname}"
+        ${REPOKIT_ORIG_COMPRESSOR} "${REPOKIT_LEVL_COMPRESSOR}" "${tarname}".orig.tar
+    fi
 }
 
 source_dist () {
@@ -168,99 +239,48 @@ source_dist () {
     fi
 }
 
-cross_build () {
-    sbuild --no-arch-all -d "${dist}" -c "${dist}-${arch}" \
-        --host="${arch}" --build="${arch}" "${REPOKIT_SBUILD_FLAGS}" \
-        "${@}"
-}
-
-ftp_push () {
-    if [ -f ${HOME}/.repokit.pw ]; then
-        REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
-    else    error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
-    fi
-
-    for dir in pool dists logs; do
-        lftp -c "set ssl:check-hostname no; \
-                open ftp://${REPOKIT_FTP_USR}:${REPOKIT_FTP_PW}@${REPOKIT_FTP_SRV}; \
-                mirror -R -L --delete ${REPOKIT_PATH}/${dir}/ /${REPOKIT_FTP_DIR}/${dir}/"
-    done
-}
-
 cmdarg="${1}"
 shift
 
 case ${cmdarg} in
-    -a | add )
+    prepare )   debhelper_prepare "${@}" ;;
+    get )       debhelper_get_scripts ;;
+    release )   debhelper_add_release ;;
+    put )       debhelper_put_scripts ;;
+
+    build )     dpkg-buildpackage "${REPOKIT_BUILD_FLAGS}" -rfakeroot "${@}" ;;
+    clean )     fakeroot debian/rules clean ;;
+
+    add )
         for arg in "${@}"; do
             reprepro_add "${arg}"
         done
     ;;
-
-    -r | remove )
+    remove )
         for arg in "${@}"; do
             reprepro_remove "${arg}"
         done
     ;;
+    ftp )       ftp_push ;;
 
-    -o | orig )
+    screate )   sbuild_bootstrap ;;
+    supdate )   sbuild_update ;;
+    slist )     sbuild_list ;;
+    scross )
+        for arg in "${@}"; do
+            sbuild_cross "${arg}"
+        done
+    ;;
+
+    orig )
         for arg in "${@}"; do
             debhelper_build_orig "$(readlink -m "${arg}")"
         done
     ;;
-
-    -p | prepare )
-        debhelper_prepare "${@}"
-    ;;
-
-    -b | build )
-        dpkg-buildpackage "${REPOKIT_BUILD_FLAGS}" -rfakeroot "${@}"
-    ;;
-
-    -c | clean )
-        fakeroot debian/rules clean
-    ;;
-
-    -sl | slist )
-        schroot_list
-    ;;
-
-    -sc | scopy )
-        schroot_copy "${@}"
-    ;;
-
-    -se | senter )
-        schroot_enter "${@}"
-    ;;
-
-    -d | dist )
+        dist )
         for arg in "${@}"; do
             source_dist "${arg}"
         done
-    ;;
-
-    -x | crossbuild )
-        dist=${1/-*}
-        arch=${1/*-}
-        shift
-
-        cross_build "${@}"
-    ;;
-
-    -f | ftp )
-        ftp_push
-    ;;
-
-    -dg | get )
-        debhelper_get_scripts
-    ;;
-
-    -dp | put )
-        debhelper_put_scripts
-    ;;
-
-    -dr | release )
-        debhelper_add_release
     ;;
 
     * )
@@ -270,24 +290,37 @@ case ${cmdarg} in
 
 licensed under the GNU General Public License v3 (or newer)
 
-Options
-short   long        Parameters  Description
+repokit is my personal wrapper script for reprepro with config file support and
+many features. repokit expects a configuration file \${HOME}/.repokit.conf.
 
--a  add     <.changes>  add package to repository
--r  remove      <packagename>   remove package from repository
--o  orig        <directory> create orig tarball from source tree
--p  prepare     <license>   prepare source directory for package build
--b  build       ---     build package using dpkg-buildpackage
--c  clean       ---     clean package build directory
--sl slist       ---     list availabe schroots
--sc scopy       <files>     copy files to schroot build directory
--se senter      <schroot>   enter schroot environment as root
--d  dist        <directory> generate tarballs, checksums and signatures for release distribution
--x  crossbuild  <.dsc>      cross build package using sbuild
--f  ftp     ---     push local apt repo to remote using lftp
--dg get     ---     get packaging scripts for current package (if any)
--dr release     ---     add new release to debian/changelog
--dp put     ---     push packaging scripts for current package to script repo"
+Options
+option      Parameters  Description
+
+** packaging scripts **
+prepare     license     prepare packaging scripts for new package
+get         ---         get packaging scripts for current package (if any)
+release     ---         add new release to debian/changelog
+put         ---         push packaging scripts for current package to git repo
+
+** package building **
+build       ---         build package using dpkg-buildpackage
+clean       ---         clean package build directory
+
+** package management **
+add         .changes    add package to repository
+remove      package     remove package from repository
+ftp         ---         push local apt repo to remote using lftp
+
+** cross building **
+screate     ---         create tarball for sbuild
+supdate     ---         update tarball for sbuild
+slist       ---         list availabe unshare chroots
+scross      .dsc        cross build package using sbuild
+
+** source management **
+orig        directory   create orig tarball from source tree
+dist        directory   generate tarballs, checksums and signatures for release distribution
+"
     ;;
 
 esac

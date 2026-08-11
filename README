@@ -217,9 +217,6 @@ nanolx-apt-tools:
                     sha256sums. Currently supported: citrix, citrix-usb,
                     citrix-epa, citrix-beta, citrix-usb-beta, zoom + vdi plugin.
 
-nanolx-devel-cli:
-    mksbuild        support script for repokit (possibly outdated).
-
 nanolx-citrix-config:
     nanolx-ctx      script to disable (or enable [...]) citrix telemetry and
                     running the included system check script. It also allows to

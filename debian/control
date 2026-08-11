@@ -290,12 +290,9 @@ Depends:
  dpkg-dev,
  fakeroot,
  ubuntu-dev-tools,
- schroot,
  sbuild,
  gcc,
- gcc-multilib,
  g++,
- g++-multilib,
  git,
  dh-make,
  dh-autoreconf,
@@ -314,6 +311,10 @@ Depends:
  licensecheck,
  pycodestyle,
  git-delta,
+ mmdebstrap,
+ uidmap,
+ piuparts,
+ apt-cacher-ng
 Description: Collection of cli development tools
  This meta-package installs cli development tools
 
