@@ -1,5 +1,12 @@
 $chroot_mode = 'unshare';
-$external_commands = { "build-failed-commands" => [ [ '%SBUILD_SHELL' ] ] };
+$external_commands = {
+    "build-failed-commands" => [
+        [ '%SBUILD_SHELL' ]
+    ],
+     "post-build-commands" => [
+        [ 'debsign', '%SBUILD_CHANGES' ]
+    ]
+};
 $distribution = 'testing';
 $extra_repositories = [
     'deb [trusted=yes] https://apt.nanolx.org/ photonic main',
