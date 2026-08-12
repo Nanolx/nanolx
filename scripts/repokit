@@ -205,7 +205,9 @@ sbuild_update () {
 sbuild_cross () {
     if [[ "${1}" == *.dsc ]]; then
         for arch in ${REPOKIT_CROSS//,/ }; do
-            sbuild --host=${arch} "${1}"
+            sbuild --host=${arch} \
+            --dist ${REPOKIT_CROSS_DIST} \
+            "${1}"
         done
     else
         echo "${1} is not a .dsc file"
