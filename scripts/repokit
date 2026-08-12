@@ -10,25 +10,23 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.7.0"
-reldate="2026/08/11"
-
-if [[ -f ${HOME}/.repokit.conf ]]; then
-        source "${HOME}/.repokit.conf"
-else    echo "no ${HOME}/.repokit.conf exists"
-    exit 1
-fi
+version="1.7.1"
+reldate="2026/08/12"
 
 error () {
     echo -e "${@}"
     exit 1
 }
 
+if [[ -f ${HOME}/.repokit.conf ]]; then
+        source "${HOME}/.repokit.conf"
+else    error "no ${HOME}/.repokit.conf exists"
+fi
+
 debhelper_prepare () {
     if [[ -d "${PWD}/debian" ]]; then
-        echo "debian packaging scripts already exist in ${PWD}"
-        echo "you may want to use repokit release instead."
-        return 1
+        error "debian packaging scripts already exist in ${PWD}
+you may want to use repokit release instead."
     fi
 
     dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "$(basename "${PWD}")" || exit 1
@@ -125,7 +123,8 @@ reprepro_remove () {
 ftp_push () {
     if [ -f ${HOME}/.repokit.pw ]; then
         REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
-    else    error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
+    else
+        error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
     fi
 
     for dir in pool dists logs; do
@@ -151,25 +150,26 @@ sbuild_bootstrap () {
     user_add_subids
 
     local native_arch=$(dpkg --print-architecture)
-    local foreign_arch=${REPOKIT_CROSS}
 
     mkdir -p "${HOME}/.cache/sbuild/"
     mmdebstrap --include=ca-certificates \
-        --skip=output/dev --variant=buildd "${REPOKIT_DIST}" \
-        --arch="${native_arch},${foreign_arch}" \
-        --include=apt-utils,build-essential,ccache \
+        --skip=output/dev "${REPOKIT_CROSS_DIST}" \
+        --arch=${native_arch} \
+        --arch=${REPOKIT_CROSS} \
+        --include=ccache \
         --customize-hook='chroot "$1" update-ccache-symlinks' \
-         "${HOME}/.cache/sbuild/${REPOKIT_DIST}-${native_arch}.tar.zst" \
+         "${HOME}/.cache/sbuild/${REPOKIT_CROSS_DIST}-${native_arch}.tar.zst" \
          https://deb.debian.org/debian
 
     if [ ! -f "${HOME}/.config/sbuild/config.pl" ]; then
-        echo "no sbuild configuration file at ${HOME}/.config/sbuild/config.pl found"
-        echo "see https://wiki.debian.org/sbuild#Setup for example file"
+        echo "no sbuild configuration file at ${HOME}/.config/sbuild/config.pl found
+see https://wiki.debian.org/sbuild#Setup for example file"
     fi
 }
 
 sbuild_get_arch () {
-    tar --wildcards -O -xf "${1}" './var/lib/dpkg/arch' 2>/dev/null
+    mapfile -t archs < <(tar --wildcards -O -xf "${1}" './var/lib/dpkg/arch' 2>/dev/null)
+    echo "${archs[0]} (${archs[@]:1})"
 }
 
 sbuild_get_suite () {
@@ -181,8 +181,11 @@ sbuild_get_suite () {
 }
 
 sbuild_list () {
+    i=0
     for tarball in ${HOME}/.cache/sbuild/*.tar.*; do
-        echo "$(basename "${tarball}")"
+        ((i++))
+        echo ""
+        echo "[${i}] $(basename "${tarball}")"
         echo -n "   -> Architectures: "
         sbuild_get_arch "${tarball}"
         echo -n "   -> Suite: "
