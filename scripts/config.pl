@@ -1,20 +1,21 @@
 $chroot_mode = 'unshare';
 $external_commands = { "build-failed-commands" => [ [ '%SBUILD_SHELL' ] ] };
-$distribution = 'unstable';
+$distribution = 'testing';
 $extra_repositories = [
     'deb [trusted=yes] https://apt.nanolx.org/ photonic main',
     'deb [trusted=yes] https://www.deb-multimedia.org/ unstable main'
 ];
 $build_arch_all = 0;
 $build_source = 0;
+$build_dep_resolver = 'apt';
+$build_profiles = 'cross nocheck';
 $source_only_changes = 0;
 $run_lintian = 0;
 $run_autopkgtest = 0;
-$run_piuparts = 1;
+$run_piuparts = 0;
 $piuparts_opts = [
-    '--no-eatmydata', '--distribution=%r', '--fake-essential-packages=systemd-sysv',
-    '--distribution=%r', '--bootstrapcmd=mmdebstrap --skip=check/empty --variant=minbase,
-     --aptopt="Acquire::http { Proxy \"http://127.0.0.1:3142\"; }"'
+    '--no-eatmydata', '--distribution=%r', '--bootstrapcmd=mmdebstrap --skip=check/empty
+    --variant=minbase --aptopt="Acquire::http { Proxy \"http://127.0.0.1:3142\"; }"'
 ];
 $build_environment = { "CCACHE_DIR" => "/build/ccache" };
 $path = "/usr/lib/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games";
