@@ -163,7 +163,8 @@ sbuild_bootstrap () {
 
     if [ ! -f "${HOME}/.config/sbuild/config.pl" ]; then
         echo "no sbuild configuration file at ${HOME}/.config/sbuild/config.pl found
-see https://wiki.debian.org/sbuild#Setup for example file"
+see /usr/share/nanolx/config.pl for example file and
+https://wiki.debian.org/sbuild#Setup for more information"
     fi
 }
 

@@ -1,18 +1,22 @@
 nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
 
   New upstream release
-    * nanolx-base
-      - example config.pl for sbuild in skel/.config/sbuild/config.pl
     * nanolx-apt-tools
       - repokit 1.7.0
         - dropped schroot support
         - added mmdebstrap/unshare support
-          - repokit screate / repokit supdate / repokit slist commands
-        - repokit.conf now uses REPOKIT_CROSS to determine supported crossbuild
-          architectures, note that repokit expects native, all and src packages
-          to be build locally, rather than in the chroot, thus repokit scross
-          only works on .dsc files
-        - other minor changes
+          - repokit screate -> create sbuild tarball
+          - repokit supdate -> update sbuild tarball
+          - repokit slist -> list available tarballs (with arch(es) and suite)
+        - repokit.conf now uses
+            - REPOKIT_CROSS to determine supported crossbuild architectures,
+              note that repokit expects native, all and src packages to be build
+              locally, rather than in the chroot, thus repokit scross only works
+              on .dsc files
+            - REPOKIT_CROSS_DIST defines the suite for the generated chroot, either
+              stable, testing, unstable
+        - other minor changes and fixes
+        - see scripts/config.pl for example sbuild configuration
     * nanolx-devel-cli
       - new dependencies:
         - mmdebstrap
@@ -23,7 +27,7 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
         - schroot
         - gcc-multilib
         - g++-multilib
-      - removed mksbuild
+      - removed mksbuild script
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 11 Aug 2026 21:55:49 +0200
 
