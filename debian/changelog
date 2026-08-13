@@ -18,6 +18,7 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
         - other minor changes and fixes
         - see scripts/config.pl for example sbuild configuration
         - update repokit manpage
+        - add bash-completion for nanolx
     * nanolx-devel-cli
       - new dependencies:
         - mmdebstrap

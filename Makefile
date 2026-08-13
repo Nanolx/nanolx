@@ -79,6 +79,9 @@ install:
 	install -m644 lib/libjpeg.so.8.2.2 $(DESTDIR)/usr/lib/x86_64-linux-gnu/
 	ln -sf $(DESTDIR)/usr/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
 		$(DESTDIR)/usr/lib/x86_64-linux-gnu/libjpeg.so.8
+	# completion
+	mkdir -p $(DESTDIR)/usr/share/bash-completion/
+	cp completion/* $(DESTDIR)/usr/share/bash-completion/
 
 update-conf:
 	mkdir -p $(DESTDIR)/usr/share/nanolx/

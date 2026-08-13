@@ -16,7 +16,8 @@ Depends:
  nanolx-apt-sources,
  systemd,
  libnotify-bin,
- rsync
+ rsync,
+ bash-completion
 Recommends:
  appimagelauncher
 Suggests:
@@ -115,7 +116,6 @@ Architecture: all
 Depends:
  vim,
  less,
- bash-completion,
  p7zip-full,
  zip,
  xz-utils,

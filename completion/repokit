@@ -1,0 +1,41 @@
+# repokit(1) completion                                    -*- shell-script -*-
+
+_comp_cmd_repokit() {
+    local cur prev opts
+    COMPREPLY=()
+
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="prepare get release put build clean add remove ftp screate supdate slist scross orig dist help"
+
+    case "${prev}" in
+        add)
+            COMPREPLY=( $(compgen -f -X '!*.changes' -- "${cur}") )
+            return 0
+        ;;
+
+        scross)
+            COMPREPLY=( $(compgen -f -X '!*.dsc' -- "${cur}") )
+            return 0
+        ;;
+
+        prepare)
+            local licenses="apache artistic bsd gpl gpl2 gpl3 isc lgpl lgpl2 lgpl3 expat custom"
+            COMPREPLY=( $(compgen -W "${licenses}" -- "${cur}") )
+            return 0
+        ;;
+
+        orig|dist)
+            COMPREPLY=( $(compgen -d -- "${cur}") )
+            return 0
+        ;;
+
+        *)
+        ;;
+    esac
+
+    COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+    return 0
+}
+
+complete -F _comp_cmd_repokit repokit
