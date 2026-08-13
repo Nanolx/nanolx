@@ -80,8 +80,8 @@ install:
 	ln -sf $(DESTDIR)/usr/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
 		$(DESTDIR)/usr/lib/x86_64-linux-gnu/libjpeg.so.8
 	# completion
-	mkdir -p $(DESTDIR)/usr/share/bash-completion/
-	cp completion/* $(DESTDIR)/usr/share/bash-completion/
+	mkdir -p $(DESTDIR)/usr/share/bash-completion/completions/
+	cp completion/* $(DESTDIR)/usr/share/bash-completion/completions/
 
 update-conf:
 	mkdir -p $(DESTDIR)/usr/share/nanolx/

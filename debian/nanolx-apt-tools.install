@@ -5,5 +5,5 @@ usr/share/nanolx/nanolx-orbit.conf
 usr/share/nanolx/repokit.conf
 usr/share/man/man1/nanolx-orbit.1.gz
 usr/share/man/man1/repokit.1.gz
-/usr/share/bash-completion/repokit
-/usr/share/bash-completion/nanolx-orbit
+/usr/share/bash-completion/completions/repokit
+/usr/share/bash-completion/completions/nanolx-orbit

@@ -22,6 +22,9 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
       - nanolx-orbit
         - show all packages by their installable names
         - add bash-completion for nanolx-orbit
+    * nanolx-apt-tools
+      - nanolx-apt
+        - add bash-completion for nanolx-apt
     * nanolx-devel-cli
       - new dependencies:
         - mmdebstrap
