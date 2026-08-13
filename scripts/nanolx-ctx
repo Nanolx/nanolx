@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.1.1"
-reldate="2026/07/05"
+version="0.1.2"
+reldate="2026/08/13"
 
 if (( EUID != 0 )); then
     echo "nanolx-ctx must be run as root"
@@ -94,6 +94,9 @@ case ${1} in
             echo "already using system's ssl certificates for citrix"
         else
             echo "using system's ssl certificates for citrix"
+            # remove previous _orig, this is required, if citrix was updated,
+            # else mv will do nothing and thus we keep using citrix certs
+            rm -rf "${ICAROOT}/keystore/cacerts_orig"
             mv "${ICAROOT}/keystore/cacerts" "${ICAROOT}/keystore/cacerts_orig"
             ln -s /etc/ssl/certs "${ICAROOT}/keystore/cacerts"
             "${ICAROOT}/util/ctx_rehash" >/dev/null
