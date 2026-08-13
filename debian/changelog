@@ -42,9 +42,13 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
       - add postinst/postrm script
     * nanolx-citrix-config:
       - improve postinst/postrm script
+      - nanolx-ctx
+        - ensure nanolx-ctx system-certs keeps working after citrix update
+        - add bash-completion for nanolx-citrix-config
     * nanolx-base:
       - move dependency on bash-completion from nanolx-cli here
       - add bash-completion for nanolx-backup
+      - add bash-completion for nanolx-skel
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 11 Aug 2026 21:55:49 +0200
 

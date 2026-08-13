@@ -1,0 +1,6 @@
+# nanolx-ctx(1) completion                                  -*- shell-script -*-
+
+complete -W "enable-telemetry disable-telemetry check system-certs citrix-certs \
+disable-scdlog enable-scdlog enable-teams disable-teams restrict-local allow-local \
+load-webkit unload-webkit enable-padummy disable-padummy register-zoom \
+zoom-smartvb-on zoom-smartvb-off zoom-hwaccel-on zoom-hwaccel-off" nanolx-ctx
