@@ -28,6 +28,12 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
         - gcc-multilib
         - g++-multilib
       - removed mksbuild script
+    * nanolx-x11:
+      - remove ydotoold systemd service, recent ydotool ships it's own
+    * nanolx-themes:
+      - add postinst/postrm script
+    * nanolx-citrix-config:
+      - improve postinst/postrm script
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 11 Aug 2026 21:55:49 +0200
 
