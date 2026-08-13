@@ -1,3 +1,4 @@
 usr/bin/hugo-push
+usr/share/bash-completion/completions/hugo-push
 usr/share/nanolx/hugo-push.conf
 usr/share/man/man1/hugo-push.1.gz

@@ -55,6 +55,8 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
       - add bash-completion for nanolx-skel
     * nanolx-yubikey:
       - add bash-completion for nanolx-pam-yubikey
+    * nanolx-net:
+      - add bash-completion for hugo-push
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 11 Aug 2026 21:55:49 +0200
 

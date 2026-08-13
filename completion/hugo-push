@@ -1,0 +1,3 @@
+# hugo-push(1) completion                                  -*- shell-script -*-
+
+complete -W "help" hugo-push
