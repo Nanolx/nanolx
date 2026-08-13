@@ -6,3 +6,4 @@ usr/share/nanolx/repokit.conf
 usr/share/man/man1/nanolx-orbit.1.gz
 usr/share/man/man1/repokit.1.gz
 /usr/share/bash-completion/repokit
+/usr/share/bash-completion/nanolx-orbit

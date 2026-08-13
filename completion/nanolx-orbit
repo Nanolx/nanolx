@@ -1,0 +1,26 @@
+# nanolx-orbit(1) completion                                -*- shell-script -*-
+
+_comp_cmd_nanolx_orbit() {
+    local cur prev opts
+    COMPREPLY=()
+
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="list download install clear help"
+
+    case "${prev}" in
+        download|install)
+            local packages="zoom zoom-vdi citrix citrix-usb citrix-epa citrix-beta citrix-usb-beta"
+            COMPREPLY=( $(compgen -W "${packages}" -- "${cur}") )
+            return 0
+        ;;
+
+        *)
+        ;;
+    esac
+
+    COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
+    return 0
+}
+
+complete -F _comp_cmd_nanolx_orbit nanolx-orbit
