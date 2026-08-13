@@ -53,6 +53,7 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
       - move dependency on bash-completion from nanolx-cli here
       - add bash-completion for nanolx-backup
       - add bash-completion for nanolx-skel
+      - update bashstyle.ini in nanolx skel files
     * nanolx-yubikey:
       - add bash-completion for nanolx-pam-yubikey
     * nanolx-net:
