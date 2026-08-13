@@ -1,4 +1,4 @@
-nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
+nanolx (1:4.13.0.20260813-1nano) unstable; urgency=low
 
   New upstream release
     * nanolx-apt-tools
@@ -59,7 +59,7 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
     * nanolx-net:
       - add bash-completion for hugo-push
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 11 Aug 2026 21:55:49 +0200
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 13 Aug 2026 19:19:16 +0200
 
 nanolx (1:4.12.0.20260810-1nano) unstable; urgency=low
 
