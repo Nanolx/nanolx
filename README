@@ -187,7 +187,7 @@ nanolx-citrix-config:
 Scripts
 =======================================
 
-Nanolx includes a set of scripts, all scripts ship their own manpage.
+Nanolx includes a set of scripts, all ship their own manpage and bash completion.
 
 nanolx-base:
     nanolx-backup   create and manage systemd timers for rsync backups, alternatively
