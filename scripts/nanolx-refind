@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.0.2"
-reldate="2026/05/18"
+version="0.0.3"
+reldate="2026/08/13"
 
 if (( EUID != 0 )); then
     echo "nanolx-refind must be run as root"
@@ -15,12 +15,11 @@ if [ ! -d "${refind_base}" ]; then
 fi
 
 case ${1} in
-    themes-show )
-        echo "the following refind themes are installed:"
-        ls -1 "${refind_base}/themes/"
+    list-themes )
+        ls -1 -I "*.old" "${refind_base}/themes/"
     ;;
 
-    themes-set )
+    set-theme )
         if [ -d "${refind_base}/themes/${2}" ]; then
             echo "setting default refind theme: ${2}"
             sed -e '/include.*themes/d' -i "${refind_base}/refind.conf"
@@ -31,13 +30,13 @@ case ${1} in
         fi
     ;;
 
-    themes-get )
+    get-theme )
         echo "currently active refind theme:"
         refind_theme="$(gawk -F'/' '/include.*themes/{print $2}' "${refind_base}/refind.conf")"
         [ -z "${refind_theme}" ] && echo "default (none)" || echo "${refind_theme}"
     ;;
 
-    themes-unset )
+    default-theme )
         echo "reverting to default refind theme"
         sed -e '/include.*themes/d' -i "${refind_base}/refind.conf"
     ;;
@@ -59,12 +58,12 @@ case ${1} in
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-refind themes-show
-    nanolx-refind themes-set [theme]
-    nanolx-refind themes-get
-    nanolx-refind themes-unset
-    nanolx-refind lock-grub     [use apt mark to disable grub updates]
-    nanoxl-refind unlock-grub   [use apt mark to re-enable grub updates]
+    nanolx-refind list-themes           list installed themes
+    nanolx-refind set-theme     [theme] set theme to use
+    nanolx-refind get-theme             get active theme
+    nanolx-refind default-theme         revert to default theme
+    nanolx-refind lock-grub             use apt mark to disable grub updates
+    nanoxl-refind unlock-grub           use apt mark to re-enable grub updates
 "
     ;;
 esac
