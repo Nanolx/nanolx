@@ -40,6 +40,10 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
       - remove ydotoold systemd service, recent ydotool ships it's own
     * nanolx-themes:
       - add postinst/postrm script
+      - nanolx-refind
+        - change the name of some flags
+        - filter out ".old" directory from nanolx-refind list-themes
+        - add bash-completion for nanolx-refind
     * nanolx-citrix-config:
       - improve postinst/postrm script
       - nanolx-ctx

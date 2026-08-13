@@ -1,0 +1,3 @@
+# nanolx-refind(1) completion                              -*- shell-script -*-
+
+complete -W "list-themes set-theme get-theme default-theme lock-grub unlock-grub help" nanolx-refind
