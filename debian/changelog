@@ -42,6 +42,9 @@ nanolx (1:4.12.1.20260811-1nano) UNRELEASED; urgency=low
       - add postinst/postrm script
     * nanolx-citrix-config:
       - improve postinst/postrm script
+    * nanolx-base:
+      - move dependency on bash-completion from nanolx-cli here
+      - add bash-completion for nanolx-backup
 
  -- Christopher Roy Bratusek <nano@jpberlin.de>  Tue, 11 Aug 2026 21:55:49 +0200
 

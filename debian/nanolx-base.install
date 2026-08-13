@@ -8,3 +8,4 @@ usr/share/nanolx/nanolx-backup-usb.rules
 usr/share/nanolx/skel/
 usr/share/man/man1/nanolx-backup.1.gz
 usr/share/man/man1/nanolx-skel.1.gz
+usr/share/bash-completion/completions/nanolx-backup
