@@ -239,10 +239,6 @@ nanolx-themes:
                     supports showing installed themes, setting theme,
                     showing current theme in use or reverting to default.
 
-nanolx-x11:
-    ydotoold.service    not a script, but a simple systemd user unit for running
-                        ydotoold as a service.
-
 Citrix
 =======================================
 
