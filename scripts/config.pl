@@ -7,7 +7,7 @@ $external_commands = {
         [ 'debsign', '%SBUILD_CHANGES' ]
     ]
 };
-$distribution = 'testing';
+$distribution = 'unstable';
 $extra_repositories = [
     'deb [trusted=yes] https://apt.nanolx.org/ photonic main',
     'deb [trusted=yes] https://www.deb-multimedia.org/ unstable main'
