@@ -1,11 +1,11 @@
-.TH repokit 1 "2026 May 21"
+.TH repokit 1 "2026 Aug 13"
 .SH NAME
 repokit
 .SH SYNOPSIS
-repokit [add \fI.changes\fP] [remove \fIpackage\fP] [orig \fIsourcedir\fP]
-[prepare \fIlicense\fP] [build] [clean] [slist] [scopy \fIfiles\fP]
-[senter \fIschroot\fP] [dist \fIsourcedir\fP] [crossbuild \fI.dsc\fP]
-[ftp] [get] [release] [put]
+repokit [prepare \fIlicense\fP] [get] [release] [put] [build] [clean]
+[add \fI.changes\fP] [remove \fIpackage\fP] [ftp] [screate] [supdate]
+[slist] [scross \fI.dsc\fP] [orig \fIsourcedir\fP] [dist \fIsourcedir\fP]
+
 .SH DESCRIPTION          \" Section Header - required - don't modify
 repokit is my personal wrapper script for reprepro with config file support and
 many features. repokit expects a configuration file \fI$HOME/.repokit.conf\fP
@@ -25,38 +25,8 @@ An example configuration with explainations is found at
 repokit knows the following options:
 
 .TP 4
-.B add \fI.changes\fP
-add binary packages to reprepro repository, using it's .changes file
-.TP
-.B remove \fIpackage\fP
-remove a package from reprepro repository
-.TP
-.B orig \fIsourcedir\fP
-create an .orig tarball from given source directory
-.TP
 .B prepare \fIlicense\fP
 create skeleton debian/ packaging files, using given license
-.TP
-.B build
-build debian binary packages
-.TP
-.B clean
-clean the debian build directory
-.TP
-.B slist
-list available \fIschroot\fP build environments
-.TP
-.B scopy \fIfiles\fP
-copy files into the schroot build directory for given environment
-.TP
-.B scenter \fIschroot\fP
-enter given schroot
-.TP
-.B crossbuild \fI.dsc\fP
-crossbuild a debian packges using it's .dsc file
-.TP
-.B ftp
-push your apt repository to your webspace using ftp
 .TP
 .B get
 if you manage your build scripts inside a git repository, you can use this to
@@ -70,12 +40,47 @@ afterwards you can use this command to add a new, empty changelog entry to
 once your packaging scripts are updated for the new relase, you can use this
 command to git commit them to your git repository you use to store your build
 scripts
+.TP
+.B build
+build debian binary packages
+.TP
+.B clean
+clean the debian build directory
+B add \fI.changes\fP
+add binary packages to reprepro repository, using it's .changes file
+.TP
+.B remove \fIpackage\fP
+remove a package from reprepro repository
+.TP
+.B ftp
+push your apt repository to your webspace using ftp
+.TP
+.B screate
+create tarball for sbuild
+.TP
+.B supdate
+update tarball for sbuild
+.TP
+.B slist
+list available unshare chroots
+.TP
+.B scross \fI.dsc\fP
+corss build package using sbuild
+.TP
+.B orig \fIsourcedir\fP
+create an .orig tarball from given source directory
+.TP
+.B dist \fIsourcedir\fP
+generate tarballs, checksums and signatures for release distribution
 .PP
 
 .SH FILES
 .TP 15
-/usr/share/nanolx/repokit.conf
+.B /usr/share/nanolx/repokit.conf
 example repokit configuration file
+.TP
+.B /usr/share/nanolx/config.pl
+example sbuild configuration file
 .PP
 
 .SH AUTHORS
