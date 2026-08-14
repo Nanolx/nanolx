@@ -15,32 +15,6 @@ and you can use the provided scripts (see below) to adjust as you like.
 Addtionally Nanolx contains the default set of themes I prefer to use, see
 the nanolx-themes package below
 
-On Debian-based distributions you'll likely not be able to meet all dependecies
-of the packages. In that case
-
-    make install
-
-would only install the included scripts (see below), configuration and themes.
-
-If you only want to update the configuration for the following scripts:
-    - hugo-push
-    - repokit
-    - nanolx-apt
-    - nanolx-orbit
-
-use
-
-   make update-conf
-
-On non Debian-based distributions you'll only be able to use the scripts:
-    - hugo-push
-    - nanolx-backup (if systemd is in use)
-    - nanolx-ctx
-    - nanolx-pam-yubikey
-    - nanolx-refind
-
-copy/install them manually if desired.
-
 Release Information
 =======================================
 
@@ -79,6 +53,34 @@ the sub-packages may depend on packages only available from the deb-mulitmedia
 or my own photonic repository, so both are considered required for nanolx-full.
 
 See also: nanolx-apt tool below.
+
+## For non Debian GNU/Linux users
+
+On Debian-based distributions you'll likely not be able to meet all dependecies
+of the packages. In that case
+
+    make install
+
+would only install the included scripts (see below), configuration and themes.
+
+If you only want to update the configuration for the following scripts:
+    - hugo-push
+    - repokit
+    - nanolx-apt
+    - nanolx-orbit
+
+use
+
+   make update-conf
+
+On non Debian-based distributions you'll only be able to use the scripts:
+    - hugo-push
+    - nanolx-backup (if systemd is in use)
+    - nanolx-ctx
+    - nanolx-pam-yubikey
+    - nanolx-refind
+
+copy/install them manually if desired.
 
 License
 =======================================
