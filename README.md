@@ -44,13 +44,11 @@ create:
 
 with the following content:
 
-{{< code language="deb-src" >}}
-Types: deb deb-src
-URIs: https://apt.nanolx.org/
-Suites: photonic
-Components: main
-Signed-By: /etc/apt/trusted.gpg.d/nanolx2026.asc
-{{< /code >}}
+    Types: deb deb-src
+    URIs: https://apt.nanolx.org/
+    Suites: photonic
+    Components: main
+    Signed-By: /etc/apt/trusted.gpg.d/nanolx2026.asc
 
 then proceed to install. Install either
 
@@ -69,9 +67,7 @@ See also: `nanolx-apt` Script below.
 On `Debian`-based distributions you'll likely not be able to meet all dependecies
 of the packages. In that case
 
-{{<code language="shell" title="installation">}}
-make install
-{{</code>}}
+    make install
 
 would only install the included scripts (see below), configuration and themes.
 
@@ -83,9 +79,7 @@ If you only want to update the configuration for the following scripts:
 
 use
 
-{{<code language="shell" title="update configuration">}}
-make update-conf
-{{</code>}}
+    make update-conf
 
 On non Debian-based distributions you'll only be able to use the scripts:
 * `hugo-push`
