@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CWD=$(dirname "$(readlink -m "${BASH_SOURCE[0]}")")
-PREFIX=${INSTALL_PREFIX:-/usr}
+PREFIX=${PREFIX:-/usr}
 
 dirs=(/boot/efi/EFI/refind/themes/
  /etc/dracut.conf.d/
@@ -13,6 +13,9 @@ dirs=(/boot/efi/EFI/refind/themes/
  ${PREFIX}/share/applications/
  ${PREFIX}/share/aurorae/themes/
  ${PREFIX}/share/bash-completion/completions/
+ ${PREFIX}/share/color-schemes/
+ ${PREFIX}/share/icons/
+ ${PREFIX}/share/konsole/
  ${PREFIX}/share/Kvantum/
  ${PREFIX}/share/kwin/effects/
  ${PREFIX}/share/kwin/scripts/
@@ -20,8 +23,10 @@ dirs=(/boot/efi/EFI/refind/themes/
  ${PREFIX}/share/nanolx/sources.d/
  ${PREFIX}/share/nanolx/apt.d/
  ${PREFIX}/share/man/man1/
+ ${PREFIX}/share/plasma/
  ${PREFIX}/share/plymouth/themes/
- ${PREFIX}/share/sddm/themes/)
+ ${PREFIX}/share/sddm/themes/
+ ${PREFIX}/share/wallpapers)
 
 BIN_SCRIPTS=(repokit
  hugo-push)
@@ -66,64 +71,145 @@ create_dirs () {
     done
 }
 
-install_data () {
-    cp "${CWD}/${1}" "${DESTDIR}${PREFIX}/${2}/$(basename "${1}")"
-}
+install () {
+    case "${3}" in
+        /* )    local dest="${DESTDIR}${3}" ;;
+        *  )    local dest="${DESTDIR}${PREFIX}/${3}" ;;
+    esac
 
-install_bin () {
-    cp "${CWD}/${1}" "${DESTDIR}${PREFIX}/${2}/$(basename "${1}")"
-    chmod +x "${DESTDIR}${PREFIX}/${2}/$(basename "${1}")"
-}
+    case "${2}" in
+        /* )    local in="${2}" ;;
+        *  )    local in="${CWD}/${2}" ;;
+    esac
 
-install_dir () {
-    cp -r "${CWD}/${1}" "${DESTDIR}${PREFIX}/${2}/"
+    case "${1}" in
+        data )  cp "${in}" "${dest}/$(basename "${2}")" ;;
+        bin  )  cp "${in}" "${dest}/$(basename "${2}")"
+                chmod +x "${dest}/$(basename "${2}")" ;;
+        dir  )  cp -r "${in}" "${dest}/" ;;
+    esac
 }
 
 install_scripts () {
     for script in "${BIN_SCRIPTS[@]}"; do
-        install_bin "scripts/${script}" "bin"
+        install bin "scripts/${script}" bin
         if [ -f "${CWD}/man/${script}.1" ]; then
             gzip "${CWD}/man/${script}.1" -c > "${CWD}/man/${script}.1.gz"
-            install_data "man/${script}.1.gz" "share/man/man1"
+            install data "man/${script}.1.gz" share/man/man1
         fi
         if [ -f "${CWD}/completion/${script}" ]; then
-            install_data "completion/${script}" "share/bash-completion/completions"
+            install data "completion/${script}" share/bash-completion/completions
         fi
     done
     for script in "${SBIN_SCRIPTS[@]}"; do
-        install_bin "scripts/${script}" "sbin"
+        install bin "scripts/${script}" sbin
         if [ -f "${CWD}/man/${script}.1" ]; then
             gzip "${CWD}/man/${script}.1" -c > "${CWD}/man/${script}.1.gz"
-            install_data "man/${script}.1.gz" "share/man/man1"
+            install data "man/${script}.1.gz" share/man/man1
         fi
         if [ -f "${CWD}/completion/${script}" ]; then
-            install_data "completion/${script}" "share/bash-completion/completions"
+            install data "completion/${script}" share/bash-completion/completions
         fi
     done
 }
 
 install_scripts_conf () {
     for conf in "${SCRIPTS_CONF[@]}"; do
-        install_data "scripts/${conf}" "share/nanolx"
+        install data "scripts/${conf}" share/nanolx
     done
 }
 
 install_skel () {
     for conf in "${SKEL_CONF[@]}"; do
-        install_data "skel/.${conf}" "share/nanolx/skel"
+        install data "skel/.${conf}" share/nanolx/skel
     done
     for bin in "${SKEL_BIN[@]}"; do
-        install_bin "skel/bin/${bin}" "share/nanolx/skel/bin"
+        install bin "skel/bin/${bin}" share/nanolx/skel/bin
     done
 }
 
 install_apt () {
     for source in "${APT_SOURCES[@]}"; do
-        install_data "apt/${source}.sources" "share/nanolx/sources.d"
+        install data "apt/${source}.sources" share/nanolx/sources.d
     done
     for conf in "${APT_CONF[@]}"; do
-        install_data "apt/${conf}" "share/nanolx/apt.d"
+        install data "apt/${conf}" "share/nanolx/apt.d"
     done
+}
+
+install_misc () {
+    # rEFInd
+    for dir in "${CWD}"/refind/*; do
+        install dir "${dir}" /boot/efi/EFI/refind/themes/
+    done
+
+    # plymouth
+    install data plymouth/fonts.conf /etc/dracut.conf.d/
+    install dir  plymouth/debian-mac-style/ share/plymouth/themes/
+
+    # icons and cursors
+    for dir in "${CWD}"/icons/*; do
+        install dir "${dir}" share/icons/
+    done
+
+    # Kvantum
+    for dir in "${CWD}"/themes/Kvantum/*; do
+        install dir "${dir}" share/Kvantum/
+    done
+
+    # KWin
+    for dir in "${CWD}"/themes/aurorae/*; do
+        install dir "${dir}" share/aurorae/themes/
+    done
+    for dir in "${CWD}"/themes/effects/*; do
+        install dir "${dir}" share/kwin/effects/
+    done
+    for dir in "${CWD}"/kwin/*; do
+        install dir "${dir}" share/kwin/scripts/
+    done
+
+    # Plasma
+    for dir in "${CWD}"/themes/plasma/*; do
+        install dir "${dir}" share/plasma/
+    done
+    for dir in "${CWD}"/themes/color-schemes/*; do
+        install dir "${dir}" share/color-schemes/
+    done
+    for dir in "${CWD}"/plasmoids/*; do
+        install dir "${dir}" share/plasma/
+    done
+
+    # Konsole
+    for dir in "${CWD}"/themes/konsole/*; do
+        install dir "${dir}" share/konsole/
+    done
+
+    # wallpapers
+    for dir in "${CWD}"/wallpapers/*; do
+        install dir "${dir}" share/wallpapers/
+    done
+
+    # SDDM
+     for dir in "${CWD}"/sddm/*; do
+        install dir "${dir}" share/sddm/themes/
+    done
+
+    # Citrix
+    for desktop in "${CWD}/citrix"/*.desktop; do
+        install data "${desktop}" share/applications/
+    done
+    for service in "${CWD}/citrix"/*.service; do
+        install bin "${service}" lib/systemd/system/
+    done
+    for script in "${CWD}/citrix"/*.sh; do
+        install bin "${script}" /opt/Citrix/ICAClient/
+    done
+    install bin lib/libjpeg.so.8.2.2 lib/x86_64-linux-gnu/
+
+    # extra step for old Citrix
+    ln -sf ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
+        ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
+
 }
 
 case "${1}" in
@@ -133,6 +219,7 @@ case "${1}" in
         install_scripts_conf
         install_skel
         install_apt
+        install_misc
     ;;
     uninstall)
         echo "nothing yet"
@@ -148,6 +235,15 @@ case "${1}" in
         rm -f "${CWD}/man"/*.1.gz
     ;;
     * )
-        echo "nanolx install script, work in progress, use make install for now."
+        echo "
+nanolx install script
+
+usage:
+
+[./]make clean      - clean up
+[./]make install    - install everything
+[./]make scripts    - only install scripts + config
+[./]make updateconf - only install config
+"
     ;;
 esac
