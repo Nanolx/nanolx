@@ -1,4 +1,4 @@
-.TH repokit 1 "2026 Aug 13"
+.TH repokit 1 "2026 Aug 15"
 .SH NAME
 repokit
 .SH SYNOPSIS
@@ -48,9 +48,15 @@ build debian binary packages
 clean the debian build directory
 B add \fI.changes\fP
 add binary packages to reprepro repository, using it's .changes file
+
+if REPOKIT_FTP_AUTO=true in your repokit.conf the ftp push will be started if
+repokit add was successful
 .TP
 .B remove \fIpackage\fP
 remove a package from reprepro repository
+
+if REPOKIT_FTP_AUTO=true in your repokit.conf the ftp push will be started if
+repokit remove was successful
 .TP
 .B ftp
 push your apt repository to your webspace using ftp
