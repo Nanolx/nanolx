@@ -185,6 +185,7 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
         - sudo-i
         - polkit-1
         - kde
+
         optionally, the script allows to lock the session, as soon as the Yubikey is plugged out.
 7. `nanolx-themes`
     1. `nanolx-refind`   simple script to manage rEFInd bootloader themes, supports showing installed themes, setting theme, showing current theme in use or reverting to default.
