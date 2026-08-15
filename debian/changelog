@@ -1,3 +1,26 @@
+nanolx (1:4.13.1.2026ddmm-1nano) unstable; urgency=low
+
+  New upstrem release
+    * sync README.md with homepage
+    * replace Makefile with make script
+      - Makefile is now only executing make script
+      - update README for new installation instructions on non-Debian systems
+    * nanolx-apt-tools:
+      - repokit 1.7.2
+        - support source directories with name-ver and name_ver
+        - actually use REPOKIT_SBUILD_FLAGS (regression from 1.7.0)
+        - add REPOKIT_FTP_AUTO var, if true repokit add/repokit remove will
+          automatically initiate ftp push
+    * nanolx-yubikey:
+      - nanolx-pam-yubikey 0.0.2
+        - fix style error in manpage
+        - add ability to lock the screen as soon as the Yubikey is plugged out
+          (works with both systemd/elogind), as suggested by reddit user camh-
+        - improve help message
+        - update manpage
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>
+
 nanolx (1:4.13.0.20260813-1nano) unstable; urgency=low
 
   New upstream release
