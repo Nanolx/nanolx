@@ -1,14 +1,19 @@
-.TH nanolx-pam-yubikey 1 "2026 May 21"
+.TH nanolx-pam-yubikey 1 "2026 Aug 15"
 .SH NAME
 nanolx-pam-yubikey
 .SH SYNOPSIS
-nanolx-pam-yubikey [enable] [disable] [check]
+nanolx-pam-yubikey [enable] [disable] [check] [enable-lock-on-remove]
+[disable-lock-on-remove]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-pam-yubikey is a simple script to enable password-less logins when a
-Yubikey is plugged in, using PAM.
+Yubikey known to the system is plugged in, using PAM.
 
 nanolx-pam-yubikey expects your \fIu2f\fP configuration to reside in
 \fI/etc/u2f_keys\fP, refer to \fIpamu2fcg\fP for generating the file.
+
+If no \fI/etc/u2f_keys\fP exists or the Yubikey plugged in isn't listed in
+\fI/etc/u2f_keys\fP, nothing will change and all tools will ask for passwords
+normally.
 
 Currently hooked-into PAM modules:
 
@@ -34,7 +39,7 @@ Allows for passwordless screen-unlocking in KDE
 
 When no Yubikey is plugged in, all tools ask for passwords normally.
 
-Note: if \fIpkexec\P does not respond after applying this changes it may be a
+Note: if \fIpkexec\fP does not respond after applying this changes it may be a
 conflict with your Desktop's polkit-agent running e.g. the helper for KDE, XFCE
 or GNOME. You may try whether
 
@@ -57,6 +62,12 @@ Disable passwordless logins
 .TP
 .B check
 Check whether passwordless logins are enabled or disabled
+.TP
+.B enable-lock-on-remove
+Enable screenlocking when Yubikey is removed from PC
+.TP
+.B disable-lock-on-remove
+Disable screenlocking when Yubikey is removed from PC
 .PP
 
 .SH AUTHORS

@@ -41,7 +41,7 @@ install:
 	for conf in scripts/*.conf scripts/pulseaudio-dummy scripts/*.json scripts/*.pl; do \
 		install -m644 $$conf $(DESTDIR)/usr/share/nanolx/; \
 	done
-	for conf in backup.service backup.timer backup-usb.rules backup-usb.service; do \
+	for conf in backup.service backup.timer backup-usb.rules backup-usb.service yubikey-lock.rules; do \
 		install -m644 scripts/nanolx-$$conf $(DESTDIR)/usr/share/nanolx ;\
 	done
 	# manpages
