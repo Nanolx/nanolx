@@ -12,8 +12,12 @@ pam_files=(login sddm su sudo sudo-i polkit-1 kde)
 yubi_string="auth sufficient pam_u2f.so authfile=/etc/u2f_keys userpresence=0"
 
 # as per suggestion of reddit user camh-
-udev_nlx_lockfile=/usr/share/nanolx/yubikey-lock.rules
-udev_sys_lockfile=/etc/udev/rules.d/99-yubikey-lock.rules
+if [ -f yubikey-lock.rules ]; then
+    udev_nlx_rulefile=yubikey-lock.rules
+else
+    udev_nlx_rulefile=/usr/share/nanolx/yubikey-lock.rules
+fi
+udev_sys_rulefile=/etc/udev/rules.d/99-yubikey-lock.rules
 
 case ${1} in
     enable )
@@ -75,7 +79,7 @@ at your own risk, keep in mind to eventually re-enable it."
                 echo -e "Yubikey in /etc/pam.d/${file}:\t disabled"
             fi
         done
-        if [ -f ${udev_sys_lockfile} ]; then
+        if [ -f ${udev_sys_rulefile} ]; then
             echo -e "Yubikey will lock the screen upon removal: enabled"
         else
             echo -e "Yubikey will lock the screen upon removal: disabled"
@@ -83,8 +87,8 @@ at your own risk, keep in mind to eventually re-enable it."
     ;;
 
     enable-lock-on-remove )
-        if [ ! -f ${udev_sys_lockfile} ]; then
-            cp ${udev_nlx_lockfile} ${udev_sys_lockfile}
+        if [ ! -f ${udev_sys_rulefile} ]; then
+            cp ${udev_nlx_rulefile} ${udev_sys_rulefile}
             udevadm control --reload-rules
         else
             echo "Yubikey will lock the screen upon removal already enabled."
@@ -92,8 +96,8 @@ at your own risk, keep in mind to eventually re-enable it."
     ;;
 
     disable-lock-on-remove )
-        if [ -f ${udev_sys_lockfile} ]; then
-            rm ${udev_sys_lockfile}
+        if [ -f ${udev_sys_rulefile} ]; then
+            rm ${udev_sys_rulefile}
             udevadm control --reload-rules
         else
             echo "Yubikey will lock the screen upon removal is not enabled."
