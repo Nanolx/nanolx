@@ -3,25 +3,25 @@
 CWD=$(dirname "$(readlink -m "${BASH_SOURCE[0]}")")
 PREFIX=${INSTALL_PREFIX:-/usr}
 
-dirs=(${DESTDIR}/boot/efi/EFI/refind/themes/
- ${DESTDIR}/etc/dracut.conf.d/
- ${DESTDIR}/opt/Citrix/ICAClient/
- ${DESTDIR}${PREFIX}/bin/
- ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/
- ${DESTDIR}${PREFIX}/lib/systemd/system/
- ${DESTDIR}${PREFIX}/sbin/
- ${DESTDIR}${PREFIX}/share/applications/
- ${DESTDIR}${PREFIX}/share/aurorae/themes/
- ${DESTDIR}${PREFIX}/share/bash-completion/completions/
- ${DESTDIR}${PREFIX}/share/Kvantum/
- ${DESTDIR}${PREFIX}/share/kwin/effects/
- ${DESTDIR}${PREFIX}/share/kwin/scripts/
- ${DESTDIR}${PREFIX}/share/nanolx/skel/bin
- ${DESTDIR}${PREFIX}/share/nanolx/sources.d/
- ${DESTDIR}${PREFIX}/share/nanolx/apt.d/
- ${DESTDIR}${PREFIX}/share/man/man1/
- ${DESTDIR}${PREFIX}/share/plymouth/themes/
- ${DESTDIR}${PREFIX}/share/sddm/themes/)
+dirs=(/boot/efi/EFI/refind/themes/
+ /etc/dracut.conf.d/
+ /opt/Citrix/ICAClient/
+ ${PREFIX}/bin/
+ ${PREFIX}/lib/x86_64-linux-gnu/
+ ${PREFIX}/lib/systemd/system/
+ ${PREFIX}/sbin/
+ ${PREFIX}/share/applications/
+ ${PREFIX}/share/aurorae/themes/
+ ${PREFIX}/share/bash-completion/completions/
+ ${PREFIX}/share/Kvantum/
+ ${PREFIX}/share/kwin/effects/
+ ${PREFIX}/share/kwin/scripts/
+ ${PREFIX}/share/nanolx/skel/bin
+ ${PREFIX}/share/nanolx/sources.d/
+ ${PREFIX}/share/nanolx/apt.d/
+ ${PREFIX}/share/man/man1/
+ ${PREFIX}/share/plymouth/themes/
+ ${PREFIX}/share/sddm/themes/)
 
 BIN_SCRIPTS=(repokit
  hugo-push)
@@ -62,7 +62,7 @@ APT_CONF=(99nanolx
 
 create_dirs () {
     for dir in "${dirs[@]}"; do
-        mkdir -p "${dir}"
+        mkdir -p "${DESTDIR}${dir}"
     done
 }
 
