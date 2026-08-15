@@ -64,31 +64,30 @@ See also: `nanolx-apt` Script below.
 
 ## For non Debian GNU/Linux-Users
 
-On `Debian`-based distributions you'll likely not be able to meet all dependecies
-of the packages. In that case
+On `Debian`-based distributions (like `Ubuntu`) you'll likely not be able to
+meet all dependecies of the meta-packages. In that case you can use
 
-    make install
+    [./]make install
 
-would only install the included scripts (see below), configuration and themes.
+to install included scripts (see below), configuration and themes. If you only
+want to install the scripts, use
 
-If you only want to update the configuration for the following scripts:
-* `hugo-push`
-* `repokit`
-* `nanolx-apt`
-* `nanolx-orbit`
+    [./]make scripts
 
-use
+and if you only want to update the configuration files the scripts, use
 
-    make update-conf
+    [./]make updateconf
 
-On non Debian-based distributions you'll only be able to use the scripts:
+On non Debian-based distributions you'll be able to use the scripts:
+
 * `hugo-push`
 * `nanolx-backup` (if `systemd` is in use)
 * `nanolx-ctx`
+* `nanolx-skel`
 * `nanolx-pam-yubikey`
 * `nanolx-refind`
 
-copy/install them manually if desired.
+you may want to install them manually if desired.
 
 ## License
 
