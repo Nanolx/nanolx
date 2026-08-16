@@ -32,6 +32,14 @@ apply_results_gtk3 () {
     fi
 }
 
+apply_results_gtk4 () {
+    if ${1}; then
+        sudo gsettings set org.gnome.desktop.interface ${2} "${3}"
+    else
+        gsettings set org.gnome.desktop.interface ${2} "${3}"
+    fi
+}
+
 apply_results () {
     # Gtk3
     apply_results_gtk3 "gtk-application-prefer-dark-theme" "${gtk_color_scheme_int}"
@@ -43,29 +51,17 @@ apply_results () {
     apply_results_gtk3 "gtk-cursor-theme-size" "${kde_cursor_size}"
 
     # Gtk4
-    if ${1}; then
-        sudo gsettings set org.gnome.desktop.interface color-scheme "${gtk_color_scheme}"
-        sudo gsettings set org.gnome.desktop.interface gtk-theme "${kde_gtk_theme}"
-        sudo gsettings set org.gnome.desktop.interface icon-theme "${kde_icon_theme}"
-        sudo gsettings set org.gnome.desktop.interface font-name "${gtk_font}"
-        sudo gsettings set org.gnome.desktop.interface document-font-name "${gtk_font}"
-        sudo gsettings set org.gnome.desktop.interface monospace-font-name "${gtk_font_mono}"
-        sudo gsettings set org.gnome.desktop.interface toolbar-style "${gtk_toolbar_style}"
-        sudo gsettings set org.gnome.desktop.interface cursor-theme "${kde_cursor_theme}"
-        sudo gsettings set org.gnome.desktop.interface cursor-size "${kde_cursor_size}"
+    apply_results_gtk4 ${1} color-scheme "${gtk_color_scheme}"
+    apply_results_gtk4 ${1} gtk-theme "${kde_gtk_theme}"
+    apply_results_gtk4 ${1} icon-theme "${kde_icon_theme}"
+    apply_results_gtk4 ${1} font-name "${gtk_font}"
+    apply_results_gtk4 ${1} document-font-name "${gtk_font}"
+    apply_results_gtk4 ${1} monospace-font-name "${gtk_font_mono}"
+    apply_results_gtk4 ${1} toolbar-style "${gtk_toolbar_style}"
+    apply_results_gtk4 ${1} cursor-theme "${kde_cursor_theme}"
+    apply_results_gtk4 ${1} cursor-size "${kde_cursor_size}"
 
-        apply_settings_for_root
-    else
-        gsettings set org.gnome.desktop.interface color-scheme "${gtk_color_scheme}"
-        gsettings set org.gnome.desktop.interface gtk-theme "${kde_gtk_theme}"
-        gsettings set org.gnome.desktop.interface icon-theme "${kde_icon_theme}"
-        gsettings set org.gnome.desktop.interface font-name "${gtk_font}"
-        gsettings set org.gnome.desktop.interface document-font-name "${gtk_font}"
-        gsettings set org.gnome.desktop.interface monospace-font-name "${gtk_font_mono}"
-        gsettings set org.gnome.desktop.interface toolbar-style "${gtk_toolbar_style}"
-        gsettings set org.gnome.desktop.interface cursor-theme "${kde_cursor_theme}"
-        gsettings set org.gnome.desktop.interface cursor-size "${kde_cursor_size}"
-    fi
+    "${1}" && apply_settings_for_root
 }
 
 apply_settings_for_root () {
