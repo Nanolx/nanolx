@@ -340,7 +340,9 @@ Architecture: all
 Depends:
  cambalache,
  bluefish,
- geany,
+ kdevelop,
+ kdevelop-python,
+ kdevelop-l10n,
  d-feet,
  okteta,
  poedit,
