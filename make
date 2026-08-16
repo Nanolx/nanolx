@@ -23,6 +23,7 @@ dirs=(/boot/efi/EFI/refind/themes/
  ${PREFIX}/share/nanolx/sources.d/
  ${PREFIX}/share/nanolx/apt.d/
  ${PREFIX}/share/man/man1/
+ ${PREFIX}/share/org.kde.syntax-highlighting/themes
  ${PREFIX}/share/plasma/
  ${PREFIX}/share/plymouth/themes/
  ${PREFIX}/share/sddm/themes/
@@ -184,6 +185,11 @@ install_misc () {
     # Konsole
     for dir in "${CWD}"/themes/konsole/*; do
         install dir "${dir}" share/konsole/
+    done
+
+    # Kate / KDevelop color schemes
+    for scheme in "${CWD}"/themes/kate/*; do
+        install bin "${scheme}" share/org.kde.syntax-highlighting/themes/
     done
 
     # wallpapers
