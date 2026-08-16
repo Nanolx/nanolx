@@ -58,6 +58,7 @@ SKEL_CONF=(bash_logout
  profile)
 SKEL_BIN=(conky-on-second-screen)
 APT_SOURCES=(debian
+ deb-multimedia
  i2p
  liquorix
  mozilla
