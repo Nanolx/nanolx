@@ -1,3 +1,14 @@
+nanolx (1:4.13.2.20260816-1nano) unstable; urgency=low
+
+  New upstrem bugfix release
+    * nanolx-apt-tools:
+      - deb-multimedia.org apt sources wasn't bundled with 4.13.1
+    * nanolx-x11
+      - nanolx-gtksettings-kde 0.0.2
+        - also apply cursor theme/cursor size from KDE to Gtk3/Gtk4
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 16 Aug 2026 18:22:38 +0200
+
 nanolx (1:4.13.1.20260816-1nano) unstable; urgency=low
 
   New upstrem release

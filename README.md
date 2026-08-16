@@ -21,7 +21,7 @@ While I'm not actively asking for donations, a tip is always welcome.
 
 see [debian/changelog](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/changelog?ref_type=heads) for changes
 
-- Version:    4.13.1
+- Version:    4.13.2
 - Release:    20260816
 
 ## Git repository access
@@ -191,7 +191,7 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
     1. `nanolx-refind`   simple script to manage rEFInd bootloader themes, supports showing installed themes, setting theme, showing current theme in use or reverting to default.
 8. `nanolx-x11`
     1. `nanolx-gtksettings-kde`     This scripts reads KDE's theme, icon, font, toolbar settings and creates Gtk3 (through ini file) and Gtk4 (through gsettings) configuration, as close as possible. Note that Adwaita apps may ignore some settings, additionally you may apply those settings to `root` aswell (imagine opening `Synaptic` at night without beeing blinded).
-    
+
 ## Themes
 
 The package `nanolx-themes` contains:
