@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.0.1"
+version="0.0.2"
 reldate="2026/08/16"
 
 kde_font_to_gtk() {
@@ -15,7 +15,9 @@ gtk-theme:          ${kde_gtk_theme}
 icon-theme:         ${kde_icon_theme}
 font:               ${gtk_font}
 fixed font:         ${gtk_font_mono}
-toolbar style:      ${gtk_toolbar_style}"
+toolbar style:      ${gtk_toolbar_style}
+cursor style:       ${kde_cursor_theme}
+cursor size:        ${kde_cursor_size}"
 }
 
 apply_results_gtk3 () {
@@ -37,6 +39,8 @@ apply_results () {
     apply_results_gtk3 "gtk-icon-theme-name" "${kde_icon_theme}"
     apply_results_gtk3 "gtk-font-name" "${gtk_font}"
     apply_results_gtk3 "gtk-toolbar-style" "${gtk_toolbar_style}"
+    apply_results_gtk3 "gtk-cursor-theme-name" "${kde_cursor_theme}"
+    apply_results_gtk3 "gtk-cursor-theme-size" "${kde_cursor_size}"
 
     # Gtk4
     if ${1}; then
@@ -47,6 +51,8 @@ apply_results () {
         sudo gsettings set org.gnome.desktop.interface document-font-name "${gtk_font}"
         sudo gsettings set org.gnome.desktop.interface monospace-font-name "${gtk_font_mono}"
         sudo gsettings set org.gnome.desktop.interface toolbar-style "${gtk_toolbar_style}"
+        sudo gsettings set org.gnome.desktop.interface cursor-theme "${kde_cursor_theme}"
+        sudo gsettings set org.gnome.desktop.interface cursor-size "${kde_cursor_size}"
 
         apply_settings_for_root
     else
@@ -57,6 +63,8 @@ apply_results () {
         gsettings set org.gnome.desktop.interface document-font-name "${gtk_font}"
         gsettings set org.gnome.desktop.interface monospace-font-name "${gtk_font_mono}"
         gsettings set org.gnome.desktop.interface toolbar-style "${gtk_toolbar_style}"
+        gsettings set org.gnome.desktop.interface cursor-theme "${kde_cursor_theme}"
+        gsettings set org.gnome.desktop.interface cursor-size "${kde_cursor_size}"
     fi
 }
 
@@ -170,6 +178,13 @@ gsettings_apply_kde_values () {
         "TextUnderIcon")    gtk_toolbar_style="both" ;;
         "TextBesideIcon"|*) gtk_toolbar_style="both-horiz" ;;
     esac
+
+    local kde_cursor_theme=$(kreadconfig6 --file kcminputrc --group Mouse --key cursorTheme)
+    local kde_cursor_size=$(kreadconfig6 --file kcminputrc --group Mouse --key cursorSize)
+    [ -z "${kde_cursor_theme}" ] && kde_cursor_theme="breeze_cursors"
+    if [ -z "${kde_cursor_size}" ] || [ "${kde_cursor_size}" -eq 0 ]; then
+        ${kde_cursor_size}=24
+    fi
 
     if ${dry_run}; then
         echo "read settings from KDE for Gtk:"
