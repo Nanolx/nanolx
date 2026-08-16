@@ -28,8 +28,9 @@ dirs=(/boot/efi/EFI/refind/themes/
  ${PREFIX}/share/sddm/themes/
  ${PREFIX}/share/wallpapers)
 
-BIN_SCRIPTS=(repokit
- hugo-push)
+BIN_SCRIPTS=(hugo-push
+ nanolx-gtksettings-kde
+ repokit)
 SBIN_SCRIPTS=(nanolx-apt
  nanolx-backup
  nanolx-backup-helper-usb

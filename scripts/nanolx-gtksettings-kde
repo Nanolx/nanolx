@@ -1,0 +1,206 @@
+#!/bin/bash
+
+version="0.0.1"
+reldate="2026/08/16"
+
+kde_font_to_gtk() {
+    if [ -n "${1}" ]; then
+        echo "$(echo "$1" | cut -d',' -f1) $(echo "$1" | cut -d',' -f2)"
+    fi
+}
+
+print_results () {
+    echo "color-scheme:       ${gtk_color_scheme}
+gtk-theme:          ${kde_gtk_theme}
+icon-theme:         ${kde_icon_theme}
+font:               ${gtk_font}
+fixed font:         ${gtk_font_mono}
+toolbar style:      ${gtk_toolbar_style}"
+}
+
+apply_results_gtk3 () {
+    local gtk3_settings_ini="${HOME}/.config/gtk-3.0/settings.ini"
+    mkdir -p "$(dirname "${gtk3_settings_ini}")"
+    [ -f "${gtk3_settings_ini}" ] || echo "[Settings]" > "${gtk3_settings_ini}"
+    local key="${1}" local value="${2}"
+    if grep -q "^${key}=" "${gtk3_settings_ini}"; then
+        sed -i "s|^${key}=.*|${key}=${value}|" "${gtk3_settings_ini}"
+    else
+        sed -i "/^\[Settings\]/a ${key}=${value}" "${gtk3_settings_ini}"
+    fi
+}
+
+apply_results () {
+    # Gtk3
+    apply_results_gtk3 "gtk-application-prefer-dark-theme" "${gtk_color_scheme_int}"
+    apply_results_gtk3 "gtk-theme-name" "${kde_gtk_theme}"
+    apply_results_gtk3 "gtk-icon-theme-name" "${kde_icon_theme}"
+    apply_results_gtk3 "gtk-font-name" "${gtk_font}"
+    apply_results_gtk3 "gtk-toolbar-style" "${gtk_toolbar_style}"
+
+    # Gtk4
+    if ${1}; then
+        sudo gsettings set org.gnome.desktop.interface color-scheme "${gtk_color_scheme}"
+        sudo gsettings set org.gnome.desktop.interface gtk-theme "${kde_gtk_theme}"
+        sudo gsettings set org.gnome.desktop.interface icon-theme "${kde_icon_theme}"
+        sudo gsettings set org.gnome.desktop.interface font-name "${gtk_font}"
+        sudo gsettings set org.gnome.desktop.interface document-font-name "${gtk_font}"
+        sudo gsettings set org.gnome.desktop.interface monospace-font-name "${gtk_font_mono}"
+        sudo gsettings set org.gnome.desktop.interface toolbar-style "${gtk_toolbar_style}"
+
+        apply_settings_for_root
+    else
+        gsettings set org.gnome.desktop.interface color-scheme "${gtk_color_scheme}"
+        gsettings set org.gnome.desktop.interface gtk-theme "${kde_gtk_theme}"
+        gsettings set org.gnome.desktop.interface icon-theme "${kde_icon_theme}"
+        gsettings set org.gnome.desktop.interface font-name "${gtk_font}"
+        gsettings set org.gnome.desktop.interface document-font-name "${gtk_font}"
+        gsettings set org.gnome.desktop.interface monospace-font-name "${gtk_font_mono}"
+        gsettings set org.gnome.desktop.interface toolbar-style "${gtk_toolbar_style}"
+    fi
+}
+
+apply_settings_for_root () {
+    echo "apply Gtk3/Gtk4 settings for ${USER} to root"
+    local root_gtk3_dir="/root/.config/gtk-3.0"
+    local root_gtk4_dir="/root/.config/gtk-4.0"
+
+    sudo mkdir -p "${root_gtk3_dir}"
+    sudo cp "${HOME}/.config/gtk-3.0/settings.ini" "${root_gtk3_dir}/settings.ini"
+    sudo chown root:root "${root_gtk3_dir}/settings.ini"
+    sudo chmod 644 "${root_gtk3_dir}/settings.ini"
+
+    sudo mkdir -p "${root_gtk4_dir}"
+    sudo cp "${HOME}/.config/gtk-4.0/settings.ini" "${root_gtk4_dir}/settings.ini"
+    sudo chown root:root "${root_gtk4_dir}/settings.ini"
+    sudo chmod 644 "${root_gtk4_dir}/settings.ini"
+}
+
+gsettings_apply_kde_values () {
+    local dry_run=${1}
+    local root=${2}
+
+    # Note: KDE6 only writes values, if they differ from KDE's defaults
+    # so we have to check all values if they are set by user, else we
+    # need to define sensible fallback values (...)
+
+    # check if current KDE style has Gtk theme or not
+    local kde_package=$(kreadconfig6 --group "KDE" --key "LookAndFeelPackage")
+    local kde_style=$(kreadconfig6 --group "KDE" --key "widgetStyle")
+    if [ -z "${kde_package}" ]; then
+            local kde_global_theme="${kde_style}"
+    else    local kde_global_theme="${kde_package}"
+    fi
+
+    local kde_theme=$(echo "${kde_global_theme}" | sed -E 's/^([a-zA-Z0-9\._-]+\.)?//' | sed 's/\.desktop$//')
+
+    if [ -z "${kde_theme}" ]; then
+        kde_gtk_theme="Breeze"
+    else
+        local gtk_theme_dir_system="/usr/share/themes"
+        local gtk_theme_dir_user="${HOME}/.local/share/themes"
+
+        local found_gtk=false
+        for dir in "${gtk_theme_dir_system}" "${gtk_theme_dir_user}"; do
+            if [ -d "${dir}" ]; then
+                match=$(find "${dir}" -maxdepth 2 -iname "*${kde_theme}*" -type d \( -name "gtk-3.0" -o -name "gtk-4.0" \) 2>/dev/null)
+                if [ -n "${match}" ]; then
+                    found_gtk=true
+                    break
+                fi
+            fi
+        done
+
+        # if current KDE style has Gtk theme, apply it, else fall back to Breeze
+        if ${found_gtk}; then
+            kde_gtk_theme="${kde_theme}"
+        else
+            kde_gtk_theme="Breeze"
+        fi
+    fi
+
+    local gtk_color_scheme="prefer-light"
+    local gtk_color_scheme_int="0"
+    local bg_color_str=$(kreadconfig6 --group "Colors:Window" --key "BackgroundNormal")
+    [ -z "${bg_color_str}" ] && BG_COLOR_STR="239,240,241"
+
+    # calculate whether design is light or dark
+    # (many color-schemes have no "dark" in the name)
+    if [ -n "${bg_color_str}" ]; then
+        IFS=',' read -r -a rgb <<< "${bg_color_str}"
+
+        if [ ${#rgb[@]} -ge 3 ]; then
+            r=${rgb[0]}
+            g=${rgb[1]}
+            b=${rgb[2]}
+
+            luminance=$(echo "0.299 * ${r} + 0.587 * ${g} + 0.114 * ${b}" | bc)
+            is_dark=$(echo "${luminance} < 128" | bc)
+
+            if [ "${is_dark}" -eq 1 ]; then
+                gtk_color_scheme="prefer-dark"
+                gtk_color_scheme_int="1"
+            fi
+        fi
+    fi
+
+    local kde_icon_theme=$(kreadconfig6 --group "Icons" --key "Theme")
+    if [ -z "${kde_icon_theme}" ]; then
+        if [ "${gtk_color_scheme}" = "prefer-dark" ]; then
+            ${kde_icon_theme}="breeze-dark"
+        else
+            ${kde_icon_theme}="breeze"
+        fi
+    fi
+
+    local kde_font=$(kreadconfig6 --group "General" --key "font")
+    local kde_fixed_font=$(kreadconfig6 --group "General" --key "fixed")
+    [ -z "${kde_font}" ] && kde_font="Noto Sans,10,-1,5,50,0,0,0,0,0"
+    [ -z "${kde_fixed_font}" ] && kde_fixed_font="Noto Sans Mono,10,-1,5,50,0,0,0,0,0"
+
+    local gtk_font=$(kde_font_to_gtk "${kde_font}")
+    local gtk_font_mono=$(kde_font_to_gtk "${kde_fixed_font}")
+
+    local kde_toolbar_style=$(kreadconfig6 --group "Toolbar style" --key "ToolButtonStyle")
+    [ -z "${kde_toolbar_style}" ] && kde_toolbar_style="TextBesideIcon"
+    local gtk_toolbar_style
+    case "${kde_toolbar_style}" in
+        "IconOnly")         gtk_toolbar_style="icons" ;;
+        "TextOnly")         gtk_toolbar_style="text" ;;
+        "TextUnderIcon")    gtk_toolbar_style="both" ;;
+        "TextBesideIcon"|*) gtk_toolbar_style="both-horiz" ;;
+    esac
+
+    if ${dry_run}; then
+        echo "read settings from KDE for Gtk:"
+        print_results
+    else
+        echo "applying KDE settings to GTK:"
+        print_results
+        apply_results ${root}
+    fi
+}
+
+case "${1}" in
+    help )
+        echo -e "nanolx-gtksettings-kde v${version} (${reldate})
+© 2026 Christopher Roy Bratusek <nano@jpberlin.de>
+
+licensed under the GNU General Public License v3 (or newer)
+
+This scripts reads KDE's theme, icon, font, toolbar settings and creates
+Gtk3 (through ini file) and Gtk4 (through gsettings) configuration, as
+close as possible. Note that Adwaita apps may ignore some settings.
+
+Additionally you may apply those settings to root aswell.
+
+usage:
+    nanolx-gtksettings-kde              apply values from KDE to Gtk3/Gtk4
+    nanolx-gtksettings-kde test         only see what would happen; dry-run
+    nanolx-gtksettings-kde root         apply current user's settings to root"
+    ;;
+
+    test )  gsettings_apply_kde_values true false ;;
+    root )  gsettings_apply_kde_values false true ;;
+    * )     gsettings_apply_kde_values false false ;;
+esac

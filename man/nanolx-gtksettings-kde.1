@@ -1,0 +1,28 @@
+.TH nanolx-gtksettings-kde 1 "2026 Aug 16"
+.SH NAME
+nanolx-gtksettings-kde
+.SH SYNOPSIS
+nanolx-gtksettings-kde
+.SH DESCRIPTION          \" Section Header - required - don't modify
+nanolx-gtksettings-kde reads KDE's theme, icon, font, toolbar settings and
+creates Gtk3 (through ini file) and Gtk4 (through gsettings) configuration,
+as close as possible. Note that Adwaita apps may ignore some settings.
+
+Additionally you may apply those settings to root aswell.
+
+.TP
+.B <nothing>
+Read KDE's settings and generate Gtk3/Gtk4 configuration accordingly
+.TP
+.B test
+test run, without actual modification of Gtk3/Gtk4 settings
+.TP
+.B root
+apply curren't users settings to root users
+.PP
+
+.SH AUTHORS
+.TP 10
+Christopher Roy Bratusek
+nano@jpbjerlin.de
+.PP
