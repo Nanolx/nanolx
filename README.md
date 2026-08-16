@@ -83,6 +83,7 @@ On non Debian-based distributions you'll be able to use the scripts:
 * `hugo-push`
 * `nanolx-backup` (if `systemd` is in use)
 * `nanolx-ctx`
+* `nanolx-gtksettings-kde`
 * `nanolx-skel`
 * `nanolx-pam-yubikey`
 * `nanolx-refind`
