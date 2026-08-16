@@ -1,4 +1,4 @@
-nanolx (1:4.13.1.2026ddmm-1nano) unstable; urgency=low
+nanolx (1:4.13.1.20260816-1nano) unstable; urgency=low
 
   New upstrem release
     * sync README.md with homepage
@@ -18,8 +18,22 @@ nanolx (1:4.13.1.2026ddmm-1nano) unstable; urgency=low
           (works with both systemd/elogind), as suggested by reddit user camh-
         - improve help message
         - update manpage
+    * nanolx-devel-x11:
+      - removed dependency:
+        - geany
+      - added dependency:
+        - kdevelop
+        - kdevelop-python
+        - kdevelop-l10n
+    * nanolx-x11
+      - nanolx-gtksettings-kde 0.0.1
+        - this scripts reads KDE's theme, icon, font, toolbar settings and
+          creates Gtk3 (through ini file) and Gtk4 (through gsettings)
+          configuration, as close as possible. Note that Adwaita apps may
+          ignore some settings.
+        - (imagine opening Synaptic at night without beeing blinded.)
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 16 Aug 2026 11:15:02 +0200
 
 nanolx (1:4.13.0.20260813-1nano) unstable; urgency=low
 

@@ -21,8 +21,8 @@ While I'm not actively asking for donations, a tip is always welcome.
 
 see [debian/changelog](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/changelog?ref_type=heads) for changes
 
-- Version:    4.13.0
-- Release:    20260813
+- Version:    4.13.1
+- Release:    20260816
 
 ## Git repository access
 
@@ -176,7 +176,7 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
     1. `nanolx-ctx`      script to disable (or enable [...]) citrix telemetry and running the included system check script. It also allows to install or uninstall the webkit2gtk-4.0 bundled with citrix, which is required for full citrix operation (stable citrix version), but no longer shipped with Debian (or Ubuntu). It has more features, be sure to check out, if you use citrix.
 5. `nanolx-net`
     1. `hugo-push`     simple script to build a hugo website and push it to webspace using lftp, uses a configuration file.
-67. `nanolx-yubikey`
+6. `nanolx-yubikey`
     1. `nanolx-pam-yubikey`  script to enable password-less logins when a recognized Yubikey is plugged in, using PAM, currently hooked-into PAM modules:
         - login
         - sddm
@@ -189,7 +189,9 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
         optionally, the script allows to lock the session, as soon as the Yubikey is plugged out.
 7. `nanolx-themes`
     1. `nanolx-refind`   simple script to manage rEFInd bootloader themes, supports showing installed themes, setting theme, showing current theme in use or reverting to default.
-
+8. `nanolx-x11`
+    1. `nanolx-gtksettings-kde`     This scripts reads KDE's theme, icon, font, toolbar settings and creates Gtk3 (through ini file) and Gtk4 (through gsettings) configuration, as close as possible. Note that Adwaita apps may ignore some settings, additionally you may apply those settings to `root` aswell (imagine opening `Synaptic` at night without beeing blinded).
+    
 ## Themes
 
 The package `nanolx-themes` contains:
