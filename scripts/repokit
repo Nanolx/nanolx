@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.7.2"
-reldate="2026/08/15"
+version="1.7.3"
+reldate="2026/08/17"
 
 error () {
     echo -e "${@}"
@@ -42,10 +42,23 @@ you may want to use repokit release instead."
         -i "${PWD}/debian/control"
 }
 
+get_package_name_and_ver () {
+    local -n xpackage="${2}"
+    local -n xversion="${3}"
+    if [[ "${1}" == *_* ]]; then
+        xpackage="${1%%_*}"
+        xversion="${1#*_}"
+    elif [[ "${1}" == *-* ]]; then
+        xpackage="${1%-*}"
+        xversion="${1##*-}"
+    fi
+
+    [ -z "${xpackage}" ] && error "could not determine package name, stop."
+    [ -z "${xversion}" ] && error "could not determine package version, stop."
+}
+
 debhelper_get_scripts () {
-    local tmp=$(basename "${PWD}")
-    local package=${tmp/_*}
-    local version=${tmp/*_}
+    get_package_name_and_ver $(basename "${PWD}") package version
 
     if [[ ! -d "${REPOKIT_BUILD_SCRIPTS}/${package}" ]]; then
         error "no packaging scripts for ${package} found"
@@ -64,17 +77,10 @@ debhelper_add_release () {
         error "No debian packagings scripts in ${PWD}, stop."
     fi
 
-    local tmp=$(basename "${PWD}")
     local revision=1
     local rev_text="New upstream release"
 
-    if [[ "${tmp}" =~ ^([^- _]+)[-_](.+)$ ]]; then
-        local package="${BASH_REMATCH[1]}"
-        local version="${BASH_REMATCH[2]}"
-    fi
-
-    [ -z "${package}" ] && error "could not determine package name, stop."
-    [ -z "${version}" ] && error "could not determine package version, stop."
+    get_package_name_and_ver $(basename "${PWD}") package version
 
     if [[ -s "${PWD}/debian/changelog" ]]; then
         local first_line=$(head -n 1 "${PWD}/debian/changelog")
@@ -97,20 +103,19 @@ debhelper_put_scripts () {
         error "No debian packagings scripts in ${PWD}, stop."
     fi
 
-    local tmp=$(basename "${PWD}")
-
-    if [[ "${tmp}" =~ ^([^- _]+)[-_](.+)$ ]]; then
-        local package="${BASH_REMATCH[1]}"
-        local version="${BASH_REMATCH[2]}"
-    fi
-
-    [ -z "${package}" ] && error "could not determine package name, stop."
-    [ -z "${version}" ] && error "could not determine package version, stop."
+    get_package_name_and_ver $(basename "${PWD}") package version
 
     if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
             mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
             status="[new]"
-    else    status="[update]"
+    else
+        local git_version=$(sed -n '1s/.*(\([^)]*\)).*/\1/p' "${REPOKIT_BUILD_SCRIPTS}/${package}/changelog")
+        git_version="${git_version%-*}"
+        if [[ "${version}" == "${git_version}" ]]; then
+            status="[rebuild]"
+        else
+            status="[update]"
+        fi
     fi
 
     fakeroot "${PWD}/debian/rules" clean &>/dev/null

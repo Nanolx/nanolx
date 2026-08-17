@@ -1,7 +1,18 @@
+nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
+
+  New upstream release
+    - nanolx-apt-tools
+      - repokit 1.7.3
+        - make version checking based on source directory name more robust
+        - repokit put now adds [rebuild] to git packaging script repository,
+          if version in the git repo equals to the version to be pushed
+    - nanolx-devel-x11
+      - add revolunti / revolunti-night Kate/KDevelop color schemes
+
 nanolx (1:4.13.2.20260816-1nano) unstable; urgency=low
 
   New upstrem bugfix release
-    * nanolx-apt-tools:
+    * nanolx-apt-sources:
       - deb-multimedia.org apt sources wasn't bundled with 4.13.1
     * nanolx-x11
       - nanolx-gtksettings-kde 0.0.2
