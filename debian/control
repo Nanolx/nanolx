@@ -356,8 +356,6 @@ Depends:
  glob2,
  freedroidrpg,
  enigma,
- gnome-sudoku,
- gnome-mahjongg,
  lincity-ng,
  neverball,
  pingus,
@@ -372,7 +370,10 @@ Depends:
  zelda-navis-quest,
  zelda-tunics,
  lutris,
- xpadneo-dkms
+ xpadneo-dkms,
+ simsu,
+ iqpuzzle,
+ kmhajongg
 Description: Collection of games
  This meta-package installs games and launchers.
 

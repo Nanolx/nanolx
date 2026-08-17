@@ -8,6 +8,14 @@ nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
           if version in the git repo equals to the version to be pushed
     - nanolx-devel-x11
       - add revolunti / revolunti-night Kate/KDevelop color schemes
+    - nanolx-games
+      - removed dependecies
+        - gnome-sudoku
+        - gnome-mahjongg
+      - added dependencies
+        - simsu
+        - iqpuzzle
+        - kmahjongg
 
 nanolx (1:4.13.2.20260816-1nano) unstable; urgency=low
 
