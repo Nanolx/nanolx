@@ -12,10 +12,13 @@ nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
       - removed dependecies
         - gnome-sudoku
         - gnome-mahjongg
+        - zelda-solarus-return-of-the-hylian
       - added dependencies
         - simsu
         - iqpuzzle
         - kmahjongg
+        - zelda-return-of-the-hylian
+        - zelda-picross
 
 nanolx (1:4.13.2.20260816-1nano) unstable; urgency=low
 
