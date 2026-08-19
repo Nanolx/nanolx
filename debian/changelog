@@ -8,6 +8,9 @@ nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
           if version in the git repo equals to the version to be pushed
         - repokit get now also properly increases rev by one if version contains
           special chars like ~ or +
+      - nanolx-orbit
+        - new citrix stable release
+        - new citrix-usb stable release
     - nanolx-devel-x11
       - add revolunti / revolunti-night Kate/KDevelop color schemes
     - nanolx-games
