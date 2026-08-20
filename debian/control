@@ -458,10 +458,15 @@ Depends:
  konsole,
  kde-spectacle,
  python3-dbus,
- python3-gi
+ python3-gi,
+ konsave
 Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of themes
  Themes for Nanolx
+ .
+ In order to apply the full KDE theme suite for Nanolx, issue:
+    $ konsave -i /usr/share/nanolx/Nanolx.knsv
+    $ konsave -a Nanolx
  .
  Plymouth:   debian mac style
  rEFInd:     rEFInd digital void
