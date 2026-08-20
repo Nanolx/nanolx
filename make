@@ -180,7 +180,7 @@ install_misc () {
         install dir "${dir}" share/color-schemes/
     done
     for dir in "${CWD}"/plasmoids/*; do
-        install dir "${dir}" share/plasma/
+        install dir "${dir}" share/plasma/plasmoids/
     done
 
     # Konsole

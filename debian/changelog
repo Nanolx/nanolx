@@ -31,6 +31,7 @@ nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
         it to apply the full KDE theme suite, issue:
         $ konsave -i /usr/share/nanolx/Nanolx.knsv
         $ konsave -a Nanolx
+      - fix plasmoids installation path
 
 nanolx (1:4.13.2.20260816-1nano) unstable; urgency=low
 
