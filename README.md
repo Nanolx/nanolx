@@ -143,6 +143,7 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
     * collection of Yubikey related tools.
 20. `nanolx-themes`
     * this package provides the default theme collection I use, see [Themes](#themes) below.
+    * use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` to apply the full KDE theme suite.
 21. `nanolx-citrix-config`
     * see [Citrix](#citrix) below.
 
@@ -194,6 +195,8 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
     1. `nanolx-gtksettings-kde`     This scripts reads KDE's theme, icon, font, toolbar settings and creates Gtk3 (through ini file) and Gtk4 (through gsettings) configuration, as close as possible. Note that Adwaita apps may ignore some settings, additionally you may apply those settings to `root` aswell (imagine opening `Synaptic` at night without beeing blinded).
 
 ## Themes
+
+Use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` to apply the full KDE theme suite.
 
 The package `nanolx-themes` contains:
 

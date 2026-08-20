@@ -43,6 +43,7 @@ SBIN_SCRIPTS=(nanolx-apt
 SCRIPTS_CONF=(citrix_hdx_config.json
  config.pl
  hugo-push.conf
+ Nanolx.knsv
  nanolx-apt.conf
  nanolx-backup-usb.rules
  nanolx-backup-usb.service

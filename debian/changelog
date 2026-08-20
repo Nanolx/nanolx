@@ -24,6 +24,13 @@ nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
         - kmahjongg
         - zelda-return-of-the-hylian
         - zelda-picross
+    - nanolx-themes
+      - added dependecy
+        - konsave
+      - add Nanolx.knsv konsave profile installed at /usr/share/nanolx, to use
+        it to apply the full KDE theme suite, issue:
+        $ konsave -i /usr/share/nanolx/Nanolx.knsv
+        $ konsave -a Nanolx
 
 nanolx (1:4.13.2.20260816-1nano) unstable; urgency=low
 
