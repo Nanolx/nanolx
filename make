@@ -24,7 +24,7 @@ dirs=(/boot/efi/EFI/refind/themes/
  ${PREFIX}/share/nanolx/apt.d/
  ${PREFIX}/share/man/man1/
  ${PREFIX}/share/org.kde.syntax-highlighting/themes
- ${PREFIX}/share/plasma/
+ ${PREFIX}/share/plasma/plasmoids
  ${PREFIX}/share/plymouth/themes/
  ${PREFIX}/share/sddm/themes/
  ${PREFIX}/share/wallpapers)
