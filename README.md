@@ -21,8 +21,8 @@ While I'm not actively asking for donations, a tip is always welcome.
 
 see [debian/changelog](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/changelog?ref_type=heads) for changes
 
-- Version:    4.13.2
-- Release:    20260816
+- Version:    4.13.3
+- Release:    20260820
 
 ## Git repository access
 

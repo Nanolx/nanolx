@@ -1,4 +1,4 @@
-nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
+nanolx (1:4.13.3.20260820-1nano) unstable; urgency=low
 
   New upstream release
     - nanolx-apt-tools
@@ -33,6 +33,8 @@ nanolx (1:4.13.3.2026ddmm-1nano) unstable; urgency=low
         $ konsave -a Nanolx
       - fix plasmoids installation path
       - updated panel colorizer plasmoid to 8.0.0
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sun, 16 Aug 2026 18:22:38 +0200
 
 nanolx (1:4.13.2.20260816-1nano) unstable; urgency=low
 
