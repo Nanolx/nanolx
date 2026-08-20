@@ -374,7 +374,7 @@ Depends:
  xpadneo-dkms,
  simsu,
  iqpuzzle,
- kmhajongg
+ kmahjongg
 Description: Collection of games
  This meta-package installs games and launchers.
 
