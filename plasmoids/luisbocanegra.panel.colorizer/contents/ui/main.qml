@@ -607,6 +607,7 @@ PlasmoidItem {
     onEditModeChanged: {
         if (editMode)
             return;
+        Qt.callLater(updatePlasmoidStatus);
         Qt.callLater(initAll);
     }
 
@@ -805,7 +806,7 @@ PlasmoidItem {
         screenGeometry: Plasmoid.containment.screenGeometry
         filterByActive: main.presetAutoloading.filterByActive ?? false
         filterByScreen: main.presetAutoloading.filterByScreen ?? true
-        trackLastActive: main.presetAutoloading.trackLastActive ?? true
+        trackLastActive: main.presetAutoloading.trackLastActive ?? false
     }
 
     RunCommand {
@@ -890,7 +891,7 @@ PlasmoidItem {
     toolTipSubText: {
         let text = "";
         if (onDesktop) {
-            text = "<font color='" + Kirigami.Theme.neutralTextColor + "'>Panel not found, this widget must be child of a panel</font>";
+            text = `<font color="${Kirigami.Theme.neutralTextColor}">` + i18n("This widget must be placed in a panel to work!") + "</font>";
         } else if (Plasmoid.configuration.isEnabled) {
             const name = Plasmoid.configuration.lastPreset.split("/");
             if (name.length) {
@@ -899,7 +900,7 @@ PlasmoidItem {
         }
         return text;
     }
-    toolTipTextFormat: Text.PlainText
+    toolTipTextFormat: Text.RichText
 
     function updatePlasmoidStatus() {
         Plasmoid.status = (editMode || !hideWidget || !runningLatest) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus;
