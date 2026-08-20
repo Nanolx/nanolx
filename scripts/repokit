@@ -20,7 +20,7 @@ error () {
 
 if [[ -f ${HOME}/.repokit.conf ]]; then
         source "${HOME}/.repokit.conf"
-else    error "no ${HOME}/.repokit.conf exists"
+else    error "no ${HOME}/.repokit.conf exists (see /usr/share/nanolx/repokit.conf for example)"
 fi
 
 debhelper_prepare () {
@@ -320,7 +320,8 @@ case ${cmdarg} in
 licensed under the GNU General Public License v3 (or newer)
 
 repokit is my personal wrapper script for reprepro with config file support and
-many features. repokit expects a configuration file \${HOME}/.repokit.conf.
+many features. repokit expects a configuration file \${HOME}/.repokit.conf -
+see /usr/share/nanolx/repokit.conf for example configuration.
 
 Options
 option      Parameters  Description
