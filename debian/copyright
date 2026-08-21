@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://gitlab.com/Nanolx/nanolx
 Upstream-Name: Nanolx
-Upstream-Contact: https://gitlab.com/Nanolx/nanolx/-/work_items
+Upstream-Contact: Christopher Roy Bratusek <nano@jpberlin.de>
 
 Files:
  *
@@ -26,6 +26,7 @@ License: permissive
 
 Files:
  citrix/*
+Comment: https://aur.archlinux.org/packages/icaclient
 Copyright: 2011-2026 Stephan Springer <buzo+arch@Lini.de>
    2011-2026 Moabeat <moabeat@berlin.de>
    2011-2026 Eric Liu <eric@hnws.me>
@@ -36,13 +37,10 @@ Copyright: 2011-2026 Stephan Springer <buzo+arch@Lini.de>
 License: public-domain
  No license required for any purpose; the work is not subject to copyright
  in any jurisdiction.
-Comment:
- According to https://bbs.archlinux.org/viewtopic.php?id=252234 there's no
- actual license to AUR content by default, nor is anything stated. One would
- assume either public-domain or permissive.
 
 Files:
  refind/rEFInd-digital-void/*
+Comment: https://github.com/Wi-Fight-IT/rEFInd-digital-void
 Copyright:
    2025 Aayush Thakur <thakur.aayush@hotmail.com>
    2026 Wi-Fight-IT <mamaletsgo36@gmail.com>
@@ -50,16 +48,19 @@ License: MIT
 
 Files:
  plymouth/debian-mac-style/*
+Comment: https://store.kde.org/p/2106821
 Copyright: Tobilinuxer <https://www.opencode.net/tobilinuxer>
 License: X11
 
 Files:
  icons/Empty-Butterfly-*
+Comment: https://store.kde.org/p/2002505
 Copyright: 2026 Moyash <https://www.opencode.net/moyash>
 License: CC BY-NC-ND 4.0
 
 Files:
  themes/Kvantum/Midnight-Bright-*
+Comment: https://github.com/SaeedBaig/midnight-bright-kde
 Copyright:
  2018 Rokin <web@rokin.in>
  2026 Saeed Baig <amateuracademic616@gmail.com>
@@ -67,6 +68,7 @@ License: GPL-3.0+
 
 Files:
  themes/kate/revontuli-*
+Comment: https://codeberg.org/akselmo/Revontuli/src/branch/main/Kate
 Copyright:
  2023-2026 Akseli Lahtinen <akselmo@akselmo.dev>
 License: MIT
@@ -77,63 +79,76 @@ Files:
  themes/konsole/Nothing*
  themes/plasma/*/Nothing
  wallpapers/Nothing*
+Comment: https://gitlab.com/jomada/nothing
 Copyright: 2023-2025 jomada <gicalucejo@gmail.com>
 License: GPL-3.0+
 
 Files:
  icons/Tela-red/
  icons/Tela-red-dark/
+Comment: https://github.com/vinceliuice/Tela-icon-theme
 Copyright: 2019-2025 vinceliuice <vinceliuice@hotmail.com>
 License: GPL-3.0+
 
 Files:
  sddm/*
+Comment: https://github.com/darkkal44/qylock
 Copyright: 2026 Darkkal44 <91195954+Darkkal44@users.noreply.github.com>
 License: GPL-3.0+
 
 Files:
  themes/plasma/wallpapers/obsidianreq.plasma.wallpaper.matrixrain/
+Comment: https://github.com/obsidianreq/matrixrain-plasma6
 Copyright: 2025-2026 Sean Potter <sean@savvior.com>
 License: GPL-3.0+
 
 Files:
  themes/plasma/look-and-feel/Infinity-Plasma-Splash-6/
+Comment: https://github.com/L4ki/Infinity-Plasma-Themes
 Copyright: L4ki <45247573+L4ki@users.noreply.github.com>
 License: GPL-3.0+
 
 Files:
  themes/effects/kwin6_effect_aura_glow/
+Comment: https://github.com/Schneegans/Burn-My-Windows
 Copyright: Simon Schneegans <code@simonschneegans.de>
 License: GPL-3.0+
 
 Files:
  plasmoids/luisbocanegra.panel.colorizer/
  plasmoids/luisbocanegra.advanced_separator/
+Comment: https://github.com/luisbocanegra/plasma-panel-colorizer
+ https://github.com/luisbocanegra/plasma-advanced-separator
 Copyright: 2024-2026 Luis Bocanegra <luisbocanegra17b@gmail.com>
 License: GPL-3.0+
 
 Files:
  themes/effects/kwin4_effect_geometry_change
+Comment: https://github.com/peterfajdiga/kwin4_effect_geometry_change
 Copyright: Peter Fajdiga <peter.fajdiga@gmail.com>
 License: GPL-3.0+
 
 Files:
  kwin/kneko
+Comment: https://github.com/rileyaft/KNeko
 Copyright: Riley Tinkl <riley.aft@outlook.com>
 License: GPL-3.0+
 
 Files:
  kwin/kzones
+Comment: https://github.com/gerritdevriese/kzones
 Copyright: gerritdevriese <1899386+gerritdevriese@users.noreply.github.com>
 License: GPL-3.0+
 
 Files:
  kwin/rememberwindowpositions
+Comment: https://github.com/rxappdev/RememberWindowPositions
 Copyright: Rafael <rxappdev@gmail.com>
 License: GPL-3.0+
 
 Files:
  plasmoids/AndromedaLauncher/
+Comment: https://github.com/EliverLara/AndromedaLauncher
 Copyright: 2022-2023 snoutie <71790678+SnoutBug@users.noreply.github.com>
            2023-2026 Eliver Lara <eliverlara@gmail.com>
 License: GPL-2.0
