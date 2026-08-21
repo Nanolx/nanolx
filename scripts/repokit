@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.7.4"
-reldate="2026/08/19"
+version="1.7.5"
+reldate="2026/08/21"
 
 error () {
     echo -e "${@}"
@@ -87,8 +87,10 @@ debhelper_add_release () {
         local regex="^${package} \((.+)-([0-9]+)${REPOKIT_REV}\)"
 
         if [[ "${first_line}" =~ ${regex} ]]; then
-            revision=$(( BASH_REMATCH[2] + 1 ))
-            local rev_text="New build"
+            if [[ "${version}" == "${BASH_REMATCH[1]}" ]]; then
+                revision=$(( BASH_REMATCH[2] + 1 ))
+                rev_text="New build"
+            fi
         fi
     fi
 
