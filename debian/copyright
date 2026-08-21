@@ -148,7 +148,9 @@ License: GPL-3.0+
 
 Files:
  plasmoids/AndromedaLauncher/
+ plasmoids/KdeControlStation/
 Comment: https://github.com/EliverLara/AndromedaLauncher
+ https://github.com/EliverLara/kde-control-station
 Copyright: 2022-2023 snoutie <71790678+SnoutBug@users.noreply.github.com>
            2023-2026 Eliver Lara <eliverlara@gmail.com>
 License: GPL-2.0
