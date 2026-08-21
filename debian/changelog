@@ -14,6 +14,7 @@ nanolx (1:4.13.4.2026ddmm-1nano) unstable; urgency=low
     - nanolx-games-emu
       - added dependency
         - emulationstation-de
+        - dolphin-emu
 
 nanolx (1:4.13.3.20260820-1nano) unstable; urgency=low
 

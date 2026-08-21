@@ -390,7 +390,8 @@ Depends:
  libretro-nestopia,
  yabause-gtk | yabause-qt,
  scummvm,
- emulationstation-de
+ emulationstation-de,
+ dolphin-emu
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
