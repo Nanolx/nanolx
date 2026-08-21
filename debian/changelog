@@ -11,6 +11,9 @@ nanolx (1:4.13.4.2026ddmm-1nano) unstable; urgency=low
         - repokit get now always gets the new revision correct, if it's a
           rebuild of an existing version it will increment the revision,
           else it will create a new version entry with revision 1
+    - nanolx-games-emu
+      - added dependency
+        - emulationstation-de
 
 nanolx (1:4.13.3.20260820-1nano) unstable; urgency=low
 

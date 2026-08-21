@@ -389,7 +389,8 @@ Depends:
  libretro-snes9x,
  libretro-nestopia,
  yabause-gtk | yabause-qt,
- scummvm
+ scummvm,
+ emulationstation-de
 Description: Collection of emulators
  This meta-package installs a collection of emulators.
  .
