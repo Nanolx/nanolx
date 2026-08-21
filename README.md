@@ -216,7 +216,7 @@ The package `nanolx-themes` contains:
         - KNeko
         - KZones
         - Remember Window Positions
-- Plasmoids:  AndromedaLauncher, Advanced Separator, Panel Colorizer
+- Plasmoids:  AndromedaLauncher, Advanced Separator, KDE Control Station, Panel Colorizer
 - Nothing for Plasma, KWin, Konsole, including color schemes and wallpapers
 - Kate/KDevelop color schemes: revolunti / revolunti night
 

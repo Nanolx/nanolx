@@ -1,6 +1,17 @@
+nanolx (1:4.13.4.2026ddmm-1nano) unstable; urgency=low
+
+  * New upstream release
+    - add source link via Comment: to all entries in debian/copyright
+    - nanolx-themes
+      - add KDE Control Station plasmoid
+      - update Tela-red icon theme
+    - nanolx-apt-tools
+      - repokit
+        - leave note on example configuration location
+
 nanolx (1:4.13.3.20260820-1nano) unstable; urgency=low
 
-  New upstream release
+  * New upstream release
     - nanolx-apt-tools
       - repokit 1.7.4
         - make version checking based on source directory name more robust
