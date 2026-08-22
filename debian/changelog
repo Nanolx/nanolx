@@ -1,4 +1,4 @@
-nanolx (1:4.13.4.2026ddmm-1nano) unstable; urgency=low
+nanolx (1:4.13.4.20260822-1nano) unstable; urgency=low
 
   * New upstream release
     - add source link via Comment: to all entries in debian/copyright
@@ -15,6 +15,8 @@ nanolx (1:4.13.4.2026ddmm-1nano) unstable; urgency=low
       - added dependency
         - emulationstation-de
         - dolphin-emu
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 22 Aug 2026 19:30:41 +0200
 
 nanolx (1:4.13.3.20260820-1nano) unstable; urgency=low
 

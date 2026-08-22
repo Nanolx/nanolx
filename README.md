@@ -21,8 +21,8 @@ While I'm not actively asking for donations, a tip is always welcome.
 
 see [debian/changelog](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/changelog?ref_type=heads) for changes
 
-- Version:    4.13.3
-- Release:    20260820
+- Version:    4.13.4
+- Release:    20260822
 
 ## Git repository access
 
@@ -168,6 +168,7 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
 3. `nanolx-apt-tools`
     1. `repokit`         personal wrapper script for reprepro with config file support and many features.
     2. `nanolx-orbit`    manages installation of 3rdparty packages, including checking sha256sums.
+        - citrix (stable)
         - citrix-usb (stable)
         - citrix-epa (stable)
         - citrix-beta (GCC 11 tech preview)
