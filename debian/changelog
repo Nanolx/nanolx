@@ -2,12 +2,21 @@ nanolx (1:4.13.5.2026ddmm-1nano) unstable; urgency=low
 
   * New upstream release
     - nanolx-themes
-      - nanolx-refind 0.0.4
+      - nanolx-refind 0.0.5
         - removed lock-grub and unlock-grub flags
         - added enable-keep-refind/disable-keep-refind flags, add
           DPkg::Post-Invoke-Success configuration which will run refind-mkdefault
           when grub/refind/shim are updated and rEFInd is found in efibootmgr list,
           ensuring rEFInd will no longer be replaced by grub
+        - added liquorix-default/debian-default flags, which will set the default
+          boot choice to either the latest liquorix or upstream debian kernel,
+          regardless whether the other one has a more recent kernel installed
+        - updated man page
+        - updated bash completion
+    - nanolx-x11
+      - removed dependencies
+        - ibus
+        - ibus-compose
 
 nanolx (1:4.13.4.20260822-1nano) unstable; urgency=low
 

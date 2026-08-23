@@ -155,8 +155,6 @@ Depends:
  libgtk-nocsd0,
  task-kde-desktop,
  psensor,
- ibus,
- ibus-table-compose,
  sddm,
  xinput,
  ydotool,
