@@ -17,6 +17,8 @@ nanolx (1:4.13.5.2026ddmm-1nano) unstable; urgency=low
       - removed dependencies
         - ibus
         - ibus-compose
+    - nanolx-base
+      - minor fix regarding wayland in conkyrc
 
 nanolx (1:4.13.4.20260822-1nano) unstable; urgency=low
 
