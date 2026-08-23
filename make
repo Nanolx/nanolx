@@ -52,7 +52,8 @@ SCRIPTS_CONF=(citrix_hdx_config.json
  nanolx-orbit.conf
  pulseaudio-dummy
  repokit.conf
- yubikey-lock.rules)
+ yubikey-lock.rules
+ 99-keep-refind)
 SKEL_CONF=(bash_logout
  bashrc
  bashstyle-ng.ini

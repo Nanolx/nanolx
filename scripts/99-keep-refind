@@ -1,0 +1,3 @@
+DPkg::Post-Invoke-Success {
+    "if echo \"$DPKG_HOOK_OPTIONS\" | grep -Eiq 'shim|grub|refind'; then /usr/bin/efibootmgr -v | grep -q 'rEFInd' && /usr/sbin/refind-mkdefault || true; fi";
+};

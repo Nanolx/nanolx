@@ -1,9 +1,9 @@
-.TH nanolx-refind 1 "2026 May 21"
+.TH nanolx-refind 1 "2026 Aug 23"
 .SH NAME
 nanolx-refind
 .SH SYNOPSIS
 nanolx-refind [themes-show] [themes-set \fItheme\fP] [themes-get] [themes-unset]
-[lock-grub] [unlock-grub]
+[enable-keep-refind] [disable-keep-refind]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-refind is a simple script to manage rEFInd bootloader themes, supports
 showing installed themes, setting theme, showing current theme in use or
@@ -27,14 +27,13 @@ Show which theme is currently in use
 .B themes-unset
 Revert to default theme
 .TP
-.B lock-grub
-Mark \fIgrub\fP and related packages as locked by \fIapt-mark\fP to prevent
-\fIgrup\fP to override rEFInd for no particular reason
-
-(\fIshim\fP packages are not held, so a boot coup might still happen)
+.B enable-keep-refind
+add DPkg::Post-Invoke-Success configuration which will run refind-mkdefault when
+grub/refind/shim are updated and rEFInd is found in efibootmgr list, ensuring
+rEFInd will no longer be replaced by grub
 .TP
-.B
-Unlock \fIgrup\fP and related packages
+.B disable-keep-refind
+remove DPkg::Post-Invoke-Sucess configuration mentioned before
 .PP
 
 .SH AUTHORS

@@ -13,4 +13,5 @@ usr/share/plymouth/themes/
 usr/share/sddm/themes/
 usr/share/wallpapers/
 usr/share/nanolx/Nanolx.knsv
+usr/share/nanolx/99-keep-refind
 boot/efi/EFI/refind/themes/

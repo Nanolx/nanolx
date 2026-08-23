@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.0.3"
-reldate="2026/08/13"
+version="0.0.4"
+reldate="2026/08/23"
 
 if (( EUID != 0 )); then
     echo "nanolx-refind must be run as root"
@@ -12,6 +12,12 @@ refind_base=$(find /boot -type d -name 'refind')
 if [ ! -d "${refind_base}" ]; then
     echo "no folder 'refind' found anywhere in /boot"
     exit 1
+fi
+
+if [ -f 99-keep-refind ]; then
+    refind_apt_conf=99-keep-refind
+else
+    refind_apt_conf=/usr/share/nanolx/99-keep-refind
 fi
 
 case ${1} in
@@ -41,17 +47,25 @@ case ${1} in
         sed -e '/include.*themes/d' -i "${refind_base}/refind.conf"
     ;;
 
-    lock-grub )
-        echo "Disabling updates for GRUB (hold installed versions)"
-        apt-mark hold $(apt list --installed "grub*" | gawk -F '/' 'NR>1{print $1}')
+    enable-keep-refind )
+        if [ -f /etc/apt/apt.conf.d/99-keep-refind ]; then
+            echo "Refind protection configuration already enabled"
+        else
+            cp ${refind_apt_conf} /etc/apt/apt.conf.d/
+            echo "installed /etc/apt/apt.conf.d/99-keep-refind"
+        else
     ;;
 
-    unlock-grub )
-        echo "Enabling updates for GRUB (unhold installed versions)"
-        apt-mark unhold $(apt list --installed "grub*" | gawk -F '/' 'NR>1{print $1}')
+    disable-keep-refind )
+        if [ -f /etc/apt/apt.conf.d/99-keep-refind ]; then
+            rm /etc/apt/apt.conf.d/99-keep-refind
+            echo "removed /etc/apt/apt.conf.d/99-keep-refind"
+        else
+            echo "Refind protection configuration not enabled"
+        else
     ;;
 
-        * )
+    * )
         echo -e "nanolx-refind v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
@@ -62,8 +76,9 @@ usage:
     nanolx-refind set-theme     [theme] set theme to use
     nanolx-refind get-theme             get active theme
     nanolx-refind default-theme         revert to default theme
-    nanolx-refind lock-grub             use apt mark to disable grub updates
-    nanoxl-refind unlock-grub           use apt mark to re-enable grub updates
+    nanolx-refind enable-keep-refind    keep refind as default bootloader,
+                                        when updating grub/refind/shim
+    nanolx-refind disable-keep-refind   disable keeping refind as default bootloader
 "
     ;;
 esac
