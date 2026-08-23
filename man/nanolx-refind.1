@@ -3,7 +3,7 @@
 nanolx-refind
 .SH SYNOPSIS
 nanolx-refind [themes-show] [themes-set \fItheme\fP] [themes-get] [themes-unset]
-[enable-keep-refind] [disable-keep-refind]
+[enable-keep-refind] [disable-keep-refind] [liquorix-default] [debian-default]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-refind is a simple script to manage rEFInd bootloader themes, supports
 showing installed themes, setting theme, showing current theme in use or
@@ -34,6 +34,12 @@ rEFInd will no longer be replaced by grub
 .TP
 .B disable-keep-refind
 remove DPkg::Post-Invoke-Sucess configuration mentioned before
+.TP
+.B liquorix-default
+set latest liquorix kernel as default boot choice
+.TP
+.B debian-default
+set latest upstream kernel as default boot choice
 .PP
 
 .SH AUTHORS

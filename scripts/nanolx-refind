@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.0.4"
+version="0.0.5"
 reldate="2026/08/23"
 
 if (( EUID != 0 )); then
@@ -19,6 +19,8 @@ if [ -f 99-keep-refind ]; then
 else
     refind_apt_conf=/usr/share/nanolx/99-keep-refind
 fi
+
+refindconf=/boot/efi/EFI/refind/refind.conf
 
 case ${1} in
     list-themes )
@@ -53,7 +55,7 @@ case ${1} in
         else
             cp ${refind_apt_conf} /etc/apt/apt.conf.d/
             echo "installed /etc/apt/apt.conf.d/99-keep-refind"
-        else
+        fi
     ;;
 
     disable-keep-refind )
@@ -62,7 +64,27 @@ case ${1} in
             echo "removed /etc/apt/apt.conf.d/99-keep-refind"
         else
             echo "Refind protection configuration not enabled"
+        fi
+    ;;
+
+    liquorix-default )
+        if grep -q "^default_selection \"liquorix\"" ${refindconf}; then
+            echo "liquorix already set as prefered kernel"
         else
+            echo "set latest liquorix kernel as default boot choice"
+            echo "fold_linux_kernels false" >> ${refindconf}
+            echo "default_selection \"liquorix\"" >> ${refindconf}
+        fi
+    ;;
+
+    debian-default )
+        if grep -q "^default_selection \"liquorix\"" ${refindconf}; then
+            echo "set latest upstream kernel as default boot choice"
+            sed "/^fold_linux_kernels false/d" -i ${refindconf}
+            sed "/^default_selection \"liquorix\"/d" -i ${refindconf}
+        else
+            echo "upstream already set as prefered kernel"
+        fi
     ;;
 
     * )
@@ -79,6 +101,8 @@ usage:
     nanolx-refind enable-keep-refind    keep refind as default bootloader,
                                         when updating grub/refind/shim
     nanolx-refind disable-keep-refind   disable keeping refind as default bootloader
+    nanolx-refind liquorix-default      set latest liquorix kernel as default boot choice
+    nanolx-refind debian-default        set latest upstream kernel as default boot choice
 "
     ;;
 esac
