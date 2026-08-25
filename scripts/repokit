@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.7.5"
-reldate="2026/08/21"
+version="1.7.6"
+reldate="2026/08/25"
 
 error () {
     echo -e "${@}"
@@ -279,7 +279,7 @@ case ${cmdarg} in
     release )   debhelper_add_release ;;
     put )       debhelper_put_scripts ;;
 
-    build )     dpkg-buildpackage "${REPOKIT_BUILD_FLAGS}" -rfakeroot "${@}" ;;
+    build )     dpkg-buildpackage "${REPOKIT_BUILD_FLAGS}" "${@}" ;;
     clean )     fakeroot debian/rules clean ;;
 
     add )
