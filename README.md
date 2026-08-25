@@ -9,7 +9,7 @@ or change existing packages. As of version 4.2 no configuration changes to
 and you can use the provided scripts I use to keep my systems organized (see
 [Scripts](#scripts) below) to adjust as you like.
 
-addtionally `Nanolx` contains the default set of themes I prefer to use, see
+Addtionally `Nanolx` contains the default set of themes I prefer to use, see
 the nanolx-themes package below
 
 
@@ -60,7 +60,7 @@ then proceed to install. Install either
 some of the sub-packages may depend on packages only available from the `deb-multimedia`
 or my own `photonic` repository, so both are considered required for `nanolx-full`.
 
-See also: `nanolx-apt` Script below.
+See also: `nanolx-apt` [Script](#scripts) below.
 
 ## For non Debian GNU/Linux-Users
 
@@ -78,7 +78,7 @@ and if you only want to update the configuration files the scripts, use
 
     [./]make updateconf
 
-On non Debian-based distributions you'll be able to use the scripts:
+On non Debian-based distributions you'll be able to use the [scripts](#scripts):
 
 * `hugo-push`
 * `nanolx-backup` (if `systemd` is in use)
@@ -166,17 +166,17 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
         - deb-multimedia
         - mozilla
 3. `nanolx-apt-tools`
-    1. `repokit`         personal wrapper script for reprepro with config file support and many features.
-    2. `nanolx-orbit`    manages installation of 3rdparty packages, including checking sha256sums.
+    1. `repokit`         personal wrapper script for `reprepro`, `sbuild` and `dpkg-buildpackage` with config file support, auto ftp-upload and more features.
+    2. `nanolx-orbit`    manages installation of 3rdparty packages, including checking sha256sums, currently known packages:
         - citrix (stable)
         - citrix-usb (stable)
         - citrix-epa (stable)
         - citrix-beta (GCC 11 tech preview)
         - citrix-usb-beta (GCC 11 tech preview)
         - zoom
-        - zoom-vdi plugin
+        - zoom vdi plugin
 4. `nanolx-citrix-config`
-    1. `nanolx-ctx`      script to disable (or enable [...]) citrix telemetry and running the included system check script. It also allows to install or uninstall the webkit2gtk-4.0 bundled with citrix, which is required for full citrix operation (stable citrix version), but no longer shipped with Debian (or Ubuntu). It has more features, be sure to check out, if you use citrix.
+    1. `nanolx-ctx`      script to disable (or enable [...]) citrix telemetry and running the included system check script. It also allows to install or uninstall the webkit2gtk-4.0 bundled with citrix, which is required for full citrix operation (stable citrix version), but no longer shipped with Debian (or Ubuntu). It has more features (like enabling teams optimization or restricting access to local device from remote), be sure to check out, if you use citrix.
 5. `nanolx-net`
     1. `hugo-push`     simple script to build a hugo website and push it to webspace using lftp, uses a configuration file.
 6. `nanolx-yubikey`
@@ -189,7 +189,7 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
         - polkit-1
         - kde
 
-        optionally, the script allows to lock the session, as soon as the Yubikey is plugged out.
+        optionally, the script can tell `logind` to lock the session, as soon as the Yubikey is plugged out.
 7. `nanolx-themes`
     1. `nanolx-refind`   simple script to manage rEFInd bootloader themes, supports showing installed themes, setting theme, showing current theme in use or reverting to default.
 8. `nanolx-x11`
