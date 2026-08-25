@@ -122,7 +122,7 @@ debhelper_put_scripts () {
         fi
     fi
 
-    fakeroot "${PWD}/debian/rules" clean &>/dev/null
+    "${PWD}/debian/rules" clean &>/dev/null
 
     rsync -a --delete "${PWD}/debian/" "${REPOKIT_BUILD_SCRIPTS}/${package}"
     cd "${REPOKIT_BUILD_SCRIPTS}"
@@ -280,7 +280,7 @@ case ${cmdarg} in
     put )       debhelper_put_scripts ;;
 
     build )     dpkg-buildpackage "${REPOKIT_BUILD_FLAGS}" "${@}" ;;
-    clean )     fakeroot debian/rules clean ;;
+    clean )     debian/rules clean ;;
 
     add )
         for arg in "${@}"; do
