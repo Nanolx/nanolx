@@ -19,6 +19,8 @@ nanolx (1:4.13.5.2026ddmm-1nano) unstable; urgency=low
         - ibus-compose
     - nanolx-base
       - minor fix regarding wayland in conkyrc
+      - skel: move non-standard configuration from ~/.bashrc to
+        ~/.bashstyle.custom
     - nanolx-apt-tools
       - repokit 1.7.6: get rid of fakeroot
 
