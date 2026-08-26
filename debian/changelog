@@ -13,6 +13,7 @@ nanolx (1:4.13.5.2026ddmm-1nano) unstable; urgency=low
           regardless whether the other one has a more recent kernel installed
         - updated man page
         - updated bash completion
+      - update Nanolx.knsv konsave configuration
     - nanolx-x11
       - removed dependencies
         - ibus
