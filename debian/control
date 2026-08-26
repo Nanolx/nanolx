@@ -4,10 +4,11 @@ Priority: optional
 Maintainer: Christopher Roy Bratusek <nano@jpberlin.de>
 Build-Depends:
  debhelper-compat (= 13)
-Standards-Version: 4.7.2
+Standards-Version: 4.7.4
 Homepage: https://nanolx.org
 Vcs-Browser: https://gitlab.com/Nanolx/nanolx
 Vcs-Git: https://gitlab.com/Nanolx/nanolx.git
+Rules-Requires-Root: no
 
 Package: nanolx-base
 Architecture: all
@@ -459,7 +460,9 @@ Depends:
  kde-spectacle,
  python3-dbus,
  python3-gi,
- konsave
+ konsave,
+ kde-macesque-taskmanager,
+ kde-thumbnail-bloom
 Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of themes
  Themes for Nanolx
@@ -476,7 +479,7 @@ Description: Collection of themes
  sddm:       Pixel Rainy Room
  wall:       Matrix Rain (Plasma 6)
  splash:     Infinity (Plasma Splash 6)
- KWin:       Aura glow effect (burn my windows)
+ KWin:       Aura glow effect (burn my windows), Thumbnail Bloom, Macesque Taskbar
  Plasmoids:  AndromedaLauncher, Advanced Separator, KDE Control Station, Panel Colorizer
  .
  Nothing style for Plasma, KWin, Konsole including color schemes and wallpapers

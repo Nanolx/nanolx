@@ -14,6 +14,9 @@ nanolx (1:4.13.5.2026ddmm-1nano) unstable; urgency=low
         - updated man page
         - updated bash completion
       - update Nanolx.knsv konsave configuration
+      - added dependencies
+        - kde-macesque-taskbar
+        - kde-thumbnail-bloom
     - nanolx-x11
       - removed dependencies
         - ibus
