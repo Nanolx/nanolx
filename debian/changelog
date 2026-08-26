@@ -13,6 +13,9 @@ nanolx (1:4.13.5.2026ddmm-1nano) unstable; urgency=low
           regardless whether the other one has a more recent kernel installed
         - updated man page
         - updated bash completion
+      - nanolx-gtksettings-kde 0.0.3
+        - also generate settings.ini for Gtk4 (additionally to applying GSettings)
+        - script optimization
       - update Nanolx.knsv konsave configuration
       - added dependencies
         - kde-macesque-taskbar

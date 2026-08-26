@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.0.2"
-reldate="2026/08/16"
+version="0.0.3"
+reldate="2026/08/26"
 
 kde_font_to_gtk() {
     if [ -n "${1}" ]; then
@@ -20,64 +20,80 @@ cursor style:       ${kde_cursor_theme}
 cursor size:        ${kde_cursor_size}"
 }
 
-apply_results_gtk3 () {
-    local gtk3_settings_ini="${HOME}/.config/gtk-3.0/settings.ini"
-    mkdir -p "$(dirname "${gtk3_settings_ini}")"
-    [ -f "${gtk3_settings_ini}" ] || echo "[Settings]" > "${gtk3_settings_ini}"
-    local key="${1}" local value="${2}"
-    if grep -q "^${key}=" "${gtk3_settings_ini}"; then
-        sed -i "s|^${key}=.*|${key}=${value}|" "${gtk3_settings_ini}"
-    else
-        sed -i "/^\[Settings\]/a ${key}=${value}" "${gtk3_settings_ini}"
+apply_results_settingsini () {
+    local apply_root="${1}"
+    shift
+    local settings=("$@")
+
+    for version in 3.0 4.0; do
+        local dir="${HOME}/.config/gtk-${version}"
+        local file="${dir}/settings.ini"
+
+        mkdir -p "${dir}"
+        [ -f "${file}" ] || echo "[Settings]" > "${file}"
+
+        for pair in "${settings[@]}"; do
+            local key="${settings%%:*}"
+            local value="${settings#*:}"
+
+            if grep -q "^${key}=" "${file}"; then
+                sed -i "s|^${key}=.*|${key}=${value}|" "${file}"
+            else
+                sed -i "/^\[Settings\]/a ${key}=${value}" "${file}"
+            fi
+        done
+    done
+
+    if ${apply_root}; then
+        for version in 3.0 4.0; do
+            local root_dir="/root/.config/gtk-${version}"
+            sudo mkdir -p "${root_dir}"
+            sudo cp "${HOME}/.config/gtk-${version}/settings.ini" "${root_dir}/settings.ini"
+            sudo chown root:root "${root_dir}/settings.ini"
+            sudo chmod 644 "${root_dir}/settings.ini"
+        done
     fi
 }
 
-apply_results_gtk4 () {
-    if ${1}; then
-        sudo gsettings set org.gnome.desktop.interface ${2} "${3}"
-    else
-        gsettings set org.gnome.desktop.interface ${2} "${3}"
-    fi
+apply_results_gsettings () {
+    local apply_root="${1}"
+    shift
+    local setttings=("$@")
+
+    for pair in "${settings[@]}"; do
+        local key="${settings%%:*}"
+        local value="${settings#*:}"
+
+        gsettings set org.gnome.desktop.interface "${key}" "${value}"
+
+        if ${apply_root}; then
+            sudo gsettings set org.gnome.desktop.interface "${key}" "${value}"
+        fi
+    done
 }
 
 apply_results () {
-    # Gtk3
-    apply_results_gtk3 "gtk-application-prefer-dark-theme" "${gtk_color_scheme_int}"
-    apply_results_gtk3 "gtk-theme-name" "${kde_gtk_theme}"
-    apply_results_gtk3 "gtk-icon-theme-name" "${kde_icon_theme}"
-    apply_results_gtk3 "gtk-font-name" "${gtk_font}"
-    apply_results_gtk3 "gtk-toolbar-style" "${gtk_toolbar_style}"
-    apply_results_gtk3 "gtk-cursor-theme-name" "${kde_cursor_theme}"
-    apply_results_gtk3 "gtk-cursor-theme-size" "${kde_cursor_size}"
+    # Gtk3 + Gtk4 / settings.ini
+    apply_results_settingsini "${apply_root}" \
+        "gtk-application-prefer-dark-theme:${gtk_color_scheme_int}" \
+        "gtk-theme-name:${kde_gtk_theme}" \
+        "gtk-icon-theme-name:${kde_icon_theme}" \
+        "gtk-font-name:${gtk_font}" \
+        "gtk-toolbar-style:${gtk_toolbar_style}" \
+        "gtk-cursor-theme-name:${kde_cursor_theme}" \
+        "gtk-cursor-theme-size:${kde_cursor_size}"
 
-    # Gtk4
-    apply_results_gtk4 ${1} color-scheme "${gtk_color_scheme}"
-    apply_results_gtk4 ${1} gtk-theme "${kde_gtk_theme}"
-    apply_results_gtk4 ${1} icon-theme "${kde_icon_theme}"
-    apply_results_gtk4 ${1} font-name "${gtk_font}"
-    apply_results_gtk4 ${1} document-font-name "${gtk_font}"
-    apply_results_gtk4 ${1} monospace-font-name "${gtk_font_mono}"
-    apply_results_gtk4 ${1} toolbar-style "${gtk_toolbar_style}"
-    apply_results_gtk4 ${1} cursor-theme "${kde_cursor_theme}"
-    apply_results_gtk4 ${1} cursor-size "${kde_cursor_size}"
-
-    "${1}" && apply_settings_for_root
-}
-
-apply_settings_for_root () {
-    echo "apply Gtk3/Gtk4 settings for ${USER} to root"
-    local root_gtk3_dir="/root/.config/gtk-3.0"
-    local root_gtk4_dir="/root/.config/gtk-4.0"
-
-    sudo mkdir -p "${root_gtk3_dir}"
-    sudo cp "${HOME}/.config/gtk-3.0/settings.ini" "${root_gtk3_dir}/settings.ini"
-    sudo chown root:root "${root_gtk3_dir}/settings.ini"
-    sudo chmod 644 "${root_gtk3_dir}/settings.ini"
-
-    sudo mkdir -p "${root_gtk4_dir}"
-    sudo cp "${HOME}/.config/gtk-4.0/settings.ini" "${root_gtk4_dir}/settings.ini"
-    sudo chown root:root "${root_gtk4_dir}/settings.ini"
-    sudo chmod 644 "${root_gtk4_dir}/settings.ini"
+    # Gtk4 / GSettings
+    apply_results_gsettings "${apply_root}" \
+        "color-scheme:${gtk_color_scheme}" \
+        "gtk-theme:${kde_gtk_theme}" \
+        "icon-theme:${kde_icon_theme}" \
+        "font-name:${gtk_font}" \
+        "document-font-name:${gtk_font}" \
+        "monospace-font-name:${gtk_font_mono}" \
+        "toolbar-style:${gtk_toolbar_style}" \
+        "cursor-theme:${kde_cursor_theme}" \
+        "cursor-size:${kde_cursor_size}"
 }
 
 gsettings_apply_kde_values () {
