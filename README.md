@@ -21,8 +21,8 @@ While I'm not actively asking for donations, a tip is always welcome.
 
 see [debian/changelog](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/changelog?ref_type=heads) for changes
 
-- Version:    4.13.4
-- Release:    20260822
+- Version:    4.14.0
+- Release:    20260828
 
 ## Git repository access
 
@@ -142,7 +142,7 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
 19. `nanolx-yubikey`:
     * collection of Yubikey related tools.
 20. `nanolx-themes`
-    * this package provides the default theme collection I use, see [Themes](#themes) below.
+    * this package installs the default theme collection I use, see [Themes](#themes) below.
     * use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` to apply the full KDE theme suite.
 21. `nanolx-citrix-config`
     * see [Citrix](#citrix) below.
@@ -199,27 +199,28 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
 
 Use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` to apply the full KDE theme suite.
 
-The package `nanolx-themes` contains:
+The package `nanolx-themes` installs the following which is bundled as part of `Nanolx`. If you choose to not install `nanolx-themes` (or `nanolx-full`, which depends on `nanolx-themes`, you can install them individually).
 
-- Plymouth:   debian mac style
-- rEFInd:     rEFInd digital void
-- Cursors:    Empty Butterfly
-- Qt:         Midnight Bright Kvantum
-- Icons:      Tela (red and red dark)
-- sddm:       Pixel Rainy Room
-- wall:       Matrixrain (Plasma 6)
-- splash:     Infinity (Plasma Splash 6)
-- KWin:
-    - effects:
-        - Aura glow (burn my windows)
-        - Geometry Changes
-    - scripts:
-        - KNeko
-        - KZones
-        - Remember Window Positions
-- Plasmoids:  AndromedaLauncher, Advanced Separator, KDE Control Station, Panel Colorizer
-- Nothing for Plasma, KWin, Konsole, including color schemes and wallpapers
-- Kate/KDevelop color schemes: revolunti / revolunti night
+1. `refind-theme-digital-void`: Futuristic red theme for rEFInd
+2. `empty-butterfly-cursors`: Come in blue, butter, cyan, green, magenta, orange, purple, red, white and yellow.
+3. `tela-icon-theme-red`:  Tela icon theme (Red variant)
+4. `tela-icon-theme-red-dark`: Tela icon theme (Red Dark variant)
+5. `plasma-global-theme-nothing`: Plasma theme inspired by Nothing design language
+6. `kvantum-midnight-bright`: comes in blue, green, purple, red and yellow
+7. `kwin-effect-geometry-change`: KWin animation for windows moved/resized by programs/scripts
+8. `kwin-effect-aura-glow`: KWin aura glow animation for created/deleted windows
+9. `kwin-script-kneko`: An Oneko-style script implemented in kwinscript
+10. `kwin-script-kzones`: KDE KWin Script for snapping windows into zones
+11. `kwin-script-remember-window-positions`: KWin Script for remembering application window properties
+12. `kde-syntax-theme-revolunti`: syntax highlighting theme for Kate/KDevelop
+13. `plasma-andromeda-launcher`: A simple Launcher for KDE Plasma based on the mmcklauncher
+14. `plasma-kde-control-station`: A beautiful and modern configuration center for KDE plasma based on the kde_controlcentre
+15. `plasma-advanced-separator`: Customizable separator widget for the KDE Plasma Desktop
+16. `plasma-panel-colorizer`: Fully-featured widget to bring Latte-Dock and WM status bar customization features to the default Plasma panels.
+17. `plasma-splash-infinity`: Infinity splash screen for plasma
+18. `plasma-matrix-rain-wallpaper`: Provides a Matrix-esque "code rainfall" background wallpaper for Plasma 6, with some fun custommizations.
+19. `plymouth-theme-debian-mac-style`: Debian Mac style Plymouth theme
+20. `sddm-theme-pixel-rainyroom`: Pixel Rainy Room sddm theme
 
 ## Citrix
 
