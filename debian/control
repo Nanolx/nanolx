@@ -600,7 +600,7 @@ Description: KWin Script for remembering application window properties.
 Package: kde-syntax-theme-revolunti
 Architecture: any
 Depends: kate | kdevelop
-Replaces: nanolx-themes (<< 4.14.0.20260828)
+Replaces: nanolx-devel-x11 (<< 4.14.0.20260828)
 Description: Revolunti syntax highlighting theme for Kate/KDevelop
  Including Revolunti-Night
  .
