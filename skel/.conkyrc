@@ -5,7 +5,7 @@ conky.config = {
 
     own_window = true,
     own_window_transparent = false,
-    own_window_type = 'desktop',
+    own_window_type = 'dock',
     own_window_colour = '#000000',
     own_window_argb_visual = true,
     own_window_argb_value = 145,
