@@ -4,7 +4,7 @@ set -e
 case "${1}" in
     configure)
         if command -v update-icon-caches >/dev/null; then
-            update-icon-caches /usr/share/icons/Tela-red /usr/share/icons/Tela-red-dark
+            update-icon-caches /usr/share/icons/Tela-red-dark
         fi
     ;;
 
