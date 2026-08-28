@@ -450,13 +450,26 @@ Description: Citrix Workspace Support package
 Package: nanolx-themes
 Architecture: all
 Depends:
- refind,
- plymouth,
- dracut,
- qt-style-kvantum,
- kwin-style-aurorae,
- kde-plasma-desktop,
- konsole,
+ refind-theme-digital-void,
+ empty-butterfly-cursors,
+ tela-icon-theme-red,
+ tela-icon-theme-red-dark,
+ plasma-global-theme-nothing,
+ kvantum-midnight-bright,
+ kwin-effect-geometry-change,
+ kwin-effect-aura-glow,
+ kwin-script-kneko,
+ kwin-script-kzones,
+ kwin-script-remember-window-positions,
+ kde-syntax-theme-revolunti,
+ plasma-andromeda-launcher,
+ plasma-kde-control-station,
+ plasma-advanced-separator,
+ plasma-panel-colorizer,
+ plasma-splash-infinity,
+ plasma-matrix-rain-wallpaper,
+ plymouth-theme-debian-mac-style,
+ sddm-theme-pixel-rainyroom,
  kde-spectacle,
  python3-dbus,
  python3-gi,
@@ -483,3 +496,181 @@ Description: Collection of themes
  Plasmoids:  AndromedaLauncher, Advanced Separator, KDE Control Station, Panel Colorizer
  .
  Nothing style for Plasma, KWin, Konsole including color schemes and wallpapers
+
+Package: refind-theme-digital-void
+Architecture: all
+Depends: refind
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Digital Void theme for rEFInd
+ Futuristic red theme for rEFInd
+ .
+ bundled as part of nanolx
+
+Package: empty-butterfly-cursors
+Architecture: all
+Depends: wayland-protocols | xserver-xorg
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Empty Butterfly cursors
+ Come in blue, butter, cyan, green, magenta, orange, purple, red, white and yellow.
+ .
+ bundled as part of nanolx
+
+Package: tela-icon-theme-red
+Architecture: all
+Depends: wayland-protocols | xserver-xorg
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Tela icon theme
+ Red variant
+  .
+ bundled as part of nanolx
+
+Package: tela-icon-theme-red-dark
+Architecture: all
+Depends: wayland-protocols | xserver-xorg, tela-icon-theme-red
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Tela icon theme
+ Red dark variant
+ .
+ bundled as part of nanolx
+
+Package: plasma-global-theme-nothing
+Architecture: any
+Depends: kde-plasma-desktop,
+ kwin-style-aurorae,
+ konsole
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Nothing plasma theme
+ Plasma theme inspired by Nothing design language
+ .
+ bundled as part of nanolx
+
+Package: kvantum-midnight-bright
+Architecture: any
+Depends: qt-style-kvantum
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Midnight Bright Kvantum theme
+ comes in blue, green, purple, red and yellow
+ .
+ bundled as part of nanolx
+
+Package: kwin-effect-geometry-change
+Architecture: any
+Depends: kwin
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: KWin animation for windows moved/resized by programs/scripts
+ bundled as part of nanolx
+
+Package: kwin-effect-aura-glow
+Architecture: any
+Depends: kwin
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: KWin aura glow animation for created/deleted windows
+ bundled as part of nanolx
+
+Package: kwin-script-kneko
+Architecture: any
+Depends: kwin, kwin-effect-geometry-change
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Desktop pet that follows your mouse
+ An Oneko-style script implemented in kwinscript, because i got fed up with
+ the lack of customization the X11 Oneko carries.
+ .
+ bundled as part of nanolx
+
+Package: kwin-script-kzones
+Architecture: any
+Depends: kwin
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: KDE KWin Script for snapping windows into zones.
+ Handy when using a (super) ultrawide monitor, an alternative to PowerToys
+ FancyZones and Windows 11 snap layouts.
+ .
+ bundled as part of nanolx
+
+Package: kwin-script-remember-window-positions
+Architecture: any
+Depends: kwin
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: KWin Script for remembering application window properties.
+ Especially useful for multi-window applications such as browsers. Remembers and
+ restores the windows position, size, screen and virtual desktop.
+ .
+ bundled as part of nanolx
+
+Package: kde-syntax-theme-revolunti
+Architecture: any
+Depends: kate | kdevelop
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Revolunti syntax highlighting theme for Kate/KDevelop
+ Including Revolunti-Night
+ .
+ bundled as part of nanolx
+
+Package: plasma-andromeda-launcher
+Architecture: any
+Depends: kde-plasma-desktop
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Andromeda Launcher for Plasma
+ A simple Launcher for KDE Plasma based on the awesome mmcklauncher
+ .
+ bundled as part of nanolx
+
+Package: plasma-kde-control-station
+Architecture: any
+Depends: kde-plasma-desktop
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: KDE Control Station plasmoid
+ A beautiful and modern configuration center for KDE plasma based on the awesome
+ kde_controlcentre by Prayag2
+ .
+ bundled as part of nanolx
+
+Package: plasma-advanced-separator
+Architecture: any
+Depends: kde-plasma-desktop
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Advanced Separator plasmoid
+ Customizable separator widget for the KDE Plasma Desktop
+ .
+ bundled as part of nanolx
+
+Package: plasma-panel-colorizer
+Architecture: any
+Depends: kde-plasma-desktop
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Panel Colorizer plasmoid
+ Fully-featured widget to bring Latte-Dock and WM status bar customization
+ features to the default Plasma panels.
+ .
+ bundled as part of nanolx
+
+Package: plasma-splash-infinity
+Architecture: any
+Depends: kde-plasma-desktop
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Infinity splash screen for plasma
+ bundled as part of nanolx
+
+Package: plasma-matrix-rain-wallpaper
+Architecture: any
+Depends: kde-plasma-desktop
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Matrix Rain wallpaper for Plasma
+ Provides a Matrix-esque "code rainfall" background wallpaper for Plasma 6,
+ with some fun custommizations.
+ .
+ bundled as part of nanolx
+
+Package: plymouth-theme-debian-mac-style
+Architecture: any
+Depends: plymouth, dracut
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Debian Mac style Plymouth theme
+ bundled as part of nanolx
+
+Package: sddm-theme-pixel-rainyroom
+Architecture: any
+Depends: sddm
+Replaces: nanolx-themes (<< 4.14.0.20260828)
+Description: Pixel Rainy Room sddm theme
+ bundled as part of nanolx

@@ -2,16 +2,6 @@ etc/dracut.conf.d/fonts.conf
 usr/sbin/nanolx-refind
 usr/share/bash-completion/completions/nanolx-refind
 usr/share/man/man1/nanolx-refind.1.gz
-usr/share/icons/
-usr/share/Kvantum/
-usr/share/kwin/
-usr/share/aurorae/
-usr/share/color-schemes/
-usr/share/konsole/
-usr/share/plasma/
-usr/share/plymouth/themes/
-usr/share/sddm/themes/
-usr/share/wallpapers/
 usr/share/nanolx/Nanolx.knsv
 usr/share/nanolx/99-keep-refind
-boot/efi/EFI/refind/themes/
+
