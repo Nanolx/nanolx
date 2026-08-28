@@ -20,6 +20,29 @@ nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
       - added dependencies
         - kde-macesque-taskbar
         - kde-thumbnail-bloom
+      - broke out all themes, plasmoids, icons, cursors and stuff into individual
+        packages and made nanolx-themes depend on them. Allows the user to install
+        only the desired ones, instead of all. The packages are called:
+        - refind-theme-digital-void
+        - empty-butterfly-cursors
+        - tela-icon-theme-red
+        - tela-icon-theme-red-dark
+        - plasma-global-theme-nothing
+        - kvantum-midnight-bright
+        - kwin-effect-geometry-change
+        - kwin-effect-aura-glow
+        - kwin-script-kneko
+        - kwin-script-kzones
+        - kwin-script-remember-window-positions
+        - kde-syntax-theme-revolunti
+        - plasma-andromeda-launcher
+        - plasma-kde-control-station
+        - plasma-advanced-separator
+        - plasma-panel-colorizer
+        - plasma-splash-infinity
+        - plasma-matrix-rain-wallpaper
+        - plymouth-theme-debian-mac-style
+        - sddm-theme-pixel-rainyroom
     - nanolx-x11
       - removed dependencies
         - ibus
@@ -31,7 +54,7 @@ nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
     - nanolx-apt-tools
       - repokit 1.7.6: get rid of fakeroot
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 28 Aug 2026 17:41:47 +0200
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 28 Aug 2026 19:11:37 +0200
 
 nanolx (1:4.13.4.20260822-1nano) unstable; urgency=low
 
