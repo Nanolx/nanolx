@@ -220,6 +220,8 @@ install_misc () {
     ln -sf ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
         ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
 
+    install data "${CWD}/cockpit.desktop" share/applications/
+
 }
 
 case "${1}" in

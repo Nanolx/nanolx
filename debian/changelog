@@ -26,6 +26,7 @@ nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
       - added suggests
         - ockpit-packagekit
         - cockpit-sosreport
+      - add cockpit desktop menu entry (as cockpit itself does not ship one)
 
 nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
 

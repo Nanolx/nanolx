@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cockpit Webconsole
+Comment=Administrate Linux-Server through Webbrowser
+Exec=xdg-open http://localhost:9090
+Icon=cockpit
+Terminal=false
+Categories=System;Settings;
+Keywords=System;Management;Administration;Web;
