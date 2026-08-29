@@ -476,6 +476,12 @@ Depends:
  konsave,
  kde-macesque-taskmanager,
  kde-thumbnail-bloom
+Suggests:
+ kwin-effect-ba-click-fx,
+ kwin-effect-cursortrails,
+ kwin-effect-particles,
+ kwin-effect-spotlight,
+ kwin-effect-xorcursor
 Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of themes
  Themes for Nanolx
