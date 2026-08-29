@@ -97,14 +97,15 @@ Package: nanolx-apt-tools
 Architecture: all
 Depends:
  apt-file,
- apt-listchanges,
- apt-listbugs,
  apt-rdepends,
  apt-show-versions,
  debdelta,
  reprepro,
  gdebi,
  nanolx-apt-sources
+Recommends:
+ apt-listchanges,
+ apt-listbugs
 Suggests:
  mmdebstrap,
  uidmap,
@@ -165,17 +166,17 @@ Depends:
  yakuake,
  kcharselect,
  task-kde-desktop,
- psensor,
  sddm,
  xinput,
  ydotool,
- czkawka-gui,
  gnome-icon-theme,
  kando,
  kando-kwin-integration,
  ulauncher,
  openrgb
 Recommends:
+ czkawka-gui,
+ psensor,
  libgtk-nocsd0
 Suggests:
  openrgb-plugin-effects,
@@ -190,7 +191,6 @@ Depends:
  clamav,
  clamtk,
  clamav-daemon,
- clamassassin,
  psad,
  kleopatra,
  gpgv,
@@ -200,6 +200,7 @@ Depends:
  firewalld | ufw,
  firewall-config | gufw
 Recommends:
+ clamassassin,
  tor,
  torsocks,
  tor-geoipdb
@@ -231,7 +232,6 @@ Depends:
  filezilla,
  thunderbird,
  firefox | firefox-esr,
- kvirc,
  openvpn | mozillavpn,
  openresolv | resolvconf,
  syncthing,
@@ -239,6 +239,7 @@ Depends:
  nextcloud-desktop,
  dolphin-nextcloud,
 Recommends:
+ kvirc,
  stubby,
  privoxy,
  hugo,
@@ -256,9 +257,11 @@ Depends:
  gstreamer1.0-plugins-base,
  gstreamer1.0-plugins-good,
  gstreamer1.0-plugins-ugly,
- gstreamer1.0-libav,
- libdvdcss2,
+ gstreamer1.0-libav
+Recommends:
  libbluray4 | libbluray3 | libbluray2
+Suggests:
+ libdvdcss2
 Description: Collection of media codecs
  This meta-package installs media codecs.
 
@@ -286,14 +289,15 @@ Depends:
  mpv,
  geeqie,
  gimp,
- k3b,
- libk3b-extracodecs,
  mediathekview,
  easytag,
  amarok | elisa,
  ffmpegthumbnailer,
  dbus-x11,
  inkscape
+Recommends:
+ k3b,
+ libk3b-extracodecs
 Description: Collection of graphical media applications
  This meta-package installs x11 media applications
 
@@ -302,7 +306,6 @@ Architecture: all
 Depends:
  ccache,
  dpkg-dev,
- fakeroot,
  ubuntu-dev-tools,
  sbuild,
  gcc,
@@ -352,12 +355,13 @@ Depends:
  cambalache,
  bluefish,
  kdevelop,
- kdevelop-python,
- kdevelop-l10n,
  d-feet,
  okteta,
  poedit,
  valgrind
+Recommends:
+ kdevelop-python,
+ kdevelop-l10n
 Description: Collection of ui development tools
  This meta-package installs ui development tools.
 
@@ -382,10 +386,11 @@ Depends:
  zelda-picross,
  zelda-tunics,
  lutris,
- xpadneo-dkms,
  simsu,
  iqpuzzle,
  kmahjongg
+Recommends:
+ xpadneo-dkms
 Description: Collection of games
  This meta-package installs games and launchers.
 
@@ -418,7 +423,6 @@ Architecture: all
 Depends:
  scribus,
  libreoffice,
- qownnotes,
  scantpaper,
  catdoc,
  unpaper,
@@ -430,6 +434,7 @@ Depends:
  qrencode,
  pdfgrep
 Suggests:
+ qownnotes,
  tesseract-ocr-deu
 Description: Collection of office tools
  This meta-package installs a collection of office tools.
