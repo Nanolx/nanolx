@@ -81,11 +81,19 @@ Depends:
  cryptsetup,
  gparted,
  libgtk3-perl,
+ cockpit,
 Recommends:
  age,
  logsave,
  btop,
- packagesearch
+ packagesearch,
+ cockpit-networkmanager,
+ cockpit-storaged,
+ udisks2-btrfs,
+ udisks2-lvm2
+Suggests:
+ cockpit-packagekit,
+ cockpit-sosreport
 Description: Collection of admin-tools
  This meta-package installs useful tools for system administration.
 

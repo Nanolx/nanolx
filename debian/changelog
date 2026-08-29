@@ -15,6 +15,17 @@ nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
         - kwin-effect-particles
         - kwin-effect-spotlight
         - kwin-effect-xorcursor
+    - nanolx-admin
+      - added dependency
+        - cockpit
+      - added recommends
+        - cockpit-networkmanager
+        - cockpit-storaged
+        - udisks2-btrfs
+        - udisks2-lvm2
+      - added suggests
+        - ockpit-packagekit
+        - cockpit-sosreport
 
 nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
 
