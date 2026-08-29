@@ -105,6 +105,12 @@ Depends:
  reprepro,
  gdebi,
  nanolx-apt-sources
+Suggests:
+ mmdebstrap,
+ uidmap,
+ piuparts,
+ apt-cacher-ng,
+ lftp
 Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt.
@@ -237,7 +243,6 @@ Recommends:
  privoxy,
  hugo,
  webapps,
- lftp
 Suggests:
  torbrowser-launcher
 Description: Collection of network applications
@@ -321,10 +326,6 @@ Recommends:
  shellcheck,
  licensecheck,
  pycodestyle,
- mmdebstrap,
- uidmap,
- piuparts,
- apt-cacher-ng
 Description: Collection of cli development tools
  This meta-package installs cli development tools
 
