@@ -1,3 +1,21 @@
+nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
+
+  * New upstream release
+    - nanolx-base
+      - conkyrc
+        - change window type to prevent it from disappearing when clicking on desktop
+        - remove deprecated values
+    - nanolx-media-x11
+      - changed dependency
+        - elisa >> amarok | elisa
+    - nanolx-themes
+      - new suggested packages
+        - kwin-effect-ba-click-fx
+        - kwin-effect-cursortrails
+        - kwin-effect-particles
+        - kwin-effect-spotlight
+        - kwin-effect-xorcursor
+
 nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
 
   * New upstream release
