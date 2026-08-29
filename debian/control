@@ -21,8 +21,6 @@ Depends:
  bash-completion
 Recommends:
  appimagelauncher
-Suggests:
- nanolx-citrix-config
 Description: Nanolx base package
  Nanolx is a set of meta-packages, wich I use to aid in syncing the package
  selection between my machine and machines that are maintained by me.
@@ -51,8 +49,6 @@ Depends:
  nanolx-themes,
  nanolx-office,
  nanolx-yubikey
-Suggests:
- nanolx-citrix-config
 Description: Nanolx (full suite)
  Nanolx is a set of meta-packages, wich I use to aid in syncing the package
  selection between my machine and machines that are maintained by me.
@@ -83,15 +79,15 @@ Depends:
  libgtk3-perl,
  cockpit,
 Recommends:
- age,
  logsave,
- btop,
  packagesearch,
  cockpit-networkmanager,
  cockpit-storaged,
  udisks2-btrfs,
  udisks2-lvm2
 Suggests:
+ age,
+ btop,
  cockpit-packagekit,
  cockpit-sosreport
 Description: Collection of admin-tools
@@ -128,7 +124,7 @@ Depends:
  p7zip-full,
  zip,
  xz-utils,
- unrar,
+ unrar-free | unrar,
  bashstyle-ng,
  fdupes,
  unp,
@@ -136,9 +132,7 @@ Depends:
  xe,
  bat,
  jq,
- fd-find,
  plocate,
- rdfind,
  diskus,
  lsd,
  fzf
@@ -147,11 +141,14 @@ Recommends:
  mc,
  duf,
  gdu,
+Suggests:
  thefuck,
  lolcat,
  procs,
  broot,
- zoxide
+ zoxide,
+ fd-find,
+ rdfind
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
 
@@ -161,7 +158,6 @@ Depends:
  conky-std,
  yakuake,
  kcharselect,
- libgtk-nocsd0,
  task-kde-desktop,
  psensor,
  sddm,
@@ -173,6 +169,8 @@ Depends:
  kando-kwin-integration,
  ulauncher,
  openrgb
+Recommends:
+ libgtk-nocsd0
 Suggests:
  openrgb-plugin-effects,
  openrgb-plugin-hardware-sync,
@@ -187,18 +185,20 @@ Depends:
  clamtk,
  clamav-daemon,
  clamassassin,
- tor,
- torsocks,
- tor-geoipdb,
  psad,
  kleopatra,
  gpgv,
  pinentry-qt,
  keepassxc,
- lynis,
  rkhunter,
  firewalld | ufw,
- firewall-config | gufw,
+ firewall-config | gufw
+Recommends:
+ tor,
+ torsocks,
+ tor-geoipdb
+Suggests:
+ lynis,
  spectre-meltdown-checker
 Description: Collection of security related tools
  This meta-package installs security related tools. You won't get a secure
@@ -225,19 +225,21 @@ Depends:
  filezilla,
  thunderbird,
  firefox | firefox-esr,
- lftp,
  kvirc,
  openvpn | mozillavpn,
  openresolv | resolvconf,
- torbrowser-launcher,
- stubby,
  syncthing,
  syncthing-gtk | syncthingtray,
  nextcloud-desktop,
  dolphin-nextcloud,
+Recommends:
+ stubby,
  privoxy,
  hugo,
- webapps
+ webapps,
+ lftp
+Suggests:
+ torbrowser-launcher
 Description: Collection of network applications
  This meta-package installs network applications.
 
@@ -311,13 +313,14 @@ Depends:
  devscripts,
  autotools-dev,
  libtool,
- lintian,
  gdb,
+ git-delta,
+Recommends:
+ lintian,
  codespell,
  shellcheck,
  licensecheck,
  pycodestyle,
- git-delta,
  mmdebstrap,
  uidmap,
  piuparts,
@@ -396,7 +399,8 @@ Depends:
  libretro-snes9x,
  libretro-nestopia,
  yabause-gtk | yabause-qt,
- scummvm,
+ scummvm
+Recommends:
  emulationstation-de,
  dolphin-emu
 Description: Collection of emulators
@@ -485,6 +489,7 @@ Depends:
  kde-macesque-taskmanager,
  kde-thumbnail-bloom
 Suggests:
+ kwin-autoscroll,
  kwin-effect-ba-click-fx,
  kwin-effect-cursortrails,
  kwin-effect-particles,
