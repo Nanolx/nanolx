@@ -275,7 +275,7 @@ Depends:
  libk3b-extracodecs,
  mediathekview,
  easytag,
- elisa,
+ amarok | elisa,
  ffmpegthumbnailer,
  dbus-x11,
  inkscape
