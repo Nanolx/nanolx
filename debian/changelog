@@ -27,6 +27,8 @@ nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
         - ockpit-packagekit
         - cockpit-sosreport
       - add cockpit desktop menu entry (as cockpit itself does not ship one)
+    - kwin-script-remember-window-positions
+      - updated to version 6.1.0
 
 nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
 
