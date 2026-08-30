@@ -1,10 +1,54 @@
-// Recommends are as of now still abused in many packages
-APT::Install-Recommends "0";
-APT::Install-Suggests "0";
+APT
+{
+  Color
+  {
+    /* fancy colored apt
+       upgraded packages: green
+       installed packages: cyan
+       installed dependencies: yellow
+       downgraded packages: magenta
+       removed pacakges: red
+    */
+    Default "yes";
+    Bold "\x1B[1m";
+    Action::Upgrade "green";
+    Action::Install "cyan";
+    Action::Install-Dependencies "yellow";
+    Action::Downgrade "magenta";
+    Action::Remove "red";
+  };
 
-// Always keep stuff clean
-Apt::Get::Clean-Installed "true";
-Dselect::Clean "always";
+  Get
+  {
+    // show full list of upgraded packages
+    Show-Upgraded "true";
+    // show exact version of current and pending version for updates
+    Show-Versions "true";
+    // remove outdated package versions from cache
+    Clean-Installed "true";
+    // like `apt autoremove`
+    AutomaticRemove "true";
+  };
 
-// Fancy progress bar
-Dpkg::Progress-Fancy "1";
+  // auto-install recommended packages
+  Install-Recommends "yes";
+  // don't auto-install suggested packages
+  Install-Suggests "no";
+}
+
+Dpkg
+{
+  UseIONice "true";
+
+  // white on blue progressbar
+  Progress-Fancy
+  {
+    progress-fg "%1b[37m";
+    progress-bg "%1b[44m";
+    progess-bar "true";
+  };
+
+  // prevent shutdown/sleep during package installation
+  Inhibit-Shutdown "true";
+  Inhibit-Sleep "true";
+};
