@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.3"
-reldate="2026/08/01"
+version="3.0.4"
+reldate="2026/08/30"
 
 if (( EUID != 0 )); then
     echo "nanolx-apt must be run as root"
@@ -134,14 +134,38 @@ case ${user_opt} in
 
 licensed under the GNU General Public License v3 (or newer)
 
-usage:
-    nanolx-apt list             (list available repositories)
-    nanolx-apt add              [repo1...repo2]
-    nanolx-apt remove           [repo1...repo2]
-    nanolx-apt check            [check which repos are enabled]
-    nanolx-apt enable-config    [enable 99nanolx apt config]
-    nanolx-apt disable-config   [disable 99nanolx apt config]
-    nanolx-apt enable-pinning   [enable nanolx apt pinning]
-    nanolx-apt disable-pinning  [disable nanolx apt pinning]
+Helper script for apt related tasks
+
+usage: nanolx-apt <flag>
+
+** Repository management
+list             (list available repositories)
+add              [repo1...repo2]
+remove           [repo1...repo2]
+
+check            (check which repos are enabled)
+
+** Apt configuration
+
+Nanolx features an optional, custom apt configuration, see
+
+    /usr/share/nanolx/apt.d/99nanolx
+
+for details.
+
+enable-config    (enable 99nanolx apt config)
+disable-config   (disable 99nanolx apt config)
+
+** Apt pinning
+
+Nanolx features an optional custom apt pinning file, see
+
+    /usr/share/nanolx/apt.d/pinning
+
+for details, basically it ensures that extra repositories are prefered over
+Debian repos, for Debian unstable > testing > stable > experimental.
+
+enable-pinning   (enable nanolx apt pinning)
+disable-pinning  (disable nanolx apt pinning)
 "
 esac
