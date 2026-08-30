@@ -180,8 +180,7 @@ Recommends:
  libgtk-nocsd0
 Suggests:
  openrgb-plugin-effects,
- openrgb-plugin-hardware-sync,
- openrgb-plugin-fan-sync
+ openrgb-plugin-hardware-sync
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
 
