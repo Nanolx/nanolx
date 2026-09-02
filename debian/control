@@ -422,7 +422,7 @@ Architecture: all
 Depends:
  scribus,
  libreoffice,
- scantpaper,
+ simple-scan | scantpaper,
  catdoc,
  unpaper,
  qpdf,
