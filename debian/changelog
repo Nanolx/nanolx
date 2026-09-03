@@ -5,16 +5,27 @@ nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
       - conkyrc
         - change window type to prevent it from disappearing when clicking on desktop
         - remove deprecated values
+      - removed suggests
+        - nanolx-citrix-config
+    - nanolx-full
+      - removed suggests
+        - nanolx-citrix-config
     - nanolx-media-x11
       - changed dependency
         - elisa >> amarok | elisa
+      - moved from depends to recommends
+        - k3b
+        - libk3b-extracodecs
     - nanolx-themes
       - new suggested packages
+        - kwin-autoscroll
         - kwin-effect-ba-click-fx
         - kwin-effect-cursortrails
         - kwin-effect-particles
         - kwin-effect-spotlight
         - kwin-effect-xorcursor
+      - kwin-script-remember-window-positions
+        - updated to version 6.1.0
     - nanolx-admin
       - added dependency
         - cockpit
@@ -24,11 +35,101 @@ nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
         - udisks2-btrfs
         - udisks2-lvm2
       - added suggests
-        - ockpit-packagekit
+        - cockpit-packagekit
         - cockpit-sosreport
+      - moved from recommends to suggests
+        - age
+        - btop
       - add cockpit desktop menu entry (as cockpit itself does not ship one)
-    - kwin-script-remember-window-positions
-      - updated to version 6.1.0
+    - nanolx-cli
+      - change dependency
+        - unrar >> unrar-free | unrar
+      - moved from depends to suggests
+        - fd-find
+        - rdfind
+      - moved from recommends to suggests
+        - thefuck
+        - lolcat
+        - procs
+        - broot
+        - zoxide
+    - nanolx-x11
+      - moved from depends to recommends
+        - czkawka-gui
+        - libgtk-nocsd0
+        - psensor
+      - removed suggests
+        - openrgb-plugin-fan-sync
+    - nanolx-security
+      - moved from depends to recommends
+        - clamassassin
+        - tor
+        - torsocks
+        - tor-geoipdb
+      - moved from depends to suggests
+        - lynis
+    - nanolx-net
+      - depends moved to nanolx-apt-tools
+        - lftp
+      - moved from depends to recommends
+        - kvirc
+        - stubby
+        - privoxy
+        - hugo
+        - webapps
+      - moved from depends to suggests
+        - torbrowser-launcher
+    - nanolx-devel-cli
+      - removed depends
+        - fakeroot
+      - depends moved to nanolx-apt-tools
+        - mmdebstrap
+        - uidmap
+        - piuparts
+        - apt-cacher-ng
+      - moved from depends to recommends
+        - lintian
+      - moved from recommends to depends
+        - git-delta
+    - nanolx-devel-x11
+      - moved from depends to recommends
+        - kdevelop-python
+        - kdevelop-l10n
+    - nanolx-games-emu
+      - moved from depends to recommends
+        - emulationsation-de
+        - dolphin-emu
+    - nanolx-apt-tools
+      - depends moved from nanolx-net
+        - lftp
+      - depends moved from nanolx-devel-cli
+        - mmdebstrap
+        - uidmap
+        - piuparts
+        - apt-cacher-ng
+      - moved from depends to recommends
+        - apt-listchanges
+        - apt-listbugs
+    - nanolx-media-codecs
+      - moved from depends to recommends
+        - libbluray4 | libbluray3 | libbluray2
+      - moved from depends to suggests
+        - libdvdcss2
+    - nanolx-games
+      - moved from depends to recommends
+        - xpadneo-dkms
+    - nanolx-office
+      - changed dependency
+        - scantpaper >> simple-scan | scantpaper
+      - moved from depends to recommends
+        - qownnotes
+    - nanolx-apt-sources
+      - updated/improved Nanolx apt configuration
+      - nanolx-apt
+        - improved help message
+      - nanolx-orbit
+        - zoom vdi plugin version 7.0.12
+
 
 nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
 
