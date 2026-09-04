@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.2.0"
-reldate="2026/08/03"
+version="0.3.0"
+reldate="2026/09/04"
 
 if (( EUID != 0 )); then
     echo "nanolx-backup must be run as root"
@@ -47,13 +47,16 @@ manage_backups () {
                         fi
                     ;;
                     nanolx-backup-* )
+                        local udev_file="${UDEVDIR}/99${choice/.service/.rules}"
+                        case ${action} in
+                            enable)  sed -e 's/^#//g' -i "${udev_file}" ;;
+                            disable) sed -e 's/^\([^#]\)/#\1/g' -i "${udev_file}" ;;
+                        esac
                         if ${delete}; then
                             rm -f "${SERVICEDIR}/${choice}"
-                            rm -f "${UDEVDIR}/99${choice/.service/.rules}"
+                            rm -f "${udev_file}"
                             udevadm control --reload-rules
                             systemctl daemon-reload
-                        else
-                            echo "USB backups are static, they can only be deleted, not enabled or disabled."
                         fi
                     ;;
                 esac
@@ -172,8 +175,19 @@ case "${1}" in
                 _backup="${backup%.service}"
                 _backup="${_backup#nanolx-backup}"
                 _backup="${_backup#-}"
-                _active="$(systemctl is-active "${backup}")"
-                _enabled="$(systemctl is-enabled "${backup}")"
+                case ${backup} in
+                    nanolx-backup-* )
+                        _active="always"
+                        if grep -q -m1 "^#.*ACTION" "/etc/udev/rules.d/99nanolx-backup-${_backup}.rules"; then
+                                _enabled="disabled"
+                        else    _enabled="enabled"
+                        fi
+                    ;;
+                    * )
+                        _active="$(systemctl is-active "${backup}")"
+                        _enabled="$(systemctl is-enabled "${backup}")"
+                    ;;
+                esac
                 STRING+="\n${_backup} ${_active} ${_enabled}"
             done
             echo -e "${STRING}" | column -t
@@ -231,11 +245,9 @@ usage   nanolx-backup [option], where [option] is one of:
 
     enable
         choose from nanolx-backup timers and enable them
-        Note: USB backups can only be removed, not enabled or disabled
 
     disable
         choose from nanolx-backup timers and disable them
-        Note: USB backups can only be removed, not enabled or disabled
 
     delete
         choose from nanolx-backup timers, disable and delete them
