@@ -1,5 +1,5 @@
 usr/sbin/nanolx-ctx
-usr/share/applications/*.desktop
+usr/share/applications/citrix*.desktop
 usr/share/bash-completion/completions/nanolx-ctx
 usr/share/man/man1/nanolx-ctx.1.gz
 usr/share/nanolx/pulseaudio-dummy
