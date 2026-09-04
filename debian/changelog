@@ -1,4 +1,4 @@
-nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
+nanolx (1:4.14.1.20260903-1nano) unstable; urgency=low
 
   * New upstream release
     - nanolx-base
@@ -130,6 +130,7 @@ nanolx (1:4.14.1.2026ddmm-1nano) unstable; urgency=low
       - nanolx-orbit
         - zoom vdi plugin version 7.0.12
 
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 04 Sep 2026 17:48:06 +0200
 
 nanolx (1:4.14.0.20260828-1nano) unstable; urgency=low
 
