@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.7.6"
-reldate="2026/08/25"
+version="1.7.7"
+reldate="2026/09/06"
 
 error () {
     echo -e "${@}"
@@ -29,13 +29,16 @@ debhelper_prepare () {
 you may want to use repokit release instead."
     fi
 
-    dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "$(basename "${PWD}")" || exit 1
+    get_package_name_and_ver $(basename "${PWD}") package version
+    dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "${package}" || exit 1
+
     rm -rf debian/*.ex debian/README* debian/*.EX
 
     sed -e "s/1) UNRELEASED.*/1${REPOKIT_REV}) ${REPOKIT_DIST}; urgency=low/g" \
         -e "s/ (Closes: #nnnn)  <nnnn is the bug number of your ITP>//g" \
         -i "${PWD}/debian/changelog"
     sed -e 's/\#export/export/g' -i "${PWD}/debian/rules"
+    sed -e 's/^#/d' -i "${PWD}/debian/copyright"
     sed -e 's/<insert.*//g' \
         -e '/\#Vcs/d' \
         -e 's/Section.*/Section:/g' \
