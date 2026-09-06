@@ -6,7 +6,7 @@ _comp_cmd_nanolx_apt() {
 
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="list add remove check enable-config disable-config enable-pinning disable-pinning help"
+    opts="list add remove check enable-config disable-config enable-pinning disable-pinning help version"
 
     case "${prev}" in
         add|remove)

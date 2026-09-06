@@ -54,6 +54,10 @@ case ${1} in
         done
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     * )
         echo -e "nanolx-skel v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -65,6 +69,7 @@ usage:
     nanolx-skel disable         [use original '/etc/skel']
     nanolx-skel check           [check whether nanolx-skel is active]
     nanolx-skel force-update    [force update skel files for existing users]
+    nanolx-skel version         [show version]
 "
     ;;
 esac

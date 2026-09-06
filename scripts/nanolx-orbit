@@ -128,6 +128,10 @@ case ${user_opt} in
         rm -fv "${pkg_base}"/*
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     help | * )
         echo -e "nanolx-orbit v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -135,10 +139,11 @@ case ${user_opt} in
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-orbit list
-    nanolx-orbit download
-    nanolx-orbit install
-    nanolx-orbit clear
+    nanolx-orbit list           list available packages
+    nanolx-orbit download       only download desired package
+    nanolx-orbit install        download and install desired package
+    nanolx-orbit clear          clear temporary download directory
+    nanoxl-orbit version        print version
 "
     ;;
 esac

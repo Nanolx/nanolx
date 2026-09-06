@@ -208,6 +208,10 @@ case "${1}" in
         manage_backups disable true
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     help | * )
         echo "nanolx-backup v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -251,6 +255,9 @@ usage   nanolx-backup [option], where [option] is one of:
 
     delete
         choose from nanolx-backup timers, disable and delete them
+
+    version
+        print version
 "
     ;;
 esac

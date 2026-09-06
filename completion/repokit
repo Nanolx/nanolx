@@ -6,7 +6,7 @@ _comp_cmd_repokit() {
 
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="prepare get release put build clean add remove ftp screate supdate slist scross orig dist help"
+    opts="prepare get release put build clean add remove ftp screate supdate slist scross orig dist help version"
 
     case "${prev}" in
         add)

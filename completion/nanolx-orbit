@@ -6,7 +6,7 @@ _comp_cmd_nanolx_orbit() {
 
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="list download install clear help"
+    opts="list download install clear help version"
 
     case "${prev}" in
         download|install)

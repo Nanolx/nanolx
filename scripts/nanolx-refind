@@ -87,6 +87,10 @@ case ${1} in
         fi
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     * )
         echo -e "nanolx-refind v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -103,6 +107,7 @@ usage:
     nanolx-refind disable-keep-refind   disable keeping refind as default bootloader
     nanolx-refind liquorix-default      set latest liquorix kernel as default boot choice
     nanolx-refind debian-default        set latest upstream kernel as default boot choice
+    nanolx-refind version               print version
 "
     ;;
 esac

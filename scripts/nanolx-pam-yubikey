@@ -104,6 +104,10 @@ at your own risk, keep in mind to eventually re-enable it."
         fi
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     * )
         echo -e "nanolx-pam-yubikey v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -128,6 +132,8 @@ options:
         enable screenlocking when Yubikey is removed from PC
     disable-lock-on-remove
         disable screenlocking when Yubikey is removed from PC
+    version
+        print version
 "
     ;;
 esac

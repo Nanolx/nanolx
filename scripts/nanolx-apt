@@ -128,6 +128,9 @@ case ${user_opt} in
             mv /etc/apt/preferences.d/pinning{.nanolx_old,}
         fi
     ;;
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
     * )
         echo -e "nanolx-apt v${version} (${reldate})
 © 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -137,6 +140,8 @@ licensed under the GNU General Public License v3 (or newer)
 Helper script for apt related tasks
 
 usage: nanolx-apt <flag>
+
+version          (print version)
 
 ** Repository management
 list             (list available repositories)

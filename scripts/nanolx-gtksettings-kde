@@ -224,7 +224,12 @@ Additionally you may apply those settings to root aswell.
 usage:
     nanolx-gtksettings-kde              apply values from KDE to Gtk3/Gtk4
     nanolx-gtksettings-kde test         only see what would happen; dry-run
-    nanolx-gtksettings-kde root         apply current user's settings to root"
+    nanolx-gtksettings-kde root         apply current user's settings to root
+    nanolx-gtksettings-kde version      print version"
+    ;;
+
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
     ;;
 
     test )  gsettings_apply_kde_values true false ;;

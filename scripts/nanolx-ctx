@@ -240,6 +240,10 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
         fi
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     * )
         echo -e "nanolx-ctx v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
@@ -247,6 +251,8 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
 licensed under the GNU General Public License v3 (or newer)
 
 usage   nanolx-ctx [option], where [option] is one of:
+
+    version          [print version]
 
     ** Citrix Options
     enable-telemetry (why?)

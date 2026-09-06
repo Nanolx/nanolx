@@ -35,6 +35,10 @@ case "${@}" in
         fi
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     -h | --help | * )
         echo "hugo-push ${version} (${reldate})
 

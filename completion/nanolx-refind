@@ -1,4 +1,4 @@
 # nanolx-refind(1) completion                              -*- shell-script -*-
 
 complete -W "list-themes set-theme get-theme default-theme enable-keep-refind \
-    disable-keep-refind liquorix-default debian-default help" nanolx-refind
+    disable-keep-refind liquorix-default debian-default help version" nanolx-refind

@@ -314,6 +314,10 @@ case ${cmdarg} in
         done
     ;;
 
+    version)
+        echo "$(basename ${0}) ${version} (${reldate})"
+    ;;
+
     * )
         echo "repokit ${version} (${reldate})
 
@@ -327,6 +331,8 @@ see /usr/share/nanolx/repokit.conf for example configuration.
 
 Options
 option      Parameters  Description
+
+version     ---         print version
 
 ** packaging scripts **
 prepare     license     prepare packaging scripts for new package
