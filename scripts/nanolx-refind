@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.0.5"
-reldate="2026/08/23"
+version="0.0.6"
+reldate="2026/09/04"
 
 if (( EUID != 0 )); then
     echo "nanolx-refind must be run as root"
@@ -20,7 +20,7 @@ else
     refind_apt_conf=/usr/share/nanolx/99-keep-refind
 fi
 
-refindconf=/boot/efi/EFI/refind/refind.conf
+refindconf=${refind_base}/refind.conf
 
 case ${1} in
     list-themes )
@@ -30,8 +30,8 @@ case ${1} in
     set-theme )
         if [ -d "${refind_base}/themes/${2}" ]; then
             echo "setting default refind theme: ${2}"
-            sed -e '/include.*themes/d' -i "${refind_base}/refind.conf"
-            echo "include themes/${2}/theme.conf" >> "${refind_base}/refind.conf"
+            sed -e '/include.*themes/d' -i "${refindconf}"
+            echo "include themes/${2}/theme.conf" >> "${refindconf}"
         else
             echo "skip: theme not found: ${2}"
             exit 1
@@ -40,13 +40,13 @@ case ${1} in
 
     get-theme )
         echo "currently active refind theme:"
-        refind_theme="$(gawk -F'/' '/include.*themes/{print $2}' "${refind_base}/refind.conf")"
+        refind_theme="$(gawk -F'/' '/include.*themes/{print $2}' "${refindconf}")"
         [ -z "${refind_theme}" ] && echo "default (none)" || echo "${refind_theme}"
     ;;
 
     default-theme )
         echo "reverting to default refind theme"
-        sed -e '/include.*themes/d' -i "${refind_base}/refind.conf"
+        sed -e '/include.*themes/d' -i "${refindconf}"
     ;;
 
     enable-keep-refind )
