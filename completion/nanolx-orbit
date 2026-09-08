@@ -10,7 +10,7 @@ _comp_cmd_nanolx_orbit() {
 
     case "${prev}" in
         download|install)
-            local packages="zoom zoom-vdi citrix citrix-usb citrix-epa citrix-beta citrix-usb-beta"
+            local packages="zoom zoom-vdi citrix citrix-usb citrix-epa citrix-beta citrix-beta-usb"
             COMPREPLY=( $(compgen -W "${packages}" -- "${cur}") )
             return 0
         ;;
