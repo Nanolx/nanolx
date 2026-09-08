@@ -1,19 +1,21 @@
 # Nanolx
 
-`Nanolx` is a set of meta-packages, wich I use to aid in syncing the package
-selection between my machine and machines that are maintained by me.
+`Nanolx` is a set of meta-packages, configuration files (optionally, maintained through scripts), [themes](#themes) and [scripts](#scripts), I use on my `Debian GNU/Linux` machines.
 
-They can be safely used by anyone on `Debian GNU/Linux` as they won't remove
-or change existing packages. As of version 4.2 no configuration changes to
-`/etc` are done automatically, configuration is stored in `/usr/share/nanolx/`
-and you can use the provided scripts I use to keep my systems organized (see
-[Scripts](#scripts) below) to adjust as you like.
+**Note:** starting with version 5.0.0 `Nanolx` diverts the following system files to identify the system as `Nanolx` rather than `Debian GNU/Linux` (but "like" `Debian` for compatibility):
 
-Addtionally `Nanolx` contains the default set of themes I prefer to use, see
-the nanolx-themes package below
+- `/etc/issue`
+- `/etc/issue.net`
+- `/etc/motd`
+- `/usr/lib/os-release`
 
+once `nanolx-base` package is installed. The diversion is reverted upon removal or purge of that package.
 
-While I'm not actively asking for donations, a tip is always welcome.
+*There's no technical reason for this - I've just put much time and love into this project so consider this self-praise.*
+
+The package `nanolx-themes` will set `debian-mac-style` as the default `Plymouth` theme upon **first** install (not on upgrades), as well as `rEFInd-digital-void` as default `refind` theme. Both changes will be reverted upon package removal or purge.
+
+While I'm not actively looking for donations, a tip is always welcome.
 
 [![Liberapay](https://img.shields.io/badge/Liberapay-F6C915?logo=liberapay&color=a80030)](https://liberapay.com/nanolx)
 
@@ -21,8 +23,9 @@ While I'm not actively asking for donations, a tip is always welcome.
 
 see [debian/changelog](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/changelog?ref_type=heads) for changes
 
-- Version:    4.14.1
-- Release:    20260904
+- Version:      5.0.0
+- Release:      20260911
+- Codename:     Equinox
 
 ## Git repository access
 
@@ -32,7 +35,7 @@ You can access the source from
 
 ## Installation on Debian GNU/Linux
 
-Get the signing key for my [apt repository]({{< ref "photonic.md" >}}), located at:
+`Nanolx` is distributed via Git repository above or through my personal `Photonic` [apt repository](https://nanolx.org/posts/photonic/). Get it's signing key located at:
 
 [https://www.nanolx.org/apt/photonic2026.asc](https://www.nanolx.org/apt/photonic2026.asc)
 
@@ -56,25 +59,19 @@ then proceed to install. Install either
     - `nanolx-base` only requires `nanolx-apt-sources` and `nanolx-apt-tools`
 - `nanolx-full` for all packages except nanolx-citrix-config
 
-**Note:** `Nanolx` is built to be used with `Debian Sid` (unstable), additionally
-some of the sub-packages may depend on packages only available from the `deb-multimedia`
-or my own `photonic` repository, so both are considered required for `nanolx-full`.
-
-See also: `nanolx-apt` [Script](#scripts) below.
+**Note:** `Nanolx` is built to be used with `Debian Sid` (unstable), additionally some of the sub-packages may depend on packages only available from the `deb-multimedia` or my own `Photonic` repository, so both are considered required for `nanolx-full`. See also: `nanolx-apt` [script](#scripts) below.
 
 ## For non Debian GNU/Linux-Users
 
-On `Debian`-based distributions (like `Ubuntu`) you'll likely not be able to
-meet all dependecies of the meta-packages. In that case you can use
+On `Debian`-based distributions (like `Ubuntu`) you'll likely not be able to meet all dependecies of the meta-packages. In that case you can use
 
     [./]make install
 
-to install included scripts (see below), configuration and themes. If you only
-want to install the scripts, use
+to install included scripts (see below), configurations and themes. If you only want to install the scripts, use
 
     [./]make scripts
 
-and if you only want to update the configuration files the scripts, use
+and lastly if you only want to update the configuration files the scripts, use
 
     [./]make updateconf
 
@@ -92,25 +89,25 @@ you may want to install them manually if desired.
 
 ## License
 
-`nanolx` itself is licensed under the GNU GPL v3 (or newer). Individual files,
-like plymouth / rEFInd themes, plasmoids, etc. may differ in licensing.
+`Nanolx` itself is licensed under the GNU GPL v3 (or newer). Individual files, like Plymouth / rEFInd themes, plasmoids, etc. may differ in licensing.
 
-For a full overview consult
+For a full overview, including links to the original sources, refer to
 
 [debian/copyright](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/copyright?ref_type=heads)
 
 ## Packages
 
-consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/control?ref_type=heads) for full description and pulled packages.
+refer to [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/control?ref_type=heads) for full description and pulled packages.
 
 1. `nanolx-full`
     * pulls all packages below, except `nanolx-citrix-config`
 2. `nanolx-base`
     * base-package pulling `nanolx-apt-sources` and `nanolx-apt-tools`
+    * diverts the system identification from `Debian` to `Nanolx`
 3. `nanolx-admin`
     * pulls cli and gui tools for system administration, like gkdebconf, localepurge, packagesearch or cruft-ng.
 4. `nanolx-apt-sources`
-    * provides additional, curated, apt repositories - which are not enabled by default, see the `nanolx-apt` [Script](#scripts) below.
+    * provides additional, curated, apt repositories - which are not enabled by default, see the `nanolx-apt` [script](#scripts) below.
 5. `nanolx-apt-tools`
     * pulls nanolx-apt-sources and additional tools regarding apt, like gdebi, reprepro, debdelta.
 6. `nanolx-cli`
@@ -140,24 +137,25 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
 18. `nanolx-office`
     * pulls a collection of office related packages, like libreoffice, okular, gnucash or scantpaper.
 19. `nanolx-yubikey`:
-    * collection of Yubikey related tools.
+    * collection of `Yubikey` related tools.
 20. `nanolx-themes`
-    * this package installs the default theme collection I use, see [Themes](#themes) below.
-    * use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` to apply the full KDE theme suite.
+    * this package installs the default theme collection I use, see [themes](#themes) below.
+    * use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` if you want to apply the full KDE theme suite.
+    * sets the default `Plymouth` theme to `debian-mac-style` and the default `refind` theme to `rEFInd-digital-void` upon first install (only).
 21. `nanolx-citrix-config`
     * see [Citrix](#citrix) below.
 
 ## Scripts
 
-`Nanolx` includes a set of scripts, all ship their own manpage and bash completion.
+`Nanolx` includes a set of scripts, all ship their own manpage (`man <scriptname>`) and bash completion.
 
 1. `nanolx-base`
     1. `nanolx-backup`   create and manage `systemd` timers for rsync backups alternatively create backup triggers for when a specific device/partition was plugged in (sends desktop notifications).
-    2. `nanolx-skel`     enable / disable nanolx skel (`/usr/share/nanolx/skel`) for newly created users instead of `/etc/skel`.
+    2. `nanolx-skel`     enable or disable `Nanolx` skel files (`/usr/share/nanolx/skel`) for newly created users instead of `/etc/skel`.
         * **Note**: you most likely don't want that.
-    3. `conky-on-second-screen`  this uses ydotool to force conky on second screen this part of the nanolx skel files, so not in /usr see skel/bin if you want to check it.
+    3. `conky-on-second-screen`  uses `ydotool` to force `conky` on second screen. This is part of the `Nanolx` skel files, so not installed to `/usr`, see `skel/bin` if you want to check it. *If* you would be using the `Nanolx` skel the script would be installed to `${HOME}/bin`
 2. `nanolx-apt-sources`
-    1. `nanolx-apt`      manages additional repository configurations, including key handling, aswell as matching pinning and minor apt configuration changes (the latter both optional). Currently known repos are:
+    1. `nanolx-apt`      manages additional repository configurations, including key handling, aswell as matching pinning and apt configuration changes (both optional). Currently supported repos are:
         - debian (rolls-out full suite stable->experimental)
         - nanolx
         - liquorix
@@ -167,20 +165,20 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
         - mozilla
 3. `nanolx-apt-tools`
     1. `repokit`         personal wrapper script for `reprepro`, `sbuild` and `dpkg-buildpackage` with config file support, auto ftp-upload and more features.
-    2. `nanolx-orbit`    manages installation of 3rdparty packages, including checking sha256sums, currently known packages:
+    2. `nanolx-orbit`    manages installation of 3rdparty packages, including checking sha256sums, currently supported packages:
         - citrix (stable)
         - citrix-usb (stable)
         - citrix-epa (stable)
         - citrix-beta (GCC 11 tech preview)
-        - citrix-usb-beta (GCC 11 tech preview)
+        - citrix-beta-usb (GCC 11 tech preview)
         - zoom
         - zoom vdi plugin
 4. `nanolx-citrix-config`
-    1. `nanolx-ctx`      script to disable (or enable [...]) citrix telemetry and running the included system check script. It also allows to install or uninstall the webkit2gtk-4.0 bundled with citrix, which is required for full citrix operation (stable citrix version), but no longer shipped with Debian (or Ubuntu). It has more features (like enabling teams optimization or restricting access to local device from remote), be sure to check out, if you use citrix.
+    1. `nanolx-ctx`      script to disable (or reenable) `Citrix` telemetry, allowing/restricting access to local machine, running the included system check script, enable `Teams` or `Zoom` optimizations, see `man nanolx-ctx` or `nanolx-ctx --help`. It also allows to install or uninstall the webkit2gtk-4.0 bundled with `Citrix`, which is required for full `Citrix` operation (stable `Citrix` version), but no longer shipped with `Debian`, if you're using the `Citrix` GCC 11 tech preview, those compatibility options will be disabled.
 5. `nanolx-net`
-    1. `hugo-push`     simple script to build a hugo website and push it to webspace using lftp, uses a configuration file.
+    1. `hugo-push`     simple script to build a `hugo` website and push it to webspace using lftp, uses a configuration file.
 6. `nanolx-yubikey`
-    1. `nanolx-pam-yubikey`  script to enable password-less logins when a recognized Yubikey is plugged in, using PAM, currently hooked-into PAM modules:
+    1. `nanolx-pam-yubikey`  script to enable password-less logins when a recognized `Yubikey` is plugged in, using **PAM**, currently hooked-into **PAM** modules:
         - login
         - sddm
         - su
@@ -189,17 +187,17 @@ consult [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/c
         - polkit-1
         - kde
 
-        optionally, the script can tell `logind` to lock the session, as soon as the Yubikey is plugged out.
+        optionally, the script can tell `logind` to lock the session, as soon as the `Yubikey` is plugged out.
 7. `nanolx-themes`
-    1. `nanolx-refind`   simple script to manage rEFInd bootloader themes, supports showing installed themes, setting theme, showing current theme in use or reverting to default, aswell as ensuring refind stays default when `grub` or `shim` got updated.
+    1. `nanolx-refind`   simple script to manage `rEFInd` bootloader themes, supports showing installed themes, setting theme, showing current theme in use or reverting to default, aswell as ensuring `refind` stays default when `grub` or `shim` got updated.
 8. `nanolx-x11`
-    1. `nanolx-gtksettings-kde`     This scripts reads KDE's theme, icon, font, toolbar settings and creates Gtk3 (through ini file) and Gtk4 (through gsettings) configuration, as close as possible. Note that Adwaita apps may ignore some settings, additionally you may apply those settings to `root` aswell (imagine opening `Synaptic` at night without beeing blinded).
+    1. `nanolx-gtksettings-kde`     This scripts reads KDE's theme, icon, font, toolbar settings and creates Gtk3 (through ini file) and Gtk4 (through gsettings) configuration, as close as possible. Note that Adwaita apps may ignore some settings, additionally you may apply those settings to **root** aswell (imagine opening `Synaptic` at night without beeing blinded).
 
 ## Themes
 
-Use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` to apply the full KDE theme suite.
+Use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` if you want to apply the full KDE theme suite.
 
-The package `nanolx-themes` installs the following which is bundled as part of `Nanolx`. If you choose to not install `nanolx-themes` (or `nanolx-full`, which depends on `nanolx-themes`, you can install them individually).
+The package `nanolx-themes` installs the following which is bundled as part of `Nanolx`. If you choose to not install `nanolx-themes` (or `nanolx-full`, which depends on `nanolx-themes`), you can install them individually.
 
 1. `refind-theme-digital-void`: Futuristic red theme for rEFInd
 2. `empty-butterfly-cursors`: Come in blue, butter, cyan, green, magenta, orange, purple, red, white and yellow.
@@ -222,29 +220,26 @@ The package `nanolx-themes` installs the following which is bundled as part of `
 19. `plymouth-theme-debian-mac-style`: Debian Mac style Plymouth theme
 20. `sddm-theme-pixel-rainyroom`: Pixel Rainy Room sddm theme
 
+Here's a preview of the default `Nanolx` settings fully applied:
+
+[![Nanolx Screenshot 01](screenshots/nanolx_preview_01.png){width=500}](screenshots/nanolx_preview_01.png)
+
+[![Nanolx Screenshot 02](screenshots/nanolx_preview_02.png){width=500}](screenshots/nanolx_preview_02.png)
+
 ## Citrix
 
-The package `nanolx-citrix-config` is not automatically pulled by `nanolx-full`,
-as it requires citrix, zoom, incl. plugins to be already installed.
+The package `nanolx-citrix-config` is not automatically pulled by `nanolx-full`, as it requires citrix, zoom, incl. plugins to be already installed. For that purpose see the `nanolx-orbit` script, which is bundled with `nanolx-apt-tools`.
 
-For that purpose see the `nanolx-orbit` script, which is bundled with `nanolx-apt-tools`.
-`nanolx-citrix-config` provides additional system integrations (Menu entries, `systemd` services), as per
+`nanolx-citrix-config` provides additional system integrations (menu entries, `systemd` services), as per
 
 [https://aur.archlinux.org/packages/icaclient](https://aur.archlinux.org/packages/icaclient)
 
-The following only applies to stable Citrix versions which still use old libaries,
-current Beta version use GCC 11 and newer libraries, so those tricks are now longer
-required:
+The following only applies to stable `Citrix` versions which still use old libaries, current tech preview uses GCC 11 and newer libraries, so those workarounds are no longer required:
 
-If Citrix Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no
-longer shipped with Debian (or Ubuntu). Citrix bundles it's own version, so you
-may choose to install that version using `nanolx-ctx`, at your own risk, via:
+If `Citrix` Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no longer shipped with `Debian`. `Citrix` bundles it's own version, so you may choose to install that version using `nanolx-ctx`, at your own risk, via:
 
 `nanolx-ctx load-webkit`
 
 Additionally `nanolx-ctx` features more useful commands, you might want to check.
 
-Citrix requires libjpeg8 to run, which is not provided by Debian. Installing
-libjpeg-turbo8 from Ubuntu conflicts with installing libjpegturbo0 (which is
-required by Krita), `nanolx-citrix-config` ships the libjpeg.so.8{,.2.2} from
-Ubuntu itself.
+`Citrix` requires libjpeg8 to run, which is not provided by Debian. Installing libjpeg-turbo8 from `Ubuntu` conflicts with installing libjpegturbo0 (which is required by Krita), so instead `nanolx-citrix-config` ships the libjpeg.so.8{,.2.2} from `Ubuntu` itself.
