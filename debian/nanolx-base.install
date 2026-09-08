@@ -1,3 +1,7 @@
+etc/issue
+etc/issue.net
+etc/motd
+usr/lib/os-release
 usr/sbin/nanolx-backup
 usr/sbin/nanolx-backup-helper-usb
 usr/sbin/nanolx-skel

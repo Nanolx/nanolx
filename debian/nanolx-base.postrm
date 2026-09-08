@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "remove" ] || [ "$1" = "abort-install" ] || [ "$1" = "disappear" ] || [ "$1" = "purge" ]; then
+    rm -f /usr/lib/os-release
+    dpkg-divert --package nanolx-base --remove --rename \
+        --divert /usr/lib/os-release.debian /usr/lib/os-release
+
+    rm -f /etc/issue
+    dpkg-divert --package nanolx-base --remove --rename \
+        --divert /etc/issue.debian /etc/issue
+
+    rm -f /etc/issue.net
+    dpkg-divert --package nanolx-base --remove --rename \
+        --divert /etc/issue.net.debian /etc/issue.net
+
+    rm -f /etc/motd
+    dpkg-divert --package nanolx-base --remove --rename \
+        --divert /etc/motd.debian /etc/motd
+fi
+
+exit 0

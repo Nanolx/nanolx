@@ -1,0 +1,10 @@
+NAME=Nanolx
+PRETTY_NAME="Nanolx @VERSION@ (Equinox)"
+VERSION_ID=@VERSION@
+VERSION_CODENAME=Equinox
+BUILD_ID=@BUILDDATE@
+ID=nanolx
+ID_LIKE=Debian
+RELEASE_TYPE=development
+HOME_URL="https://www.nanolx.org/"
+BUG_REPORT_URL="https://gitlab.com/Nanolx/nanolx/-/work_items"

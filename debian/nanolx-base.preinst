@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "install" ] || [ "$1" = "upgrade" ]; then
+    dpkg-divert --package nanolx-base --add --rename \
+        --divert /usr/lib/os-release.debian /usr/lib/os-release
+    dpkg-divert --package nanolx-base --add --rename \
+        --divert /etc/issue.debian /etc/issue
+    dpkg-divert --package nanolx-base --add --rename \
+        --divert /etc/issue.net.debian /etc/issue.net
+    dpkg-divert --package nanolx-base --add --rename \
+        --divert /etc/motd.debian /etc/motd
+fi
+
+exit 0
