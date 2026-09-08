@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "remove" ] || [ "$1" = "abort-install" ] || [ "$1" = "disappear" ] || [ "$1" = "purge" ]; then
+    echo "Unsetting debian-mac-style as default Plymouth theme."
+
+    update-alternatives --remove default.plymouth \
+        /usr/share/plymouth/themes/your-custom-theme/your-custom-theme.plymouth
+
+    if command -v update-initramfs >/dev/null 2>&1; then
+        update-initramfs -u
+    fi
+
+    REFIND_CONF="/boot/efi/EFI/refind/refind.conf"
+
+    if [ -f "$REFIND_CONF" ]; then
+        echo "Unsetting rEFInd-digital-void as default rEFInd theme."
+
+        sed -i '/include themes\/rEFInd-digital-void\/theme.conf/d' "$REFIND_CONF"
+        sed -i '/# Added by metapackage on first install/d' "$REFIND_CONF"
+    fi
+fi
+
+# DEBHELPER #
+exit 0

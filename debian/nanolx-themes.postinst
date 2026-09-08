@@ -1,0 +1,33 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "configure" ] && [ -z "$2" ]; then
+    echo "First install detected."
+
+    echo "Setting debian-mac-style as default Plymouth theme."
+    if [ -d "/usr/share/plymouth/themes/your-custom-theme" ]; then
+        update-alternatives --install \
+            /usr/share/plymouth/themes/default.plymouth default.plymouth \
+            /usr/share/plymouth/themes/debian-mac-style/debian-mac-style.plymouth 100
+
+        update-alternatives --set default.plymouth \
+            /usr/share/plymouth/themes/debian-mac-style/debian-mac-style.plymouth
+
+        if command -v update-initramfs >/dev/null 2>&1; then
+            update-initramfs -u
+        fi
+    fi
+
+    REFIND_CONF="/boot/efi/EFI/refind/refind.conf"
+    if [ -f "$REFIND_CONF" ]; then
+        echo "Setting rEFInd-digital-void as default rEFInd theme."
+        if ! grep -q "^include " "$REFIND_CONF"; then
+            echo "" >> "$REFIND_CONF"
+            echo "# Added by nanolx-themes on first install" >> "$REFIND_CONF"
+            echo "include themes/rEFInd-digital-void/theme.conf" >> "$REFIND_CONF"
+        fi
+    fi
+fi
+
+# DEBHELPER #
+exit 0
