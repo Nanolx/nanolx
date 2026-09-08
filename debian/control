@@ -22,10 +22,19 @@ Depends:
 Recommends:
  appimagelauncher
 Description: Nanolx base package
- Nanolx is a set of meta-packages, wich I use to aid in syncing the package
- selection between my machine and machines that are maintained by me.
+ Nanolx is a set of meta-packages, configurations (optionaly, maintained through scripts),
+ themes and scripts, wich I use on the Debian GNU/Linux machines that are maintained by me.
  .
- nanolx-base is the minimal set
+ Note: starting with version 5.0.0 Nanolx base-files to identify the system as `Nanolx`
+ rather than `Debian GNU/Linux` (but "like" `Debian` for compatibility).
+ .
+ This is undone once nanolx-base is removed or purged.
+ .
+ nanolx-base is the minimal set for Nanolx.
+ .
+ The following scripts are provided by this package
+   - nanolx-backup
+   - nanolx-skel
 
 Package: nanolx-full
 Architecture: all
@@ -50,8 +59,13 @@ Depends:
  nanolx-office,
  nanolx-yubikey
 Description: Nanolx (full suite)
- Nanolx is a set of meta-packages, wich I use to aid in syncing the package
- selection between my machine and machines that are maintained by me.
+ Nanolx is a set of meta-packages, configurations (optionaly, maintained through scripts),
+ themes and scripts, wich I use on the Debian GNU/Linux machines that are maintained by me.
+ .
+ Note: starting with version 5.0.0 Nanolx base-files to identify the system as `Nanolx`
+ rather than `Debian GNU/Linux` (but "like" `Debian` for compatibility).
+ .
+ This is undone once nanolx-base is removed or purged.
  .
  nanolx-full installs all nanolx packages, except nanolx-citrix-config.
 
@@ -115,6 +129,10 @@ Suggests:
 Replaces: nanolx-base (<< 4.3.20260522)
 Description: Collection of tools for apt
  This meta-package installs useful tools for working with apt.
+ .
+ The following scripts are provided by this package:
+   - repokit
+   - nanolx-orbit
 
 Package: nanolx-apt-sources
 Architecture: all
@@ -158,6 +176,9 @@ Suggests:
  rdfind
 Description: Collection of basic command line tools
  This meta-package installs extra command line tools on the system.
+ .
+ The following script is provided by this package
+   - nanolx-apt
 
 Package: nanolx-x11
 Architecture: all
@@ -183,6 +204,9 @@ Suggests:
  openrgb-plugin-hardware-sync
 Description: Collection of X11 applications
  This meta-package installs extra X11 applications on the system.
+ .
+ This package provides the script
+   - nanolx-gtksettings-kde
 
 Package: nanolx-security
 Architecture: all
@@ -207,8 +231,7 @@ Suggests:
  lynis,
  spectre-meltdown-checker
 Description: Collection of security related tools
- This meta-package installs security related tools. You won't get a secure
- system by just installing this package.
+ This meta-package installs security related tools.
 
 Package: nanolx-yubikey
 Architecture: all
@@ -221,6 +244,9 @@ Depends:
  libpam-u2f
 Description: Collection of Yubikey related tools
  This meta-package installs Yubikey related tools
+ .
+ This package provides the script:
+   - nanolx-pam-yubikey
 
 Package: nanolx-net
 Architecture: all
@@ -243,10 +269,14 @@ Recommends:
  privoxy,
  hugo,
  webapps,
+ lftp
 Suggests:
  torbrowser-launcher
 Description: Collection of network applications
  This meta-package installs network applications.
+ .
+ This package provides the script:
+   - hugo-push
 
 Package: nanolx-media-codecs
 Architecture: all
@@ -460,7 +490,7 @@ Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
  AUR: https://aur.archlinux.org/packages/icaclient
  .
- The Script nanolx-ctx in /usr/sbin may be used to enhance citrix experience
+ The script nanolx-ctx may be used to enhance citrix experience
  .
  This package also depends on Zoom and the VDI-Plugin.
 
@@ -520,6 +550,9 @@ Description: Collection of themes
  Plasmoids:  AndromedaLauncher, Advanced Separator, KDE Control Station, Panel Colorizer
  .
  Nothing style for Plasma, KWin, Konsole including color schemes and wallpapers
+ .
+ This package provides the script
+   - nanolx-refind
 
 Package: refind-theme-digital-void
 Architecture: all
