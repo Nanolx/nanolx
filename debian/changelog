@@ -1,3 +1,41 @@
+nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
+
+  * New upstream release
+    [general]
+    - revised README
+    - added preview screenshots for the theme selection in README
+    - added 'version' flag to all scripts (and their completions)
+    - improved all package descriptions
+    - add debhelper files to gitignore
+    - general minor changes/improvements
+
+    [nanolx-base]
+    - install /usr/lib/os-release, /etc/motd, /etc/issue and /etc/issue.net diverting release
+      information from "Debian GNU/Linux" to "Nanolx" (which is set as like Debian)
+    - nanolx-backup 0.3.0: add ability to enable/disable udev-triggered usb-backup timers
+    - conkyrc: use `lsb-release -is` as fallback, rather than `lsb-release -ds`
+
+    [nanolx-apt-tools]
+    - repokit 1.7.7:
+      - improved 'repokit prepare' command
+    - nanolx-orbit 0.2.0:
+      - more verbose help message
+      - new website URL for citrix tech preview (beta)
+      - downloading citrix usb tech preview (beta) was broken
+      - fix package name citrix-beta-usb, not citrix-usb-beta in man page and bash completion
+      - support citrix / citrix usb tech preview (beta) 26.08.0.153
+      - support citrix epa version 26.8.2
+
+    [nanolx-themes]
+    - set `debian-mac-style` as default plymouth theme when nanolx-themes gets installed
+      for the very first time (no change upon upgrade), will be unset upon package removal
+    - set `rEFInd-digital-void` as default rEFInd theme when nanolx-themes gets installed
+      for the very first time (no change upon upgrade), will be unset upon package removal
+    - nanolx-refind 0.0.6:
+      - minor internal improvements
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>
+
 nanolx (1:4.14.1.20260903-1nano) unstable; urgency=low
 
   * New upstream release
