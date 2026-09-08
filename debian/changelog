@@ -12,8 +12,10 @@ nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
     [nanolx-base]
     - install /usr/lib/os-release, /etc/motd, /etc/issue and /etc/issue.net diverting release
       information from "Debian GNU/Linux" to "Nanolx" (which is set as like Debian)
-    - nanolx-backup 0.3.0: add ability to enable/disable udev-triggered usb-backup timers
-    - conkyrc: use `lsb-release -is` as fallback, rather than `lsb-release -ds`
+    - nanolx-backup 0.3.0:
+      - add ability to enable/disable udev-triggered usb-backup timers
+    - conkyrc:
+     - use `lsb_release -is` as fallback, rather than `lsb_release -ds`
 
     [nanolx-apt-tools]
     - repokit 1.7.7:
