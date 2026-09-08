@@ -8,6 +8,7 @@ nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
     - improved all package descriptions
     - add debhelper files to gitignore
     - general minor changes/improvements
+    - splitt off theme / plasmoid packages into own source / binary packages [wip]
 
     [nanolx-base]
     - install /usr/lib/os-release, /etc/motd, /etc/issue and /etc/issue.net diverting release

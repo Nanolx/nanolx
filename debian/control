@@ -700,34 +700,3 @@ Description: Panel Colorizer plasmoid
  features to the default Plasma panels.
  .
  bundled as part of nanolx
-
-Package: plasma-splash-infinity
-Architecture: any
-Depends: kde-plasma-desktop
-Replaces: nanolx-themes (<< 4.14.0.20260828)
-Description: Infinity splash screen for plasma
- bundled as part of nanolx
-
-Package: plasma-matrix-rain-wallpaper
-Architecture: any
-Depends: kde-plasma-desktop
-Replaces: nanolx-themes (<< 4.14.0.20260828)
-Description: Matrix Rain wallpaper for Plasma
- Provides a Matrix-esque "code rainfall" background wallpaper for Plasma 6,
- with some fun custommizations.
- .
- bundled as part of nanolx
-
-Package: plymouth-theme-debian-mac-style
-Architecture: any
-Depends: plymouth, dracut
-Replaces: nanolx-themes (<< 4.14.0.20260828)
-Description: Debian Mac style Plymouth theme
- bundled as part of nanolx
-
-Package: sddm-theme-pixel-rainyroom
-Architecture: any
-Depends: sddm
-Replaces: nanolx-themes (<< 4.14.0.20260828)
-Description: Pixel Rainy Room sddm theme
- bundled as part of nanolx

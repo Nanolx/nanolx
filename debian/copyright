@@ -47,12 +47,6 @@ Copyright:
 License: MIT
 
 Files:
- plymouth/debian-mac-style/*
-Comment: https://store.kde.org/p/2106821
-Copyright: Tobilinuxer <https://www.opencode.net/tobilinuxer>
-License: X11
-
-Files:
  icons/Empty-Butterfly-*
 Comment: https://store.kde.org/p/2002505
 Copyright: 2026 Moyash <https://www.opencode.net/moyash>
@@ -88,24 +82,6 @@ Files:
  icons/Tela-red-dark/
 Comment: https://github.com/vinceliuice/Tela-icon-theme
 Copyright: 2019-2025 vinceliuice <vinceliuice@hotmail.com>
-License: GPL-3.0+
-
-Files:
- sddm/*
-Comment: https://github.com/darkkal44/qylock
-Copyright: 2026 Darkkal44 <91195954+Darkkal44@users.noreply.github.com>
-License: GPL-3.0+
-
-Files:
- themes/plasma/wallpapers/obsidianreq.plasma.wallpaper.matrixrain/
-Comment: https://github.com/obsidianreq/matrixrain-plasma6
-Copyright: 2025-2026 Sean Potter <sean@savvior.com>
-License: GPL-3.0+
-
-Files:
- themes/plasma/look-and-feel/Infinity-Plasma-Splash-6/
-Comment: https://github.com/L4ki/Infinity-Plasma-Themes
-Copyright: L4ki <45247573+L4ki@users.noreply.github.com>
 License: GPL-3.0+
 
 Files:
@@ -154,28 +130,6 @@ Comment: https://github.com/EliverLara/AndromedaLauncher
 Copyright: 2022-2023 snoutie <71790678+SnoutBug@users.noreply.github.com>
            2023-2026 Eliver Lara <eliverlara@gmail.com>
 License: GPL-2.0
-
-License: X11
- Permission is hereby granted, free of charge, to any person obtaining a copy of
- this software and associated documentation files (the "Software"), to deal in
- the Software without restriction, including without limitation the rights to
- use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
- of the Software, and to permit persons to whom the Software is furnished to do
- so, subject to the following conditions:
- .
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE X
- CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- .
- Except as contained in this notice, the name of the X Consortium shall not be
- used in advertising or otherwise to promote the sale, use or other dealings in
- this Software without prior written authorization from the X Consortium.
 
 License: CC BY-NC-ND 4.0
  Attribution-NonCommercial-NoDerivatives 4.0 International
