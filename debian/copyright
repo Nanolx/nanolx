@@ -91,14 +91,6 @@ Copyright: Simon Schneegans <code@simonschneegans.de>
 License: GPL-3.0+
 
 Files:
- plasmoids/luisbocanegra.panel.colorizer/
- plasmoids/luisbocanegra.advanced_separator/
-Comment: https://github.com/luisbocanegra/plasma-panel-colorizer
- https://github.com/luisbocanegra/plasma-advanced-separator
-Copyright: 2024-2026 Luis Bocanegra <luisbocanegra17b@gmail.com>
-License: GPL-3.0+
-
-Files:
  themes/effects/kwin4_effect_geometry_change
 Comment: https://github.com/peterfajdiga/kwin4_effect_geometry_change
 Copyright: Peter Fajdiga <peter.fajdiga@gmail.com>
@@ -121,15 +113,6 @@ Files:
 Comment: https://github.com/rxappdev/RememberWindowPositions
 Copyright: Rafael <rxappdev@gmail.com>
 License: GPL-3.0+
-
-Files:
- plasmoids/AndromedaLauncher/
- plasmoids/KdeControlStation/
-Comment: https://github.com/EliverLara/AndromedaLauncher
- https://github.com/EliverLara/kde-control-station
-Copyright: 2022-2023 snoutie <71790678+SnoutBug@users.noreply.github.com>
-           2023-2026 Eliver Lara <eliverlara@gmail.com>
-License: GPL-2.0
 
 License: CC BY-NC-ND 4.0
  Attribution-NonCommercial-NoDerivatives 4.0 International
