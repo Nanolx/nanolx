@@ -3,6 +3,12 @@
 CWD=$(dirname "$(readlink -m "${BASH_SOURCE[0]}")")
 PREFIX=${PREFIX:-/usr}
 
+_deb_version=$(sed -n '1s/.*(\([^)]*\)).*/\1/p' "${CWD}/debian/changelog")
+if [[ ${_deb_version} =~ :([0-9.]+)\.([0-9]{8})- ]]; then
+    version="${BASH_REMATCH[1]}"
+    builddate="${BASH_REMATCH[2]}"
+fi
+
 dirs=(/boot/efi/EFI/refind/themes/
  /etc/dracut.conf.d/
  /opt/Citrix/ICAClient/
@@ -221,7 +227,18 @@ install_misc () {
         ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
 
     install data "${CWD}/cockpit.desktop" share/applications/
+}
 
+install_release () {
+    # disguise our Debian as Nanolx
+    cp "${CWD}/release/os-release.in" "${CWD}/release/os-release"
+    sed -e "s/@VERSION@/${version}/g;s/@BUILDDATE@/${builddate}/g" -i \
+        "${CWD}/release/os-release"
+    install data "${CWD}/release/os-release" lib/
+
+    for conf in issue issue.net motd; do
+        install data "${CWD}/release/${conf}" /etc/
+    done
 }
 
 case "${1}" in
@@ -232,6 +249,7 @@ case "${1}" in
         install_skel
         install_apt
         install_misc
+        install_release
     ;;
     uninstall)
         echo "nothing yet"
@@ -245,10 +263,11 @@ case "${1}" in
     ;;
     clean )
         rm -f "${CWD}/man"/*.1.gz
+        rm -f "${CWD}/release/os-release"
     ;;
     * )
         echo "
-nanolx install script
+Nanolx (${version} ${builddate}) install script
 
 usage:
 
