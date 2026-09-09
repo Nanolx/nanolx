@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.0.3"
-reldate="2026/08/26"
+version="0.0.4"
+reldate="2026/09/09"
 
 kde_font_to_gtk() {
     if [ -n "${1}" ]; then
@@ -33,8 +33,8 @@ apply_results_settingsini () {
         [ -f "${file}" ] || echo "[Settings]" > "${file}"
 
         for pair in "${settings[@]}"; do
-            local key="${settings%%:*}"
-            local value="${settings#*:}"
+            local key="${pair%%:*}"
+            local value="${pair#*:}"
 
             if grep -q "^${key}=" "${file}"; then
                 sed -i "s|^${key}=.*|${key}=${value}|" "${file}"
@@ -44,7 +44,7 @@ apply_results_settingsini () {
         done
     done
 
-    if ${apply_root}; then
+    if [[ ${apply_root} == true ]]; then
         for version in 3.0 4.0; do
             local root_dir="/root/.config/gtk-${version}"
             sudo mkdir -p "${root_dir}"
@@ -58,15 +58,15 @@ apply_results_settingsini () {
 apply_results_gsettings () {
     local apply_root="${1}"
     shift
-    local setttings=("$@")
+    local settings=("$@")
 
     for pair in "${settings[@]}"; do
-        local key="${settings%%:*}"
-        local value="${settings#*:}"
+        local key="${pair%%:*}"
+        local value="${pair#*:}"
 
         gsettings set org.gnome.desktop.interface "${key}" "${value}"
 
-        if ${apply_root}; then
+        if [[ ${apply_root} == true ]]; then
             sudo gsettings set org.gnome.desktop.interface "${key}" "${value}"
         fi
     done

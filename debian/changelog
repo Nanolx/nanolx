@@ -37,6 +37,10 @@ nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
     - nanolx-refind 0.0.6:
       - minor internal improvements
 
+    [nanolx-x11]
+    - nanolx-gtksettings-kde 0.0.4
+      - fix two breaking bugs in the script
+
  -- Christopher Roy Bratusek <nano@jpberlin.de>
 
 nanolx (1:4.14.1.20260903-1nano) unstable; urgency=low
