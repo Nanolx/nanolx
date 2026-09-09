@@ -39,14 +39,6 @@ License: public-domain
  in any jurisdiction.
 
 Files:
- refind/rEFInd-digital-void/*
-Comment: https://github.com/Wi-Fight-IT/rEFInd-digital-void
-Copyright:
-   2025 Aayush Thakur <thakur.aayush@hotmail.com>
-   2026 Wi-Fight-IT <mamaletsgo36@gmail.com>
-License: MIT
-
-Files:
  icons/Empty-Butterfly-*
 Comment: https://store.kde.org/p/2002505
 Copyright: 2026 Moyash <https://www.opencode.net/moyash>
@@ -59,13 +51,6 @@ Copyright:
  2018 Rokin <web@rokin.in>
  2026 Saeed Baig <amateuracademic616@gmail.com>
 License: GPL-3.0+
-
-Files:
- themes/kate/revontuli-*
-Comment: https://codeberg.org/akselmo/Revontuli/src/branch/main/Kate
-Copyright:
- 2023-2026 Akseli Lahtinen <akselmo@akselmo.dev>
-License: MIT
 
 Files:
  themes/aurorae/Nothing

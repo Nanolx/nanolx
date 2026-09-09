@@ -554,15 +554,6 @@ Description: Collection of themes
  This package provides the script
    - nanolx-refind
 
-Package: refind-theme-digital-void
-Architecture: all
-Depends: refind
-Replaces: nanolx-themes (<< 4.14.0.20260828)
-Description: Digital Void theme for rEFInd
- Futuristic red theme for rEFInd
- .
- bundled as part of nanolx
-
 Package: empty-butterfly-cursors
 Architecture: all
 Depends: wayland-protocols | xserver-xorg
@@ -651,14 +642,5 @@ Replaces: nanolx-themes (<< 4.14.0.20260828)
 Description: KWin Script for remembering application window properties.
  Especially useful for multi-window applications such as browsers. Remembers and
  restores the windows position, size, screen and virtual desktop.
- .
- bundled as part of nanolx
-
-Package: kde-syntax-theme-revolunti
-Architecture: any
-Depends: kate | kdevelop
-Replaces: nanolx-devel-x11 (<< 4.14.0.20260828)
-Description: Revolunti syntax highlighting theme for Kate/KDevelop
- Including Revolunti-Night
  .
  bundled as part of nanolx

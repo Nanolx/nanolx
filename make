@@ -9,8 +9,7 @@ if [[ ${_deb_version} =~ :([0-9.]+)\.([0-9]{8})- ]]; then
     builddate="${BASH_REMATCH[2]}"
 fi
 
-dirs=(/boot/efi/EFI/refind/themes/
- /etc/dracut.conf.d/
+dirs=(/etc/dracut.conf.d/
  /opt/Citrix/ICAClient/
  ${PREFIX}/bin/
  ${PREFIX}/lib/x86_64-linux-gnu/
@@ -29,10 +28,6 @@ dirs=(/boot/efi/EFI/refind/themes/
  ${PREFIX}/share/nanolx/sources.d/
  ${PREFIX}/share/nanolx/apt.d/
  ${PREFIX}/share/man/man1/
- ${PREFIX}/share/org.kde.syntax-highlighting/themes
- ${PREFIX}/share/plasma/plasmoids
- ${PREFIX}/share/plymouth/themes/
- ${PREFIX}/share/sddm/themes/
  ${PREFIX}/share/wallpapers)
 
 BIN_SCRIPTS=(hugo-push
@@ -149,14 +144,8 @@ install_apt () {
 }
 
 install_misc () {
-    # rEFInd
-    for dir in "${CWD}"/refind/*; do
-        install dir "${dir}" /boot/efi/EFI/refind/themes/
-    done
-
     # plymouth
     install data plymouth/fonts.conf /etc/dracut.conf.d/
-    install dir  plymouth/debian-mac-style/ share/plymouth/themes/
 
     # icons and cursors
     for dir in "${CWD}"/icons/*; do
@@ -186,28 +175,15 @@ install_misc () {
     for dir in "${CWD}"/themes/color-schemes/*; do
         install dir "${dir}" share/color-schemes/
     done
-    for dir in "${CWD}"/plasmoids/*; do
-        install dir "${dir}" share/plasma/plasmoids/
-    done
 
     # Konsole
     for dir in "${CWD}"/themes/konsole/*; do
         install dir "${dir}" share/konsole/
     done
 
-    # Kate / KDevelop color schemes
-    for scheme in "${CWD}"/themes/kate/*; do
-        install bin "${scheme}" share/org.kde.syntax-highlighting/themes/
-    done
-
     # wallpapers
     for dir in "${CWD}"/wallpapers/*; do
         install dir "${dir}" share/wallpapers/
-    done
-
-    # SDDM
-     for dir in "${CWD}"/sddm/*; do
-        install dir "${dir}" share/sddm/themes/
     done
 
     # Citrix
