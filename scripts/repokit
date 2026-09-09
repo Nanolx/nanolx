@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.7.7"
-reldate="2026/09/06"
+version="1.7.8"
+reldate="2026/09/09"
 
 error () {
     echo -e "${@}"
@@ -87,11 +87,17 @@ debhelper_add_release () {
 
     if [[ -s "${PWD}/debian/changelog" ]]; then
         local first_line=$(head -n 1 "${PWD}/debian/changelog")
-        local regex="^${package} \((.+)-([0-9]+)${REPOKIT_REV}\)"
+        local regex="^${package} \((([0-9]+:)?)(.+)-([0-9]+)${REPOKIT_REV}\)"
 
-        if [[ "${first_line}" =~ ${regex} ]]; then
-            if [[ "${version}" == "${BASH_REMATCH[1]}" ]]; then
-                revision=$(( BASH_REMATCH[2] + 1 ))
+       if [[ "${first_line}" =~ ${regex} ]]; then
+            epoch="${BASH_REMATCH[1]}"
+            local changelog_upstream="${BASH_REMATCH[3]}"
+            local changelog_revision="${BASH_REMATCH[4]}"
+
+            version="${epoch}${version}"
+
+            if [[ "${version}" == "${epoch}${changelog_upstream}" ]]; then
+                revision=$(( changelog_revision + 1 ))
                 rev_text="New build"
             fi
         fi
