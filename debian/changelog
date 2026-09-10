@@ -8,7 +8,7 @@ nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
     - improved all package descriptions
     - add debhelper files to gitignore
     - general minor changes/improvements
-    - splitt off theme / plasmoid packages into own source / binary packages [wip]
+    - splitt off theme / plasmoid packages into own source / binary packages
 
     [nanolx-base]
     - install /usr/lib/os-release, /etc/motd, /etc/issue and /etc/issue.net diverting release
@@ -21,7 +21,7 @@ nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
     [nanolx-apt-tools]
     - repokit 1.7.8:
       - improved 'repokit prepare' command
-      - 'repokit release' now properly handles epochs in package versions
+      - 'repokit release' now handles epochs in package versions
     - nanolx-orbit 0.2.0:
       - more verbose help message
       - new website URL for citrix tech preview (beta)

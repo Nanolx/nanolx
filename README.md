@@ -1,6 +1,6 @@
 # Nanolx
 
-`Nanolx` is a set of meta-packages, configuration files (optionally, maintained through scripts), [themes](#themes) and [scripts](#scripts), I use on my `Debian GNU/Linux` machines.
+`Nanolx` is a set of meta-packages, configuration files (optionally, maintained through scripts) and [scripts](#scripts), I use on my `Debian GNU/Linux` machines.
 
 **Note:** starting with version 5.0.0 `Nanolx` diverts the following system files to identify the system as `Nanolx` rather than `Debian GNU/Linux` (but "like" `Debian` for compatibility):
 
@@ -59,7 +59,7 @@ then proceed to install. Install either
     - `nanolx-base` only requires `nanolx-apt-sources` and `nanolx-apt-tools`
 - `nanolx-full` for all packages except nanolx-citrix-config
 
-**Note:** `Nanolx` is built to be used with `Debian Sid` (unstable), additionally some of the sub-packages may depend on packages only available from the `deb-multimedia` or my own `Photonic` repository, so both are considered required for `nanolx-full`. See also: `nanolx-apt` [script](#scripts) below.
+**Note:** `Nanolx` is built to be used with `Debian Sid` (unstable), additionally some of the sub-packages depend on packages only available from the `deb-multimedia` or my own `Photonic` repository, so both are considered required for `nanolx-full`. See also: `nanolx-apt` [script](#scripts) below.
 
 ## For non Debian GNU/Linux-Users
 
@@ -89,11 +89,7 @@ you may want to install them manually if desired.
 
 ## License
 
-`Nanolx` itself is licensed under the GNU GPL v3 (or newer). Individual files, like Plymouth / rEFInd themes, plasmoids, etc. may differ in licensing.
-
-For a full overview, including links to the original sources, refer to
-
-[debian/copyright](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/copyright?ref_type=heads)
+`Nanolx` is licensed under the GNU GPL v3 (or newer).
 
 ## Packages
 
@@ -197,7 +193,7 @@ refer to [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/
 
 Use `konsave -i /usr/share/nanolx/Nanolx.knsv` followed by `konsave -a Nanolx` if you want to apply the full KDE theme suite.
 
-The package `nanolx-themes` installs the following which is bundled as part of `Nanolx`. If you choose to not install `nanolx-themes` (or `nanolx-full`, which depends on `nanolx-themes`), you can install them individually.
+The package `nanolx-themes` installs the following themes and effects, which are available in my `Photonic` apt repository. If you choose to not install `nanolx-themes` (or `nanolx-full`, which depends on `nanolx-themes`), you can install them individually.
 
 1. `refind-theme-digital-void`: Futuristic red theme for rEFInd
 2. `empty-butterfly-cursors`: Come in blue, butter, cyan, green, magenta, orange, purple, red, white and yellow.
