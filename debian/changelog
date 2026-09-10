@@ -1,4 +1,4 @@
-nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
+nanolx (1:5.0.0.20260910-1nano) unstable; urgency=low
 
   * New upstream release
     [general]
@@ -42,7 +42,7 @@ nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
     - nanolx-gtksettings-kde 0.0.4
       - fix two breaking bugs in the script
 
- -- Christopher Roy Bratusek <nano@jpberlin.de>
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 10 Sep 2026 18:09:06 +0200
 
 nanolx (1:4.14.1.20260903-1nano) unstable; urgency=low
 
