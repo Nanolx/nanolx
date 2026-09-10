@@ -121,7 +121,7 @@ case ${user_opt} in
 
         if [ -f /etc/apt/apt.conf.d/99-nanolx ]; then
             echo "disabling nanolx apt configuration"
-            cp /usr/share/nanolx/apt.d/99-nanolx /etc/apt/apt.conf.d/99-nanolx
+            rm /etc/apt/apt.conf.d/99-nanolx
         else
             echo "nanolx apt configuration not enabled"
         fi
