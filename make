@@ -133,7 +133,7 @@ install_apt () {
 
 install_misc () {
     # plymouth
-    install data plymouth/fonts.conf /etc/dracut.conf.d/
+    install data dracut/fonts.conf /etc/dracut.conf.d/
 
     # Citrix
     for desktop in "${CWD}/citrix"/*.desktop "${CWD}"/*.desktop; do
