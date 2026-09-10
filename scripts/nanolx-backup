@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.3.0"
-reldate="2026/09/04"
+version="0.3.1"
+reldate="2026/09/10"
 
 if (( EUID != 0 )); then
     echo "nanolx-backup must be run as root"
@@ -40,7 +40,12 @@ manage_backups () {
                         fi
                     ;;
                     nanolx-backup-* )
-                        local udev_file="${UDEVDIR}/99${choice/.service/.rules}"
+                        # compat
+                        if [ -f "${UDEVDIR}/99${choice/.service/.rules}" ]; then
+                            mv "${UDEVDIR}/99${choice/.service/.rules}" \
+                                "${UDEVDIR}/99-${choice/.service/.rules}"
+                        fi
+                        local udev_file="${UDEVDIR}/99-${choice/.service/.rules}"
                         case ${action} in
                             enable)  sed -e 's/^#//g' -i "${udev_file}" ;;
                             disable) sed -e 's/^\([^#]\)/#\1/g' -i "${udev_file}" ;;
@@ -121,7 +126,7 @@ create_backup_usb () {
     fi
 
     service="nanolx-backup-${uuid}.service"
-    rules="99nanolx-backup-${uuid}.rules"
+    rules="99-nanolx-backup-${uuid}.rules"
 
     sed -e "s#@SOURCE@#${srcdir}#;s#@UUID@#${uuid}#" "${USB_SERVICE}" > \
         "${SERVICEDIR}/${service}"
@@ -171,7 +176,12 @@ case "${1}" in
                 case ${backup} in
                     nanolx-backup-* )
                         _active="always"
-                        if grep -q -m1 "^#.*ACTION" "/etc/udev/rules.d/99nanolx-backup-${_backup}.rules"; then
+                        # compat
+                        if [ -f "/etc/udev/rules.d/99nanolx-backup-${_backup}.rules" ]; then
+                            mv "/etc/udev/rules.d/99nanolx-backup-${_backup}.rules" \
+                                "/etc/udev/rules.d/99-nanolx-backup-${_backup}.rules"
+                        fi
+                        if grep -q -m1 "^#.*ACTION" "/etc/udev/rules.d/99-nanolx-backup-${_backup}.rules"; then
                                 _enabled="disabled"
                         else    _enabled="enabled"
                         fi
