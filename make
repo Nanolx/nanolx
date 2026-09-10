@@ -8,6 +8,7 @@ if [[ ${_deb_version} =~ :([0-9.]+)\.([0-9]{8})- ]]; then
     version="${BASH_REMATCH[1]}"
     builddate="${BASH_REMATCH[2]}"
 fi
+codename=Equinox
 
 dirs=(/etc/dracut.conf.d/
  /opt/Citrix/ICAClient/
@@ -28,6 +29,7 @@ dirs=(/etc/dracut.conf.d/
  ${PREFIX}/share/nanolx/sources.d/
  ${PREFIX}/share/nanolx/apt.d/
  ${PREFIX}/share/man/man1/
+ ${PREFIX}/share/plasma/
  ${PREFIX}/share/wallpapers)
 
 BIN_SCRIPTS=(hugo-push
@@ -187,7 +189,7 @@ install_misc () {
     done
 
     # Citrix
-    for desktop in "${CWD}/citrix"/*.desktop; do
+    for desktop in "${CWD}/citrix"/*.desktop "${CWD}/*.desktop"; do
         install data "${desktop}" share/applications/
     done
     for service in "${CWD}/citrix"/*.service; do
@@ -201,14 +203,12 @@ install_misc () {
     # extra step for old Citrix
     ln -sf ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
         ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
-
-    install data "${CWD}/cockpit.desktop" share/applications/
 }
 
 install_release () {
     # disguise our Debian as Nanolx
     cp "${CWD}/release/os-release.in" "${CWD}/release/os-release"
-    sed -e "s/@VERSION@/${version}/g;s/@BUILDDATE@/${builddate}/g" -i \
+    sed -e "s/@VERSION@/${version}/g;s/@BUILDDATE@/${builddate}/g;s/@CODENAME@/${codename}/g" -i \
         "${CWD}/release/os-release"
     install data "${CWD}/release/os-release" lib/
 
