@@ -104,7 +104,7 @@ install_scripts () {
         if [ -f "${CWD}/completion/${script}" ]; then
             install data "completion/${script}" share/bash-completion/completions
         fi
-    fi
+    done
 }
 
 install_scripts_conf () {
@@ -136,7 +136,7 @@ install_misc () {
     install data plymouth/fonts.conf /etc/dracut.conf.d/
 
     # Citrix
-    for desktop in "${CWD}/citrix"/*.desktop "${CWD}/*.desktop"; do
+    for desktop in "${CWD}/citrix"/*.desktop "${CWD}"/*.desktop; do
         install data "${desktop}" share/applications/
     done
     for service in "${CWD}/citrix"/*.service; do
