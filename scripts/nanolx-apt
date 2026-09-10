@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.4"
-reldate="2026/08/30"
+version="3.0.5"
+reldate="2026/09/10"
 
 if (( EUID != 0 )); then
     echo "nanolx-apt must be run as root"
@@ -94,19 +94,37 @@ shift
 case ${user_opt} in
     list )
          echo "nanolx-apt supports the following repos: ${repo_list}"
-         echo "apt config at:  /usr/share/nanolx/apt.d/99nanolx"
+         echo "apt config at:  /usr/share/nanolx/apt.d/99-nanolx"
          echo "apt pinning at: /usr/share/nanolx/apt.d/pinning"
     ;;
     add ) manage_repos "add" "${@}" ;;
     remove ) manage_repos "remove" "${@}" ;;
     check ) manage_repos "check" ${all_repos} ;;
     enable-config )
-        echo "enabling nanolx apt configuration"
-        cp /usr/share/nanolx/apt.d/99nanolx /etc/apt/apt.conf.d/99nanolx
+        if [ -f /etc/apt/apt.conf.d/99nanolx ]; then
+            # remove file with old name
+            rm /etc/apt/apt.conf.d/99nanolx
+        fi
+
+        if [ ! -f /etc/apt/apt.conf.d/99-nanolx ]; then
+            echo "enabling nanolx apt configuration"
+            cp /usr/share/nanolx/apt.d/99-nanolx /etc/apt/apt.conf.d/99-nanolx
+        else
+            echo "nanolx apt configuration already enabled"
+        fi
     ;;
     disable-config )
-        echo "disabling nanolx apt configuration"
-        rm /etc/apt/apt.conf.d/99nanolx
+        if [ -f /etc/apt/apt.conf.d/99nanolx ]; then
+            # remove file with old name
+            rm /etc/apt/apt.conf.d/99nanolx
+        fi
+
+        if [ -f /etc/apt/apt.conf.d/99-nanolx ]; then
+            echo "disabling nanolx apt configuration"
+            cp /usr/share/nanolx/apt.d/99-nanolx /etc/apt/apt.conf.d/99-nanolx
+        else
+            echo "nanolx apt configuration not enabled"
+        fi
     ;;
     enable-pinning )
         if [ -f /etc/apt/preferences.d/pinning ]; then
@@ -154,12 +172,12 @@ check            (check which repos are enabled)
 
 Nanolx features an optional, custom apt configuration, see
 
-    /usr/share/nanolx/apt.d/99nanolx
+    /usr/share/nanolx/apt.d/99-nanolx
 
 for details.
 
-enable-config    (enable 99nanolx apt config)
-disable-config   (disable 99nanolx apt config)
+enable-config    (enable 99-nanolx apt config)
+disable-config   (disable 99-nanolx apt config)
 
 ** Apt pinning
 
