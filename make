@@ -133,10 +133,10 @@ install_apt () {
 
 install_misc () {
     # plymouth
-    install data dracut/fonts.conf /etc/dracut.conf.d/
+    install data dist/fonts.conf /etc/dracut.conf.d/
 
     # Citrix
-    for desktop in "${CWD}/citrix"/*.desktop "${CWD}"/*.desktop; do
+    for desktop in "${CWD}/citrix"/*.desktop "${CWD}/dist"/*.desktop; do
         install data "${desktop}" share/applications/
     done
     for service in "${CWD}/citrix"/*.service; do
@@ -147,20 +147,20 @@ install_misc () {
     done
 
     # extra steps for old Citrix
-    install bin lib/libjpeg.so.8.2.2 lib/x86_64-linux-gnu/
+    install bin dist/libjpeg.so.8.2.2 lib/x86_64-linux-gnu/
     ln -sf ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
         ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
 }
 
 install_release () {
     # disguise our Debian as Nanolx
-    cp "${CWD}/release/os-release.in" "${CWD}/release/os-release"
+    cp "${CWD}/dist/os-release.in" "${CWD}/dist/os-release"
     sed -e "s/@VERSION@/${version}/g;s/@BUILDDATE@/${builddate}/g;s/@CODENAME@/${codename}/g" -i \
-        "${CWD}/release/os-release"
-    install data "${CWD}/release/os-release" lib/
+        "${CWD}/dist/os-release"
+    install data "${CWD}/dist/os-release" lib/
 
     for conf in issue issue.net motd; do
-        install data "${CWD}/release/${conf}" /etc/
+        install data "${CWD}/dist/${conf}" /etc/
     done
 }
 
