@@ -19,8 +19,8 @@ nanolx (1:5.0.0.20260911-1nano) unstable; urgency=low
      - use `lsb_release -is` as fallback, rather than `lsb_release -ds`
 
     [nanolx-apt-tools]
-    - repokit 1.7.8:
-      - improved 'repokit prepare' command
+    - repokit 1.7.9:
+      - improvements 'repokit prepare' command
       - 'repokit release' now handles epochs in package versions
     - nanolx-orbit 0.2.0:
       - more verbose help message
