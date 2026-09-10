@@ -61,7 +61,7 @@ APT_SOURCES=(debian
  mozilla
  nanolx
  winehq)
-APT_CONF=(99nanolx
+APT_CONF=(99-nanolx
  pinning)
 
 create_dirs () {
