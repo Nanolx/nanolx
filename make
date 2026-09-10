@@ -17,20 +17,11 @@ dirs=(/etc/dracut.conf.d/
  ${PREFIX}/lib/systemd/system/
  ${PREFIX}/sbin/
  ${PREFIX}/share/applications/
- ${PREFIX}/share/aurorae/themes/
  ${PREFIX}/share/bash-completion/completions/
- ${PREFIX}/share/color-schemes/
- ${PREFIX}/share/icons/
- ${PREFIX}/share/konsole/
- ${PREFIX}/share/Kvantum/
- ${PREFIX}/share/kwin/effects/
- ${PREFIX}/share/kwin/scripts/
  ${PREFIX}/share/nanolx/skel/bin
  ${PREFIX}/share/nanolx/sources.d/
  ${PREFIX}/share/nanolx/apt.d/
- ${PREFIX}/share/man/man1/
- ${PREFIX}/share/plasma/
- ${PREFIX}/share/wallpapers)
+ ${PREFIX}/share/man/man1/)
 
 BIN_SCRIPTS=(hugo-push
  nanolx-gtksettings-kde
@@ -149,45 +140,6 @@ install_misc () {
     # plymouth
     install data plymouth/fonts.conf /etc/dracut.conf.d/
 
-    # icons and cursors
-    for dir in "${CWD}"/icons/*; do
-        install dir "${dir}" share/icons/
-    done
-
-    # Kvantum
-    for dir in "${CWD}"/themes/Kvantum/*; do
-        install dir "${dir}" share/Kvantum/
-    done
-
-    # KWin
-    for dir in "${CWD}"/themes/aurorae/*; do
-        install dir "${dir}" share/aurorae/themes/
-    done
-    for dir in "${CWD}"/themes/effects/*; do
-        install dir "${dir}" share/kwin/effects/
-    done
-    for dir in "${CWD}"/kwin/*; do
-        install dir "${dir}" share/kwin/scripts/
-    done
-
-    # Plasma
-    for dir in "${CWD}"/themes/plasma/*; do
-        install dir "${dir}" share/plasma/
-    done
-    for dir in "${CWD}"/themes/color-schemes/*; do
-        install dir "${dir}" share/color-schemes/
-    done
-
-    # Konsole
-    for dir in "${CWD}"/themes/konsole/*; do
-        install dir "${dir}" share/konsole/
-    done
-
-    # wallpapers
-    for dir in "${CWD}"/wallpapers/*; do
-        install dir "${dir}" share/wallpapers/
-    done
-
     # Citrix
     for desktop in "${CWD}/citrix"/*.desktop "${CWD}/*.desktop"; do
         install data "${desktop}" share/applications/
@@ -198,9 +150,9 @@ install_misc () {
     for script in "${CWD}/citrix"/*.sh; do
         install bin "${script}" /opt/Citrix/ICAClient/
     done
-    install bin lib/libjpeg.so.8.2.2 lib/x86_64-linux-gnu/
 
-    # extra step for old Citrix
+    # extra steps for old Citrix
+    install bin lib/libjpeg.so.8.2.2 lib/x86_64-linux-gnu/
     ln -sf ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
         ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
 }
