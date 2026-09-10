@@ -92,16 +92,11 @@ install () {
 install_scripts () {
     for script in "${BIN_SCRIPTS[@]}"; do
         install bin "scripts/${script}" bin
-        if [ -f "${CWD}/man/${script}.1" ]; then
-            gzip "${CWD}/man/${script}.1" -c > "${CWD}/man/${script}.1.gz"
-            install data "man/${script}.1.gz" share/man/man1
-        fi
-        if [ -f "${CWD}/completion/${script}" ]; then
-            install data "completion/${script}" share/bash-completion/completions
-        fi
     done
     for script in "${SBIN_SCRIPTS[@]}"; do
         install bin "scripts/${script}" sbin
+    done
+    for script in "${BIN_SCRIPTS[@]}" "${SBIN_SCRIPTS[@]}";do
         if [ -f "${CWD}/man/${script}.1" ]; then
             gzip "${CWD}/man/${script}.1" -c > "${CWD}/man/${script}.1.gz"
             install data "man/${script}.1.gz" share/man/man1
@@ -109,7 +104,7 @@ install_scripts () {
         if [ -f "${CWD}/completion/${script}" ]; then
             install data "completion/${script}" share/bash-completion/completions
         fi
-    done
+    fi
 }
 
 install_scripts_conf () {
