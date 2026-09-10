@@ -11,18 +11,11 @@ fi
 SERVICEDIR=/etc/systemd/system
 UDEVDIR=/etc/udev/rules.d
 
-if [ -f nanolx-backup ]; then
-    SERVICE="nanolx-backup.service"
-    TIMER="nanolx-backup.timer"
-    USB_SERVICE="nanolx-backup-usb.service"
-    USB_RULES="nanolx-backup-usb.rules"
-else
-    CFGDIR=/usr/share/nanolx
-    SERVICE="${CFGDIR}/nanolx-backup.service"
-    TIMER="${CFGDIR}/nanolx-backup.timer"
-    USB_SERVICE="${CFGDIR}/nanolx-backup-usb.service"
-    USB_RULES="${CFGDIR}/nanolx-backup-usb.rules"
-fi
+CFGDIR=/usr/share/nanolx
+SERVICE="${CFGDIR}/nanolx-backup.service"
+TIMER="${CFGDIR}/nanolx-backup.timer"
+USB_SERVICE="${CFGDIR}/nanolx-backup-usb.service"
+USB_RULES="${CFGDIR}/nanolx-backup-usb.rules"
 
 manage_backups () {
     action="${1}"

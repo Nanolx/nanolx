@@ -11,12 +11,7 @@ fi
 pam_files=(login sddm su sudo sudo-i polkit-1 kde)
 yubi_string="auth sufficient pam_u2f.so authfile=/etc/u2f_keys userpresence=0"
 
-# as per suggestion of reddit user camh-
-if [ -f yubikey-lock.rules ]; then
-    udev_nlx_rulefile=yubikey-lock.rules
-else
-    udev_nlx_rulefile=/usr/share/nanolx/yubikey-lock.rules
-fi
+udev_nlx_rulefile=/usr/share/nanolx/yubikey-lock.rules
 udev_sys_rulefile=/etc/udev/rules.d/99-yubikey-lock.rules
 
 case ${1} in

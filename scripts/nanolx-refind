@@ -14,11 +14,7 @@ if [ ! -d "${refind_base}" ]; then
     exit 1
 fi
 
-if [ -f 99-keep-refind ]; then
-    refind_apt_conf=99-keep-refind
-else
-    refind_apt_conf=/usr/share/nanolx/99-keep-refind
-fi
+refind_apt_conf=/usr/share/nanolx/apt.d/99-keep-refind
 
 refindconf=${refind_base}/refind.conf
 

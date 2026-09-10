@@ -37,17 +37,16 @@ SBIN_SCRIPTS=(nanolx-apt
 SCRIPTS_CONF=(citrix_hdx_config.json
  config.pl
  hugo-push.conf
- Nanolx.knsv
  nanolx-apt.conf
  nanolx-backup-usb.rules
  nanolx-backup-usb.service
  nanolx-backup.service
  nanolx-backup.timer
  nanolx-orbit.conf
- pulseaudio-dummy
  repokit.conf
- yubikey-lock.rules
- 99-keep-refind)
+ yubikey-lock.rules)
+DIST_FILES=(Nanolx.knsv
+ pulseaudio-dummy)
 SKEL_CONF=(bash_logout
  bashrc
  bashstyle-ng.ini
@@ -61,7 +60,8 @@ APT_SOURCES=(debian
  mozilla
  nanolx
  winehq)
-APT_CONF=(99-nanolx
+APT_CONF=(99-keep-refind
+ 99-nanolx
  pinning)
 
 create_dirs () {
@@ -109,7 +109,7 @@ install_scripts () {
 
 install_scripts_conf () {
     for conf in "${SCRIPTS_CONF[@]}"; do
-        install data "scripts/${conf}" share/nanolx
+        install data "conf/${conf}" share/nanolx
     done
 }
 
@@ -131,12 +131,17 @@ install_apt () {
     done
 }
 
-install_misc () {
-    # plymouth
+install_dist () {
     install data dist/fonts.conf /etc/dracut.conf.d/
+    install data dist/cockpit.desktop share/applications/
 
-    # Citrix
-    for desktop in "${CWD}/citrix"/*.desktop "${CWD}/dist"/*.desktop; do
+    for dist in "${DIST_FILES[@]}"; do
+        install data "dist/${dist}" share/nanolx
+    done
+}
+
+install_citrix () {
+    for desktop in "${CWD}/citrix"/*.desktop; do
         install data "${desktop}" share/applications/
     done
     for service in "${CWD}/citrix"/*.service; do
@@ -171,7 +176,8 @@ case "${1}" in
         install_scripts_conf
         install_skel
         install_apt
-        install_misc
+        install_dist
+        install_citrix
         install_release
     ;;
     uninstall)
@@ -186,7 +192,7 @@ case "${1}" in
     ;;
     clean )
         rm -f "${CWD}/man"/*.1.gz
-        rm -f "${CWD}/release/os-release"
+        rm -f "${CWD}/dist/os-release"
     ;;
     * )
         echo "
