@@ -1,3 +1,32 @@
+nanolx (1:5.0.1.2026ddmm-1nano) unstable; urgency=low
+
+  * New upstream bugfix release
+    [general]
+    - add full GPL-3.0+ LICENSE file
+    - reorganized files
+    - all scripts no longer look for local configuration files in ${PWD}
+    - all scritps now use ${scriptname} variable instead of repeating their
+      own name written out a myriad of times internally
+
+    [nanolx-base]
+      - nanolx-backup 0.3.1:
+        - name rules for backups '99-nanolx-backup-${UUID} instead of
+          '99nanolx-backup-${UUID}', move files with old naming scheme when
+          checking status or enabling/disabling
+
+    [nanolx-apt-sources]
+      - nanolx-apt 3.0.5:
+        - renamed nanolx apt configuration from '99nanolx' to '99-nanolx', also
+          migrate from old to new filename
+        - now 'nanolx-apt enable-config' checks whether the file is already in
+          place, rather than always copying it
+
+    [nanolx-x11]
+      - nanolx-gtksettings-kde 0.0.5:
+        - disallow running as root user, if you want to apply your ordinary user's
+          KDE settings to root's Gtk3/Gtk4 issue 'nanolx-gtksettings-kde root'
+        - fix applying settings to root user via 'nanolx-gtksettings-kde root'
+
 nanolx (1:5.0.0.20260910-1nano) unstable; urgency=low
 
   * New upstream release
