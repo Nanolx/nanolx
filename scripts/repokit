@@ -6,27 +6,29 @@
 #
 # Various functions to aid maintanance of an apt repo and building packages
 #
-# See repokit.conf for example configuration. Save that file as
+# See /usr/share/nanolx/repokit.conf for example configuration. Save that file as
 #   ${HOME}/.repokit.conf
 #
 
 version="1.7.9"
 reldate="2026/09/10"
 
+scriptname=$(basename ${0})
+
 error () {
     echo -e "${@}"
     exit 1
 }
 
-if [[ -f ${HOME}/.repokit.conf ]]; then
-        source "${HOME}/.repokit.conf"
-else    error "no ${HOME}/.repokit.conf exists (see /usr/share/nanolx/repokit.conf for example)"
+if [[ -f ${HOME}/.${scriptname}.conf ]]; then
+        source "${HOME}/.${scriptname}.conf"
+else    error "no ${HOME}/.${scriptname}.conf exists (see /usr/share/nanolx/${scriptname}.conf for example)"
 fi
 
 debhelper_prepare () {
     if [[ -d "${PWD}/debian" ]]; then
         error "debian packaging scripts already exist in ${PWD}
-you may want to use repokit release instead."
+you may want to use ${scriptname} release instead."
     fi
 
     get_package_name_and_ver $(basename "${PWD}") package version
@@ -156,10 +158,10 @@ reprepro_remove () {
 }
 
 ftp_push () {
-    if [ -f ${HOME}/.repokit.pw ]; then
-        REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.repokit.pw) || REPOKIT_FTP_PW=""
+    if [ -f ${HOME}/.${scriptname}.pw ]; then
+        REPOKIT_FTP_PW=$(gpg --decrypt ${HOME}/.${scriptname}.pw) || REPOKIT_FTP_PW=""
     else
-        error "No GPG encrypted password file (${HOME}/.repokit.pw) found"
+        error "No GPG encrypted password file (${HOME}/.${scriptname}.pw) found"
     fi
 
     for dir in pool dists logs; do
@@ -326,19 +328,19 @@ case ${cmdarg} in
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     * )
-        echo "repokit ${version} (${reldate})
+        echo "${scriptname} ${version} (${reldate})
 
 © 2015 - 2026 Christopher Roy Bratušek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
-repokit is my personal wrapper script for reprepro with config file support and
-many features. repokit expects a configuration file \${HOME}/.repokit.conf -
-see /usr/share/nanolx/repokit.conf for example configuration.
+${scriptname} is my personal wrapper script for reprepro with config file support and
+many features. ${scriptname} expects a configuration file \${HOME}/.${scriptname}.conf -
+see /usr/share/nanolx/${scriptname}.conf for example configuration.
 
 Options
 option      Parameters  Description

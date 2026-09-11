@@ -3,8 +3,10 @@
 version="0.0.2"
 reldate="2026/08/15"
 
+scriptname=$(basename ${0})
+
 if (( EUID != 0 )); then
-    echo "nanolx-pam-yubikey must be run as root"
+    echo "${scriptname} must be run as root"
     exit 1
 fi
 
@@ -100,11 +102,11 @@ at your own risk, keep in mind to eventually re-enable it."
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     * )
-        echo -e "nanolx-pam-yubikey v${version} (${reldate})
+        echo -e "${scriptname} v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)

@@ -3,8 +3,10 @@
 version="0.0.6"
 reldate="2026/09/04"
 
+scriptname=$(basename ${0})
+
 if (( EUID != 0 )); then
-    echo "nanolx-refind must be run as root"
+    echo "${scriptname} must be run as root"
     exit 1
 fi
 
@@ -84,26 +86,25 @@ case ${1} in
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     * )
-        echo -e "nanolx-refind v${version} (${reldate})
+        echo -e "${scriptname} v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-refind list-themes           list installed themes
-    nanolx-refind set-theme     [theme] set theme to use
-    nanolx-refind get-theme             get active theme
-    nanolx-refind default-theme         revert to default theme
-    nanolx-refind enable-keep-refind    keep refind as default bootloader,
-                                        when updating grub/refind/shim
-    nanolx-refind disable-keep-refind   disable keeping refind as default bootloader
-    nanolx-refind liquorix-default      set latest liquorix kernel as default boot choice
-    nanolx-refind debian-default        set latest upstream kernel as default boot choice
-    nanolx-refind version               print version
+    ${scriptname} list-themes           list installed themes
+    ${scriptname} set-theme     [theme] set theme to use
+    ${scriptname} get-theme             get active theme
+    ${scriptname} default-theme         revert to default theme
+    ${scriptname} enable-keep-refind    keep refind, when updating grub/refind/shim
+    ${scriptname} disable-keep-refind   disable keeping refind as default bootloader
+    ${scriptname} liquorix-default      set latest liquorix kernel as default boot choice
+    ${scriptname} debian-default        set latest upstream kernel as default boot choice
+    ${scriptname} version               print version
 "
     ;;
 esac

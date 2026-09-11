@@ -3,12 +3,14 @@
 version="3.0.5"
 reldate="2026/09/10"
 
+scriptname=$(basename ${0})
+
 if (( EUID != 0 )); then
-    echo "nanolx-apt must be run as root"
+    echo "${scriptname} must be run as root"
     exit 1
 fi
 
-source /usr/share/nanolx/nanolx-apt.conf
+source /usr/share/nanolx/${scriptname}.conf
 
 [[ -d "${key_base}" ]] || mkdir -p "${key_base}"
 
@@ -88,7 +90,7 @@ shift
 
 case ${user_opt} in
     list )
-         echo "nanolx-apt supports the following repos: ${repo_list}"
+         echo "${scriptname} supports the following repos: ${repo_list}"
          echo "apt config at:  /usr/share/nanolx/apt.d/99-nanolx"
          echo "apt pinning at: /usr/share/nanolx/apt.d/pinning"
     ;;
@@ -142,26 +144,26 @@ case ${user_opt} in
         fi
     ;;
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
     * )
-        echo -e "nanolx-apt v${version} (${reldate})
+        echo -e "${scriptname} v${version} (${reldate})
 © 2014-2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
 Helper script for apt related tasks
 
-usage: nanolx-apt <flag>
+usage: ${scriptname} <flag>
 
-version          (print version)
+version          print version
 
 ** Repository management
-list             (list available repositories)
+list             list available repositories
 add              [repo1...repo2]
 remove           [repo1...repo2]
 
-check            (check which repos are enabled)
+check            check which repos are enabled
 
 ** Apt configuration
 
@@ -171,8 +173,8 @@ Nanolx features an optional, custom apt configuration, see
 
 for details.
 
-enable-config    (enable 99-nanolx apt config)
-disable-config   (disable 99-nanolx apt config)
+enable-config    enable 99-nanolx apt config
+disable-config   disable 99-nanolx apt config
 
 ** Apt pinning
 
@@ -183,7 +185,7 @@ Nanolx features an optional custom apt pinning file, see
 for details, basically it ensures that extra repositories are prefered over
 Debian repos, for Debian unstable > testing > stable > experimental.
 
-enable-pinning   (enable nanolx apt pinning)
-disable-pinning  (disable nanolx apt pinning)
+enable-pinning   enable nanolx apt pinning
+disable-pinning  disable nanolx apt pinning
 "
 esac

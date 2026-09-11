@@ -3,8 +3,10 @@
 version="0.0.3"
 reldate="2026/08/01"
 
+scriptname=$(basename ${0})
+
 if (( EUID != 0 )); then
-    echo "nanolx-skel must be run as root"
+    echo "${scriptname} must be run as root"
     exit 1
 fi
 
@@ -23,9 +25,9 @@ case ${1} in
 
     check )
         if [[ "${SKEL%/}" == "/usr/share/nanolx/skel" ]]; then
-            echo "nanolx-skel:  enabled"
+            echo "${scriptname}:  enabled"
         else
-            echo "nanolx-skel:  disabled"
+            echo "${scriptname}:  disabled"
         fi
     ;;
 
@@ -55,21 +57,21 @@ case ${1} in
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     * )
-        echo -e "nanolx-skel v${version} (${reldate})
+        echo -e "${scriptname} v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-skel enable          [use '/usr/share/nanolx/skel' instead of '/etc/skel']
-    nanolx-skel disable         [use original '/etc/skel']
-    nanolx-skel check           [check whether nanolx-skel is active]
-    nanolx-skel force-update    [force update skel files for existing users]
-    nanolx-skel version         [show version]
+    ${scriptname} enable          use '/usr/share/nanolx/skel' instead of '/etc/skel'
+    ${scriptname} disable         use original '/etc/skel'
+    ${scriptname} check           check whether ${scriptname} is active
+    ${scriptname} force-update    force update skel files for existing users
+    ${scriptname} version         show version
 "
     ;;
 esac

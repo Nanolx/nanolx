@@ -1,8 +1,10 @@
 #!/bin/bash
+scriptname=$(basename ${0})
+
 SOURCE="${1}"
 UUID="${2}"
 MOUNT="/media/${UUID}"
-LOGFILE="/var/log/nanolx-backup-${UUID}-$(date '+%Y%m%d_%H%M%S').log"
+LOGFILE="/var/log/${scriptname}-${UUID}-$(date '+%Y%m%d_%H%M%S').log"
 
 send_notification () {
     local title="${1}"

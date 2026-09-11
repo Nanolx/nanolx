@@ -236,7 +236,7 @@ usage:
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     test )  gsettings_apply_kde_values true false ;;

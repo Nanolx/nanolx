@@ -3,8 +3,10 @@
 version="0.1.2"
 reldate="2026/08/13"
 
+scriptname=$(basename ${0})
+
 if (( EUID != 0 )); then
-    echo "nanolx-ctx must be run as root"
+    echo "${scriptname} must be run as root"
     exit 1
 fi
 
@@ -241,47 +243,47 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     * )
-        echo -e "nanolx-ctx v${version} (${reldate})
+        echo -e "${scriptname} v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
-usage   nanolx-ctx [option], where [option] is one of:
+usage   ${scriptname} [option], where [option] is one of:
 
-    version          [print version]
+    version          print version
 
     ** Citrix Options
-    enable-telemetry (why?)
+    enable-telemetry    (why?)
     disable-telemetry
-    check            [system compatibility/missing software]
-    system-certs     [use system's ssl certificates intead of citrix']
-    citrix-certs     [use citrix' ssl certificates intead of system's]
-    disable-scdlog   [disable logging of smartcard messages from citrix
-                                 preventing it from creating gigantic log files]
-    enable-scdlog    [enable logging of smartcard messages from citrix]
-    enable-teams     [enable optimizations for Microsoft Teams]
-    disable-teams    [disable optimizations for Microsoft Teams]
-    restrict-local   [restrict citrix remote access to local system]
-    allow-local      [allow citrix remote access to local system]
+    check               system compatibility/missing software
+    system-certs        use system's ssl certificates intead of citrix'
+    citrix-certs        use citrix' ssl certificates intead of system's
+    disable-scdlog      disable logging of smartcard messages from citrix
+                        preventing it from creating gigantic log files
+    enable-scdlog       enable logging of smartcard messages from citrix
+    enable-teams        enable optimizations for Microsoft Teams
+    disable-teams       disable optimizations for Microsoft Teams
+    restrict-local      restrict citrix remote access to local system
+    allow-local         allow citrix remote access to local system
 
-    ** For Citrix stable version still compiled with GCC 8:
-    load-webkit      [install citrix' bundled webkit to /]
-    unload-webkit    [uninstall citrix' bundled webkit from /]
-    enable-padummy   [install a dummy 'pulseaudio' script, so we can
-                                 trick citrix into using 'pipewire' instead of pa]
-    disable-padummy  [uninstall the dummy 'pulseaudio' sript]
+    ** For Citrix sta   ble version still compiled with GCC 8:
+    load-webkit         install citrix' bundled webkit to /
+    unload-webkit       uninstall citrix' bundled webkit from /
+    enable-padummy      install a dummy 'pulseaudio' script, so we can
+                        force citrix into using 'pipewire' instead of pulseaudio
+    disable-padummy     uninstall the dummy 'pulseaudio' sript
 
     ** Zoom Options
-    register-zoom    [if icaclient gets uninstalled and reinstalled,
-                      but not zoom-vdi-plugin, it's not active]
-    zoom-smartvb-on  [enable Zoom smart virtual backgrounds]
-    zoom-smartvb-off [disable Zoom smart virtual backgrounds]
-    zoom-hwaccel-on  [enable zoom graphics/hardware acceleration]
-    zoom-hwaccel-off [diable zoom graphics/hardware acceleration]
+    register-zoom       if icaclient gets uninstalled and reinstalled,
+                        but not zoom-vdi-plugin, it's not active
+    zoom-smartvb-on     enable Zoom smart virtual backgrounds
+    zoom-smartvb-off    disable Zoom smart virtual backgrounds
+    zoom-hwaccel-on     enable zoom graphics/hardware acceleration
+    zoom-hwaccel-off    diable zoom graphics/hardware acceleration
 
 "
     ;;

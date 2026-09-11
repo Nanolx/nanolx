@@ -4,14 +4,16 @@ version="0.2.0"
 reldate="2026/09/08"
 
 if (( EUID != 0 )); then
-    echo "nanolx-orbit must be run as root"
+    echo "${scriptname} must be run as root"
     exit 1
 fi
+
+scriptname=$(basename ${0})
 
 pkg_base="/var/cache/nanolx"
 mkdir -p "${pkg_base}"
 
-source /usr/share/nanolx/nanolx-orbit.conf
+source /usr/share/nanolx/${scriptname}.conf
 
 curl_opts="-L --progress-bar -C -"
 
@@ -115,7 +117,7 @@ case ${user_opt} in
     ;;
 
     list )
-        echo "nanolx-orbit supports the following packages: ${package_list}"
+        echo "${scriptname} supports the following packages: ${package_list}"
     ;;
 
     clear )
@@ -124,21 +126,21 @@ case ${user_opt} in
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     help | * )
-        echo -e "nanolx-orbit v${version} (${reldate})
+        echo -e "${scriptname} v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    nanolx-orbit list           list available packages
-    nanolx-orbit download       only download desired package
-    nanolx-orbit install        download and install desired package
-    nanolx-orbit clear          clear temporary download directory
-    nanoxl-orbit version        print version
+    ${scriptname} list           list available packages
+    ${scriptname} download       only download desired package
+    ${scriptname} install        download and install desired package
+    ${scriptname} clear          clear temporary download directory
+    ${scriptname} version        print version
 "
     ;;
 esac

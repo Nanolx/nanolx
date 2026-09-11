@@ -3,8 +3,10 @@
 version="0.3.1"
 reldate="2026/09/10"
 
+scriptname=$(basename ${0})
+
 if (( EUID != 0 )); then
-    echo "nanolx-backup must be run as root"
+    echo "${scriptname} must be run as root"
     exit 1
 fi
 
@@ -12,19 +14,19 @@ SERVICEDIR=/etc/systemd/system
 UDEVDIR=/etc/udev/rules.d
 
 CFGDIR=/usr/share/nanolx
-SERVICE="${CFGDIR}/nanolx-backup.service"
-TIMER="${CFGDIR}/nanolx-backup.timer"
-USB_SERVICE="${CFGDIR}/nanolx-backup-usb.service"
-USB_RULES="${CFGDIR}/nanolx-backup-usb.rules"
+SERVICE="${CFGDIR}/${scriptname}.service"
+TIMER="${CFGDIR}/${scriptname}.timer"
+USB_SERVICE="${CFGDIR}/${scriptname}-usb.service"
+USB_RULES="${CFGDIR}/${scriptname}-usb.rules"
 
 manage_backups () {
     action="${1}"
     delete="${2}"
 
-    mapfile -t backups < <(systemctl list-unit-files --type=timer "nanolx-backup*" | \
-        gawk '/nanolx-backup/{print $1}')
-    mapfile -t -O "${#backups[@]}" backups < <(systemctl list-unit-files --type=service "nanolx-backup-*" | \
-        gawk '/nanolx-backup/{print $1}')
+    mapfile -t backups < <(systemctl list-unit-files --type=timer "${scriptname}*" | \
+        gawk '/${scriptname}/{print $1}')
+    mapfile -t -O "${#backups[@]}" backups < <(systemctl list-unit-files --type=service "${scriptname}-*" | \
+        gawk '/${scriptname}/{print $1}')
     if [[ -n "${backups[@]}" ]]; then
         PS3="Select Entry (enter number): "
         select choice in "${backups[@]}" "Cancel"; do
@@ -32,14 +34,14 @@ manage_backups () {
                 break
             elif [ -n "${choice}" ]; then
                 case "${choice}" in
-                    nanolx-backup.* )
+                    ${scriptname}.* )
                         systemctl "${action}" --now "${choice}"
                         if ${delete}; then
                             rm -v "${SERVICEDIR}/${choice%.timer}.{timer,service}"
                             systemctl daemon-reload
                         fi
                     ;;
-                    nanolx-backup-* )
+                    ${scriptname}-* )
                         # compat
                         if [ -f "${UDEVDIR}/99${choice/.service/.rules}" ]; then
                             mv "${UDEVDIR}/99${choice/.service/.rules}" \
@@ -64,7 +66,7 @@ manage_backups () {
             fi
         done
     else
-        echo "No timers created by nanolx-backup"
+        echo "No timers created by ${scriptname}"
     fi
 }
 
@@ -90,8 +92,8 @@ create_backup_timer () {
     # use [:alnum:] for all alphanumeric chars, not just latin
     # and to be double safe enforce C.UTF-8 locale
     name=$(echo "${srcdir%/}" | LC_ALL=C.UTF-8 sed 's,/,.,g;s/[^[:alnum:]._-]//g')
-    service="nanolx-backup${name}.service"
-    timer="nanolx-backup${name}.timer"
+    service="${scriptname}${name}.service"
+    timer="${scriptname}${name}.timer"
 
     if [ ! -d "$(dirname ${destdir})" ]; then
         echo "Toplevel directory: $(dirname ${destdir}) for backup does not exist!"
@@ -125,8 +127,8 @@ create_backup_usb () {
         exit 1
     fi
 
-    service="nanolx-backup-${uuid}.service"
-    rules="99-nanolx-backup-${uuid}.rules"
+    service="${scriptname}-${uuid}.service"
+    rules="99-${scriptname}-${uuid}.rules"
 
     sed -e "s#@SOURCE@#${srcdir}#;s#@UUID@#${uuid}#" "${USB_SERVICE}" > \
         "${SERVICEDIR}/${service}"
@@ -148,40 +150,40 @@ case "${1}" in
     ;;
 
     list )
-        systemctl list-timers --all "nanolx-backup*"
-        systemctl list-unit-files --type=timer "nanolx-backup*"
-        systemctl list-unit-files --type=service "nanolx-backup-*"
+        systemctl list-timers --all "${scriptname}*"
+        systemctl list-unit-files --type=timer "${scriptname}*"
+        systemctl list-unit-files --type=service "${scriptname}-*"
     ;;
 
     list-short )
-        systemctl list-unit-files --type=timer "nanolx-backup*" | \
-            gawk '/nanolx-backup/{print $1}'
-        systemctl list-unit-files --type=service "nanolx-backup-*" | \
-            gawk '/nanolx-backup/{print $1}'
+        systemctl list-unit-files --type=timer "${scriptname}*" | \
+            gawk '/${scriptname}/{print $1}'
+        systemctl list-unit-files --type=service "${scriptname}-*" | \
+            gawk '/${scriptname}/{print $1}'
     ;;
 
     status )
-        TIMERS=$(systemctl list-unit-files --type=timer "nanolx-backup*" | \
-            gawk '/nanolx-backup/{print $1}')
-        STATIC=$(systemctl list-unit-files --type=service "nanolx-backup-*" | \
-            gawk '/nanolx-backup/{print $1}')
+        TIMERS=$(systemctl list-unit-files --type=timer "${scriptname}*" | \
+            gawk '/${scriptname}/{print $1}')
+        STATIC=$(systemctl list-unit-files --type=service "${scriptname}-*" | \
+            gawk '/${scriptname}/{print $1}')
         if [[ -n "${TIMERS[@]}" || -n "${STATIC[@]}" ]]; then
             STRING="TIMER ACTIVE ENABLED"
             for backup in "${TIMERS[@]}" "${STATIC[@]}"; do
-                # remove nanolx-backup prefix and .timer/.service suffix
+                # remove ${scriptname} prefix and .timer/.service suffix
                 _backup="${backup%.timer}"
                 _backup="${backup%.service}"
-                _backup="${_backup#nanolx-backup}"
+                _backup="${_backup#${scriptname}}"
                 _backup="${_backup#-}"
                 case ${backup} in
-                    nanolx-backup-* )
+                    ${scriptname}-* )
                         _active="always"
                         # compat
-                        if [ -f "/etc/udev/rules.d/99nanolx-backup-${_backup}.rules" ]; then
-                            mv "/etc/udev/rules.d/99nanolx-backup-${_backup}.rules" \
-                                "/etc/udev/rules.d/99-nanolx-backup-${_backup}.rules"
+                        if [ -f "/etc/udev/rules.d/99${scriptname}-${_backup}.rules" ]; then
+                            mv "/etc/udev/rules.d/99${scriptname}-${_backup}.rules" \
+                                "/etc/udev/rules.d/99-${scriptname}-${_backup}.rules"
                         fi
-                        if grep -q -m1 "^#.*ACTION" "/etc/udev/rules.d/99-nanolx-backup-${_backup}.rules"; then
+                        if grep -q -m1 "^#.*ACTION" "/etc/udev/rules.d/99-${scriptname}-${_backup}.rules"; then
                                 _enabled="disabled"
                         else    _enabled="enabled"
                         fi
@@ -195,7 +197,7 @@ case "${1}" in
             done
             echo -e "${STRING}" | column -t
         else
-            echo "No timers created by nanolx-backup"
+            echo "No timers created by ${scriptname}"
         fi
     ;;
 
@@ -212,16 +214,16 @@ case "${1}" in
     ;;
 
     version)
-        echo "$(basename ${0}) ${version} (${reldate})"
+        echo "${scriptname} ${version} (${reldate})"
     ;;
 
     help | * )
-        echo "nanolx-backup v${version} (${reldate})
+        echo "${scriptname} v${version} (${reldate})
 © 2026 Christopher Roy Bratusek <nano@jpberlin.de>
 
 licensed under the GNU General Public License v3 (or newer)
 
-usage   nanolx-backup [option], where [option] is one of:
+usage   ${scriptname} [option], where [option] is one of:
 
     timed source destination period
         period is optional, any value known to systemd (fallback is 'daily')
@@ -239,25 +241,25 @@ usage   nanolx-backup [option], where [option] is one of:
 
         Only the source must exist, the UUID is checked for technical validity,
         not for actual correctness, so the device must not be plugged in to use
-        nanolx-backup to create the necessary triggers.
+        ${scriptname} to create the necessary triggers.
 
     list
-        list timers/USB backups created by nanolx-backup
+        list timers/USB backups created by ${scriptname}
 
     list-short
-        list timers/USB backups created by nanolx-backup (names only)
+        list timers/USB backups created by ${scriptname} (names only)
 
     status
-        show status of timers/USB backups created by nanolx-backup
+        show status of timers/USB backups created by ${scriptname}
 
     enable
-        choose from nanolx-backup timers and enable them
+        choose from ${scriptname} timers and enable them
 
     disable
-        choose from nanolx-backup timers and disable them
+        choose from ${scriptname} timers and disable them
 
     delete
-        choose from nanolx-backup timers, disable and delete them
+        choose from ${scriptname} timers, disable and delete them
 
     version
         print version
