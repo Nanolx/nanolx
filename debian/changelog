@@ -1,4 +1,4 @@
-nanolx (1:5.0.1.2026ddmm-1nano) unstable; urgency=low
+nanolx (1:5.0.1.20260911-1nano) unstable; urgency=low
 
   * New upstream bugfix release
     [general]
@@ -26,6 +26,8 @@ nanolx (1:5.0.1.2026ddmm-1nano) unstable; urgency=low
         - disallow running as root user, if you want to apply your ordinary user's
           KDE settings to root's Gtk3/Gtk4 issue 'nanolx-gtksettings-kde root'
         - fix applying settings to root user via 'nanolx-gtksettings-kde root'
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 11 Sep 2026 19:33:31 +0200
 
 nanolx (1:5.0.0.20260910-1nano) unstable; urgency=low
 
