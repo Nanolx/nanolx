@@ -81,7 +81,7 @@ apply_results_gsettings () {
 
 apply_results () {
     # Gtk3 + Gtk4 / settings.ini
-    apply_results_settingsini "${apply_root}" \
+    apply_results_settingsini "${1}" \
         "gtk-application-prefer-dark-theme:${gtk_color_scheme_int}" \
         "gtk-theme-name:${kde_gtk_theme}" \
         "gtk-icon-theme-name:${kde_icon_theme}" \
@@ -91,7 +91,7 @@ apply_results () {
         "gtk-cursor-theme-size:${kde_cursor_size}"
 
     # Gtk4 / GSettings
-    apply_results_gsettings "${apply_root}" \
+    apply_results_gsettings "${1}" \
         "color-scheme:${gtk_color_scheme}" \
         "gtk-theme:${kde_gtk_theme}" \
         "icon-theme:${kde_icon_theme}" \
