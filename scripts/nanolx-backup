@@ -157,9 +157,9 @@ case "${1}" in
 
     list-short )
         systemctl list-unit-files --type=timer "${scriptname}*" | \
-            gawk '/${scriptname}/{print $1}'
+            gawk '/nanolx-backup/{print $1}'
         systemctl list-unit-files --type=service "${scriptname}-*" | \
-            gawk '/${scriptname}/{print $1}'
+            gawk '/nanolx-backup/{print $1}'
     ;;
 
     status )
