@@ -50,6 +50,7 @@ DIST_FILES=(Nanolx.knsv
 SKEL_CONF=(bash_logout
  bashrc
  bashstyle-ng.ini
+ bashstyle.custom
  conkyrc
  profile)
 SKEL_BIN=(conky-on-second-screen)
