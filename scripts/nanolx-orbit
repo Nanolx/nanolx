@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.2.1"
+version="0.2.2"
 reldate="2026/09/14"
 
 if (( EUID != 0 )); then
@@ -17,45 +17,47 @@ source /usr/share/nanolx/${scriptname}.conf
 
 curl_opts="-L --progress-bar -C -"
 
+check_sha256 () {
+    local checksum="${1}"
+    local file="${2}"
+
+    if ! echo "${checksum}" "${file}" | sha256sum -c &>/dev/null; then
+        echo "SHA256 checksum for ${file} is wrong"
+        rm "${file}"
+        noinst=true
+    else
+        echo "SHA256 checksum for ${file} is correct"
+    fi
+}
+
 download_package () {
     url="${1}"
     pkg="${2}"
     sha="${3}"
 
     if [ -z "${5}" ]; then
-        out="${pkg_base}/${4}"
+        download="${pkg_base}/${4}"
+        final_out="${pkg_base}/${4}"
     else
-        out="${pkg_base}/${5}"
+        download="${pkg_base}/${4}"
+        final_out="${pkg_base}/${5}"
     fi
 
-    if [ -f "${out}" ]; then
-        echo -e "\nPackage ${pkg} (${out##*/}) already downloaded, verifying"
-        if ! echo "${sha}" "${out}" | sha256sum -c &>/dev/null; then
-            echo "SHA256 checksum for ${out} is wrong"
-            rm "${out}"
-            noinst=true
-        else
-            echo "SHA256 checksum for ${out} is correct"
-        fi
+    if [ -f "${final_out}" ]; then
+        echo -e "\nPackage ${pkg} (${final_out}) already downloaded, verifying"
     else
-        echo -e "\nDownloading ${pkg}: (${out})"
-        case "${out}" in
+        echo -e "\nDownloading ${pkg}: (${final_out})"
+        case "${download}" in
             *.zip )
-                curl ${curl_opts} "${url}" | bsdtar -xf- -C "${pkg_base}/"
+                curl ${curl_opts} "${url}" | bsdtar -xf- --no-same-permissions -C "${pkg_base}/"
             ;;
             * )
-                curl ${curl_opts} -o "${out}" "${url}"
+                curl ${curl_opts} -o "${download}" "${url}"
             ;;
         esac
-        if ! echo "${sha}" "${out}" | sha256sum -c &>/dev/null; then
-            echo "SHA256 checksum for ${out} is wrong"
-            rm "${out}"
-            noinst=true
-        else
-            echo "SHA256 checksum for ${out} is correct"
-        fi
     fi
 
+    check_sha256 "${sha}" "${final_out}"
 }
 
 install_package () {
