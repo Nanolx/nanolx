@@ -1,3 +1,17 @@
+nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
+
+  * New upstream minor release
+    [nanolx-base]
+      - fix skel file bashstyle.custom wasn't installed
+      - update skel file: bashstyle-ng.ini
+      - update skel file: conkyrc [make conky semi-transparent]
+
+    [nanolx-apt-tools]
+      - nanolx-orbit 0.2.1:
+        - support downloading zipped Debian packages
+        - add dependency on libarchive-tools (for bsdtar)
+        - support for webex vdi plugin
+
 nanolx (1:5.0.1.20260911-1nano) unstable; urgency=low
 
   * New upstream bugfix release
