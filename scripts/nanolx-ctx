@@ -319,7 +319,7 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
             echo "zoom vdi plugin:                  installed, active"
         fi
 
-        if grep -q "^SMARTVB" /etc/zoomvdi/ZoomMedia.ini; then
+        if grep -q "SMARTVB=1" /etc/zoomvdi/ZoomMedia.ini; then
             echo "zoom smart virtual backgrounds:   enabled"
         else
             echo "zoom smart virtual backgrounds:   disabled"
