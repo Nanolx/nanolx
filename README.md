@@ -169,6 +169,7 @@ refer to [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/
         - citrix-beta-usb (GCC 11 tech preview)
         - zoom
         - zoom vdi plugin
+        - webex vdi plugin
 4. `nanolx-citrix-config`
     1. `nanolx-ctx`      script to disable (or reenable) `Citrix` telemetry, allowing/restricting access to local machine, running the included system check script, enable `Teams` or `Zoom` optimizations, see `man nanolx-ctx` or `nanolx-ctx --help`. It also allows to install or uninstall the webkit2gtk-4.0 bundled with `Citrix`, which is required for full `Citrix` operation (stable `Citrix` version), but no longer shipped with `Debian`, if you're using the `Citrix` GCC 11 tech preview, those compatibility options will be disabled.
 5. `nanolx-net`
