@@ -487,6 +487,7 @@ Depends:
  gnome-keyring,
  rng-tools5
 Replaces: icaclient
+Suggests: cisco-webex-vdi
 Description: Citrix Workspace Support package
  Additional integration and configuration for Citrix, as per
  AUR: https://aur.archlinux.org/packages/icaclient
