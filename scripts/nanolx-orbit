@@ -28,8 +28,6 @@ download_package () {
         out="${pkg_base}/${5}"
     fi
 
-    echo "${out}"
-
     if [ -f "${out}" ]; then
         echo -e "\nPackage ${pkg} (${out##*/}) already downloaded, verifying"
         if ! echo "${sha}" "${out}" | sha256sum -c &>/dev/null; then
