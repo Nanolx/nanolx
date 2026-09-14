@@ -7,9 +7,10 @@ nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
       - update skel file: conkyrc [make conky semi-transparent]
 
     [nanolx-apt-tools]
-      - nanolx-orbit 0.2.2:
+      - nanolx-orbit 0.2.3:
         - support downloading zipped Debian packages
         - add dependency on libarchive-tools (for bsdtar)
+        - 'nanolx-orbit list' now shows installation status, aswell
         - minor code optimization
         - support for webex vdi plugin
 
