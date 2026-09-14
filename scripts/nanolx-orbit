@@ -30,6 +30,23 @@ check_sha256 () {
     fi
 }
 
+check_modern_citrix () {
+    ICAROOT=/opt/Citrix/ICAClient
+    ICA_VER=$(${ICAROOT}/wfica -version | awk '/Version/{print $2}')
+    ICA_VER=${ICA_VER%.*}
+    ICA_VER=${ICA_VER//./}
+    if [ ${ICA_VER} -ge 26040 ]; then
+        is_webkitgtk41=$(ldd "${ICAROOT}/selfservice" | awk '/libwebkit2gtk-4.1/')
+        if [ -z "${is_webkitgtk41}" ]; then
+            return 1
+        else
+            return 0
+        fi
+    else
+        return 1
+    fi
+}
+
 is_installed () {
     if dpkg-query --show --showformat='${Status}' "${1}" 2>/dev/null | \
         grep -q "^install ok"; then
@@ -147,16 +164,37 @@ case ${user_opt} in
     ;;
 
     list )
+        citrix_inst="not installed"
+        citrix_beta_inst="not installed"
+        citrix_usb_inst="not installed"
+        citrix_usb_beta_inst="not installed"
+
+        if $(is_installed ${citrix_bin} &>/dev/null); then
+            if check_modern_citrix; then
+                citrix_beta_inst="installed"
+            else
+                citrix_inst="installed"
+            fi
+        fi
+
+        if $(is_installed ${citrix_usb_bin} &>/dev/null); then
+            if check_modern_citrix; then
+                citrix_usb_beta_inst="installed"
+            else
+                citrix_usb_inst="installed"
+            fi
+        fi
+
         echo "${scriptname} supports the following packages:"
         echo "
-zoom:               + [$(is_installed ${zoom_bin})]          + ${zoom_url##*/} (${zoom_ver})
-zoom-vdi:           + [$(is_installed ${zoom_vdi_bin})]      + ${zoom_vdi_url##*/}
-webex-vdi:          + [$(is_installed ${webex_vdi_bin})]     + ${webex_vdi_pkg2}
-citrix:             + [$(is_installed ${citrix_bin})]        + ${citrix_pkg}
-citrix-usb:         + [$(is_installed ${citrix_usb_bin})]    + ${citrix_usb_pkg}
-citrix-epa:         + [$(is_installed ${citrix_epa_bin})]    + ${citrix_epa_pkg}
-citrix-beta:        + [$(is_installed ${citrix_bin})]        + ${citrix_beta_pkg}
-citrix-beta-usb:    + [$(is_installed ${citrix_usb_bin})]    + ${citrix_beta_usb_pkg}
+zoom:               + [$(is_installed ${zoom_bin})]         + ${zoom_url##*/} (${zoom_ver})
+zoom-vdi:           + [$(is_installed ${zoom_vdi_bin})]     + ${zoom_vdi_url##*/}
+webex-vdi:          + [$(is_installed ${webex_vdi_bin})]    + ${webex_vdi_pkg2}
+citrix:             + [${citrix_inst}]                      + ${citrix_pkg}
+citrix-usb:         + [${citrix_usb_inst}]                  + ${citrix_usb_pkg}
+citrix-epa:         + [$(is_installed ${citrix_epa_bin})]   + ${citrix_epa_pkg}
+citrix-beta:        + [${citrix_beta_inst}]                 + ${citrix_beta_pkg}
+citrix-beta-usb:    + [${citrix_usb_beta_inst}]             + ${citrix_beta_usb_pkg}
 " | column -t -s"+"
     echo "Note: citrix stable and beta share the same package name, so both appear un/installed!
 "
