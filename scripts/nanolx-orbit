@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.2.2"
+version="0.2.3"
 reldate="2026/09/14"
 
 if (( EUID != 0 )); then
@@ -27,6 +27,17 @@ check_sha256 () {
         noinst=true
     else
         echo "SHA256 checksum for ${file} is correct"
+    fi
+}
+
+is_installed () {
+    if dpkg-query --show --showformat='${Status}' "${1}" 2>/dev/null | \
+        grep -q "^install ok"; then
+        echo "installed"
+        return 0
+    else
+        echo "not installed"
+        return 1
     fi
 }
 
@@ -136,7 +147,19 @@ case ${user_opt} in
     ;;
 
     list )
-        echo "${scriptname} supports the following packages: ${package_list}"
+        echo "${scriptname} supports the following packages:"
+        echo "
+zoom:               + [$(is_installed ${zoom_bin})]          + ${zoom_url##*/} (${zoom_ver})
+zoom-vdi:           + [$(is_installed ${zoom_vdi_bin})]      + ${zoom_vdi_url##*/}
+webex-vdi:          + [$(is_installed ${webex_vdi_bin})]     + ${webex_vdi_pkg2}
+citrix:             + [$(is_installed ${citrix_bin})]        + ${citrix_pkg}
+citrix-usb:         + [$(is_installed ${citrix_usb_bin})]    + ${citrix_usb_pkg}
+citrix-epa:         + [$(is_installed ${citrix_epa_bin})]    + ${citrix_epa_pkg}
+citrix-beta:        + [$(is_installed ${citrix_bin})]        + ${citrix_beta_pkg}
+citrix-beta-usb:    + [$(is_installed ${citrix_usb_bin})]    + ${citrix_beta_usb_pkg}
+" | column -t -s"+"
+    echo "Note: citrix stable and beta share the same package name, so both appear un/installed!
+"
     ;;
 
     clear )
