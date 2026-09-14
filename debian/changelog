@@ -14,6 +14,15 @@ nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
         - minor code optimization
         - support for webex vdi plugin
 
+    [nanolx-citrix-config]
+      - suggest package cisco-webex-vdi
+      - nanolx-ctx 0.2.0:
+        - add 'register-webex' flag, which will re-register cisco-webex-vdi
+          plugin in case it's disabled by uninstalling and reinstalling citrix,
+          without reinstalling cisco-webex-vdi aswell (or for some other reason)
+        - add 'status' flag, which will show installation status of citrix, zoom,
+          zoom vdi, webex vdi and options nanolx-ctx provides
+
 nanolx (1:5.0.1.20260911-1nano) unstable; urgency=low
 
   * New upstream bugfix release

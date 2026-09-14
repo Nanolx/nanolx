@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.1.2"
-reldate="2026/08/13"
+version="0.2.0"
+reldate="2026/09/14"
 
 scriptname=$(basename ${0})
 
@@ -12,6 +12,7 @@ fi
 
 ICAROOT=/opt/Citrix/ICAClient
 ICA_VER=$(${ICAROOT}/wfica -version | awk '/Version/{print $2}')
+ICA_VER_P=${ICA_VER}
 ICA_VER=${ICA_VER%.*}
 ICA_VER=${ICA_VER//./}
 
@@ -230,7 +231,7 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
     ;;
 
     register-zoom )
-        if ! grep -q ZoomMedia=On ${ICAROOT}/config/module.ini; then
+        if ! grep -q "ZoomMedia.*On" ${ICAROOT}/config/module.ini; then
             if [ -f /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst ]; then
                 echo "running zoomvdi-universal-plugin postinstall script"
                 /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst
@@ -239,6 +240,115 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
             fi
         else
             echo "ZoomMedia Plugin active, doing nothing"
+        fi
+    ;;
+
+    register-webex )
+        if ! grep -q "CiscoTeamsVirtualChannel.*On" ${ICAROOT}/config/module.ini; then
+            if [ -f /var/lib/dpkg/info/cisco-webex-vdi.postinst ]; then
+                echo "running cisco-webex-vdi postinstall script"
+                /var/lib/dpkg/info/cisco-webex-vdi.postinst
+            else
+                echo "cisco-webex-vdi ist not installed"
+            fi
+        else
+            echo "CiscoTeamsVirtualChannel Plugin active, doing nothing"
+        fi
+    ;;
+
+    status )
+        echo "${scriptname} status report"
+        if check_modern_citrix; then
+            echo "citrix channel:                   GCC 11 tech preview (beta)"
+        else
+            echo "citrix channel:                   stable"
+        fi
+
+        echo "citrix version:                   ${ICA_VER_P}"
+
+        if [ -L "${ICAROOT}/keystore/cacerts" ]; then
+            echo "citrix certificate storage:       system certificates"
+        else
+            echo "citrix certificate storage:       citrix stock"
+        fi
+
+        if check_modern_citrix; then
+            echo "citrix webkit2gtk-4.0 status:     not required"
+        elif [ -f /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37.56.4 ]; then
+            echo "citrix webkit2gtk-4.0 status:     installed"
+        else
+            echo "citrix webkit2gtk-4.0 status:     not installed"
+        fi
+
+        if grep -q "Ceip=Enable|DisableHeartBeat=False" "${ICAROOT}/config/module.ini"; then
+            echo "citrix telemetry:                 enabled"
+        else
+            echo "citrix telemetry:                 disabled"
+        fi
+
+        if grep -q "CREnabled=On|CDMAllowed=On|ClientPrinterQueue=On|ClientManagement=On|ClientComm=On" "${ICAROOT}/config/wfclient.template"; then
+            echo "citrix access to local machine:   allowed"
+        else
+            echo "citrix access to local machine:   restricted"
+        fi
+
+        line=$(awk '/<key>TracingEnabled/ {print FNR}' \
+                "${ICAROOT}/config/AuthManConfig.xml")
+        line=$((line+1))
+        if sed -n "${line}p" "${ICAROOT}/config/AuthManConfig.xml" | grep -q true; then
+            echo "citrix scd logging:               enabled"
+        else
+            echo "citrix scd logging:               disabled"
+        fi
+
+        if check_modern_citrix; then
+            echo "citrix pulseaduio compat hack:    not required"
+        elif [ -L "/usr/bin/pulseaudio" ]; then
+            echo "citrix pulseaudio compat hack:    enabled"
+        else
+            echo "citrix pulseaudio compat hack:    disabled"
+        fi
+
+        if ! grep -q "ZoomMedia.*On" ${ICAROOT}/config/module.ini; then
+            if [ -f /var/lib/dpkg/info/zoomvdi-universal-plugin.postinst ]; then
+                echo "zoom vdi plugin:                  installed, not active"
+            else
+                echo "zoom vdi plugin:                  not installed"
+            fi
+        else
+            echo "zoom vdi plugin:                  installed, active"
+        fi
+
+        if grep -q "^SMARTVB" /etc/zoomvdi/ZoomMedia.ini; then
+            echo "zoom smart virtual backgrounds:   enabled"
+        else
+            echo "zoom smart virtual backgrounds:   disabled"
+        fi
+
+        echo "zoom hardware acceleration (experimental, per user):"
+        for zoomconf in /home/*/.config/zoomus.conf; do
+            username=$(basename "$(dirname "$(dirname "$zoomconf")")")
+            if grep -q "enableCefGpu.*true" ${zoomconf}; then
+                echo "  for user ${username}:                 enabled"
+            else
+                echo "  for user ${username}:                 disabled"
+            fi
+        done
+
+         if ! grep -q "CiscoTeamsVirtualChannel.*On" ${ICAROOT}/config/module.ini; then
+            if [ -f /var/lib/dpkg/info/cisco-webex-vdi.postinst ]; then
+                echo "webex vdi plugin:                 installed, not active"
+            else
+                echo "webex vdi plugin:                 not installed"
+            fi
+        else
+            echo "webex vdi plugin:                 installed, active"
+        fi
+
+        if [ -e /var/.config/citrix/hdx_rtc_engine/config.json ]; then
+            echo "teams vdi:                        installed, active"
+        else
+            echo "teams vdi:                        installed, inactive"
         fi
     ;;
 
@@ -270,7 +380,7 @@ usage   ${scriptname} [option], where [option] is one of:
     restrict-local      restrict citrix remote access to local system
     allow-local         allow citrix remote access to local system
 
-    ** For Citrix sta   ble version still compiled with GCC 8:
+    ** For Citrix stable version still compiled with GCC 8:
     load-webkit         install citrix' bundled webkit to /
     unload-webkit       uninstall citrix' bundled webkit from /
     enable-padummy      install a dummy 'pulseaudio' script, so we can
@@ -285,6 +395,13 @@ usage   ${scriptname} [option], where [option] is one of:
     zoom-hwaccel-on     enable zoom graphics/hardware acceleration
     zoom-hwaccel-off    diable zoom graphics/hardware acceleration
 
+    ** Webex Options
+    register-webex      if icaclient gets uninstalled and reinstalled,
+                        but not cisco-webex-vdi, it's not active
+
+    ** General
+    status              show installation status of citrix, zoom,
+                        zoom vdi, webex vdi and options nanolx-ctx provides
 "
     ;;
 esac
