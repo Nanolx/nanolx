@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.2.0"
-reldate="2026/09/08"
+version="0.2.1"
+reldate="2026/09/14"
 
 if (( EUID != 0 )); then
     echo "${scriptname} must be run as root"
@@ -21,7 +21,14 @@ download_package () {
     url="${1}"
     pkg="${2}"
     sha="${3}"
-    out="${pkg_base}/${4}"
+
+    if [ -z "${5}" ]; then
+        out="${pkg_base}/${4}"
+    else
+        out="${pkg_base}/${5}"
+    fi
+
+    echo "${out}"
 
     if [ -f "${out}" ]; then
         echo -e "\nPackage ${pkg} (${out##*/}) already downloaded, verifying"
@@ -34,7 +41,14 @@ download_package () {
         fi
     else
         echo -e "\nDownloading ${pkg}: (${out})"
-        curl ${curl_opts} -o "${out}" "${url}"
+        case "${out}" in
+            *.zip )
+                curl ${curl_opts} "${url}" | bsdtar -xf- -C "${pkg_base}/"
+            ;;
+            * )
+                curl ${curl_opts} -o "${out}" "${url}"
+            ;;
+        esac
         if ! echo "${sha}" "${out}" | sha256sum -c &>/dev/null; then
             echo "SHA256 checksum for ${out} is wrong"
             rm "${out}"
@@ -68,9 +82,14 @@ install_helper () {
     else
         local -n filename="${name//-/_}_pkg"
     fi
+    local -n unzip_filename="${name//-/_}_pkg2"
 
-    download_package "${url}" "${name}" "${sha}" "${filename}"
-    install_package "${filename}"
+    download_package "${url}" "${name}" "${sha}" "${filename}" "${unzip_filename}"
+    if [ -z "${unzip_filename}" ]; then
+        install_package "${filename}"
+    else
+        install_package "${unzip_filename}"
+    fi
 }
 
 
@@ -84,7 +103,7 @@ handle_packages () {
             zoom-vdi )
                 install_helper "${pkg}"
             ;;
-            zoom | citrix | citrix-usb | citrix-epa | citrix-beta | citrix-beta-usb )
+            zoom | citrix | citrix-usb | citrix-epa | citrix-beta | citrix-beta-usb | webex-vdi )
                 install_helper "${pkg}" true
             ;;
             * )
