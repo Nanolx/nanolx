@@ -116,7 +116,8 @@ Depends:
  debdelta,
  reprepro,
  gdebi,
- nanolx-apt-sources
+ nanolx-apt-sources,
+ libarchive-tools
 Recommends:
  apt-listchanges,
  apt-listbugs
