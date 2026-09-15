@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.5"
-reldate="2026/09/10"
+version="3.0.6"
+reldate="2026/09/14"
 
 scriptname=$(basename ${0})
 
@@ -85,14 +85,41 @@ manage_repos () {
     [[ ! "${mode}" = "check" ]] && apt update -q
 }
 
+is_enabled () {
+    case ${1} in
+        *.sources )
+            [ -e /etc/apt/sources.list.d/${1} ] && echo "enabled" || echo "disabled"
+        ;;
+        99* )
+            [ -e /etc/apt/apt.conf.d/${1} ] && echo "enabled" || echo "disabled"
+        ;;
+        pinning )
+            [ -e /etc/apt/preferences.d/${1} ] && echo "enabled" || echo "disabled"
+        ;;
+    esac
+}
+
 user_opt="${1}"
 shift
 
 case ${user_opt} in
     list )
-         echo "${scriptname} supports the following repos: ${repo_list}"
-         echo "apt config at:  /usr/share/nanolx/apt.d/99-nanolx"
-         echo "apt pinning at: /usr/share/nanolx/apt.d/pinning"
+        echo "${scriptname} supports the following repos:"
+        echo "
+Debian:         + [$(is_enabled debian.sources)]            + https://debian.org (full suite: stable->experimental)
+nanolx:         + [$(is_enabled nanolx.sources)]            + https://nanolx.org/photonic/
+liquorix:       + [$(is_enabled liquorix.sources)]          + https://liquorix.net/
+i2p:            + [$(is_enabled i2p.sources)]               + https://deb.i2p.net/
+winehq:         + [$(is_enabled winehq.sources)]            + https://gitlab.winehq.org/wine/wine/-/wikis/Debian-Ubuntu
+debmultimedia:  + [$(is_enabled deb-multimedia.sources)]    + https://deb-multimedia.org/
+mozillavpn:     + [$(is_enabled mozilla.sources)]           + https://support.mozilla.org/en-US/kb/how-install-mozilla-vpn-linux-computer" | column -t -s"+"
+
+        echo "
+additional apt configuration status:"
+        echo "
+99-nanolx      + [$(is_enabled 99-nanolx)]        + Nanolx apt configuration
+99-keep-refind + [$(is_enabled 99-keep-refind)]   + Keep refind as default bootmanager when grub/shim are updated
+pinning        + [$(is_enabled pinning)]          + Nanolx apt pinning configuration" | column -t -s"+"
     ;;
     add ) manage_repos "add" "${@}" ;;
     remove ) manage_repos "remove" "${@}" ;;
@@ -159,7 +186,7 @@ usage: ${scriptname} <flag>
 version          print version
 
 ** Repository management
-list             list available repositories
+list             list available repositories and status
 add              [repo1...repo2]
 remove           [repo1...repo2]
 
