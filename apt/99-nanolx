@@ -10,7 +10,7 @@ APT
        removed pacakges: red
     */
     Default "yes";
-    Bold "\x1B[1m";
+    Bold "[1m";
     Action::Upgrade "green";
     Action::Install "cyan";
     Action::Install-Dependencies "yellow";

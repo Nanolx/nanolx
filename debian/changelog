@@ -16,6 +16,8 @@ nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
         - 'nanolx-orbit list' now shows installation status, aswell
         - minor code optimization
         - support for webex vdi plugin
+      - 99-nanolx:
+        - fix setting Apt::Colors::Bold
 
     [nanolx-citrix-config]
       - suggest package cisco-webex-vdi
