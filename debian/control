@@ -167,6 +167,7 @@ Recommends:
  mc,
  duf,
  gdu,
+ kmscon
 Suggests:
  thefuck,
  lolcat,

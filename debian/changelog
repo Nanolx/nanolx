@@ -5,6 +5,7 @@ nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
       - fix skel file bashstyle.custom wasn't installed
       - update skel file: bashstyle-ng.ini
       - update skel file: conkyrc [make conky semi-transparent]
+      - recommend 'kmscon'
 
     [nanolx-apt-tools]
       - nanolx-apt 3.0.6:
