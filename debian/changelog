@@ -29,6 +29,11 @@ nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
         - add 'status' flag, which will show installation status of citrix, zoom,
           zoom vdi, webex vdi and options nanolx-ctx provides
 
+    [nanolx-themes]
+      - nanolx-refind 0.1.0
+        - minor wording changes
+        - add 'nanolx-refind status' which will print some information
+
 nanolx (1:5.0.1.20260911-1nano) unstable; urgency=low
 
   * New upstream bugfix release
