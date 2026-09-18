@@ -1,4 +1,4 @@
-nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
+nanolx (1:5.0.2.20260918-1nano) unstable; urgency=low
 
   * New upstream minor release
     [nanolx-base]
@@ -33,6 +33,8 @@ nanolx (1:5.0.2.2026ddmm-1nano) unstable; urgency=low
       - nanolx-refind 0.1.0
         - minor wording changes
         - add 'nanolx-refind status' which will print some information
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Fri, 18 Sep 2026 17:59:16 +0200
 
 nanolx (1:5.0.1.20260911-1nano) unstable; urgency=low
 
