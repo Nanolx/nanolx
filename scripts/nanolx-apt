@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.6"
-reldate="2026/09/14"
+version="3.0.7"
+reldate="2026/09/19"
 
 scriptname=$(basename ${0})
 
@@ -52,12 +52,6 @@ manage_repos_int () {
                 cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
             ;;
         esac
-    elif [[ "${mode}" = "check" ]]; then
-        if [ -f "/etc/apt/sources.list.d/${repo}.sources" ]; then
-            echo "repo ${repo}:       enabled"
-        else
-            echo "repo ${repo}:       disabled"
-        fi
     else
         echo "disabling repo: ${repo}"
         rm "/etc/apt/sources.list.d/${repo}.sources"
@@ -123,7 +117,6 @@ pinning        + [$(is_enabled pinning)]          + Nanolx apt pinning configura
     ;;
     add ) manage_repos "add" "${@}" ;;
     remove ) manage_repos "remove" "${@}" ;;
-    check ) manage_repos "check" ${all_repos} ;;
     enable-config )
         if [ -f /etc/apt/apt.conf.d/99nanolx ]; then
             # remove file with old name
@@ -189,8 +182,6 @@ version          print version
 list             list available repositories and status
 add              [repo1...repo2]
 remove           [repo1...repo2]
-
-check            check which repos are enabled
 
 ** Apt configuration
 

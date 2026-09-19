@@ -1,8 +1,8 @@
-.TH nanolx-apt 1 "2026 Jul 29"
+.TH nanolx-apt 1 "2026 Sep 19"
 .SH NAME
 nanolx-apt
 .SH SYNOPSIS
-nanolx-apt [list] [add \fIrepo\fP] [remove \fIrepo\fP] [check] [enable-config]
+nanolx-apt [list] [add \fIrepo\fP] [remove \fIrepo\fP] [enable-config]
 [disable-config] [enable-pinning] [disable-pinning]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-apt manages additional repository configurations, including key handling,
@@ -39,16 +39,13 @@ It also checks the downloaded repository key's SHA256sum.
 nanolx-apt knows the following options
 .TP 4
 .B list
-Shows the list of supported repositories
+Shows the list of supported repositories and their status
 .TP
 .B add \fIrepo\fP
 Enable given repository (downloads signing key)
 .TP
 .B remove \fIrepo\fP
 Disable given repository
-.TP
-.B check
-Check which repositories are enabled
 .TP
 .B enable-config
 Enable nanolx apt configuration
