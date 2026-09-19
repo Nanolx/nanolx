@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.2.3"
-reldate="2026/09/14"
+version="0.2.4"
+reldate="2026/09/19"
 
 if (( EUID != 0 )); then
     echo "${scriptname} must be run as root"
@@ -56,6 +56,10 @@ is_installed () {
         echo "not installed"
         return 1
     fi
+}
+
+installed_version () {
+    dpkg-query --show --showformat='${Version}' "${1}" 2>/dev/null || echo "---"
 }
 
 download_package () {
@@ -168,36 +172,42 @@ case ${user_opt} in
         citrix_beta_inst="not installed"
         citrix_usb_inst="not installed"
         citrix_usb_beta_inst="not installed"
+        citrix_lcl="---"
+        citrix_beta_lcl="---"
+        citrix_usb_lcl="---"
+        citrix_usb_beta_lcl="---"
 
         if $(is_installed ${citrix_bin} &>/dev/null); then
             if check_modern_citrix; then
                 citrix_beta_inst="installed"
+                citrix_beta_lcl="$(installed_version ${citrix_bin})"
             else
                 citrix_inst="installed"
+                citrix_lcl="$(installed_version ${citrix_bin})"
             fi
         fi
 
         if $(is_installed ${citrix_usb_bin} &>/dev/null); then
             if check_modern_citrix; then
                 citrix_usb_beta_inst="installed"
+                citrix_usb_beta_lcl="$(installed_version ${citrix_usb_bin})"
             else
                 citrix_usb_inst="installed"
+                citrix_usb_lcl="$(installed_version ${citrix_usb_bin})"
             fi
         fi
 
-        echo "${scriptname} supports the following packages:"
+        echo "${scriptname} supports the following packages (local version/latest version)"
         echo "
-zoom:               + [$(is_installed ${zoom_bin})]         + ${zoom_url##*/} (${zoom_ver})
-zoom-vdi:           + [$(is_installed ${zoom_vdi_bin})]     + ${zoom_vdi_url##*/}
-webex-vdi:          + [$(is_installed ${webex_vdi_bin})]    + ${webex_vdi_pkg2}
-citrix:             + [${citrix_inst}]                      + ${citrix_pkg}
-citrix-usb:         + [${citrix_usb_inst}]                  + ${citrix_usb_pkg}
-citrix-epa:         + [$(is_installed ${citrix_epa_bin})]   + ${citrix_epa_pkg}
-citrix-beta:        + [${citrix_beta_inst}]                 + ${citrix_beta_pkg}
-citrix-beta-usb:    + [${citrix_usb_beta_inst}]             + ${citrix_beta_usb_pkg}
+zoom:               + [$(is_installed ${zoom_bin})]         + $(installed_version ${zoom_bin})/${zoom_ver}
+zoom-vdi:           + [$(is_installed ${zoom_vdi_bin})]     + $(installed_version ${zoom_vdi_bin})/${zoom_vdi_ver}
+webex-vdi:          + [$(is_installed ${webex_vdi_bin})]    + $(installed_version ${webex_vdi_bin})/${webex_vdi_ver}
+citrix:             + [${citrix_inst}]                      + ${citrix_lcl}/${citrix_ver}
+citrix-usb:         + [${citrix_usb_inst}]                  + ${citrix_usb_lcl}/${citrix_usb_ver}
+citrix-epa:         + [$(is_installed ${citrix_epa_bin})]   + $(installed_version ${citrix_epa_bin})/${citrix_epa_ver}
+citrix-beta:        + [${citrix_beta_inst}]                 + ${citrix_beta_lcl}/${citrix_beta_ver}
+citrix-beta-usb:    + [${citrix_usb_beta_inst}]             + ${citrix_usb_beta_lcl}/${citrix_beta_usb_ver}
 " | column -t -s"+"
-    echo "Note: citrix stable and beta share the same package name, so both appear un/installed!
-"
     ;;
 
     clear )
@@ -216,7 +226,7 @@ citrix-beta-usb:    + [${citrix_usb_beta_inst}]             + ${citrix_beta_usb_
 licensed under the GNU General Public License v3 (or newer)
 
 usage:
-    ${scriptname} list           list available packages
+    ${scriptname} list           list available packages and their status
     ${scriptname} download       only download desired package
     ${scriptname} install        download and install desired package
     ${scriptname} clear          clear temporary download directory
