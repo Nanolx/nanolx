@@ -1,6 +1,10 @@
 nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
 
   * New upstream minor release
+    [nanolx-base]
+      - nanolx-backup 0.3.2:
+        - add '--ignore-missing-args' to 'rsync' flags
+
     [nanolx-apt-sources]
       - nanolx-apt 3.0.7:
         - remove 'check' flag, in favour of improved 'list' flag

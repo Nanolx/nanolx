@@ -4,4 +4,4 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/rsync -aAXv --delete @SOURCE@ @DEST@
+ExecStart=/usr/bin/rsync -aAXv --ignore-missing-args --delete @SOURCE@ @DEST@
