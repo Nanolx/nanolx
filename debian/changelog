@@ -1,3 +1,17 @@
+nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
+
+  * New upstream minor release
+    [nanolx-apt-sources]
+      - nanolx-apt 3.0.7:
+        - remove 'check' flag, in favour of improved 'list' flag
+
+    [nanolx-apt-tools]
+      - nanolx-orbit 0.2.4:
+        - improved 'list' flag (now shows installed/latest known version)
+
+    [nanolx-cli]
+      - recommend fonts-nerd-symbols (for lsd)
+
 nanolx (1:5.0.2.20260918-1nano) unstable; urgency=low
 
   * New upstream minor release
@@ -7,10 +21,12 @@ nanolx (1:5.0.2.20260918-1nano) unstable; urgency=low
       - update skel file: conkyrc [make conky semi-transparent]
       - recommend 'kmscon'
 
-    [nanolx-apt-tools]
+    [nanolx-apt-sources]
       - nanolx-apt 3.0.6:
         - 'nanolx-apt list' now shows the status of apt repositories and
           apt configuration provided by nanolx-apt
+
+     [nanolx-apt-tools]
       - nanolx-orbit 0.2.3
         - support downloading zipped Debian packages
         - add dependency on libarchive-tools (for bsdtar)
