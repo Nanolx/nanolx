@@ -167,7 +167,8 @@ Recommends:
  mc,
  duf,
  gdu,
- kmscon
+ kmscon,
+ fonts-nerd-symbols
 Suggests:
  thefuck,
  lolcat,
