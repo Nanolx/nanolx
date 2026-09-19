@@ -9,7 +9,7 @@
 - `/etc/motd`
 - `/usr/lib/os-release`
 
-once `nanolx-base` package is installed. The diversion is reverted upon removal or purge of that package.
+once `nanolx-base` package is installed. The diversion is reverted upon removal or purge of that package. Manual installation will not divert the system identification.
 
 *There's no technical reason for this - I've just put much time and love into this project so consider this self-praise.*
 

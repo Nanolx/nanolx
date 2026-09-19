@@ -179,6 +179,8 @@ case "${1}" in
         install_apt
         install_dist
         install_citrix
+    ;;
+    install-release)
         install_release
     ;;
     uninstall)

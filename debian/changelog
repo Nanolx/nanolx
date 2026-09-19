@@ -1,6 +1,12 @@
 nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
 
   * New upstream minor release
+    [general]
+      - diversion of the system identification was moved to separate make
+        target, ensuring a manual install will not divert from 'Debian' to
+        'Nanolx' as system identification, only installing 'nanolx-base'
+        will do so
+
     [nanolx-base]
       - nanolx-backup 0.3.2:
         - add '--ignore-missing-args' to 'rsync' flags
