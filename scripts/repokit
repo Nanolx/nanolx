@@ -40,7 +40,8 @@ you may want to use ${scriptname} release instead."
         sed -e "s/1) UNRELEASED.*/1${REPOKIT_REV}) ${REPOKIT_DIST}; urgency=low/g" \
             -e "s/ (Closes: #nnnn)  <nnnn is the bug number of your ITP>//g" \
             -i "${PWD}/debian/changelog"
-        sed -e 's/\#export/export/g' -i "${PWD}/debian/rules"
+        sed -e 's/\#export/export/g' \
+            -e '/^#/d' -i "${PWD}/debian/rules"
         sed -e '/^#/d' -i "${PWD}/debian/copyright"
         sed -e 's/<insert.*//g' \
             -e '/\#Vcs/d' \

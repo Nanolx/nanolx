@@ -21,6 +21,7 @@ nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
       - repokit 1.8.0:
         - make 'repokit prepare' more robust against unusual version numbers
         - fix removing template comments from debian/changelog via 'repokit prepare'
+        - remove template comments from debian/rules via 'repokit prepare'
 
     [nanolx-cli]
       - recommend fonts-nerd-symbols (for lsd)
