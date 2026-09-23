@@ -18,6 +18,9 @@ nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
     [nanolx-apt-tools]
       - nanolx-orbit 0.2.4:
         - improved 'list' flag (now shows installed/latest known version)
+      - repokit 1.8.0:
+        - make 'repokit prepare' more robust against unusual version numbers
+        - fix removing template comments from debian/changelog via 'repokit prepare'
 
     [nanolx-cli]
       - recommend fonts-nerd-symbols (for lsd)

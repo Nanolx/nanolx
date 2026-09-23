@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.7.9"
-reldate="2026/09/10"
+version="1.8.0"
+reldate="2026/09/23"
 
 scriptname=$(basename ${0})
 
@@ -32,7 +32,7 @@ you may want to use ${scriptname} release instead."
     fi
 
     get_package_name_and_ver $(basename "${PWD}") package version
-    dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "${package}" || exit 1
+    dh_make -s -e "${REPOKIT_MAIL}" --copyright "${@}" -p "${package}"_"${version}" || exit 1
 
     if [ -d "${PWD}/debian" ]; then
         rm -rf debian/*.ex debian/README* debian/*.EX
@@ -41,7 +41,7 @@ you may want to use ${scriptname} release instead."
             -e "s/ (Closes: #nnnn)  <nnnn is the bug number of your ITP>//g" \
             -i "${PWD}/debian/changelog"
         sed -e 's/\#export/export/g' -i "${PWD}/debian/rules"
-        sed -e 's/^#/d' -i "${PWD}/debian/copyright"
+        sed -e '/^#/d' -i "${PWD}/debian/copyright"
         sed -e 's/<insert.*//g' \
             -e '/\#Vcs/d' \
             -e 's/Section.*/Section:/g' \
