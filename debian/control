@@ -201,8 +201,12 @@ Depends:
 Recommends:
  czkawka-gui,
  psensor,
- libgtk-nocsd0
+ libgtk-nocsd0,
+ kwin-script-kzones,
+ kwin-script-remember-window-positions,
+ kwin-tabgroups
 Suggests:
+ kwin-autoscroll,
  openrgb-plugin-effects,
  openrgb-plugin-hardware-sync
 Description: Collection of X11 applications
@@ -510,8 +514,6 @@ Depends:
  kwin-effect-geometry-change,
  kwin-effect-aura-glow,
  kwin-script-kneko,
- kwin-script-kzones,
- kwin-script-remember-window-positions,
  kde-syntax-theme-revolunti,
  plasma-andromeda-launcher,
  plasma-kde-control-station,
@@ -528,7 +530,6 @@ Depends:
  kde-macesque-taskmanager,
  kde-thumbnail-bloom
 Suggests:
- kwin-autoscroll,
  kwin-effect-ba-click-fx,
  kwin-effect-cursortrails,
  kwin-effect-particles,
