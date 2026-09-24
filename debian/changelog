@@ -18,6 +18,7 @@ nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
     [nanolx-apt-tools]
       - nanolx-orbit 0.2.4:
         - improved 'list' flag (now shows installed/latest known version)
+        - support zoom 7.2.1.5760
       - repokit 1.8.0:
         - make 'repokit prepare' more robust against unusual version numbers
         - fix removing template comments from debian/changelog via 'repokit prepare'
