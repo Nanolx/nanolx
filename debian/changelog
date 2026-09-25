@@ -33,6 +33,10 @@ nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
       - removed recommended packages kwin-script-kzones and
         kwin-script-remember-window-positions
       - removed suggested package kwin-autoscroll
+      - enforce rEFInd-digital-void as default theme when installing nanolx-themes
+        for the first time
+      - fix setting debian-mac-style as the default plymouth theme when installing
+        nanolx-themes for the first time
 
     [nanolx-x11]
       - added recommended packages kwin-tabgroups, kwin-script-kzones and
