@@ -4,4 +4,4 @@
 	dh $@
 
 override_dh_auto_install:
-	$(CURDIR)/make install-full
+	dh_auto_install -- DESTDIR=$(CURDIR)/debian/tmp prefix=/usr install-full
