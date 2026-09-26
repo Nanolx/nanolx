@@ -4,4 +4,4 @@
 	dh $@
 
 override_dh_auto_install:
-	$(CWD)/make install-full
+	$(CURDIR)/make install-full
