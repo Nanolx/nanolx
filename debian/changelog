@@ -1,4 +1,4 @@
-nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
+nanolx (1:5.0.3.20260926-1nano) unstable; urgency=low
 
   * New upstream minor release
     [general]
@@ -42,6 +42,8 @@ nanolx (1:5.0.3.2026ddmm-1nano) unstable; urgency=low
       - added recommended packages kwin-tabgroups, kwin-script-kzones and
         kwin-script-remember-window-positions
       - added suggested package kwin-autoscroll
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Sat, 26 Sep 2026 09:31:03 +0200
 
 nanolx (1:5.0.2.20260918-1nano) unstable; urgency=low
 
