@@ -1,0 +1,13 @@
+#badge {
+    inline-size: 73px;
+    block-size: 73px;
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+}
+
+#brand::before {
+    min-inline-size: 121px;
+    min-block-size: 18px;
+    background-image: url("logo-large.png");
+    background-repeat: no-repeat;
+}

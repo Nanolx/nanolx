@@ -21,7 +21,9 @@ dirs=(/etc/dracut.conf.d/
  ${PREFIX}/share/nanolx/skel/bin
  ${PREFIX}/share/nanolx/sources.d/
  ${PREFIX}/share/nanolx/apt.d/
- ${PREFIX}/share/man/man1/)
+ ${PREFIX}/share/man/man1/
+ ${PREFIX}/share/cockpit/branding/nanolx/
+ ${PREFIX}/share/pixmaps)
 
 BIN_SCRIPTS=(hugo-push
  nanolx-gtksettings-kde
@@ -45,6 +47,10 @@ SCRIPTS_CONF=(citrix_hdx_config.json
  nanolx-orbit.conf
  repokit.conf
  yubikey-lock.rules)
+BRANDING_FILES=(branding.css
+favicon.ico
+logo-large.png
+logo.png)
 DIST_FILES=(Nanolx.knsv
  pulseaudio-dummy)
 SKEL_CONF=(bash_logout
@@ -135,6 +141,11 @@ install_apt () {
 install_dist () {
     install data dist/fonts.conf /etc/dracut.conf.d/
     install data dist/cockpit.desktop share/applications/
+    install data dist/nanolx-logo.png share/pixmaps/
+
+    for file in "${BRANDING_FILES[@]}"; do
+        install data "dist/${file}" share/cockpit/branding/nanolx/
+    done
 
     for dist in "${DIST_FILES[@]}"; do
         install data "dist/${dist}" share/nanolx

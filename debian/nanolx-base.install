@@ -14,3 +14,5 @@ usr/share/man/man1/nanolx-backup.1.gz
 usr/share/man/man1/nanolx-skel.1.gz
 usr/share/bash-completion/completions/nanolx-backup
 usr/share/bash-completion/completions/nanolx-skel
+usr/share/cockpit/branding/nanolx/
+usr/share/pixmaps/nanolx-logo.png
