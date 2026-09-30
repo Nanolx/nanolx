@@ -10,6 +10,9 @@ nanolx (1:5.0.4.2026ddmm-1nano) unstable; urgency=low
         - remove accidently shipped Kvantum themes
         - other minor changes
 
+    [nanolx-apt-tools]
+      - nanolx-orbit support zoom vdi plugin 7.0.13
+
 nanolx (1:5.0.3.20260926-1nano) unstable; urgency=low
 
   * New upstream minor release
