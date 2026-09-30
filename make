@@ -143,10 +143,6 @@ install_dist () {
     install data dist/cockpit.desktop share/applications/
     install data dist/nanolx-logo.png share/pixmaps/
 
-    for file in "${BRANDING_FILES[@]}"; do
-        install data "dist/${file}" share/cockpit/branding/nanolx/
-    done
-
     for dist in "${DIST_FILES[@]}"; do
         install data "dist/${dist}" share/nanolx
     done
@@ -178,6 +174,11 @@ install_release () {
 
     for conf in issue issue.net motd; do
         install data "${CWD}/dist/${conf}" /etc/
+    done
+
+    # branding for cockpit
+    for file in "${BRANDING_FILES[@]}"; do
+        install data "dist/${file}" share/cockpit/branding/nanolx/
     done
 }
 
