@@ -14,7 +14,7 @@ nanolx (1:5.0.4.2026ddmm-1nano) unstable; urgency=low
       - nanolx-orbit support zoom vdi plugin 7.0.13
 
     [nanolx-x11]
-      - depend on kde-config-gtk-style, kio-extras, ffmpegthumbs,
+      - recommend kde-config-gtk-style, kio-extras, ffmpegthumbs,
         kdegraphics-thumbnailers
 
     [nanolx-themes]
