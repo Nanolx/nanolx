@@ -8,13 +8,14 @@ nanolx (1:5.0.4.20261002-1nano) unstable; urgency=low
       - add fastfetch configuration which displays the Nanolx logo
       - add dependency on kmscon and fonts-firacode
       - divert /etc/kmscon/kmscon.conf
+      - move bashstyle-ng.ini from skel files to /etc, use it as vendor
+        fallback configuration for all users on the system
       - update Nanolx.knsv:
         - KDE panel in 50 % transparent Debian Logo color
         - Nanolx logo for Andromeda start menu instead of Debian Logo
         - remove accidently shipped Kvantum themes
         - other minor changes
       - skel files
-        - update bashstyle-ng.ini
         - update bashrc
 
     [nanolx-apt-tools]
