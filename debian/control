@@ -204,7 +204,8 @@ Recommends:
  libgtk-nocsd0,
  kwin-script-kzones,
  kwin-script-remember-window-positions,
- kwin-tabgroups
+ kwin-tabgroups,
+ kde-config-gtk-style
 Suggests:
  kwin-autoscroll,
  openrgb-plugin-effects,
