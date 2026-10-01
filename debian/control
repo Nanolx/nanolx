@@ -205,7 +205,10 @@ Recommends:
  kwin-script-kzones,
  kwin-script-remember-window-positions,
  kwin-tabgroups,
- kde-config-gtk-style
+ kde-config-gtk-style,
+ kio-extras,
+ ffmpegthumbs,
+ kdegraphics-thumbnailers
 Suggests:
  kwin-autoscroll,
  openrgb-plugin-effects,
