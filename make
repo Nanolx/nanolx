@@ -219,6 +219,7 @@ case "${1}" in
     clean )
         rm -f "${CWD}/man"/*.1.gz
         rm -f "${CWD}/dist/os-release"
+        rm -f "${CWD}/dist/kcm-about-distrorc"
     ;;
     * )
         echo "
