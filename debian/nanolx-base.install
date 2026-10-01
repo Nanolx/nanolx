@@ -2,6 +2,7 @@ etc/issue
 etc/issue.net
 etc/motd
 etc/fastfetch/config.jsonc
+etc/kmscon/kmscon.conf
 etc/xdg/kcm-about-distrorc
 usr/lib/os-release
 usr/sbin/nanolx-backup

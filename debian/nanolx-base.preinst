@@ -13,6 +13,9 @@ if [ "$1" = "install" ] || [ "$1" = "upgrade" ]; then
     dpkg-divert --package nanolx-base --add --rename \
         --divert /etc/xdg/kcm-about-distrorc.debian \
         /etc/xdg/kcm-about-distrorc
+    dpkg-divert --package nanolx-base --add --rename \
+        --divert /etc/kmscon/kmscon.conf.debian \
+        /etc/kmscon/kmscon.conf
 fi
 
 #DEBHELPER#

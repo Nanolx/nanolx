@@ -22,6 +22,11 @@ if [ "$1" = "remove" ] || [ "$1" = "abort-install" ] || [ "$1" = "disappear" ] |
     dpkg-divert --package nanolx-base --remove --rename \
         --divert /etc/xdg/kcm-about-distrorc.debian \
         /etc/xdg/kcm-about-distrorc
+
+    rm -f /etc/kmscon/kmscon.conf
+    dpkg-divert --package nanolx-base --remove --rename \
+        --divert /etc/kmscon/kmscon.conf.debian \
+        /etc/kmscon/kmscon.conf
 fi
 
 #DEBHELPER#

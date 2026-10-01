@@ -6,6 +6,8 @@ nanolx (1:5.0.4.20261002-1nano) unstable; urgency=low
       - install 48x48 nanolx-logo to /usr/share/pixmaps
       - divert kcm-about-distrorc to identify to KDE Systemsettings as Nanolx
       - add fastfetch configuration which displays the Nanolx logo
+      - add dependency on kmscon and fonts-firacode
+      - divert /etc/kmscon/kmscon.conf
       - update Nanolx.knsv:
         - KDE panel in 50 % transparent Debian Logo color
         - Nanolx logo for Andromeda start menu instead of Debian Logo
@@ -25,6 +27,10 @@ nanolx (1:5.0.4.20261002-1nano) unstable; urgency=low
     [nanolx-themes]
       - improve nanolx-themes.postrm script, also add '-k all' to
         'update-initramfs -u'
+
+    [nanolx-cli]
+      - removed suggested package kmscon (now dependent to nanolx-base)
+      - move fonts-nerd-symbols from recommends to depends
 
 nanolx (1:5.0.3.20260926-1nano) unstable; urgency=low
 

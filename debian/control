@@ -18,7 +18,9 @@ Depends:
  systemd,
  libnotify-bin,
  rsync,
- bash-completion
+ bash-completion,
+ kmscon,
+ fonts-firacode
 Recommends:
  appimagelauncher
 Description: Nanolx base package
@@ -161,14 +163,13 @@ Depends:
  plocate,
  diskus,
  lsd,
- fzf
+ fzf,
+ fonts-nerd-symbols
 Recommends:
  fortunes-flashrider,
  mc,
  duf,
  gdu,
- kmscon,
- fonts-nerd-symbols
 Suggests:
  thefuck,
  lolcat,
