@@ -11,6 +11,7 @@ fi
 codename=Equinox
 
 dirs=(/etc/dracut.conf.d/
+ /etc/fastfetch/
  /etc/xdg/
  /opt/Citrix/ICAClient/
  ${PREFIX}/bin/
@@ -179,6 +180,8 @@ install_release () {
     cp "${CWD}/dist/kcm-about-distrorc.in" "${CWD}/dist/kcm-about-distrorc"
     sed -e "s/@CODENAME@/${codename}/g" -i "${CWD}/dist/kcm-about-distrorc"
     install data "${CWD}/dist/kcm-about-distrorc" /etc/xdg/
+
+    install data "${CWD}/dist/config.jsonc" /etc/fastfetch/
 
     for conf in "${ETC_FILES[@]}"; do
         install data "${CWD}/dist/${conf}" /etc/

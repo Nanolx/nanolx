@@ -1,0 +1,29 @@
+{
+    "$schema": "https://github.com",
+    "logo": {
+        "type": "chafa",
+        "source": "/usr/share/cockpit/branding/nanolx/logo-large.png",
+         "width": 40,
+         "height": 20
+    },
+    "modules": [
+        "title",
+        "separator",
+        "os",
+        "host",
+        "kernel",
+        "uptime",
+        "packages",
+        "shell",
+        "display",
+        "de",
+        "wm",
+        "terminal",
+        "cpu",
+        "gpu",
+        "memory",
+        "break",
+        "colors"
+    ]
+}
+
