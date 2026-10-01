@@ -1,5 +1,5 @@
 {
-    "$schema": "https://github.com",
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
         "type": "chafa",
         "source": "/usr/share/cockpit/branding/nanolx/logo-large.png",
@@ -11,6 +11,7 @@
         "separator",
         "os",
         "host",
+        "bootmgr",
         "kernel",
         "uptime",
         "packages",
@@ -18,10 +19,16 @@
         "display",
         "de",
         "wm",
+        "wmtheme",
+        "theme",
+        "icons",
+        "font",
+        "cursor",
         "terminal",
         "cpu",
         "gpu",
         "memory",
+        "disk",
         "break",
         "colors"
     ]
