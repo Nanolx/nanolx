@@ -11,6 +11,9 @@ nanolx (1:5.0.4.20261002-1nano) unstable; urgency=low
         - Nanolx logo for Andromeda start menu instead of Debian Logo
         - remove accidently shipped Kvantum themes
         - other minor changes
+      - skel files
+        - update bashstyle-ng.ini
+        - update bashrc
 
     [nanolx-apt-tools]
       - nanolx-orbit support zoom vdi plugin 7.0.13

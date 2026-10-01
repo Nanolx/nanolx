@@ -45,3 +45,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 [[ -f /usr/share/bashstyle-ng/rc/bashstyle-rc ]] && source /usr/share/bashstyle-ng/rc/bashstyle-rc
+fastfetch
