@@ -18,7 +18,7 @@ if [ "$1" = "remove" ] || [ "$1" = "abort-install" ] || [ "$1" = "disappear" ] |
     dpkg-divert --package nanolx-base --remove --rename \
         --divert /etc/motd.debian /etc/motd
 
-    rm -f /etc/debian_version
+    rm -f /etc/xdg/kcm-about-distrorc
     dpkg-divert --package nanolx-base --remove --rename \
         --divert /etc/xdg/kcm-about-distrorc.debian \
         /etc/xdg/kcm-about-distrorc
