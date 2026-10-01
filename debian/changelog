@@ -4,6 +4,7 @@ nanolx (1:5.0.4.2026ddmm-1nano) unstable; urgency=low
     [nanolx-base]
       - add Nanolx branding for cockpit
       - add nanolx-logo to /usr/share/pixmaps
+      - divert kcm-about-distrorc to identify as Nanolx rather than Debian
       - update Nanolx.knsv:
         - KDE panel in 50 % transparent Debian Logo color
         - Nanolx logo for Andromeda start menu instead of Debian Logo
