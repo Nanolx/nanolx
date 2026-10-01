@@ -61,7 +61,6 @@ DIST_FILES=(Nanolx.knsv
  pulseaudio-dummy)
 SKEL_CONF=(bash_logout
  bashrc
- bashstyle-ng.ini
  bashstyle.custom
  conkyrc
  profile)
@@ -104,53 +103,54 @@ install () {
 
 install_scripts () {
     for script in "${BIN_SCRIPTS[@]}"; do
-        install bin "scripts/${script}" bin
+        install bin "${CWD}/scripts/${script}" bin/
     done
     for script in "${SBIN_SCRIPTS[@]}"; do
-        install bin "scripts/${script}" sbin
+        install bin "${CWD}/scripts/${script}" sbin/
     done
-    for script in "${BIN_SCRIPTS[@]}" "${SBIN_SCRIPTS[@]}";do
+    for script in "${BIN_SCRIPTS[@]}" "${SBIN_SCRIPTS[@]}"; do
         if [ -f "${CWD}/man/${script}.1" ]; then
             gzip "${CWD}/man/${script}.1" -c > "${CWD}/man/${script}.1.gz"
-            install data "man/${script}.1.gz" share/man/man1
+            install data "${CWD}/man/${script}.1.gz" share/man/man1/
         fi
         if [ -f "${CWD}/completion/${script}" ]; then
-            install data "completion/${script}" share/bash-completion/completions
+            install data "${CWD}/completion/${script}" share/bash-completion/completions/
         fi
     done
 }
 
 install_scripts_conf () {
     for conf in "${SCRIPTS_CONF[@]}"; do
-        install data "conf/${conf}" share/nanolx
+        install data "${CWD}/conf/${conf}" share/nanolx/
     done
 }
 
 install_skel () {
     for conf in "${SKEL_CONF[@]}"; do
-        install data "skel/.${conf}" share/nanolx/skel
+        install data "${CWD}/skel/.${conf}" share/nanolx/skel/
     done
     for bin in "${SKEL_BIN[@]}"; do
-        install bin "skel/bin/${bin}" share/nanolx/skel/bin
+        install bin "${CWD}/skel/bin/${bin}" share/nanolx/skel/bin/
     done
+    install data "${CWD}/dist/bashstyle-ng_vendor.ini" /etc/
 }
 
 install_apt () {
     for source in "${APT_SOURCES[@]}"; do
-        install data "apt/${source}.sources" share/nanolx/sources.d
+        install data "${CWD}/apt/${source}.sources" share/nanolx/sources.d/
     done
     for conf in "${APT_CONF[@]}"; do
-        install data "apt/${conf}" "share/nanolx/apt.d"
+        install data "${CWD}/apt/${conf}" share/nanolx/apt.d/
     done
 }
 
 install_dist () {
-    install data dist/fonts.conf /etc/dracut.conf.d/
-    install data dist/cockpit.desktop share/applications/
-    install data dist/nanolx-logo.png share/pixmaps/
+    install data "${CWD}/dist/fonts.conf" /etc/dracut.conf.d/
+    install data "${CWD}/dist/cockpit.desktop" share/applications/
+    install data "${CWD}/dist/nanolx-logo.png" share/pixmaps/
 
     for dist in "${DIST_FILES[@]}"; do
-        install data "dist/${dist}" share/nanolx
+        install data "${CWD}/dist/${dist}" share/nanolx/
     done
 }
 
@@ -166,7 +166,7 @@ install_citrix () {
     done
 
     # extra steps for old Citrix
-    install bin dist/libjpeg.so.8.2.2 lib/x86_64-linux-gnu/
+    install bin "${CWD}/dist/libjpeg.so.8.2.2" lib/x86_64-linux-gnu/
     ln -sf ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
         ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
 }
@@ -191,7 +191,7 @@ install_release () {
 
     # branding for cockpit
     for file in "${BRANDING_FILES[@]}"; do
-        install data "dist/${file}" share/cockpit/branding/nanolx/
+        install data "${CWD}/dist/${file}" share/cockpit/branding/nanolx/
     done
 }
 
