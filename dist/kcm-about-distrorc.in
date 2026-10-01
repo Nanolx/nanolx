@@ -1,0 +1,3 @@
+[General]
+LogoPath=/usr/share/cockpit/branding/nanolx/logo-large.png
+Version=(@CODENAME@)
