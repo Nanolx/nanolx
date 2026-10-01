@@ -7,9 +7,10 @@
 - `/etc/issue`
 - `/etc/issue.net`
 - `/etc/motd`
+- `/etc/xdg/kcm-about-distrorc`
 - `/usr/lib/os-release`
 
-once `nanolx-base` package is installed. The diversion is reverted upon removal or purge of that package. Manual installation will not divert the system identification.
+once `nanolx-base` package is installed. The diversion is reverted upon removal or purge of that package. Manual installation will not divert the system identification. Additionally `Nanolx` branding for `Cockpit` is added, aswell as a default `fastfetch` configuration displaying the `Nanolx` Logo rather than the `Debian` Logo.
 
 *There's no technical reason for this - I've just put much time and love into this project so consider this self-praise.*
 
