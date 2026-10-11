@@ -36,6 +36,8 @@ case "${1}" in
                 PKG_COUNT=$(echo "${NEW_PKGS}" | wc -l)
                 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
+                apt-cache gencaches >/dev/null 2>&1
+
                 echo "=== new packages found on ${TIMESTAMP} ===" >> "${LOGFILE}"
                 echo "${NEW_PKGS}" >> "${LOGFILE}"
                 echo "" >> "${LOGFILE}"
