@@ -32,6 +32,7 @@ BIN_SCRIPTS=(hugo-push
  nanolx-gtksettings-kde
  repokit)
 SBIN_SCRIPTS=(nanolx-apt
+ nanolx-apt-hook
  nanolx-backup
  nanolx-backup-helper-usb
  nanolx-ctx
@@ -73,6 +74,7 @@ APT_SOURCES=(debian
  nanolx
  winehq)
 APT_CONF=(99-keep-refind
+ 99-list-new
  99-nanolx
  pinning)
 

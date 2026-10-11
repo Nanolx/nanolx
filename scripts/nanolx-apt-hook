@@ -1,0 +1,65 @@
+#!/bin/bash
+
+version="0.0.1"
+reldate="2026/10/11"
+
+scriptname=$(basename ${0})
+
+if (( EUID != 0 )); then
+    echo "${scriptname} must be run as root"
+    exit 1
+fi
+
+TEMPDIR="/var/cache/nanolx"
+LOGFILE="${TEMPDIR}/new_packages.log"
+NEWLIST="${TEMPDIR}/package_list_new.txt"
+OLDLIST="${TEMPDIR}/package_list_old.txt"
+
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+RESET='\033[0m'
+
+case "${1}" in
+    pre)
+        mkdir -p "${TEMPDIR}"
+        apt-cache pkgnames 2>/dev/null | sort > "${OLDLIST}"
+    ;;
+
+    post)
+        if [ -f "${OLDLIST}" ]; then
+            apt-cache pkgnames 2>/dev/null | sort > "${NEWLIST}"
+            NEW_PKGS=$(comm -13 "${OLDLIST}" "${NEWLIST}")
+
+            if [ -n "${NEW_PKGS}" ]; then
+                PKG_COUNT=$(echo "${NEW_PKGS}" | wc -l)
+                TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+
+                echo "=== new packages found on ${TIMESTAMP} ===" >> "${LOGFILE}"
+                echo "${NEW_PKGS}" >> "${LOGFILE}"
+                echo "" >> "${LOGFILE}"
+
+                echo -e "\n${YELLOW}=============================================="
+                echo -e "${GREEN} ★ Apt Hook: ${PKG_COUNT} new packages(s) found"
+                echo -e "${YELLOW}=============================================="
+
+                echo "${NEW_PKGS}" | while read -r pkg; do
+                    if [ -n "${pkg}" ]; then
+                        VERSION=$(apt-cache show "${pkg}" 2>/dev/null | grep -m 1 "^Version:" | cut -d' ' -f2-)
+                        DESC=$(apt-cache show "${pkg}" 2>/dev/null | grep -m 1 "^Description:" | cut -d' ' -f2-)
+                        echo -e "  • ${GREEN}${pkg}${RESET} (${CYAN}${VERSION}${RESET})"
+                        echo -e "    ${BLUE}↳${RESET} ${DESC}"
+                        echo ""
+                    fi
+                done
+
+                echo -e "${YELLOW}=============================================="
+                echo -e "${BLUE}Log saved in in:${RESET} ${LOGFILE}"
+                echo -e "${YELLOW}==============================================${RESET}\n"
+            fi
+
+            rm -f "${OLDLIST}" "${NEWLIST}"
+        fi
+    ;;
+esac

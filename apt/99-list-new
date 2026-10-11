@@ -1,0 +1,2 @@
+APT::Update::Pre-Invoke { "/usr/sbin/nanolx-apt-hook pre"; };
+APT::Update::Post-Invoke { "/usr/sbin/nanolx-apt-hook post"; };

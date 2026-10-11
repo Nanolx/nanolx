@@ -1,9 +1,10 @@
-.TH nanolx-apt 1 "2026 Sep 19"
+.TH nanolx-apt 1 "2026 Oct 11"
 .SH NAME
 nanolx-apt
 .SH SYNOPSIS
 nanolx-apt [list] [add \fIrepo\fP] [remove \fIrepo\fP] [enable-config]
-[disable-config] [enable-pinning] [disable-pinning]
+[disable-config] [enable-listnew] [disable-listnew] [enable-pinning]
+[disable-pinning]
 .SH DESCRIPTION          \" Section Header - required - don't modify
 nanolx-apt manages additional repository configurations, including key handling,
 aswell as matching pinning and minor apt configuration changes (the latter both optional).
@@ -52,6 +53,12 @@ Enable nanolx apt configuration
 .TP
 .B disable-config
 Disable nanolx apt configuration
+.TP
+.B enable-listnew
+Enable listing new packages after 'apt update'
+.TP
+.B disable-listnew
+Disable listing new packages after 'apt update'
 .TP
 .B enable-pinning
 Enable nanolx apt pinning

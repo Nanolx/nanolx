@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="3.0.7"
-reldate="2026/09/19"
+version="3.1.0"
+reldate="2026/10/11"
 
 scriptname=$(basename ${0})
 
@@ -106,13 +106,14 @@ liquorix:       + [$(is_enabled liquorix.sources)]          + https://liquorix.n
 i2p:            + [$(is_enabled i2p.sources)]               + https://deb.i2p.net/
 winehq:         + [$(is_enabled winehq.sources)]            + https://gitlab.winehq.org/wine/wine/-/wikis/Debian-Ubuntu
 debmultimedia:  + [$(is_enabled deb-multimedia.sources)]    + https://deb-multimedia.org/
-mozillavpn:     + [$(is_enabled mozilla.sources)]           + https://support.mozilla.org/en-US/kb/how-install-mozilla-vpn-linux-computer" | column -t -s"+"
+mozilla:        + [$(is_enabled mozilla.sources)]           + https://support.mozilla.org/en-US/kb/how-install-mozilla-vpn-linux-computer" | column -t -s"+"
 
         echo "
 additional apt configuration status:"
         echo "
 99-nanolx      + [$(is_enabled 99-nanolx)]        + Nanolx apt configuration
 99-keep-refind + [$(is_enabled 99-keep-refind)]   + Keep refind as default bootmanager when grub/shim are updated
+99-list-new    + [$(is_enabled 99-list-new)]      + List newly added packages after 'apt update'
 pinning        + [$(is_enabled pinning)]          + Nanolx apt pinning configuration" | column -t -s"+"
     ;;
     add ) manage_repos "add" "${@}" ;;
@@ -163,6 +164,22 @@ pinning        + [$(is_enabled pinning)]          + Nanolx apt pinning configura
             mv /etc/apt/preferences.d/pinning{.nanolx_old,}
         fi
     ;;
+    enable-listnew )
+        if [ ! -f /etc/apt/apt.conf.d/99-list-new ]; then
+            echo "enabling listing new packages after 'apt update'"
+            cp /usr/share/nanolx/apt.d/99-list-new /etc/apt/apt.conf.d/99-list-new
+        else
+            echo "listing new packages after 'apt update' already enabled"
+        fi
+    ;;
+    disable-listnew )
+        if [ -f /etc/apt/apt.conf.d/99-list-new ]; then
+            echo "disabling listing new packages after 'apt update'"
+            rm /etc/apt/apt.conf.d/99-list-new
+        else
+            echo "listing new packages after 'apt update' not enabled"
+        fi
+    ;;
     version)
         echo "${scriptname} ${version} (${reldate})"
     ;;
@@ -193,6 +210,13 @@ for details.
 
 enable-config    enable 99-nanolx apt config
 disable-config   disable 99-nanolx apt config
+
+** Apt hook
+
+Nanolx allows adding an apt hook listing new packages after 'apt update'
+
+enable-listnew   enabling listing new packages after 'apt update'
+disable-listnew  disabling listing new packages after 'apt update'
 
 ** Apt pinning
 
