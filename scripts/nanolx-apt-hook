@@ -55,7 +55,7 @@ case "${1}" in
                 done
 
                 echo -e "${YELLOW}=============================================="
-                echo -e "${BLUE}Log saved in in:${RESET} ${LOGFILE}"
+                echo -e "${BLUE}Log saved in:${RESET} ${LOGFILE}"
                 echo -e "${YELLOW}==============================================${RESET}\n"
             fi
 
