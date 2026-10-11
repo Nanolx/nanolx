@@ -10,9 +10,14 @@ if (( EUID != 0 )); then
     exit 1
 fi
 
-source /usr/share/nanolx/${scriptname}.conf
+confd="/usr/share/nanolx/"
+source ${confd}${scriptname}.conf
 
 [[ -d "${key_base}" ]] || mkdir -p "${key_base}"
+
+apt_confd="/etc/apt/apt.conf.d/"
+apt_prefd="/etc/apt/preferences.d/"
+apt_srcd="/etc/apt/sources.list.d/"
 
 manage_repos_int () {
     if [[ "${mode}" = "add" ]]; then
@@ -24,7 +29,7 @@ manage_repos_int () {
                     rm "${2}"
                 else
                     echo "enabling repo: ${repo}"
-                    cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                    cp "${sources_d}/${repo}.sources" "${apt_srcd}${repo}.sources"
                 fi
             ;;
             *.deb )
@@ -35,7 +40,7 @@ manage_repos_int () {
                 else
                     dpkg -i "/var/cache/nanolx/${2}"
                     echo "enabling repo: ${repo}"
-                    cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                    cp "${sources_d}/${repo}.sources" "${apt_srcd}${repo}.sources"
                 fi
             ;;
             0x* )
@@ -43,18 +48,18 @@ manage_repos_int () {
                 gpg --export "${1}" > "${2}"
                 if [ -f "${2}" ]; then
                     echo "enabling repo: ${repo}"
-                    cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                    cp "${sources_d}/${repo}.sources" "${apt_srcd}${repo}.sources"
                 else
                     echo "failed to grab key ${1} from ${3}"
                 fi
             ;;
             "" )
-                cp "${sources_d}/${repo}.sources" "/etc/apt/sources.list.d/${repo}.sources"
+                cp "${sources_d}/${repo}.sources" "${apt_srcd}${repo}.sources"
             ;;
         esac
     else
         echo "disabling repo: ${repo}"
-        rm "/etc/apt/sources.list.d/${repo}.sources"
+        rm "${apt_srcd}${repo}.sources"
     fi
 }
 
@@ -82,13 +87,13 @@ manage_repos () {
 is_enabled () {
     case ${1} in
         *.sources )
-            [ -e /etc/apt/sources.list.d/${1} ] && echo "enabled" || echo "disabled"
+            [ -e ${apt_srcd}${1} ] && echo "enabled" || echo "disabled"
         ;;
         99* )
-            [ -e /etc/apt/apt.conf.d/${1} ] && echo "enabled" || echo "disabled"
+            [ -e ${apt_confd}${1} ] && echo "enabled" || echo "disabled"
         ;;
         pinning )
-            [ -e /etc/apt/preferences.d/${1} ] && echo "enabled" || echo "disabled"
+            [ -e ${apt_prefd}${1} ] && echo "enabled" || echo "disabled"
         ;;
     esac
 }
@@ -119,63 +124,63 @@ pinning        + [$(is_enabled pinning)]          + Nanolx apt pinning configura
     add ) manage_repos "add" "${@}" ;;
     remove ) manage_repos "remove" "${@}" ;;
     enable-config )
-        if [ -f /etc/apt/apt.conf.d/99nanolx ]; then
+        if [ -f ${apt_confd}99nanolx ]; then
             # remove file with old name
-            rm /etc/apt/apt.conf.d/99nanolx
+            rm ${apt_confd}99nanolx
         fi
 
-        if [ ! -f /etc/apt/apt.conf.d/99-nanolx ]; then
+        if [ ! -f ${apt_confd}99-nanolx ]; then
             echo "enabling nanolx apt configuration"
-            cp /usr/share/nanolx/apt.d/99-nanolx /etc/apt/apt.conf.d/99-nanolx
+            cp ${confd}apt.d/99-nanolx ${apt_confd}99-nanolx
         else
             echo "nanolx apt configuration already enabled"
         fi
     ;;
     disable-config )
-        if [ -f /etc/apt/apt.conf.d/99nanolx ]; then
+        if [ -f ${apt_confd}99nanolx ]; then
             # remove file with old name
-            rm /etc/apt/apt.conf.d/99nanolx
+            rm ${apt_confd}99nanolx
         fi
 
-        if [ -f /etc/apt/apt.conf.d/99-nanolx ]; then
+        if [ -f ${apt_confd}99-nanolx ]; then
             echo "disabling nanolx apt configuration"
-            rm /etc/apt/apt.conf.d/99-nanolx
+            rm ${apt_confd}99-nanolx
         else
             echo "nanolx apt configuration not enabled"
         fi
     ;;
     enable-pinning )
-        if [ -f /etc/apt/preferences.d/pinning ]; then
-            echo "backing up previous apt pinning to /etc/apt/preferences.d/pinning.nanolx_old"
-            cp /etc/apt/preferences.d/pinning{,.nanolx_old}
+        if [ -f ${apt_prefd}pinning ]; then
+            echo "backing up previous apt pinning to ${apt_prefd}pinning.nanolx_old"
+            cp ${apt_prefd}pinning{,.nanolx_old}
         fi
         echo "enabling nanolx apt pinning configuration"
-        cp /usr/share/nanolx/apt.d/pinning /etc/apt/preferences.d/pinning
+        cp ${confd}apt.d/pinning ${apt_prefd}pinning
     ;;
     disable-pinning )
-        if [ -f /etc/apt/preferences.d/pinning ]; then
+        if [ -f ${apt_prefd}pinning ]; then
             echo "disabling nanolx apt pinning configuration"
-            rm /etc/apt/preferences.d/pinning
+            rm ${apt_prefd}pinning
         else
             echo "nanolx apt pinning not in use"
         fi
-        if [ -f /etc/apt/preferences.d/pinning.nanolx_old ]; then
-            echo "resotoring previous apt pinning from /etc/apt/preferences.d/pinning.nanolx_old"
-            mv /etc/apt/preferences.d/pinning{.nanolx_old,}
+        if [ -f ${apt_prefd}pinning.nanolx_old ]; then
+            echo "resotoring previous apt pinning from ${apt_prefd}pinning.nanolx_old"
+            mv ${apt_prefd}pinning{.nanolx_old,}
         fi
     ;;
     enable-listnew )
-        if [ ! -f /etc/apt/apt.conf.d/99-list-new ]; then
+        if [ ! -f ${apt_confd}99-list-new ]; then
             echo "enabling listing new packages after 'apt update'"
-            cp /usr/share/nanolx/apt.d/99-list-new /etc/apt/apt.conf.d/99-list-new
+            cp ${confd}apt.d/99-list-new ${apt_confd}99-list-new
         else
             echo "listing new packages after 'apt update' already enabled"
         fi
     ;;
     disable-listnew )
-        if [ -f /etc/apt/apt.conf.d/99-list-new ]; then
+        if [ -f ${apt_confd}99-list-new ]; then
             echo "disabling listing new packages after 'apt update'"
-            rm /etc/apt/apt.conf.d/99-list-new
+            rm ${apt_confd}99-list-new
         else
             echo "listing new packages after 'apt update' not enabled"
         fi
@@ -204,7 +209,7 @@ remove           [repo1...repo2]
 
 Nanolx features an optional, custom apt configuration, see
 
-    /usr/share/nanolx/apt.d/99-nanolx
+    ${confd}apt.d/99-nanolx
 
 for details.
 
@@ -222,7 +227,7 @@ disable-listnew  disabling listing new packages after 'apt update'
 
 Nanolx features an optional custom apt pinning file, see
 
-    /usr/share/nanolx/apt.d/pinning
+    ${confd}apt.d/pinning
 
 for details, basically it ensures that extra repositories are prefered over
 Debian repos, for Debian unstable > testing > stable > experimental.
