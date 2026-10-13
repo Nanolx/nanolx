@@ -48,14 +48,14 @@ case "${1}" in
                     if [ -n "${pkg}" ]; then
                         VERSION=$(apt-cache show "${pkg}" 2>/dev/null | grep -m 1 "^Version:" | cut -d' ' -f2-)
                         DESC=$(apt-cache show "${pkg}" 2>/dev/null | grep -m 1 "^Description:" | cut -d' ' -f2-)
-                        echo -e "  • ${GREEN}${pkg}${RESET} (${CYAN}${VERSION}${RESET})" | tee >(ansifilter >> LS)
-                        echo -e "    ${BLUE}↳${RESET} ${DESC}" | tee >(ansifilter >> LS)
-                        echo "" | tee >(ansifilter >> LS)
+                        echo -e "  • ${GREEN}${pkg}${RESET} (${CYAN}${VERSION}${RESET})" | tee >(ansifilter >> "${LOGTMP}")
+                        echo -e "    ${BLUE}↳${RESET} ${DESC}" | tee >(ansifilter >> "${LOGTMP}")
+                        echo "" | tee >(ansifilter >> "${LOGTMP}")
                     fi
                 done
 
                 if [ -f "${LOGFILE}" ]; then
-                    cat "${LOGFILE}" >> "${TMP_LOG}"
+                    cat "${LOGFILE}" >> "${LOGTMP}"
                 fi
                 mv "${TMP_LOG}" "${LOGFILE}"
 
