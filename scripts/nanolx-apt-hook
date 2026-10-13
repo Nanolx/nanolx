@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.0.1"
-reldate="2026/10/11"
+version="0.1.0"
+reldate="2026/10/13"
 
 scriptname=$(basename ${0})
 
@@ -26,7 +26,6 @@ case "${1}" in
         mkdir -p "${TEMPDIR}"
         apt-cache pkgnames 2>/dev/null | sort > "${OLDLIST}"
     ;;
-
     post)
         if [ -f "${OLDLIST}" ]; then
             apt-cache pkgnames 2>/dev/null | sort > "${NEWLIST}"
@@ -36,11 +35,10 @@ case "${1}" in
                 PKG_COUNT=$(echo "${NEW_PKGS}" | wc -l)
                 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
-                apt-cache gencaches >/dev/null 2>&1
+                apt-cache gencaches &>/dev/null
+                LOGTMP=$(mktemp)
 
-                echo "=== new packages found on ${TIMESTAMP} ===" >> "${LOGFILE}"
-                echo "${NEW_PKGS}" >> "${LOGFILE}"
-                echo "" >> "${LOGFILE}"
+                echo "=== new packages found on ${TIMESTAMP} ===" >> "${LOGTMP}"
 
                 echo -e "\n${YELLOW}=============================================="
                 echo -e "${GREEN} ★ Apt Hook: ${PKG_COUNT} new packages(s) found"
@@ -50,18 +48,42 @@ case "${1}" in
                     if [ -n "${pkg}" ]; then
                         VERSION=$(apt-cache show "${pkg}" 2>/dev/null | grep -m 1 "^Version:" | cut -d' ' -f2-)
                         DESC=$(apt-cache show "${pkg}" 2>/dev/null | grep -m 1 "^Description:" | cut -d' ' -f2-)
-                        echo -e "  • ${GREEN}${pkg}${RESET} (${CYAN}${VERSION}${RESET})"
-                        echo -e "    ${BLUE}↳${RESET} ${DESC}"
-                        echo ""
+                        echo -e "  • ${GREEN}${pkg}${RESET} (${CYAN}${VERSION}${RESET})" | tee >(ansifilter >> LS)
+                        echo -e "    ${BLUE}↳${RESET} ${DESC}" | tee >(ansifilter >> LS)
+                        echo "" | tee >(ansifilter >> LS)
                     fi
                 done
 
+                if [ -f "${LOGFILE}" ]; then
+                    cat "${LOGFILE}" >> "${TMP_LOG}"
+                fi
+                mv "${TMP_LOG}" "${LOGFILE}"
+
                 echo -e "${YELLOW}=============================================="
-                echo -e "${BLUE}Log saved in:${RESET} ${LOGFILE}"
+                echo -e "${BLUE}Log saved in:${RESET} ${LOGTMP}"
                 echo -e "${YELLOW}==============================================${RESET}\n"
             fi
 
             rm -f "${OLDLIST}" "${NEWLIST}"
+        fi
+    ;;
+    clear )
+        if [ -f "${LOGFILE}" ]; then
+            echo "removing history of newly added packages"
+            rm "${LOGFILE}"
+        else
+            echo "no history of newly added packages exists"
+        fi
+    ;;
+    show )
+        if [ -f "${LOGFILE}" ]; then
+            if [ -n "${PAGER}" ]; then
+                ${PAGER} "${LOGFILE}"
+            else
+                less "${LOGFILE}"
+            fi
+        else
+            "no new packages recorded by nanolx-apt-hook"
         fi
     ;;
 esac
