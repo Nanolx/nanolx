@@ -7,3 +7,4 @@ usr/share/nanolx/apt.d/99-nanolx
 usr/share/nanolx/apt.d/pinning
 usr/share/nanolx/sources.d/*.sources
 usr/share/bash-completion/completions/nanolx-apt
+usr/share/bash-completion/completions/nanolx-apt-hook
