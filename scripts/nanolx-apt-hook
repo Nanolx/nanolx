@@ -38,9 +38,9 @@ case "${1}" in
 
                 echo "=== new packages found on ${TIMESTAMP} ===" >> "${LOGTMP}"
 
-                echo -e "\n${YELLOW}=============================================="
+                echo -e "\n${YELLOW}================================================"
                 echo -e "${GREEN} ★ Apt Hook: ${PKG_COUNT} new packages(s) found"
-                echo -e "${YELLOW}=============================================="
+                echo -e "${YELLOW}================================================\n"
 
                 echo "${NEW_PKGS}" | while read -r pkg; do
                     if [ -n "${pkg}" ]; then
@@ -57,9 +57,9 @@ case "${1}" in
                 fi
                 mv "${LOGTMP}" "${LOGFILE}"
 
-                echo -e "${YELLOW}=============================================="
+                echo -e "${YELLOW}================================================"
                 echo -e "${BLUE}Log saved in:${RESET} ${LOGFILE}"
-                echo -e "${YELLOW}==============================================${RESET}\n"
+                echo -e "${YELLOW}================================================${RESET}\n"
             fi
 
             rm -f "${OLDLIST}" "${NEWLIST}"
