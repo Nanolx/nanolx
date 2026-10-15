@@ -10,7 +10,7 @@ nanolx (1:5.0.5.20261015-1nano) unstable; urgency=low
       - nanolx-apt 3.1.1
         - fix mozilla repository name in completion and status message
         - add optional 'nanolx-apt-hook' which will check for completely new
-          packages after 'apt upgrade' and list them
+          packages after 'apt update' and list them
           - basically what aptitude/Synaptic do, but for the terminal
           - use 'nanolx-apt enable-listnew' (or 'disable-listnew') to enable/disable it
         - use 'nanolx-apt show-new' to review the list of newly added packages later
