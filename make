@@ -181,7 +181,7 @@ install_release () {
     install data "${CWD}/dist/os-release" lib/
 
     cp "${CWD}/dist/kcm-about-distrorc.in" "${CWD}/dist/kcm-about-distrorc"
-    sed -e "s/@CODENAME@/${codename}/g" -i "${CWD}/dist/kcm-about-distrorc"
+    sed -e "s/@CODENAME@/${codename}/g;s/@VERSION@/${version}/g" -i "${CWD}/dist/kcm-about-distrorc"
     install data "${CWD}/dist/kcm-about-distrorc" /etc/xdg/
 
     install data "${CWD}/dist/config.jsonc" /etc/fastfetch/
