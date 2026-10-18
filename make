@@ -179,15 +179,14 @@ install_citrix () {
 
 install_release () {
     # disguise our Debian as Nanolx
-    cp "${CWD}/dist/os-release.in" "${CWD}/dist/os-release"
-    sed -e "s/@VERSION@/${version}/g;s/@BUILDDATE@/${builddate}/g;s/@CODENAME@/${codename}/g" -i \
-        "${CWD}/dist/os-release"
+    for file in os-release kcm-about-distrorc issue issue.net; do
+        cp "${CWD}/dist/${file}.in" "${CWD}/dist/${file}"
+        sed -e "s/@VERSION@/${version}/g;s/@BUILDDATE@/${builddate}/g;s/@CODENAME@/${codename}/g" -i \
+            "${CWD}/dist/${file}"
+    done
+
     install data "${CWD}/dist/os-release" lib/
-
-    cp "${CWD}/dist/kcm-about-distrorc.in" "${CWD}/dist/kcm-about-distrorc"
-    sed -e "s/@CODENAME@/${codename}/g;s/@VERSION@/${version}/g" -i "${CWD}/dist/kcm-about-distrorc"
     install data "${CWD}/dist/kcm-about-distrorc" /etc/xdg/
-
     install data "${CWD}/dist/config.jsonc" /etc/fastfetch/
     install data "${CWD}/dist/kmscon.conf" /etc/kmscon/
 
@@ -226,6 +225,8 @@ case "${1}" in
     ;;
     clean )
         rm -f "${CWD}/man"/*.1.gz
+        rm -f "${CWD}/dist/issue"
+        rm -f "${CWD}/dist/issue.net"
         rm -f "${CWD}/dist/os-release"
         rm -f "${CWD}/dist/kcm-about-distrorc"
     ;;
