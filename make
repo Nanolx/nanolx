@@ -7,6 +7,10 @@ _deb_version=$(sed -n '1s/.*(\([^)]*\)).*/\1/p' "${CWD}/debian/changelog")
 if [[ ${_deb_version} =~ :([0-9.]+)\.([0-9]{8})- ]]; then
     version="${BASH_REMATCH[1]}"
     builddate="${BASH_REMATCH[2]}"
+else
+    _tag=$(git describe --tags --abbrev=0)
+    version="${_tag//*-}"
+    builddate="$(date +%Y%m%d)"
 fi
 codename=Equinox
 
