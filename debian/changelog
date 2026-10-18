@@ -3,6 +3,7 @@ nanolx (1:5.0.6.2026ddmm-1nano) unstable; urgency=low
   * New upstream release
     [nanolx-base]
       - kde control center/info center: show Nanolx version number, aswell
+      - improved Nanolx branding for Cockpit
 
     [nanolx-apt-sources]
       - debian.sources: use https instead of http URL
