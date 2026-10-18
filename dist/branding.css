@@ -1,13 +1,21 @@
+:root {
+    --pf-t--global--color--brand--default: #a80030 !important;
+    --pf-global--palette--red--100: #a80030 !important;
+
+    --ct-color-host-accent: #207cd8 !important;
+    --pf-global--active-color--100: #207cd8 !important;
+}
+
 #badge {
-    inline-size: 73px;
-    block-size: 73px;
-    background-image: url("logo.png");
+    width: 256px;
+    height: 256px;
+    background-image: url("logo-large.png");
+    background-size: contain;
     background-repeat: no-repeat;
 }
 
 #brand::before {
-    min-inline-size: 121px;
-    min-block-size: 18px;
-    background-image: url("logo-large.png");
-    background-repeat: no-repeat;
+    font-size: 18pt;
+    text-transform: uppercase;
+    content: "${PRETTY_NAME}";
 }
