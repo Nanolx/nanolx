@@ -160,6 +160,7 @@ refer to [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/
         - winehq
         - deb-multimedia
         - mozilla
+    2. `nanolx-apt-hook` optional hook script for `apt update` which will check for completely new packages and list them (when run from terminal) and creates a history file, which can be inspected via `nanolx-apt show-new`, enable it via `nanolx-apt enable-listnew` or disable it via `nanolx-apt disable-listnew`.
 3. `nanolx-apt-tools`
     1. `repokit`         personal wrapper script for `reprepro`, `sbuild` and `dpkg-buildpackage` with config file support, auto ftp-upload and more features.
     2. `nanolx-orbit`    manages installation of 3rdparty packages, including checking sha256sums, currently supported packages:
