@@ -7,7 +7,10 @@ nanolx (1:5.0.6.2026ddmm-1nano) unstable; urgency=low
       - add Nanolx version in issue/issue.net
 
     [nanolx-apt-sources]
-      - debian.sources: use https instead of http URL
+      - debian.sources: use https instead of http URL for security updates
+      - nanolx-apt-hook 0.2.0:
+        - halve calls to 'apt show' to speed things up
+        - ensure the logfile is always created in correct order
 
 nanolx (1:5.0.5.20261015-1nano) unstable; urgency=low
 
