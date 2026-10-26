@@ -24,7 +24,6 @@ Depends:
 Recommends:
  appimagelauncher,
  cryptsetup,
- systemd-cryptsetup,
  zenity
 Description: Nanolx base package
  Nanolx is a set of meta-packages, configurations (optionaly, maintained through scripts),
