@@ -22,7 +22,9 @@ Depends:
  kmscon,
  fonts-firacode
 Recommends:
- appimagelauncher
+ appimagelauncher,
+ cryptsetup,
+ systemd-cryptsetup
 Description: Nanolx base package
  Nanolx is a set of meta-packages, configurations (optionaly, maintained through scripts),
  themes and scripts, wich I use on the Debian GNU/Linux machines that are maintained by me.
