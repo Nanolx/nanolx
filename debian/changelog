@@ -5,6 +5,13 @@ nanolx (1:5.0.6.2026ddmm-1nano) unstable; urgency=low
       - kde control center/info center: show Nanolx version number, aswell
       - improved Nanolx branding for Cockpit
       - add Nanolx version in issue/issue.net
+      - recommend cryptsetup, zenity
+      - nanolx-backup 0.4.0:
+        - support USB backups on encrypted LVM volumes, supports both
+          YubiKey/FIDO2 PIN/Touch unlock, aswell as standard passwords.
+        - if a YubiKey is plugged in, we assume it should be used, if
+          that's not the case you could enter the passphrase instead of
+          the YubiKey PIN to unlock the encrypted volume.
 
     [nanolx-apt-sources]
       - debian.sources: use https instead of http URL for security updates
