@@ -89,7 +89,7 @@ fi
 
 send_notification "Backup started" "Disk ${UUID} was plugged in, rsync'ing: ${SOURCE}..." "drive-harddisk"
 
-rsync -aAXv --ignore-missing-args --delete "${SOURCE}" "${MOUNT}/$(basename "${SOURCE}")/" 2> "${LOGFILE}"
+rsync -aAXv --ignore-missing-args --delete "${SOURCE}" "${MOUNT}/$(basename "${SOURCE}")/" &> "${LOGFILE}"
 RSYNC_STATUS=$?
 
 umount "${MOUNT}"
