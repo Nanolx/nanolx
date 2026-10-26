@@ -3,34 +3,77 @@ scriptname=$(basename ${0})
 
 SOURCE="${1}"
 UUID="${2}"
-BLKD="blkid -U ${2}"
+BLKD=$(blkid -U ${UUID})
 MOUNT="/media/${UUID}"
 LOGFILE="/var/log/${scriptname}-${UUID}-$(date '+%Y%m%d_%H%M%S').log"
+
+_USER=$(loginctl list-sessions | awk '$3 == "yes" {print $4}')
+[ -z "${_USER}" ] && _USER=$(who | awk '{print $1}' | head -n1)
+_UID=$(id -u "${_USER}")
 
 send_notification () {
     local title="${1}"
     local message="${2}"
     local icon="${3}"
 
-    local user=$(loginctl list-sessions | awk '$3 == "yes" {print $4}')
-    [ -z "${user}" ] && user=$(who | awk '{print $1}' | head -n1)
-
-    local uid=$(id -u "${user}")
-
-    if [ -n "${user}" ] && [ -d "/run/user/${uid}" ]; then
-        sudo -u "${user}" \
+    if [ -n "${_USER}" ] && [ -d "/run/user/${_UID}" ]; then
+        sudo -u "${_USER}" \
           DISPLAY=:0 \
-          DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${uid}/bus \
+          DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
           PATH=/usr/bin:${PATH} \
-          XDG_DATA_DIRS="/usr/share/$XDG_CURRENT_DESKTOP:/usr/share" \
+          XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
           notify-send -t 20000 -i "${icon}" "${title}" "${message}"
     fi
 }
 
 mkdir -p "${MOUNT}"
 
-if cryptsetup isLuks ${BLKD} ; then
-    /usr/lib/systemd/systemd-cryptsetup attach ${UUID}_luks ${BLKD} none fido2-device=auto
+if /usr/sbin/cryptsetup isLuks ${BLKD}; then
+    if lsusb | grep -qi "Yubico"; then
+        YUBIKEY_PRESENT=true
+    else
+        YUBIKEY_PRESENT=false
+    fi
+
+    if [ -n "${_USER}" ] && [ -d "/run/user/${_UID}" ]; then
+        if [ "${YUBIKEY_PRESENT}" = true ]; then
+            send_notification "YubiKey Detected" "Please enter your PIN for the security token..." "dialog-password"
+            PASS=$(sudo -u "${_USER}" \
+              DISPLAY=:0 \
+              DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
+              PATH=/usr/bin:${PATH} \
+              XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
+              XDG_RUNTIME_DIR=/run/user/${_UID} \
+              zenity --entry --hide-text --title="YubiKey FIDO2 Request" --text="Enter FIDO2 PIN for encrypted disk (${UUID}):")
+        else
+            send_notification "No YubiKey Found" "Falling back to standard LUKS passphrase..." "dialog-information"
+            PASS=$(sudo -u "${_USER}" \
+              DISPLAY=:0 \
+              DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
+              PATH=/usr/bin:${PATH} \
+              XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
+              XDG_RUNTIME_DIR=/run/user/${_UID}} \
+              zenity --entry --hide-text --title="LUKS Password Request" --text="Enter standard passphrase for disk (${UUID}):")
+        fi
+    fi
+
+    if [ "${YUBIKEY_PRESENT}" = true ]; then
+        if [ -n "${PASS}" ]; then
+            send_notification "YubiKey Active" "PIN entered. Please touch your YubiKey to authenticate..." "dialog-information"
+            echo "${PASS}" | /usr/sbin/cryptsetup --token-only open "${BLKD}" "${UUID}_luks"
+        else
+            send_notification "YubiKey Active" "Please touch your YubiKey to authenticate..." "dialog-information"
+            /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
+        fi
+    else
+        if [ -n "${PASS}" ]; then
+            echo "${PASS}" | /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
+        else
+            send_notification "Aborted" "No passphrase was provided." "dialog-error"
+            exit 1
+        fi
+    fi
+
     mount /dev/mapper/${UUID}_luks -orw "${MOUNT}"
     if [ $? -ne 0 ]; then
         send_notification "Backup failed" "Encrypted Disk ${UUID} could not be mounted!" "dialog-error"
