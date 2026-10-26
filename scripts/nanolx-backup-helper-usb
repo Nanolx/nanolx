@@ -53,7 +53,7 @@ umount "${MOUNT}"
 rmdir "${MOUNT}"
 
 if cryptsetup isLuks ${BLKD} ; then
-    /usr/lib/systemd/systemd-cryptsetup dettach ${UUID}_luks
+    /usr/lib/systemd/systemd-cryptsetup detach ${UUID}_luks
 fi
 
 if [ ${RSYNC_STATUS} -eq 0 ]; then
