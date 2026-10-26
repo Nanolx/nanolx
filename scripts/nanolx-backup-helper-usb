@@ -3,6 +3,7 @@ scriptname=$(basename ${0})
 
 SOURCE="${1}"
 UUID="${2}"
+BLKD="blkid -U ${2}"
 MOUNT="/media/${UUID}"
 LOGFILE="/var/log/${scriptname}-${UUID}-$(date '+%Y%m%d_%H%M%S').log"
 
@@ -21,15 +22,26 @@ send_notification () {
           DISPLAY=:0 \
           DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${uid}/bus \
           PATH=/usr/bin:${PATH} \
+          XDG_DATA_DIRS="/usr/share/$XDG_CURRENT_DESKTOP:/usr/share" \
           notify-send -t 20000 -i "${icon}" "${title}" "${message}"
     fi
 }
 
 mkdir -p "${MOUNT}"
-mount -U "${UUID}" -orw "${MOUNT}"
-if [ $? -ne 0 ]; then
-    send_notification "Backup failed" "Disk ${UUID} could not be mounted!" "dialog-error"
-    exit 1
+
+if cryptsetup isLuks ${BLKD} ; then
+    /usr/lib/systemd/systemd-cryptsetup attach ${UUID}_luks ${BLKD} none fido2-device=auto
+    mount /dev/mapper/${UUID}_luks -orw "${MOUNT}"
+    if [ $? -ne 0 ]; then
+        send_notification "Backup failed" "Encrypted Disk ${UUID} could not be mounted!" "dialog-error"
+        exit 1
+    fi
+else
+    mount -U "${UUID}" -orw "${MOUNT}"
+    if [ $? -ne 0 ]; then
+        send_notification "Backup failed" "Disk ${UUID} could not be mounted!" "dialog-error"
+        exit 1
+    fi
 fi
 
 send_notification "Backup started" "Disk ${UUID} was plugged in, rsync'ing: ${SOURCE}..." "drive-harddisk"
@@ -39,6 +51,10 @@ RSYNC_STATUS=$?
 
 umount "${MOUNT}"
 rmdir "${MOUNT}"
+
+if cryptsetup isLuks ${BLKD} ; then
+    /usr/lib/systemd/systemd-cryptsetup dettach ${UUID}_luks
+fi
 
 if [ ${RSYNC_STATUS} -eq 0 ]; then
     send_notification "Backup finished" "All files syncronized, Drive ${UUID} may be removed." "emblem-success"

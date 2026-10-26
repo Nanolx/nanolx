@@ -1,6 +1,9 @@
 [Unit]
 Description=rsync USB backup for @SOURCE@
+After=dev-%i.device
 
 [Service]
 Type=oneshot
+StandardOutput=syslog
+StandardError=syslog
 ExecStart=/usr/sbin/nanolx-backup-helper-usb @SOURCE@ @UUID@
