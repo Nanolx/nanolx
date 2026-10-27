@@ -95,7 +95,7 @@ RSYNC_STATUS=$?
 umount "${MOUNT}"
 rmdir "${MOUNT}"
 
-if cryptsetup isLuks ${BLKD} ; then
+if /usr/sbin/cryptsetup isLuks ${BLKD} ; then
     /usr/sbin/cryptsetup close ${UUID}_luks
 fi
 
