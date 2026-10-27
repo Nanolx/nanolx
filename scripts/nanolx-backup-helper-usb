@@ -11,8 +11,6 @@ _USER=$(loginctl list-sessions --no-legend | awk '/user /{print $3}' | head -n1)
 [ -z "${_USER}" ] && _USER=$(who | awk '{print $1}' | head -n1)
 _UID=$(id -u "${_USER}")
 
-echo $_USER $_UID
-
 send_notification () {
     local title="${1}"
     local message="${2}"
