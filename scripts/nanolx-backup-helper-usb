@@ -37,7 +37,6 @@ if /usr/sbin/cryptsetup isLuks ${BLKD}; then
 
     if [ -n "${_USER}" ] && [ -d "/run/user/${_UID}" ]; then
         if [ "${YUBIKEY_PRESENT}" = true ]; then
-            send_notification "YubiKey Detected" "Please enter your PIN for the security token..." "dialog-password"
             PASS=$(sudo -u "${_USER}" \
               DISPLAY=:0 \
               DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
@@ -46,7 +45,6 @@ if /usr/sbin/cryptsetup isLuks ${BLKD}; then
               XDG_RUNTIME_DIR=/run/user/${_UID} \
               zenity --entry --hide-text --title="YubiKey FIDO2 Request" --text="Enter FIDO2 PIN for encrypted disk (${UUID}):")
         else
-            send_notification "No YubiKey Found" "Falling back to standard LUKS passphrase..." "dialog-information"
             PASS=$(sudo -u "${_USER}" \
               DISPLAY=:0 \
               DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
