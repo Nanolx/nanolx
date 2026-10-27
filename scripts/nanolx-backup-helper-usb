@@ -7,9 +7,11 @@ BLKD=$(blkid -U ${UUID})
 MOUNT="/media/${UUID}"
 LOGFILE="/var/log/${scriptname}-${UUID}-$(date '+%Y%m%d_%H%M%S').log"
 
-_USER=$(loginctl list-sessions | awk '$3 == "yes" {print $4}')
+_USER=$(loginctl list-sessions --no-legend | awk '/user /{print $3}' | head -n1)
 [ -z "${_USER}" ] && _USER=$(who | awk '{print $1}' | head -n1)
 _UID=$(id -u "${_USER}")
+
+echo $_USER $_UID
 
 send_notification () {
     local title="${1}"
@@ -26,49 +28,45 @@ send_notification () {
     fi
 }
 
+zenity_ask_pass () {
+    PASS=$(sudo -u "${_USER}" \
+        DISPLAY=:0 \
+        DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
+        PATH=/usr/bin:${PATH} \
+        XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
+        XDG_RUNTIME_DIR=/run/user/${_UID} \
+        zenity --entry --hide-text --title="${1}" --text="${2}")
+}
+
 mkdir -p "${MOUNT}"
 
 if /usr/sbin/cryptsetup isLuks ${BLKD}; then
-    if lsusb | grep -qi "Yubico"; then
-        YUBIKEY_PRESENT=true
-    else
-        YUBIKEY_PRESENT=false
-    fi
+    lsusb | grep -qi "Yubico" && YUBIKEY_PRESENT=true || YUBIKEY_PRESENT=false
 
     if [ -n "${_USER}" ] && [ -d "/run/user/${_UID}" ]; then
         if [ "${YUBIKEY_PRESENT}" = true ]; then
-            PASS=$(sudo -u "${_USER}" \
-              DISPLAY=:0 \
-              DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
-              PATH=/usr/bin:${PATH} \
-              XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
-              XDG_RUNTIME_DIR=/run/user/${_UID} \
-              zenity --entry --hide-text --title="YubiKey FIDO2 Request" --text="Enter FIDO2 PIN for encrypted disk (${UUID}):")
+            zenity_ask_pass "YubiKey FIDO2 Request" "Enter FIDO2 PIN for encrypted disk (${UUID}):"
+            if [ $? -ne 0 ]; then
+                send_notification "Aborted" "Aborted from password dialog." "dialog-error"
+                exit 1
+            elif [ -n "${PASS}" ]; then
+                send_notification "YubiKey Active" "PIN entered. Please touch your YubiKey to authenticate..." "dialog-information"
+                echo "${PASS}" | /usr/sbin/cryptsetup --token-only open "${BLKD}" "${UUID}_luks"
+            else
+                send_notification "YubiKey Active" "Please touch your YubiKey to authenticate..." "dialog-information"
+                /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
+            fi
         else
-            PASS=$(sudo -u "${_USER}" \
-              DISPLAY=:0 \
-              DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
-              PATH=/usr/bin:${PATH} \
-              XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
-              XDG_RUNTIME_DIR=/run/user/${_UID}} \
-              zenity --entry --hide-text --title="LUKS Password Request" --text="Enter standard passphrase for disk (${UUID}):")
-        fi
-    fi
-
-    if [ "${YUBIKEY_PRESENT}" = true ]; then
-        if [ -n "${PASS}" ]; then
-            send_notification "YubiKey Active" "PIN entered. Please touch your YubiKey to authenticate..." "dialog-information"
-            echo "${PASS}" | /usr/sbin/cryptsetup --token-only open "${BLKD}" "${UUID}_luks"
-        else
-            send_notification "YubiKey Active" "Please touch your YubiKey to authenticate..." "dialog-information"
-            /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
-        fi
-    else
-        if [ -n "${PASS}" ]; then
-            echo "${PASS}" | /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
-        else
-            send_notification "Aborted" "No passphrase was provided." "dialog-error"
-            exit 1
+            zenity_ask_pass "LUKS Password Request" "Enter standard passphrase for disk (${UUID}):"
+            if [ $? -ne 0 ]; then
+                send_notification "Aborted" "Aborted from password dialog." "dialog-error"
+                exit 1
+            elif [ -n "${PASS}" ]; then
+                echo "${PASS}" | /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
+            else
+                send_notification "Aborted" "No passphrase was provided." "dialog-error"
+                exit 1
+            fi
         fi
     fi
 
