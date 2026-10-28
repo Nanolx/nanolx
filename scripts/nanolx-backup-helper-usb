@@ -26,18 +26,19 @@ send_notification () {
     fi
 }
 
-zenity_ask_pass () {
+kdialog_ask_pass () {
     title="${1}"
     text="${2}"
 
     if [ -n "${_USER}" ] && [ -d "/run/user/${_UID}" ]; then
         sudo -u "${_USER}" \
             DISPLAY=:0 \
+            WAYLAND_DISPLAY=wayland-0 \
             DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
             PATH=/usr/bin:${PATH} \
             XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
             XDG_RUNTIME_DIR=/run/user/${_UID} \
-            zenity --entry --hide-text --title="${1}" --text="${2}"
+            kdialog --title "${title}" --password "${text}"
     fi
 }
 
@@ -52,7 +53,7 @@ if /usr/sbin/cryptsetup isLuks ${BLKD}; then
     lsusb | grep -qi "Yubico" && YUBIKEY_PRESENT=true || YUBIKEY_PRESENT=false
 
     if [ "${YUBIKEY_PRESENT}" = true ]; then
-        PASS=$(zenity_ask_pass "YubiKey FIDO2 Request" "Enter FIDO2 PIN for encrypted disk ${BLKD}\n(${UUID}):")
+        PASS=$(kdialog_ask_pass "YubiKey FIDO2 Request" "Enter FIDO2 PIN for encrypted disk ${BLKD}\n(${UUID}):")
         if [ $? -ne 0 ]; then
             send_notification "Aborted" "Aborted from password dialog." "dialog-error"
             exit 1
@@ -64,7 +65,7 @@ if /usr/sbin/cryptsetup isLuks ${BLKD}; then
             /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
         fi
     else
-        PASS=$(zenity_ask_pass "LUKS Password Request" "Enter standard passphrase for disk ${BLKD}\n(${UUID}):")
+        PASS=$(kdialog_ask_pass "LUKS Password Request" "Enter standard passphrase for disk ${BLKD}\n(${UUID}):")
         if [ $? -ne 0 ]; then
             send_notification "Aborted" "Aborted from password dialog." "dialog-error"
             exit 1

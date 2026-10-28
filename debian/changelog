@@ -5,14 +5,14 @@ nanolx (1:5.0.6.2026ddmm-1nano) unstable; urgency=low
       - kde control center/info center: show Nanolx version number, aswell
       - improved Nanolx branding for Cockpit
       - add Nanolx version in issue/issue.net
-      - recommend cryptsetup, zenity
-      - nanolx-backup 0.4.1:
+      - recommend cryptsetup, kdialog
+      - nanolx-backup 0.4.2:
         - support USB backups on encrypted LVM volumes, supports both
           YubiKey/FIDO2 PIN/Touch unlock, aswell as standard passwords.
         - if a YubiKey is plugged in, we assume it should be used, if
           that's not the case you could enter the passphrase instead of
           the YubiKey PIN to unlock the encrypted volume anyway.
-        - the password dialog uses zenity, the case the user aborts,
+        - the password dialog uses kidalog, the case the user aborts,
           closes the dialog or enters no password is handled.
         - log everything to the log file, not just errors, still the
           log file will be silently removed if no error occurs.
