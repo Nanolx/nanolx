@@ -41,13 +41,18 @@ zenity_ask_pass () {
     fi
 }
 
+if [ -z "${BLKD}" ]; then
+    send_notification "Device vanished" "Device ${UUID} vanished/not plugged in" "dialog-error"
+    exit 1
+fi
+
 mkdir -p "${MOUNT}"
 
 if /usr/sbin/cryptsetup isLuks ${BLKD}; then
     lsusb | grep -qi "Yubico" && YUBIKEY_PRESENT=true || YUBIKEY_PRESENT=false
 
     if [ "${YUBIKEY_PRESENT}" = true ]; then
-        PASS=$(zenity_ask_pass "YubiKey FIDO2 Request" "Enter FIDO2 PIN for encrypted disk (${UUID}):")
+        PASS=$(zenity_ask_pass "YubiKey FIDO2 Request" "Enter FIDO2 PIN for encrypted disk ${BLKD}\n(${UUID}):")
         if [ $? -ne 0 ]; then
             send_notification "Aborted" "Aborted from password dialog." "dialog-error"
             exit 1
@@ -59,7 +64,7 @@ if /usr/sbin/cryptsetup isLuks ${BLKD}; then
             /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
         fi
     else
-        PASS=$(zenity_ask_pass "LUKS Password Request" "Enter standard passphrase for disk (${UUID}):")
+        PASS=$(zenity_ask_pass "LUKS Password Request" "Enter standard passphrase for disk ${BLKD}\n(${UUID}):")
         if [ $? -ne 0 ]; then
             send_notification "Aborted" "Aborted from password dialog." "dialog-error"
             exit 1
