@@ -19,10 +19,12 @@ send_notification () {
     if [ -n "${_USER}" ] && [ -d "/run/user/${_UID}" ]; then
         sudo -u "${_USER}" \
           DISPLAY=:0 \
+          XDG_RUNTIME_DIR="/run/user/${_UID}" \
           DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/${_UID}/bus \
           PATH=/usr/bin:${PATH} \
           XDG_DATA_DIRS="/usr/share/${XDG_CURRENT_DESKTOP}:/usr/share" \
-          notify-send -t 20000 -i "${icon}" "${title}" "${message}"
+          notify-send --hint=boolean:transient:false \
+            -a nanolx-backup -t 20000 -i "${icon}" "${title}" "${message}"
     fi
 }
 

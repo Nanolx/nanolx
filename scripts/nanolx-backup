@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.4.2"
-reldate="2026/10/28"
+version="0.4.3"
+reldate="2026/10/29"
 
 scriptname=$(basename ${0})
 
