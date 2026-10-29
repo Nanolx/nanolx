@@ -1,3 +1,4 @@
 #!/bin/sh
 export ICAROOT=/opt/Citrix/ICAClient
-exec ${ICAROOT}/wfica -file "$1"
+export LD_LIBRARY_PATH=/opt/Citrix/ICAClient/lib
+${ICAROOT}/wfica -file "${1}"
