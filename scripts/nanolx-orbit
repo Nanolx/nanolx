@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.2.4"
-reldate="2026/09/19"
+version="0.2.5"
+reldate="2026/10/30"
 
 if (( EUID != 0 )); then
     echo "${scriptname} must be run as root"
@@ -16,6 +16,8 @@ mkdir -p "${pkg_base}"
 source /usr/share/nanolx/${scriptname}.conf
 
 curl_opts="-L --progress-bar -C -"
+
+mscorefonts_path=/usr/share/fonts/truetype/msfonts/
 
 check_sha256 () {
     local checksum="${1}"
@@ -50,6 +52,16 @@ check_modern_citrix () {
 is_installed () {
     if dpkg-query --show --showformat='${Status}' "${1}" 2>/dev/null | \
         grep -q "^install ok"; then
+        echo "installed"
+        return 0
+    else
+        echo "not installed"
+        return 1
+    fi
+}
+
+fonts_installed () {
+    if [ -d ${mscorefonts_path} ]; then
         echo "installed"
         return 0
     else
@@ -125,6 +137,32 @@ install_helper () {
 }
 
 
+install_corefonts () {
+    pkg_file="$(basename "${mscorefonts_url}")"
+    download_package "${mscorefonts_url}" "mscorefonts" "${mscorefonts_sha}" "${pkg_file}"
+
+    if [[ "${noinst}" = "false" ]]; then
+        tar -xf "${pkg_base}/${pkg_file}" -C "${pkg_base}"
+        cd "${pkg_base}/msfonts/"
+        for exe in *.exe; do
+            cabextract -q -L -F '*.ttf' "${exe}"
+        done
+
+        echo "installing Microsoft Core Fonts"
+        mkdir -p "${mscorefonts_path}"
+
+        for font in *.ttf; do
+            install -m644 "${font}" "${mscorefonts_path}"
+        done
+
+        cd "${pkg_base}"
+        rm -rf msfonts
+
+        echo "updating font cache"
+        fc-cache -f
+    fi
+}
+
 handle_packages () {
     mode="${1}"
     shift
@@ -137,6 +175,9 @@ handle_packages () {
             ;;
             zoom | citrix | citrix-usb | citrix-epa | citrix-beta | citrix-beta-usb | webex-vdi )
                 install_helper "${pkg}" true
+            ;;
+            mscorefonts )
+                install_corefonts
             ;;
             * )
                 echo "package ${pkg} unknown"
@@ -207,6 +248,7 @@ citrix-usb:         + [${citrix_usb_inst}]                  + ${citrix_usb_lcl}/
 citrix-epa:         + [$(is_installed ${citrix_epa_bin})]   + $(installed_version ${citrix_epa_bin})/${citrix_epa_ver}
 citrix-beta:        + [${citrix_beta_inst}]                 + ${citrix_beta_lcl}/${citrix_beta_ver}
 citrix-beta-usb:    + [${citrix_usb_beta_inst}]             + ${citrix_usb_beta_lcl}/${citrix_beta_usb_ver}
+mscorefonts:        + [$(fonts_installed)]                  +
 " | column -t -s"+"
     ;;
 

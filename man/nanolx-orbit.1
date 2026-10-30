@@ -1,4 +1,4 @@
-.TH nanolx-orbit 1 "2026 Sep 19"
+.TH nanolx-orbit 1 "2026 Oct 30"
 .SH NAME
 nanolx-orbit
 .SH SYNOPSIS
@@ -7,25 +7,36 @@ nanolx-orbit [list] [download \fIpackge[s]\fP] [install \fIpackage[s]\fP] [clear
 nanolx-orbit is a simple script that manages installation of citrix and zoom,
 including checking sha256sums.
 
-Currently supported packages: citrix, citrix-usb, citrix-epa,
-citrix-beta, citrix-beta-usb, zoom and zoom-vdi plugin.
+Currently supported packages: citrix, citrix-usb, citrix-epa, citrix-beta,
+citrix-beta-usb, zoom and zoom-vdi plugin, mscorefonts.
 
 .TP 4
-..B citrix (icaclient)
+.B citrix
+Stable Citrix Workspace release
 .TP
 .B citrix-usb
+Stable Citrix USB support package
 .TP
-.B citrix-epa (citrix endpoint analysis)
+.B citrix-epa
+Stable Citrix EndPoint Analysis (EPA) plugin
 .TP
-.B citrix-beta (icaclient, GCC 11 tech preview)
+.B citrix-beta
+Citrix Workspace GCC 11 tech preview
 .TP
-.B citrix-usb-beta (GCC 11 tech preview)
+.B citrix-beta-usb
+Citrix USB support package GCC 11 tech preview
 .TP
 .B zoom
+Zoom Workplace
 .TP
 .B zomm-vdi plugin
+Zoom VDI (Virtual Desktop Infrastructure) plugin for use with Citrix
 .TP
 .B webex-vdi plugin
+Cisco Webex VDI (Virtual Desktop Infrastructure) plugin for use with Citrix
+.TP
+.B mscorefonts
+Microsoft Core Fonts (still required for some legacy applications/games)
 .PP
 
 nanolx-orbit stores all downloaded files at \fI/var/cache/nanolx\fP.

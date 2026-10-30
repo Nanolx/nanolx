@@ -30,6 +30,15 @@ nanolx (1:5.0.6.2026ddmm-1nano) unstable; urgency=low
       - repokit 1.8.1:
         - 'repokit prepare' no longer erroneously remove the shebang
         - 'repokit prepare' now does more cleanup to debian/rules
+      - nanolx-orbit 0.2.5
+        - support installing Microsoft Core Fonts (theese are still
+          required for legacy applications, mostly old games, the
+          package ttf-mscorefonts-installer is only available on
+          Debian/Stable and it's defunct, because of changes to the
+          Sourceforge infrastructure, nanolx-orbit downloads the files
+          from FreeDesktop instead)
+        - more informative man page
+      - new provides: ttf-mscorefonts-installer
 
     [nanolx-citrix-config]
       - update wfica.sh
