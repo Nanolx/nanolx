@@ -1,5 +1,6 @@
 #!/bin/bash
 scriptname=$(basename ${0})
+APP_NAME="Nanolx Backup (USB Helper)"
 
 SOURCE="${1}"
 UUID="${2}"
@@ -45,7 +46,7 @@ kdialog_ask_pass () {
 }
 
 if [ -z "${BLKD}" ]; then
-    send_notification "Nanolx Backup (USB Helper)" "Device ${UUID} vanished/not plugged in" "dialog-error"
+    send_notification "${APP_NAME}" "Device ${UUID} vanished/not plugged in" "dialog-error"
     exit 1
 fi
 
@@ -55,45 +56,45 @@ if /usr/sbin/cryptsetup isLuks ${BLKD}; then
     lsusb | grep -qi "Yubico" && YUBIKEY_PRESENT=true || YUBIKEY_PRESENT=false
 
     if [ "${YUBIKEY_PRESENT}" = true ]; then
-        PASS=$(kdialog_ask_pass "Nanolx Backup (USB Helper)" "Enter FIDO2 PIN for encrypted disk ${BLKD}\n(${UUID}):")
+        PASS=$(kdialog_ask_pass "${APP_NAME}" "Enter FIDO2 PIN for encrypted disk ${BLKD}\n(${UUID}):")
         if [ $? -ne 0 ]; then
-            send_notification "Nanolx Backup (USB Helper)" "Aborted from password dialog." "dialog-error"
+            send_notification "${APP_NAME}" "Aborted from password dialog." "dialog-error"
             exit 1
         elif [ -n "${PASS}" ]; then
-            send_notification "Nanolx Backup (USB Helper)" "PIN entered. Please touch your YubiKey to authenticate..." "dialog-information"
+            send_notification "${APP_NAME}" "PIN entered. Please touch your YubiKey to authenticate..." "dialog-information"
             echo "${PASS}" | /usr/sbin/cryptsetup --token-only open "${BLKD}" "${UUID}_luks" || \
                 echo "${PASS}" | /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
         else
-            send_notification "Nanolx Backup (USB Helper)" "Please touch your YubiKey to authenticate..." "dialog-information"
+            send_notification "${APP_NAME}" "Please touch your YubiKey to authenticate..." "dialog-information"
             /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
         fi
     else
-        PASS=$(kdialog_ask_pass "Nanolx Backup (USB Helper)" "Enter passphrase for encrypted disk ${BLKD}\n(${UUID}):")
+        PASS=$(kdialog_ask_pass "${APP_NAME}" "Enter passphrase for encrypted disk ${BLKD}\n(${UUID}):")
         if [ $? -ne 0 ]; then
-            send_notification "Nanolx Backup (USB Helper)" "Aborted from password dialog." "dialog-error"
+            send_notification "${APP_NAME}" "Aborted from password dialog." "dialog-error"
             exit 1
         elif [ -n "${PASS}" ]; then
             echo "${PASS}" | /usr/sbin/cryptsetup open "${BLKD}" "${UUID}_luks"
         else
-            send_notification "Nanolx Backup (USB Helper)" "No passphrase was provided." "dialog-error"
+            send_notification "${APP_NAME}" "No passphrase was provided." "dialog-error"
             exit 1
         fi
     fi
 
     mount /dev/mapper/${UUID}_luks -orw "${MOUNT}"
     if [ $? -ne 0 ]; then
-        send_notification "Nanolx Backup (USB Helper)" "Encrypted Disk ${UUID} could not be mounted!" "dialog-error"
+        send_notification "${APP_NAME}" "Encrypted Disk ${UUID} could not be mounted!" "dialog-error"
         exit 1
     fi
 else
     mount -U "${UUID}" -orw "${MOUNT}"
     if [ $? -ne 0 ]; then
-        send_notification "Nanolx Backup (USB Helper)" "Disk ${UUID} could not be mounted!" "dialog-error"
+        send_notification "${APP_NAME}" "Disk ${UUID} could not be mounted!" "dialog-error"
         exit 1
     fi
 fi
 
-send_notification "Nanolx Backup (USB Helper)" "Disk ${UUID} was plugged in, rsync'ing: ${SOURCE}..." "drive-harddisk"
+send_notification "${APP_NAME}" "Disk ${UUID} was plugged in, rsync'ing: ${SOURCE}..." "drive-harddisk"
 
 rsync -aAXv --ignore-missing-args --delete "${SOURCE}" "${MOUNT}/$(basename "${SOURCE}")/" &> "${LOGFILE}"
 RSYNC_STATUS=$?
@@ -106,8 +107,8 @@ if /usr/sbin/cryptsetup isLuks ${BLKD} ; then
 fi
 
 if [ ${RSYNC_STATUS} -eq 0 ]; then
-    send_notification "Nanolx Backup (USB Helper)" "All files syncronized, Drive ${UUID} may be removed." "emblem-success"
+    send_notification "${APP_NAME}" "All files syncronized, Drive ${UUID} may be removed." "emblem-success"
     rm -f "${LOGFILE}"
 else
-    send_notification "Nanolx Backup (USB Helper)" "rsync failed with Error: ${RSYNC_STATUS} (see ${LOGFILE} for details)!" "dialog-error"
+    send_notification "${APP_NAME}" "rsync failed with Error: ${RSYNC_STATUS} (see ${LOGFILE} for details)!" "dialog-error"
 fi
