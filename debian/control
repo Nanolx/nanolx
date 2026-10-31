@@ -436,7 +436,8 @@ Depends:
  iqpuzzle,
  kmahjongg
 Recommends:
- xpadneo-dkms
+ xpadneo-dkms,
+ wine-stable | wine-devel | wine-staging
 Description: Collection of games
  This meta-package installs games and launchers.
 
