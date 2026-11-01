@@ -1,3 +1,15 @@
+nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
+
+  * New upstream release
+    [nanolx-base]
+      - skel: conkyrc change hour format
+
+    [nanolx-games]
+      - new recommends: wine-{stable,devel,staging}
+
+    [nanolx-apt-sources]
+      - mozilla.sources: amd64 only
+
 nanolx (1:5.0.6.20261030-1nano) unstable; urgency=low
 
   * New upstream release
