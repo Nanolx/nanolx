@@ -12,6 +12,7 @@ nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
       - nanolx-orbit 0.2.6:
         - update for Citrix 26.08.0.225
         - remove no longer available Citrix Beta
+        - update for Zoom 7.2.5.6661
 
     [nanolx-citrix-config]
       - remove wfica.sh
