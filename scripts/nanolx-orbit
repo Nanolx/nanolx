@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.2.5"
-reldate="2026/10/30"
+version="0.2.6"
+reldate="2026/11/03"
 
 if (( EUID != 0 )); then
     echo "${scriptname} must be run as root"
@@ -173,7 +173,7 @@ handle_packages () {
             zoom-vdi )
                 install_helper "${pkg}"
             ;;
-            zoom | citrix | citrix-usb | citrix-epa | citrix-beta | citrix-beta-usb | webex-vdi )
+            zoom | citrix | citrix-usb | citrix-epa | webex-vdi )
                 install_helper "${pkg}" true
             ;;
             mscorefonts )
@@ -210,32 +210,32 @@ case ${user_opt} in
 
     list )
         citrix_inst="not installed"
-        citrix_beta_inst="not installed"
+       # citrix_beta_inst="not installed"
         citrix_usb_inst="not installed"
-        citrix_usb_beta_inst="not installed"
+       # citrix_usb_beta_inst="not installed"
         citrix_lcl="---"
-        citrix_beta_lcl="---"
+        #citrix_beta_lcl="---"
         citrix_usb_lcl="---"
-        citrix_usb_beta_lcl="---"
+        #citrix_usb_beta_lcl="---"
 
         if $(is_installed ${citrix_bin} &>/dev/null); then
-            if check_modern_citrix; then
-                citrix_beta_inst="installed"
-                citrix_beta_lcl="$(installed_version ${citrix_bin})"
-            else
+        #    if check_modern_citrix; then
+        #        citrix_beta_inst="installed"
+        #        citrix_beta_lcl="$(installed_version ${citrix_bin})"
+        #    else
                 citrix_inst="installed"
                 citrix_lcl="$(installed_version ${citrix_bin})"
-            fi
+        #    fi
         fi
 
         if $(is_installed ${citrix_usb_bin} &>/dev/null); then
-            if check_modern_citrix; then
-                citrix_usb_beta_inst="installed"
-                citrix_usb_beta_lcl="$(installed_version ${citrix_usb_bin})"
-            else
+        #    if check_modern_citrix; then
+        #        citrix_usb_beta_inst="installed"
+        #        citrix_usb_beta_lcl="$(installed_version ${citrix_usb_bin})"
+        #    else
                 citrix_usb_inst="installed"
                 citrix_usb_lcl="$(installed_version ${citrix_usb_bin})"
-            fi
+        #    fi
         fi
 
         echo "${scriptname} supports the following packages (local version/latest version)"
@@ -246,10 +246,10 @@ webex-vdi:          + [$(is_installed ${webex_vdi_bin})]    + $(installed_versio
 citrix:             + [${citrix_inst}]                      + ${citrix_lcl}/${citrix_ver}
 citrix-usb:         + [${citrix_usb_inst}]                  + ${citrix_usb_lcl}/${citrix_usb_ver}
 citrix-epa:         + [$(is_installed ${citrix_epa_bin})]   + $(installed_version ${citrix_epa_bin})/${citrix_epa_ver}
-citrix-beta:        + [${citrix_beta_inst}]                 + ${citrix_beta_lcl}/${citrix_beta_ver}
-citrix-beta-usb:    + [${citrix_usb_beta_inst}]             + ${citrix_usb_beta_lcl}/${citrix_beta_usb_ver}
 mscorefonts:        + [$(fonts_installed)]                  +
 " | column -t -s"+"
+#citrix-beta:        + [${citrix_beta_inst}]                 + ${citrix_beta_lcl}/${citrix_beta_ver}
+#citrix-beta-usb:    + [${citrix_usb_beta_inst}]             + ${citrix_usb_beta_lcl}/${citrix_beta_usb_ver}
     ;;
 
     clear )
