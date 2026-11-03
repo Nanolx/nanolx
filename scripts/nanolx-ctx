@@ -1,7 +1,7 @@
 #!/bin/bash
 
-version="0.2.0"
-reldate="2026/09/14"
+version="0.2.1"
+reldate="2026/11/03"
 
 scriptname=$(basename ${0})
 
@@ -258,26 +258,23 @@ existing user's HOME/.ICAClient/wfclient.ini to force apply changes"
 
     status )
         echo "${scriptname} status report"
-        if check_modern_citrix; then
-            echo "citrix channel:                   GCC 11 tech preview (beta)"
-        else
-            echo "citrix channel:                   stable"
-        fi
-
         echo "citrix version:                   ${ICA_VER_P}"
+
+        if check_modern_citrix; then
+            echo "citrix channel:                   GCC 11 (linked against modern libraries)"
+        else
+            echo "citrix channel:                   GCC 8 (linked against legacy libraries)"
+            if [ -f /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37.56.4 ]; then
+                echo "citrix webkit2gtk-4.0 status:     installed"
+            else
+                echo "citrix webkit2gtk-4.0 status:     not installed"
+            fi
+        fi
 
         if [ -L "${ICAROOT}/keystore/cacerts" ]; then
             echo "citrix certificate storage:       system certificates"
         else
             echo "citrix certificate storage:       citrix stock"
-        fi
-
-        if check_modern_citrix; then
-            echo "citrix webkit2gtk-4.0 status:     not required"
-        elif [ -f /usr/lib/x86_64-linux-gnu/libwebkit2gtk-4.0.so.37.56.4 ]; then
-            echo "citrix webkit2gtk-4.0 status:     installed"
-        else
-            echo "citrix webkit2gtk-4.0 status:     not installed"
         fi
 
         if grep -q "Ceip=Enable|DisableHeartBeat=False" "${ICAROOT}/config/module.ini"; then

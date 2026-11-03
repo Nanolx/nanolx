@@ -19,6 +19,10 @@ nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
     [nanolx-citrix-config]
       - remove wfica.sh
       - remove wfica_assoc.sh
+      - nanolx-ctx 0.2.1:
+        - 'nanolx-ctx status' update check and wording for citrix channel and
+          webkit2gtk-4.0, as the new Citrix Stable release is now linked against
+          GCC 11 and more recent libraries, rather than GCC 8 and legacy stuff
 
 nanolx (1:5.0.6.20261030-1nano) unstable; urgency=low
 
