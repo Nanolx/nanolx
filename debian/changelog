@@ -13,8 +13,7 @@ nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
         - update for Citrix 26.08.0.225
         - remove no longer available Citrix Beta
         - update for Zoom 7.2.5.6661
-        - cisco Webex VDI 46.10.0.36042 has been suspended downgrade to version
-          46.8.0.35689 for now
+        - update cisco Webex VDI to 46.10.0.36183
 
     [nanolx-citrix-config]
       - remove extra Citrix integration, use defaults from icaclient package
