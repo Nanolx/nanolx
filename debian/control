@@ -487,10 +487,10 @@ Description: Collection of office tools
  This meta-package installs a collection of office tools.
 
 Package: nanolx-citrix-config
-Architecture: amd64
+Architecture: all
 Depends:
- ctxusb,
- icaclient,
+ ctxusb (>= 26.08.0.225),
+ icaclient (>= 26.08.0.225),
  zoom,
  zoomvdi-universal-plugin,
  speex,
@@ -503,11 +503,9 @@ Depends:
  llvm-libunwind1,
  gnome-keyring,
  rng-tools5
-Replaces: icaclient
 Suggests: cisco-webex-vdi
 Description: Citrix Workspace Support package
- Additional integration and configuration for Citrix, as per
- AUR: https://aur.archlinux.org/packages/icaclient
+ Dependency package for Citrix
  .
  The script nanolx-ctx may be used to enhance citrix experience
  .

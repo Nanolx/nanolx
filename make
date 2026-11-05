@@ -18,10 +18,7 @@ dirs=(/etc/dracut.conf.d/
  /etc/fastfetch/
  /etc/kmscon/
  /etc/xdg/
- /opt/Citrix/ICAClient/
  ${PREFIX}/bin/
- ${PREFIX}/lib/x86_64-linux-gnu/
- ${PREFIX}/lib/systemd/system/
  ${PREFIX}/sbin/
  ${PREFIX}/share/applications/
  ${PREFIX}/share/bash-completion/completions/
@@ -160,23 +157,6 @@ install_dist () {
     done
 }
 
-install_citrix () {
-    for desktop in "${CWD}/citrix"/*.desktop; do
-        install data "${desktop}" share/applications/
-    done
-    for service in "${CWD}/citrix"/*.service; do
-        install bin "${service}" lib/systemd/system/
-    done
-    for script in "${CWD}/citrix"/*.sh; do
-        install bin "${script}" /opt/Citrix/ICAClient/
-    done
-
-    # extra steps for old Citrix
-    install bin "${CWD}/dist/libjpeg.so.8.2.2" lib/x86_64-linux-gnu/
-    ln -sf ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8.2.2 \
-        ${DESTDIR}${PREFIX}/lib/x86_64-linux-gnu/libjpeg.so.8
-}
-
 install_release () {
     # disguise our Debian as Nanolx
     for file in os-release kcm-about-distrorc issue issue.net; do
@@ -208,7 +188,6 @@ case "${1}" in
         install_skel
         install_apt
         install_dist
-        install_citrix
     ;;
     install-release)
         install_release

@@ -164,16 +164,15 @@ refer to [debian/control](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/
 3. `nanolx-apt-tools`
     1. `repokit`         personal wrapper script for `reprepro`, `sbuild` and `dpkg-buildpackage` with config file support, auto ftp-upload and more features.
     2. `nanolx-orbit`    manages installation of 3rdparty packages, including checking sha256sums, currently supported packages:
-        - citrix (stable)
-        - citrix-usb (stable)
-        - citrix-epa (stable)
-        - citrix-beta (GCC 11 tech preview)
-        - citrix-beta-usb (GCC 11 tech preview)
+        - citrix
+        - citrix-usb
+        - citrix-epa
         - zoom
         - zoom vdi plugin
         - webex vdi plugin
+        - mscorefonts (old Microsoft Fonts, free to use, still required by some old applications/games)
 4. `nanolx-citrix-config`
-    1. `nanolx-ctx`      script to disable (or reenable) `Citrix` telemetry, allowing/restricting access to local machine, running the included system check script, enable `Teams` or `Zoom` optimizations, see `man nanolx-ctx` or `nanolx-ctx --help`. It also allows to install or uninstall the webkit2gtk-4.0 bundled with `Citrix`, which is required for full `Citrix` operation (stable `Citrix` version), but no longer shipped with `Debian`, if you're using the `Citrix` GCC 11 tech preview, those compatibility options will be disabled.
+    1. `nanolx-ctx`      see [Citrix](#citrix) below
 5. `nanolx-net`
     1. `hugo-push`     simple script to build a `hugo` website and push it to webspace using lftp, uses a configuration file.
 6. `nanolx-yubikey`
@@ -229,16 +228,29 @@ Here's a preview of the default `Nanolx` settings fully applied:
 
 The package `nanolx-citrix-config` is not automatically pulled by `nanolx-full`, as it requires citrix, zoom, incl. plugins to be already installed. For that purpose see the `nanolx-orbit` script, which is bundled with `nanolx-apt-tools`.
 
-`nanolx-citrix-config` provides additional system integrations (menu entries, `systemd` services), as per
+`nanolx-citrix-config` provides the script `nanolx-ctx` which allows you to enhance your Citrix experience by
 
-[https://aur.archlinux.org/packages/icaclient](https://aur.archlinux.org/packages/icaclient)
+* disable/enable Citrix telemetry
+* switch between system's and Citrix' ssl certificates
+* disable/enable scd loggin (may pollute ${HOME})
+* enable/disable teams optimizations
+* restrict/allow Citrix Remote Session access to your local machine
 
-The following only applies to stable `Citrix` versions which still use old libaries, current tech preview uses GCC 11 and newer libraries, so those workarounds are no longer required:
+If you use a Citrix version built with GCC 8, linked against old libraries, further options are available
 
-If `Citrix` Workspace fails to start, webkitgtk2-4.0 is likely missing, as it's no longer shipped with `Debian`. `Citrix` bundles it's own version, so you may choose to install that version using `nanolx-ctx`, at your own risk, via:
+* install Citrix bundled webkit2gtk version 4.0 to your system, or uninstall it
+* enable PulseAudio dummy, required by some old version to work with PipeWire
 
-`nanolx-ctx load-webkit`
+`nanolx-ctx` checks what Citrix build you have, those two options do nothing, if you're using a new build of Citrix.
 
-Additionally `nanolx-ctx` features more useful commands, you might want to check.
+Additional options for `Zoom`
 
-`Citrix` requires libjpeg8 to run, which is not provided by Debian. Installing libjpeg-turbo8 from `Ubuntu` conflicts with installing libjpegturbo0 (which is required by Krita), so instead `nanolx-citrix-config` ships the libjpeg.so.8{,.2.2} from `Ubuntu` itself.
+* register `Zoom` VDI plugin if it got unregistered for some reason
+* enable/disable smart virtual backgrounds
+* enable/disable (experimental) graphics/hardware acceleration
+
+Additional options for `Webex`
+
+* register `Webex` VDI plugin if it got unregistered for some reason
+
+and checking the status of all above and Citrix itself.

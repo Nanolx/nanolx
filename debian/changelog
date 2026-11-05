@@ -17,12 +17,14 @@ nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
           46.8.0.35689 for now
 
     [nanolx-citrix-config]
-      - remove wfica.sh
-      - remove wfica_assoc.sh
+      - remove extra Citrix integration, use defaults from icaclient package
+      - require 26.08.0.225 as minimum Citrix Workspace version, so we no longer
+        need to ship the libjpeg.so.8.2.2 since new Citrix doesn't need it
       - nanolx-ctx 0.2.1:
         - 'nanolx-ctx status' update check and wording for citrix channel and
           webkit2gtk-4.0, as the new Citrix Stable release is now linked against
           GCC 11 and more recent libraries, rather than GCC 8 and legacy stuff
+        - nanolx-ctx still supports old and new Citrix version (for now)
 
 nanolx (1:5.0.6.20261030-1nano) unstable; urgency=low
 
