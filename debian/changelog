@@ -20,6 +20,7 @@ nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
       - remove extra Citrix integration, use defaults from icaclient package
       - require 26.08.0.225 as minimum Citrix Workspace version, so we no longer
         need to ship the libjpeg.so.8.2.2 since new Citrix doesn't need it
+      - so the package is arch all again
       - nanolx-ctx 0.2.1:
         - 'nanolx-ctx status' update check and wording for citrix channel and
           webkit2gtk-4.0, as the new Citrix Stable release is now linked against
