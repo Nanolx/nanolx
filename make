@@ -19,6 +19,7 @@ dirs=(/etc/dracut.conf.d/
  /etc/kmscon/
  /etc/xdg/
  ${PREFIX}/bin/
+ ${PREFIX}/lib/
  ${PREFIX}/sbin/
  ${PREFIX}/share/applications/
  ${PREFIX}/share/bash-completion/completions/

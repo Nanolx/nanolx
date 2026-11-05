@@ -1,4 +1,4 @@
-nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
+nanolx (1:5.0.7.20261105-1nano) unstable; urgency=low
 
   * New upstream release
     [nanolx-base]
@@ -25,6 +25,8 @@ nanolx (1:5.0.7.202611ddmm-1nano) unstable; urgency=low
           webkit2gtk-4.0, as the new Citrix Stable release is now linked against
           GCC 11 and more recent libraries, rather than GCC 8 and legacy stuff
         - nanolx-ctx still supports old and new Citrix version (for now)
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 05 Nov 2026 17:56:29 +0100
 
 nanolx (1:5.0.6.20261030-1nano) unstable; urgency=low
 
