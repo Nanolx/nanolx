@@ -10,8 +10,8 @@
 #   ${HOME}/.repokit.conf
 #
 
-version="1.8.1"
-reldate="2026/10/28"
+version="1.8.2"
+reldate="2026/11/11"
 
 scriptname=$(basename ${0})
 
@@ -128,12 +128,16 @@ debhelper_put_scripts () {
             mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
             status="[new]"
     else
-        local git_version=$(sed -n '1s/.*(\([^)]*\)).*/\1/p' "${REPOKIT_BUILD_SCRIPTS}/${package}/changelog")
-        git_version="${git_version%-*}"
-        if [[ "${version}" == "${git_version}" ]]; then
-            status="[rebuild]"
-        else
-            status="[update]"
+        local first_line=$(head -n 1 "${PWD}/debian/changelog")
+        local regex="^${package} \((([0-9]+:)?)(.+)-([0-9]+)${REPOKIT_REV}\)"
+
+        if [[ "${first_line}" =~ ${regex} ]]; then
+            local changelog_upstream="${BASH_REMATCH[3]}"
+            if [[ "${version}" == "${epoch}${changelog_upstream}" ]]; then
+                status="[rebuild]"
+            else
+                status="[update]"
+            fi
         fi
     fi
 

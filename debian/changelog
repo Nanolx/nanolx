@@ -1,3 +1,11 @@
+nanolx (1:5.0.8.2026mmdd-1nano) unstable; urgency=low
+
+  * New upstream release
+    [nanolx-apt-tools]
+      - repokit 1.8.2:
+        - `repokit put` now properly detects rebuilds for package versions
+          with epochs
+
 nanolx (1:5.0.7.20261105-1nano) unstable; urgency=low
 
   * New upstream release
