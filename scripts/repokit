@@ -128,10 +128,11 @@ debhelper_put_scripts () {
             mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
             status="[new]"
     else
-        local first_line=$(head -n 1 "${PWD}/debian/changelog")
+        local first_line=$(head -n 1 "${REPOKIT_BUILD_SCRIPTS}/${package}/changelog")
         local regex="^${package} \((([0-9]+:)?)(.+)-([0-9]+)${REPOKIT_REV}\)"
 
         if [[ "${first_line}" =~ ${regex} ]]; then
+            local epoch="${BASH_REMATCH[1]}"
             local changelog_upstream="${BASH_REMATCH[3]}"
             if [[ "${version}" == "${epoch}${changelog_upstream}" ]]; then
                 status="[rebuild]"
