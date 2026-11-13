@@ -150,7 +150,7 @@ debhelper_put_scripts () {
     rsync -a --delete "${PWD}/debian/" "${REPOKIT_BUILD_SCRIPTS}/${package}"
     cd "${REPOKIT_BUILD_SCRIPTS}"
     git add -A "${package}"
-    git commit "${package}" -m "${package} ${status} ${version}"
+    git commit -a -m "${package} ${status} ${version}"
 }
 
 reprepro_add () {

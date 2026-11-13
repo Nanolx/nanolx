@@ -8,6 +8,8 @@ nanolx (1:5.0.8.2026mmdd-1nano) unstable; urgency=low
         - `repokit put` now adds "[reimport]" to packaging scripts which
           are detected inside `__deprecated` directory, when a new build
           is added to the packaging scripts repository
+        - `repokit put` removes the old packaging scripts from `__deprecated`
+          and commits the new ones in one commit
 
 nanolx (1:5.0.7.20261105-1nano) unstable; urgency=low
 
