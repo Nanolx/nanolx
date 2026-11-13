@@ -5,6 +5,9 @@ nanolx (1:5.0.8.2026mmdd-1nano) unstable; urgency=low
       - repokit 1.8.2:
         - `repokit put` now properly detects rebuilds for package versions
           with epochs
+        - `repokit put` now adds "[reimport]" to packaging scripts which
+          are detected inside `__deprecated` directory, when a new build
+          is added to the packaging scripts repository
 
 nanolx (1:5.0.7.20261105-1nano) unstable; urgency=low
 

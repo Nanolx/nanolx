@@ -11,7 +11,7 @@
 #
 
 version="1.8.2"
-reldate="2026/11/11"
+reldate="2026/11/13"
 
 scriptname=$(basename ${0})
 
@@ -124,9 +124,12 @@ debhelper_put_scripts () {
 
     get_package_name_and_ver $(basename "${PWD}") package version
 
-    if [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
-            mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
-            status="[new]"
+    if [[ -d ${REPOKIT_BUILD_SCRIPTS}/__deprecated/${package} ]]; then
+        rm -rf ${REPOKIT_BUILD_SCRIPTS}/__deprecated/${package}
+        status="[reimport]"
+    elif [[ ! -d ${REPOKIT_BUILD_SCRIPTS}/${package} ]]; then
+        mkdir -p "${REPOKIT_BUILD_SCRIPTS}/${package}"
+        status="[new]"
     else
         local first_line=$(head -n 1 "${REPOKIT_BUILD_SCRIPTS}/${package}/changelog")
         local regex="^${package} \((([0-9]+:)?)(.+)-([0-9]+)${REPOKIT_REV}\)"
