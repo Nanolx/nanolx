@@ -11,6 +11,9 @@ nanolx (1:5.0.8.2026mmdd-1nano) unstable; urgency=low
         - `repokit put` removes the old packaging scripts from `__deprecated`
           and commits the new ones in one commit
 
+    [nanolx-apt-sources]
+      - nanolx-orbit: update zoom vdi to 7.0.14.27210
+
 nanolx (1:5.0.7.20261105-1nano) unstable; urgency=low
 
   * New upstream release
