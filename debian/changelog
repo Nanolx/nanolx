@@ -12,7 +12,11 @@ nanolx (1:5.0.8.2026mmdd-1nano) unstable; urgency=low
           and commits the new ones in one commit
 
     [nanolx-apt-sources]
-      - nanolx-orbit: update zoom vdi to 7.0.14.27210
+      - nanolx-orbit 0.2.7:
+        - update zoom vdi to 7.0.14.27210
+        - Citrix has released a tech preview again, so add support for
+          - citrix-beta (26.11.0.53)
+          - citrix-beta-usb (26.11.0.53)
 
     [nanolx-themes]
       - Update Nanolx.knsv for plasma-panel-colorizer update
