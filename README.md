@@ -24,8 +24,8 @@ While I'm not actively looking for donations, a tip is always welcome.
 
 see [debian/changelog](https://gitlab.com/Nanolx/nanolx/-/blob/master/debian/changelog?ref_type=heads) for changes
 
-- Version:      5.0.7
-- Release:      20261105
+- Version:      5.0.8
+- Release:      20261126
 - Codename:     Equinox
 
 ## Git repository access

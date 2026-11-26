@@ -1,4 +1,4 @@
-nanolx (1:5.0.8.2026mmdd-1nano) unstable; urgency=low
+nanolx (1:5.0.8.20261126-1nano) unstable; urgency=low
 
   * New upstream release
     [nanolx-apt-tools]
@@ -20,6 +20,8 @@ nanolx (1:5.0.8.2026mmdd-1nano) unstable; urgency=low
 
     [nanolx-themes]
       - Update Nanolx.knsv for plasma-panel-colorizer update
+
+ -- Christopher Roy Bratusek <nano@jpberlin.de>  Thu, 26 Nov 2026 14:24:28 +0100
 
 nanolx (1:5.0.7.20261105-1nano) unstable; urgency=low
 
